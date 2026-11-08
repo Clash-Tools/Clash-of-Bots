@@ -34,13 +34,14 @@ def test_mode_column_and_old_files_upgraded(tmp_path):
     import csv
 
     p = tmp_path / "h.csv"
-    old_columns = [c for c in history.COLUMNS if c != "mode"]
+    old_columns = [c for c in history.COLUMNS if c not in ("mode", "profile")]
     with p.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, old_columns)
         w.writeheader()
         w.writerow({c: "" for c in old_columns} | {"cycle": "1", "gained_gold": "5"})
-    history.append(CycleResult(2, "accepted"), path=p, mode="bb")
+    history.append(CycleResult(2, "accepted"), path=p, mode="bb", profile="alt")
     rows = history.read(path=p)
-    assert p.read_text("utf-8").splitlines()[0].endswith(",mode")
-    assert [(r["cycle"], r["mode"], r["gained_gold"]) for r in rows] == [("1", "", "5"), ("2", "bb", "")]
+    assert p.read_text("utf-8").splitlines()[0].endswith(",mode,profile")
+    assert [(r["cycle"], r["mode"], r["gained_gold"], r["profile"]) for r in rows] == [
+        ("1", "", "5", ""), ("2", "bb", "", "alt")]
     assert not (tmp_path / "h.tmp").exists()

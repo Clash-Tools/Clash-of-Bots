@@ -20,12 +20,15 @@ def in_quiet_hours(now: datetime, start: int, end: int) -> bool:
     return start <= h < end if start < end else h >= start or h < end
 
 
-def today_usage(rows: list[dict[str, str]], today: date) -> tuple[float, int]:
-    """(farming seconds, attacks done) recorded today in history.csv rows."""
+def today_usage(rows: list[dict[str, str]], today: date, profile: str | None = None) -> tuple[float, int]:
+    """(farming seconds, attacks done) recorded today in history.csv rows; only `profile`'s rows when
+    given (#2: each account has its own daily limits; rows without a profile are the Default one's)."""
     prefix = today.isoformat()
     seconds, attacks = 0.0, 0
     for r in rows:
         if not (r.get("time") or "").startswith(prefix):
+            continue
+        if profile is not None and (r.get("profile") or "default") != profile:
             continue
         s = (r.get("seconds") or "").strip()
         seconds += float(s) if s.replace(".", "", 1).isdigit() else 0.0
@@ -33,13 +36,15 @@ def today_usage(rows: list[dict[str, str]], today: date) -> tuple[float, int]:
     return seconds, attacks
 
 
-def install_seed() -> int:
-    """Stable per install, so two computers do not draw the same daily limits and off-periods."""
+def install_seed(profile: str = "default") -> int:
+    """Stable per install (and per profile, #2), so two computers or two accounts do not draw the same daily
+    limits and off-periods. The Default profile keeps the seed older versions used."""
     import zlib
 
     from cob.core.paths import user_data_dir
 
-    return zlib.crc32(str(user_data_dir()).encode("utf-8"))
+    key = str(user_data_dir()) if profile == "default" else f"{user_data_dir()}#{profile}"
+    return zlib.crc32(key.encode("utf-8"))
 
 
 def _day_rng(day: date, seed: int, salt: int) -> random.Random:

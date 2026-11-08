@@ -33,6 +33,7 @@ from cob.ui.widgets import IconLabel, StatusPill, label
 PAGES = [
     ("dashboard", tr("Dashboard"), "dashboard"),
     ("devices", tr("Devices"), "devices"),
+    ("profiles", tr("Profiles"), "person"),
     ("automation", tr("Automation"), "smart_toy"),
     ("safety", tr("Safety"), "shield"),
     ("history", tr("History"), "history"),

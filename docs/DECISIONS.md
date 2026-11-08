@@ -390,3 +390,25 @@ Why:      Exact numbers that follow game updates, no network dependency, new and
 Trade-off: The database has no card pictures until they are labelled and exported; until then the bar
           still uses card colour and order for the kind.
 Revisit if: portraits change with skins (add variants per unit) or another resolution is supported.
+
+## D-034: Profiles: one device per account, run in turn, no account switching  (ACCEPTED 2026-11-08)
+Date: 2026-11-08   Model: Claude Opus 5.5
+Context:  #2: several accounts / LDPlayer instances, each with its own settings, schedule and history.
+Options:  1) Profiles with their own device; "Run in turn" farms them one after another
+          2) One device, the bot switches Supercell ID accounts between runs
+          3) Several bots at once, one window per device
+Chosen:   1. profiles.json in the user data folder (validated on load, bad entries skipped) lists id,
+          name, device serial, player tag and "in turn"; each profile's farm settings sit in
+          profiles/<id>/farm.json, and the Default profile keeps the old farm.json so an existing install
+          needs no migration. history.csv gains a "profile" column; daily limits count only that
+          profile's rows and each profile draws its own daily limits and off-period. Running in turn
+          starts the next profile when one stops (limits, safety stop or error); Stop ends the turn. An
+          LDPlayer instance that is not running is launched when its turn comes. CLI: `cob profiles`,
+          `cob farm --profile ID`.
+Why:      An instance per account is how multi-account players already work, and the bot never has to
+          type into or confirm the Supercell ID sign-in, which would break rule 1 (no input on account
+          or consent screens) and risk the account.
+Trade-off: Two accounts on one phone need the user to switch accounts by hand; runs in turn are
+          sequential, not parallel.
+Revisit if: users ask for parallel runs (one worker per device), or a safe, verified account switch is
+          possible.

@@ -83,7 +83,7 @@ def _run_worker(qapp, win):
 
 
 def test_filter_round_trip(qapp, no_dialogs):
-    win = MainWindow(devices=lambda: DEVICES, build=lambda s, c: FakeParts())
+    win = MainWindow(devices=lambda: DEVICES, build=lambda s, c, *_: FakeParts())
     assert win.filter_config() == FarmConfig()
     win.filter_spins["min_gold_elixir"].setValue(600_000)
     win.filter_spins["max_nexts"].setValue(15)
@@ -94,14 +94,14 @@ def test_filter_round_trip(qapp, no_dialogs):
 
 
 def test_start_needs_a_device(qapp, no_dialogs):
-    win = MainWindow(devices=lambda: [], build=lambda s, c: FakeParts())
+    win = MainWindow(devices=lambda: [], build=lambda s, c, *_: FakeParts())
     win.start()
     assert no_dialogs == ["warning"] and win._worker is None
 
 
 def test_farm_run_updates_stats(qapp, no_dialogs):
     built = []
-    win = MainWindow(devices=lambda: DEVICES, build=lambda s, c: built.append((s, c)) or FakeParts())
+    win = MainWindow(devices=lambda: DEVICES, build=lambda s, c, *_: built.append((s, c)) or FakeParts())
     win.cycles_spin.setValue(2)
     win.start()
     assert not win.start_button.isEnabled() and win.stop_button.isEnabled()
@@ -119,7 +119,7 @@ def test_farm_run_updates_stats(qapp, no_dialogs):
 
 def test_stop_button_stops_the_loop(qapp, no_dialogs):
     parts = FakeParts(block=threading.Event())
-    win = MainWindow(devices=lambda: DEVICES, build=lambda s, c: parts)
+    win = MainWindow(devices=lambda: DEVICES, build=lambda s, c, *_: parts)
     win.start()
     win.stop()
     _run_worker(qapp, win)
@@ -127,7 +127,7 @@ def test_stop_button_stops_the_loop(qapp, no_dialogs):
 
 
 def test_build_error_is_shown_not_raised(qapp, no_dialogs):
-    def boom(serial, cfg):
+    def boom(serial, cfg, *_):
         raise RuntimeError("device emulator-5554 not reachable")
 
     win = MainWindow(devices=lambda: DEVICES, build=boom)
@@ -250,7 +250,7 @@ def test_builder_base_mode_runs_bb_loop(qapp, no_dialogs, monkeypatch):
         return parts.farm_task(limits, on_cycle, on_break, on_step)
 
     monkeypatch.setattr(worker, "bb_farm_task", fake_bb)
-    win = MainWindow(devices=lambda: DEVICES, build=lambda s, c: FakeParts())
+    win = MainWindow(devices=lambda: DEVICES, build=lambda s, c, *_: FakeParts())
     win.dashboard.mode.set_value("bb")
     win.start()
     assert "Builder Base" in win.shell.step.text() and not win.dashboard.mode.isEnabled()
