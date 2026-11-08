@@ -36,6 +36,7 @@ from cob import __version__
 from cob.core import history, ui_settings
 from cob.core.config import FarmConfig, load_farm_config, save_farm_config
 from cob.core.i18n import tr
+from cob.core.profiles import Profiles
 from cob.tasks.farm import CycleResult, FarmStats
 from cob.tasks.wiring import FarmParts, build_farm, farm_limits
 from cob.ui.jobs import Job
@@ -45,6 +46,7 @@ from cob.ui.pages.devices import DevicesPage
 from cob.ui.pages.health import HealthPage
 from cob.ui.pages.history import HistoryPage
 from cob.ui.pages.logs import LogsPage
+from cob.ui.pages.profiles import ProfilesPage, shown
 from cob.ui.pages.safety import SafetyPage
 from cob.ui.pages.settings import SettingsPage
 from cob.ui.shell import Shell, logo_icon
@@ -162,12 +164,15 @@ class MainWindow(QMainWindow):
                  build: Callable[[str, FarmConfig], FarmParts] | None = None,
                  checks: Callable = _run_checks, fixer: Callable = _run_fix, grab: Callable = _grab,
                  tray: bool = False, phone: Callable = _phone_action, background_refresh: bool = False,
-                 reconnect: Callable[[], list[str]] | None = None):
+                 reconnect: Callable[[], list[str]] | None = None, profiles: Profiles | None = None):
         super().__init__()
+        self.profiles = profiles or Profiles()  # #2: the active profile's farm.json fills the forms
+        self._queue: list[str] = []  # #2: profile ids still to run in turn
         self._devices = devices
         self._reconnect = reconnect  # slow Wi-Fi reconnect, run after the fast list is shown
         self._spinner = Spinner(self)  # loading icon on buttons whose job runs (#161)
-        self._build = build or (lambda serial, cfg: build_farm(serial, cfg=cfg))
+        self._build = build or (lambda serial, cfg, profile="default": build_farm(serial, cfg=cfg,
+                                                                                  profile=profile))
         self._checks, self._fixer, self._grab, self._phone = checks, fixer, grab, phone
         # #80: the real device lookup (adb reconnects, mDNS, ldconsole) can take ~10 s on slow Wi-Fi, so the
         # app runs it in a Job; tests pass fast fakes and keep the synchronous path.
@@ -188,6 +193,7 @@ class MainWindow(QMainWindow):
         self._device_picker()
         self.shell.add_page("dashboard", self._farm_tab())
         self.shell.add_page("devices", self._setup_tab())
+        self.shell.add_page("profiles", self._profiles_page())
         self.shell.add_page("automation", self._settings_tab())
         self.shell.add_page("safety", self._safety_page())
         self.shell.add_page("history", self._history_tab(), scroll=False)
@@ -209,12 +215,18 @@ class MainWindow(QMainWindow):
     # --- tabs -----------------------------------------------------------------------------------
 
     def _device_picker(self) -> None:
-        """Device pill in the top bar: picker + refresh (was the Farm tab's Device box)."""
+        """Profile + device pill in the top bar: pickers + refresh (was the Farm tab's Device box)."""
+        self.profile_combo = QComboBox()
+        self.profile_combo.setToolTip(tr("Profile: whose settings and device the bot uses (Profiles page)"))
+        self.profile_combo.activated.connect(lambda i: self.switch_profile(self.profile_combo.itemData(i)))
+        self.shell.device_slot.addWidget(self.profile_combo)
+        self._fill_profiles()
         self.device_combo = QComboBox()
         self.device_combo.setMinimumWidth(260)
         self.device_combo.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToContents)
         self.device_combo.setToolTip(tr("Device the bot runs on"))
         self.device_combo.currentIndexChanged.connect(self._device_changed)
+        self.device_combo.activated.connect(self._device_picked)
         self.refresh_button = QToolButton()
         self.refresh_button.setIcon(icon("refresh", tokens.ON_SURFACE_VARIANT, 18))
         self.refresh_button.setToolTip(tr("Refresh devices (also reconnects Wi-Fi phones)"))
@@ -231,6 +243,85 @@ class MainWindow(QMainWindow):
                                       for i in range(self.device_combo.count())], serial)
         if hasattr(self, "health"):
             self.health.set_device(serial)
+        if hasattr(self, "profiles_page"):
+            self.profiles_page.set_devices([(self.device_combo.itemText(i), self.device_combo.itemData(i))
+                                            for i in range(self.device_combo.count())])
+
+    def _device_picked(self, index: int) -> None:
+        """The user picked a device: the active profile farms on it from now on (#2)."""
+        serial = self.device_combo.itemData(index)
+        active = self.profiles.active
+        if serial and serial != active.serial:
+            self.profiles.update(replace(active, serial=serial))
+            self.profiles_page.refresh()
+
+    # --- profiles (#2) --------------------------------------------------------------------------
+
+    def _profiles_page(self) -> QWidget:
+        self.profiles_page = page = ProfilesPage(self.profiles)
+        page.changed.connect(self._profiles_changed)
+        page.use_requested.connect(self.switch_profile)
+        page.rotation_requested.connect(self.start_rotation)
+        return page
+
+    def _fill_profiles(self) -> None:
+        self.profile_combo.blockSignals(True)
+        self.profile_combo.clear()
+        for p in self.profiles.profiles:
+            self.profile_combo.addItem(shown(p), p.id)
+        self.profile_combo.setCurrentIndex(max(self.profile_combo.findData(self.profiles.active_id), 0))
+        self.profile_combo.blockSignals(False)
+
+    def _profiles_changed(self) -> None:
+        self._fill_profiles()
+        self._use_device(self.profiles.active.serial)
+
+    def switch_profile(self, profile_id: str) -> bool:
+        """Make `profile_id` active: the current settings are saved to the old profile first, then the new
+        one's settings fill the forms and its device is picked. Not while farming."""
+        if self._worker is not None and self._worker.isRunning():
+            self._fill_profiles()
+            return False
+        if self.profiles.get(profile_id) is None:
+            return False
+        if profile_id != self.profiles.active_id:
+            if self.automation.dirty() or self.safety.dirty():
+                self.save_filter()  # unsaved edits belong to the profile they were made in
+            self.profiles.set_active(profile_id)
+            self.load_filter()
+            log.info("profile %s active", profile_id)
+        self._fill_profiles()
+        self._use_device(self.profiles.active.serial)
+        self.profiles_page.refresh(profile_id)
+        return True
+
+    def start_rotation(self) -> None:
+        """Run every ticked profile in turn (#2): each starts when the one before it stops."""
+        if self._worker is not None and self._worker.isRunning():
+            return
+        turn = self.profiles.rotation()
+        missing = [shown(p) for p in turn if not p.serial]
+        if not turn or missing:
+            QMessageBox.warning(self, "Clash of Bots", tr(
+                "Every profile that runs in turn needs its own device (Profiles page): {names}",
+                names=", ".join(missing) or "-"))
+            return
+        self._queue = [p.id for p in turn]
+        self._run_next_profile()
+
+    def _run_next_profile(self) -> None:
+        while self._queue:
+            pid = self._queue.pop(0)
+            if self.switch_profile(pid):
+                profile = self.profiles.active
+                log.info("in turn: profile %s (%s), %d more after it", profile.name, profile.serial,
+                         len(self._queue))
+                self.start(serial=profile.serial)
+                return
+
+    def _after_run(self) -> None:
+        if self._queue:
+            QTimer.singleShot(3_000, self._run_next_profile)
 
     def _health_page(self) -> QWidget:
         """Health checks (#100), own rail tab; widgets keep their old Setup-tab names."""
@@ -409,7 +500,7 @@ class MainWindow(QMainWindow):
         return d
 
     def _use_device(self, serial: str) -> None:
-        if (i := self.device_combo.findData(serial)) >= 0:
+        if serial and (i := self.device_combo.findData(serial)) >= 0:
             self.device_combo.setCurrentIndex(i)
 
     def run_phone(self, action: str) -> None:
@@ -630,6 +721,8 @@ class MainWindow(QMainWindow):
 
     def _apply_devices(self, found: list[tuple[str, str]]) -> None:
         current = self.device_combo.currentData()
+        if self.profiles.active.serial and any(s == self.profiles.active.serial for _, s in found):
+            current = self.profiles.active.serial  # #2: the active profile's own device first
         self.device_combo.blockSignals(True)
         self.device_combo.clear()
         for label, serial in found:
@@ -729,11 +822,11 @@ class MainWindow(QMainWindow):
         self.dashboard.set_guardrails(cfg)
 
     def load_filter(self) -> None:
-        self.set_filter(load_farm_config())
+        self.set_filter(self.profiles.load_config(self.profiles.active_id))
 
     def save_filter(self) -> None:
         cfg = self.filter_config()
-        path = save_farm_config(cfg)
+        path = self.profiles.save_config(self.profiles.active_id, cfg)
         self.automation.mark_saved(cfg)
         self.safety.mark_saved(cfg)
         self.dashboard.set_guardrails(self.filter_config())
@@ -757,20 +850,24 @@ class MainWindow(QMainWindow):
 
     # --- run ------------------------------------------------------------------------------------
 
-    def start(self) -> None:
-        serial = self.device_combo.currentData()
+    def start(self, serial: str | None = None) -> None:
+        serial = serial or self.device_combo.currentData()
         if not serial:
+            self._queue = []
             QMessageBox.warning(self, "Clash of Bots",
                                 tr("Pick a device first (top bar; Devices page to connect)."))
             return
         cfg = self.filter_config()
-        save_farm_config(cfg)
-        limits = farm_limits(cfg, self.cycles_spin.value(), float(self.minutes_spin.value()))
+        profile = self.profiles.active.id
+        self.profiles.save_config(profile, cfg)
+        self.automation.mark_saved(cfg)
+        self.safety.mark_saved(cfg)
+        limits = farm_limits(cfg, self.cycles_spin.value(), float(self.minutes_spin.value()), profile=profile)
         self._cycles = []
         self._max_cycles = self.cycles_spin.value()
         self._show_stats(FarmStats())
         mode = self._mode = self.dashboard.mode.value()
-        self._worker = FarmWorker(lambda: self._build(serial, cfg), limits, self, mode=mode)
+        self._worker = FarmWorker(lambda: self._build(serial, cfg, profile), limits, self, mode=mode)
         self._worker.cycle_done.connect(self.on_cycle)
         self._worker.resting.connect(self.on_break)
         self._worker.preview.connect(self.show_preview)
@@ -778,13 +875,16 @@ class MainWindow(QMainWindow):
         self._worker.finished_stats.connect(self.on_finished)
         self._worker.failed.connect(self.on_failed)
         self._worker.finished.connect(lambda: self._set_running(False))
+        self._worker.finished.connect(self._after_run)
         self._set_running(True)
         what = "Builder Base attacks" if mode == "bb" else "farming"
         self.shell.reset_session()
-        name = self.device_combo.currentText()
+        name = self.device_combo.currentText() if self.device_combo.currentData() == serial else serial
+        if len(self.profiles.profiles) > 1:
+            name = f"{shown(self.profiles.active)} • {name}"
         self._set_status(tr("Builder Base attacks on {serial}", serial=name) if mode == "bb"
                          else tr("farming on {serial}", serial=name), "running")
-        log.info("%s on %s: %s, %s", what, serial, cfg, limits)
+        log.info("%s on %s (profile %s): %s, %s", what, serial, profile, cfg, limits)
         self._worker.start()
 
     def toggle_pause(self) -> None:
@@ -801,6 +901,7 @@ class MainWindow(QMainWindow):
             self._set_status(tr("resumed"), "running")
 
     def stop(self) -> None:
+        self._queue = []  # Stop / Esc ends a run in turn too
         if self._worker is not None and self._worker.isRunning():
             self._set_status(tr("stopping after the current step…"))
             self._worker.request_stop()
@@ -810,7 +911,8 @@ class MainWindow(QMainWindow):
         self.stop_button.setEnabled(running)
         self.dashboard.set_running(running)
         self.refresh_button.setEnabled(not running and self._refresh_job is None)
-        for w in (self.device_combo, self.save_button, self.defaults_button,
+        self.profiles_page.run_button.setEnabled(not running and bool(self.profiles.rotation()))
+        for w in (self.profile_combo, self.device_combo, self.save_button, self.defaults_button,
                   self.check_button, *self.filter_spins.values(), *self.safety.spins.values()):
             w.setEnabled(not running)
         if running:
@@ -830,7 +932,7 @@ class MainWindow(QMainWindow):
         self._show_stats(FarmStats(cycles=list(self._cycles)))
         self._set_status(tr("farming"), "running")
         self.dashboard.set_last_cycle(cycle)
-        self.history.add_row(history.to_row(cycle, mode=self._mode))
+        self.history.add_row(history.to_row(cycle, mode=self._mode, profile=self.profiles.active_id))
 
     def on_break(self, seconds: float) -> None:
         until = QTime.currentTime().addSecs(int(seconds)).toString("HH:mm")
@@ -857,6 +959,9 @@ class MainWindow(QMainWindow):
         self._set_status(tr("error: {message}", message=message), "stopped", "gpp_maybe")
         self.dashboard.show_error(message)
         self._notify(tr("Farming failed"), message)
+        if self._queue:  # #2: running in turn: the next profile starts, no dialog to block it
+            log.warning("profile %s failed (%s); the next one starts", self.profiles.active_id, message)
+            return
         QMessageBox.critical(self, "Clash of Bots", tr("Farming stopped:\n{message}", message=message))
 
     def _show_stats(self, stats: FarmStats) -> None:

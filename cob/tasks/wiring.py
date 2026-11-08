@@ -50,6 +50,7 @@ class FarmParts:
     _last_bb_collect: float | None = None
     restart_device: Callable[[], bool] | None = None  # #132: LDPlayer quit + relaunch, None on phones
     army_recipe: int = 0  # #185: Saved Recipe loaded when a run starts; 0 = keep the army
+    profile: str = "default"  # #2: profile id written to history.csv; daily limits count only its rows
 
     def prepare_army(self) -> bool:
         from cob.tasks.army import ArmyRecipe
@@ -139,7 +140,7 @@ class FarmParts:
         from cob.core import history
 
         def cycle_done(cycle: CycleResult) -> None:
-            history.append(cycle, mode="home")  # every run, CLI or GUI, ends up in history.csv
+            history.append(cycle, mode="home", profile=self.profile)  # every run, CLI or GUI
             if on_cycle:
                 on_cycle(cycle)
 
@@ -147,7 +148,8 @@ class FarmParts:
                         limits, stop=self.nav.stop, on_cycle=cycle_done, recover=self.recover,
                         restart_device=self.restart_device, storages=self.storages,
                         io=self.io_stats,
-                        on_break=on_break, maintenance=self.maintain, on_step=on_step, usage=history_usage,
+                        on_break=on_break, maintenance=self.maintain, on_step=on_step,
+                        usage=lambda: history_usage(self.profile),
                         reload_village=self.nav.reload_other_device, close_game=self.close_game,
                         prepare=self.prepare_army if self.army_recipe else None,
                         unavailable=self.nav.game_unavailable)
@@ -165,15 +167,18 @@ def bb_farm_task(parts: FarmParts, limits: FarmLimits,
     """Builder Base attacks driven by the same loop (limits, breaks, stop, relaunch, history)."""
     from cob.core import history
 
+    profile = getattr(parts, "profile", "default")
+
     def cycle_done(cycle: CycleResult) -> None:
-        history.append(cycle, mode="bb")
+        history.append(cycle, mode="bb", profile=profile)
         if on_cycle:
             on_cycle(cycle)
 
     return FarmTask(_bb_cycle_search, parts.bb.run, parts.bb_resources or (lambda: None), limits,
                     stop=parts.nav.stop, on_cycle=cycle_done, recover=parts.recover, on_break=on_break,
                     restart_device=getattr(parts, "restart_device", None),
-                    maintenance=parts.bb_maintain, on_step=on_step, usage=history_usage,
+                    maintenance=parts.bb_maintain, on_step=on_step,
+                    usage=lambda: history_usage(profile),
                     reload_village=getattr(parts.nav, "reload_other_device", None),
                     close_game=getattr(parts, "close_game", None))
 
@@ -189,28 +194,31 @@ def _card_library():
         return None
 
 
-def farm_limits(cfg: FarmConfig, max_cycles: int = 0, max_minutes: float = 0.0) -> FarmLimits:
+def farm_limits(cfg: FarmConfig, max_cycles: int = 0, max_minutes: float = 0.0,
+                profile: str = "default") -> FarmLimits:
     """Run limits from the command line / window plus breaks and safety rules from farm.json."""
     return FarmLimits(max_cycles=max_cycles, max_minutes=max_minutes, break_every=cfg.break_every,
                       break_minutes=float(cfg.break_minutes), max_failures_in_row=cfg.max_failures,
                       daily_minutes=cfg.daily_minutes, daily_attacks=cfg.daily_attacks,
                       quiet_from=cfg.quiet_from, quiet_to=cfg.quiet_to,
                       daily_attacks_max=cfg.daily_attacks_max, off_hours=cfg.off_hours,
-                      schedule_seed=install_seed(), other_device_wait_minutes=float(cfg.other_device_wait),
+                      schedule_seed=install_seed(profile),
+                      other_device_wait_minutes=float(cfg.other_device_wait),
                       resume_after_rest=bool(cfg.resume_after_rest),
                       close_game_resting=bool(cfg.close_game_resting),
                       halt_full_percent=cfg.halt_full_percent,
                       unavailable_wait_minutes=float(cfg.unavailable_wait))
 
 
-def history_usage() -> tuple[float, int]:
-    """Today's farming seconds and attacks from history.csv (every run, CLI and GUI, appends there)."""
+def history_usage(profile: str | None = None) -> tuple[float, int]:
+    """Today's farming seconds and attacks from history.csv (every run, CLI and GUI, appends there), only
+    the given profile's rows when one is given (#2)."""
     from datetime import date
 
     from cob.core import history
     from cob.tasks.schedule import today_usage
 
-    return today_usage(history.read(limit=5_000), date.today())
+    return today_usage(history.read(limit=5_000), date.today(), profile)
 
 
 def emulator_restart(serial: str) -> Callable[[], bool] | None:
@@ -242,8 +250,12 @@ def emulator_recovery(serial: str) -> Callable[[], bool] | None:
     return lambda: console.ensure_running(index, serial)
 
 
-def build_farm(serial: str, templates: Path | None = None, cfg: FarmConfig | None = None) -> FarmParts:
+def build_farm(serial: str, templates: Path | None = None, cfg: FarmConfig | None = None,
+               profile: str = "default") -> FarmParts:
     store = TemplateStore(templates)
+    if (start := emulator_recovery(serial)) is not None and not start():
+        # #2: a profile's LDPlayer instance may not be running yet (profiles run in turn): launch it first.
+        raise DeviceError(f"LDPlayer instance for {serial} did not start")
     regions = load_regions(store.root)
     digits = DigitReader(store.load_dir("digits/loot"))
     bar = LootReader(digits, regions["bar"])
@@ -297,4 +309,4 @@ def build_farm(serial: str, templates: Path | None = None, cfg: FarmConfig | Non
     return FarmParts(nav, search, attack, own_resources, recover, bb, bb_resources,
                      collect_minutes=cfg.collect_minutes, walls=walls, wall_upgrades=cfg.wall_upgrades,
                      request_minutes=cfg.request_minutes, restart_device=emulator_restart(serial),
-                     army_recipe=cfg.army_recipe)
+                     army_recipe=cfg.army_recipe, profile=profile)

@@ -77,7 +77,8 @@ print(json.dumps(sorted(left)))
 
 # Names, not words: product, emulator and device names, the test device's serial, and language names
 # (each language is listed in its own language).
-ALLOWED = ["Clash", "Bots", "LDPlayer", "Phone", "AB12CD34EF", "ADB", "USB", "GitHub", "English", "Pseudo"]
+ALLOWED = ["Clash", "Bots", "LDPlayer", "Phone", "AB12CD34EF", "ADB", "USB", "GitHub", "English", "Pseudo",
+           "ABC123"]  # + the player-tag placeholder
 
 
 def test_no_english_left_with_a_pseudo_catalog(tmp_path):

@@ -13,15 +13,17 @@ from cob.tasks.farm import CycleResult
 log = logging.getLogger(__name__)
 
 COLUMNS = ["time", "cycle", "search", "nexts", "base_gold", "base_elixir", "base_dark", "attack",
-           "gained_gold", "gained_elixir", "gained_dark", "seconds", "reason", "mode"]
+           "gained_gold", "gained_elixir", "gained_dark", "seconds", "reason", "mode", "profile"]
 MODES = ("home", "bb")  # "mode" column: home village farming or Builder Base attacks; "" in old rows
+# "profile" column (#2): the profile id the cycle ran under; "" in old rows means the Default profile.
 
 
 def history_path() -> Path:
     return user_data_dir() / "history.csv"
 
 
-def to_row(cycle: CycleResult, when: float | None = None, mode: str = "home") -> dict[str, str]:
+def to_row(cycle: CycleResult, when: float | None = None, mode: str = "home",
+           profile: str = "default") -> dict[str, str]:
     base, gained = cycle.loot, cycle.gained
     return {
         "time": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(when)),
@@ -38,6 +40,7 @@ def to_row(cycle: CycleResult, when: float | None = None, mode: str = "home") ->
         "seconds": f"{cycle.seconds:.0f}",
         "reason": cycle.reason,
         "mode": mode,
+        "profile": profile,
     }
 
 
@@ -59,7 +62,8 @@ def _upgrade_header(path: Path) -> None:
     log.info("history file upgraded to columns %s", ", ".join(COLUMNS))
 
 
-def append(cycle: CycleResult, path: Path | None = None, mode: str = "home") -> None:
+def append(cycle: CycleResult, path: Path | None = None, mode: str = "home",
+           profile: str = "default") -> None:
     """Add one row; history must never stop the bot, so errors are only logged."""
     path = path or history_path()
     try:
@@ -70,7 +74,7 @@ def append(cycle: CycleResult, path: Path | None = None, mode: str = "home") -> 
             w = csv.DictWriter(f, COLUMNS)
             if new:
                 w.writeheader()
-            w.writerow(to_row(cycle, mode=mode))
+            w.writerow(to_row(cycle, mode=mode, profile=profile))
     except OSError as exc:
         log.warning("history not written: %s", exc)
 

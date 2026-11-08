@@ -310,12 +310,23 @@ def cmd_attack(args) -> int:
 
 
 def cmd_farm(args) -> int:
-    from cob.core.config import load_farm_config
+    from cob.core.profiles import Profiles
     from cob.tasks.wiring import build_farm, farm_limits
 
-    parts = build_farm(args.serial, Path(args.templates) if args.templates else None)
+    store = Profiles()
+    profile = store.get(args.profile) if args.profile else store.active
+    if profile is None:
+        print(f"no profile {args.profile!r}; `cob profiles` lists them", file=sys.stderr)
+        return 2
+    serial = args.serial or profile.serial
+    if not serial:
+        print(f"profile {profile.name!r} has no device: pass -s SERIAL", file=sys.stderr)
+        return 2
+    cfg = store.load_config(profile.id)
+    parts = build_farm(serial, Path(args.templates) if args.templates else None, cfg=cfg, profile=profile.id)
     recover = parts.recover
-    limits = farm_limits(load_farm_config(), args.cycles, args.minutes)
+    limits = farm_limits(cfg, args.cycles, args.minutes, profile=profile.id)
+    print(f"profile {profile.name} ({profile.id}) on {serial}")
     breaks = (f"break ~{limits.break_minutes:g} min every ~{limits.break_every} cycles"
               if limits.break_every else "no breaks")
     print(f"farming: {args.cycles or 'unlimited'} cycles, {args.minutes or 'no'} minute limit, {breaks}, "
@@ -332,6 +343,18 @@ def cmd_farm(args) -> int:
         print(f"per hour: gold {g.gold * per_hour:+,.0f} elixir {g.elixir * per_hour:+,.0f} "
               f"dark {g.dark * per_hour:+,.0f}")
     return 0 if stats.attacks else 1
+
+
+def cmd_profiles(_args) -> int:
+    """List the profiles (#2): id, name, device, player tag, whether it runs in turn; * = active."""
+    from cob.core.profiles import Profiles
+
+    store = Profiles()
+    for p in store.profiles:
+        mark = "*" if p.id == store.active_id else " "
+        print(f"{mark} {p.id:<20} {p.name:<24} {p.serial or '-':<24} {p.player_tag or '-':<12} "
+              f"{'in turn' if p.rotation else ''}")
+    return 0
 
 
 def cmd_logs(args) -> int:
@@ -524,10 +547,14 @@ def build_parser() -> argparse.ArgumentParser:
     at.set_defaults(fn=cmd_attack)
 
     fa = with_templates(sub.add_parser("farm", help="repeat search + attack until a limit or Ctrl+C"))
-    fa.add_argument("-s", "--serial", required=True)
+    fa.add_argument("-s", "--serial", help="device (default: the profile's device)")
+    fa.add_argument("-p", "--profile", help="profile id (default: the active profile; `cob profiles`)")
     fa.add_argument("--cycles", type=int, default=5, help="stop after N cycles (0 = no limit, default 5)")
     fa.add_argument("--minutes", type=float, default=0, help="stop after N minutes (0 = no limit)")
     fa.set_defaults(fn=cmd_farm)
+
+    sub.add_parser("profiles", help="list profiles (accounts / devices with their own settings)"
+                   ).set_defaults(fn=cmd_profiles)
 
     gui = sub.add_parser("gui", help="open the window (also: start the exe without arguments)")
     gui.set_defaults(fn=cmd_gui)
