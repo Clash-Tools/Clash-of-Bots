@@ -97,3 +97,49 @@ def test_database_pictures_are_used(tmp_path, name):
     db_cards = {"some_unit": ("detection/1600x900/cards/x.png",)}
     lib = CardLibrary(tmp_path / "db", db_cards, folder=tmp_path / "u")
     assert observe(lib, f, cards)[0] == "some_unit"
+
+
+def test_export_writes_the_data_repo_layout(tmp_path):
+    import json
+    import zipfile
+
+    from cob.attack.cards import export_labelled
+
+    lib = CardLibrary(folder=tmp_path / "c")
+    f, cards = _cards("green")
+    observe(lib, f, cards)
+    a, b = sorted(lib.unknown())[:2]
+    lib.label(a, "golem")
+    lib.label(b, "golem")  # a second picture of the same unit gets -2
+    n = export_labelled(lib, tmp_path / "out.zip")
+    with zipfile.ZipFile(tmp_path / "out.zip") as z:
+        names = sorted(z.namelist())
+        meta = json.loads(z.read("cards.json"))
+    assert n == 2 and names == ["cards.json", "detection/1600x900/cards/golem-2.png",
+                                "detection/1600x900/cards/golem.png"]
+    assert {c["unit"] for c in meta["cards"]} == {"golem"}
+
+
+def test_cards_page_labels_and_discards(tmp_path, monkeypatch):
+    import os
+
+    os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+    from PySide6.QtWidgets import QApplication
+
+    from cob.ui.pages.cards import CardsPage
+
+    app = QApplication.instance() or QApplication([])  # noqa: F841
+    lib = CardLibrary(folder=tmp_path)
+    f, cards = _cards("green")
+    observe(lib, f, cards)
+    page = CardsPage(lib, UnitDB())
+    assert page.grid.count() == len(cards) and "not recognised" in page.summary.text()
+    assert not page.export_button.isEnabled()
+    page.unit.setCurrentIndex(page.unit.findData("golem"))
+    page.save_label()
+    assert page.grid.count() == len(cards) - 1 and page.export_button.isEnabled()
+    page.discard()
+    assert page.grid.count() == len(cards) - 2
+    page.unit.setCurrentIndex(-1)
+    page.save_label()  # nothing picked: a hint, no label
+    assert page.grid.count() == len(cards) - 2 and "Pick a unit" in page.guess.text()

@@ -191,6 +191,7 @@ class MainWindow(QMainWindow):
         self.shell.add_page("automation", self._settings_tab())
         self.shell.add_page("safety", self._safety_page())
         self.shell.add_page("history", self._history_tab(), scroll=False)
+        self.shell.add_page("cards", self._cards_page(), scroll=False)
         self.shell.add_page("logs", self._log_tab(), scroll=False)
         self.shell.add_page("settings", self._settings_page(tray))
         self.shell.add_page("health", self._health_page())
@@ -489,6 +490,23 @@ class MainWindow(QMainWindow):
         self.logs.save_diagnostics.connect(self.save_diagnostics)
         self.logs.export_reports.connect(self.export_failure_reports)
         return self.logs
+
+    def _cards_page(self) -> QWidget:
+        """Troop detection: label the cards the bot does not recognise yet (D-033)."""
+        from cob.ui.pages.cards import CardsPage
+
+        self.cards_page = CardsPage()
+        self.cards_page.export_requested.connect(self.export_cards)
+        return self.cards_page
+
+    def export_cards(self) -> None:
+        from cob.attack.cards import export_labelled
+
+        dest, _ = QFileDialog.getSaveFileName(self, tr("Export labelled cards"), "clash-of-bots-cards.zip",
+                                              "Zip (*.zip)")
+        if dest:
+            n = export_labelled(self.cards_page.lib, Path(dest))
+            log.info("%d labelled card picture(s) exported: %s", n, dest)
 
     def export_failure_reports(self) -> None:
         """#170: zip every failure report (screen, base outline, log lines) with this session's log."""
