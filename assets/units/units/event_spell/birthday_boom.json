@@ -22,6 +22,13 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [],
+    "portrait": {
+      "file": "detection/1600x900/portraits/birthday_boom.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_spell_birthday",
+      "game_version": "18.647.5"
+    }
   }
 }

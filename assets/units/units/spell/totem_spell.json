@@ -50,6 +50,19 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [
+      {
+        "file": "detection/1600x900/cards/totem_spell.png",
+        "resolution": "1600x900",
+        "variant": "default"
+      }
+    ],
+    "portrait": {
+      "file": "detection/1600x900/portraits/totem_spell.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_spell_meteor_tower",
+      "game_version": "18.647.5"
+    }
   }
 }

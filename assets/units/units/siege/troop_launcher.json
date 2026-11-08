@@ -61,6 +61,13 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [],
+    "portrait": {
+      "file": "detection/1600x900/portraits/troop_launcher.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_unit_siege_machine_commandtower",
+      "game_version": "18.647.5"
+    }
   }
 }

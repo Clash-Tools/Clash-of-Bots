@@ -133,6 +133,13 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [],
+    "portrait": {
+      "file": "detection/1600x900/portraits/miner.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_unit_miner",
+      "game_version": "18.647.5"
+    }
   }
 }

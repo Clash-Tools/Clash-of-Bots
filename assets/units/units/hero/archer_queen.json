@@ -1013,6 +1013,19 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [
+      {
+        "file": "detection/1600x900/cards/archer_queen.png",
+        "resolution": "1600x900",
+        "variant": "default"
+      }
+    ],
+    "portrait": {
+      "file": "detection/1600x900/portraits/archer_queen.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_hero_archerQueen",
+      "game_version": "18.647.5"
+    }
   }
 }

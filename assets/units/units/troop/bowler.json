@@ -115,6 +115,13 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [],
+    "portrait": {
+      "file": "detection/1600x900/portraits/bowler.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_unit_troll",
+      "game_version": "18.647.5"
+    }
   }
 }

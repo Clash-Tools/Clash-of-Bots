@@ -111,6 +111,19 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [
+      {
+        "file": "detection/1600x900/cards/super_valkyrie.png",
+        "resolution": "1600x900",
+        "variant": "default"
+      }
+    ],
+    "portrait": {
+      "file": "detection/1600x900/portraits/super_valkyrie.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_unit_elite_valkyrie",
+      "game_version": "18.647.5"
+    }
   }
 }

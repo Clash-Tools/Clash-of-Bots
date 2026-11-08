@@ -248,6 +248,19 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [
+      {
+        "file": "detection/1600x900/cards/dragon_duke.png",
+        "resolution": "1600x900",
+        "variant": "default"
+      }
+    ],
+    "portrait": {
+      "file": "detection/1600x900/portraits/dragon_duke.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_hero_dragonDuke",
+      "game_version": "18.647.5"
+    }
   }
 }

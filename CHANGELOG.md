@@ -26,6 +26,10 @@ First public release, now under [Clash-Tools](https://github.com/Clash-Tools) wi
 - **Profiles:** several accounts or LDPlayer instances, each with its own device, settings, daily limits
   and history rows. Switch the active profile in the top bar, manage them on the new Profiles page, and
   "Run in turn" farms the ticked profiles one after another (`cob profiles`, `cob farm --profile ID`).
+- **Army detection:** every troop, spell, hero and pet card in the bar is recognised from portraits
+  rendered from the game's own icons (unit database data-v2), event units included; the recognised unit
+  decides whether a card is a troop, spell or hero, so red super troop cards are never cast as spells.
+  Siege machines still use pictures labelled on the Cards page.
 - **Clash of Clans API sync:** with your own key from developer.clashofclans.com (Settings) and a
   player tag per profile, Sync reads that account's troops, spells, heroes, pets and equipment with
   levels; the Cards page lists your own units first. Opt-in, only the player tag is sent.
