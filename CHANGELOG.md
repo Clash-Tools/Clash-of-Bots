@@ -13,6 +13,12 @@ hand-written highlights go under Unreleased and are moved into the next release.
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-11-08
+
+Channel: **Stable**
+
+### Highlights
+
 First public release, now under [Clash-Tools](https://github.com/Clash-Tools) with GPL-3.0, the
 [hard rules](docs/RULES.md) and the unit database in
 [clash-of-bots-data](https://github.com/Clash-Tools/clash-of-bots-data).
@@ -35,6 +41,38 @@ First public release, now under [Clash-Tools](https://github.com/Clash-Tools) wi
   levels; the Cards page lists your own units first. Opt-in, only the player tag is sent.
 - **Maintenance:** a game stuck on the loading screen (maintenance, server outage) is closed and retried
   after 10, 20, then 30 min instead of ending the run (Safety > Stop Rules).
+
+### Features
+
+- Clash of Bots, first public release ([`d908aff`](https://github.com/Clash-Tools/Clash-of-Bots/commit/d908aff))
+- **attack:** bundle the unit database and recognise bar cards by picture (#39) ([`99ff848`](https://github.com/Clash-Tools/Clash-of-Bots/commit/99ff848))
+  - assets/units: data-v1 of Clash-Tools/clash-of-bots-data (144 units), copied by scripts/update_units.py; cob.units loads it.
+  - cob.attack.cards: portrait band of each card (no count, level badge, pet icon or upgrade arrow), colour fingerprint, and a library of known pictures (database + labelled by the user). Cards nobody has labelled are saved once to <user data>/cards/unknown for the coming Cards page.
+  - The attack names recognised cards in its bar log line; recognition can never break an attack.
+  - D-033.
+- **ui:** Cards page to label troop cards the bot does not recognise (#40) ([`0230d17`](https://github.com/Clash-Tools/Clash-of-Bots/commit/0230d17))
+- **profiles:** several accounts with their own device, settings and history, run in turn (#41) ([`f85f25b`](https://github.com/Clash-Tools/Clash-of-Bots/commit/f85f25b))
+  - top bar profile picker; switching saves unsaved edits to the old profile, loads the new one's settings and picks its device; picking a device binds it to the active profile
+  - Profiles page: new / duplicate / delete, name, device, player tag, "Run in turn"
+  - run in turn: the next ticked profile starts when one stops (limits, safety stop or error); Stop ends the turn; an LDPlayer instance that is not running is launched first
+  - history.csv gains a "profile" column; daily limits count only that profile's rows and each profile draws its own daily limits and off-period
+  - CLI: `cob profiles`, `cob farm --profile ID` (-s defaults to the profile's device)
+  - D-034: one device per account, the bot never signs in to or switches Supercell ID accounts
+- **profiles:** sync a profile's troops, spells, heroes and equipment from the Clash of Clans API (#42) ([`f4fcb90`](https://github.com/Clash-Tools/Clash-of-Bots/commit/f4fcb90))
+  - cob.core.coc_api: request, readable errors (403 explains the IP-bound key) that never contain the key, parsing, name + village matching to the unit database (regular units win over event units of the same name), per-profile cache profiles/<id>/player.json
+  - Settings > Tray & Notifications: API key (hidden) and optional API address, validated, kept in ui.json only
+  - Profiles page: Clash of Clans account card (Town Hall, trophies, heroes, troop / spell / equipment counts, last sync) with a Sync button running in the background
+  - Cards page: the active account's own units are listed first with their level
+  - RULES 8-10 and CONSTRAINTS allow this sync; D-035 records the choice
+- **attack:** recognise every unit in the troop bar from game-rendered portraits (#43) ([`f702659`](https://github.com/Clash-Tools/Clash-of-Bots/commit/f702659))
+  - cards.Portraits compares a card's band with all portraits at once: masked correlation (only where the icon is opaque and the card has no white count / level glyph) over 3 px shifts; a hit needs 0.82 and a 0.1 lead over the next unit. Real pictures are tried first and a portrait hit is remembered for the rest of the run.
+  - with_unit_kinds: a recognised unit's own kind (troop / spell / single) replaces the kind guessed from the card's colour and order, so a red super troop card is never cast as a spell.
+  - Every home card in the bar fixtures is recognised (0.89-0.99, others <= 0.74); the clan castle slot stays unknown. The old "golem" fixture card is a Totem Thrower.
+  - D-036.
+
+### Bug Fixes
+
+- **attack:** a counted card left of the heroes is a troop (#38) ([`89ac146`](https://github.com/Clash-Tools/Clash-of-Bots/commit/89ac146))
 
 ## [0.6.2] - 2026-11-07
 
