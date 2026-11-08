@@ -412,3 +412,23 @@ Trade-off: Two accounts on one phone need the user to switch accounts by hand; r
           sequential, not parallel.
 Revisit if: users ask for parallel runs (one worker per device), or a safe, verified account switch is
           possible.
+
+## D-035: Clash of Clans API sync per profile, with the user's own key  (ACCEPTED 2026-11-08)
+Date: 2026-11-08   Model: Claude Opus 5.5
+Context:  The bot should know each account's real troops, spells, heroes, pets and equipment with levels
+          (card labelling, army analysis, planning) without driving the game's menus to read them.
+Options:  1) The official Clash of Clans API (developer.clashofclans.com), user's own key, user-started
+          2) Read the levels from the game's screens (army, laboratory, hero hall)
+          3) A fan site or third-party API by player tag
+Chosen:   1. `cob.core.coc_api`: Sync on the Profiles page sends GET /players/{tag} with the key from
+          Settings (ui.json, never logged or shown in errors) to the official API or an https address the
+          user sets (a fixed-IP proxy). The answer is cached per profile (profiles/<id>/player.json) and
+          matched to the unit database by name and village; hero equipment is kept by name. The Cards
+          page lists the account's own units first with their level. Rule 8 / 9 / 10 updated.
+Why:      Exact levels straight from Supercell, no input on the device, works with the game closed;
+          the key and the data stay with the user.
+Trade-off: Each user needs a developer account and a key bound to their public IP address; a changed
+          address answers 403 until the key is edited (or a proxy is set).
+Revisit if: Supercell changes the API terms, or the bot needs data the API lacks (builder upgrades,
+          army composition), which still needs screen reading.
+

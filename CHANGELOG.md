@@ -26,6 +26,9 @@ First public release, now under [Clash-Tools](https://github.com/Clash-Tools) wi
 - **Profiles:** several accounts or LDPlayer instances, each with its own device, settings, daily limits
   and history rows. Switch the active profile in the top bar, manage them on the new Profiles page, and
   "Run in turn" farms the ticked profiles one after another (`cob profiles`, `cob farm --profile ID`).
+- **Clash of Clans API sync:** with your own key from developer.clashofclans.com (Settings) and a
+  player tag per profile, Sync reads that account's troops, spells, heroes, pets and equipment with
+  levels; the Cards page lists your own units first. Opt-in, only the player tag is sent.
 - **Maintenance:** a game stuck on the loading screen (maintenance, server outage) is closed and retried
   after 10, 20, then 30 min instead of ending the run (Safety > Stop Rules).
 

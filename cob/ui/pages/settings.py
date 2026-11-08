@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (
 )
 
 from cob import __version__
-from cob.core import i18n, notify, ui_settings
+from cob.core import coc_api, i18n, notify, ui_settings
 from cob.core.i18n import tr
 from cob.core.paths import user_data_dir
 from cob.ui.shell import logo_pixmap
@@ -168,7 +168,17 @@ class SettingsPage(QWidget):
         system.body.addLayout(telegram)
         self.alert_status = text("", "muted", wrap=True)
         system.body.addWidget(self.alert_status)
-        for edit in (self.discord, self.telegram_token, self.telegram_chat):
+        system.body.addWidget(text(tr("CLASH OF CLANS API (OPTIONAL)"), "eyebrow"))
+        self.coc_token = QLineEdit(placeholderText=tr("API key from developer.clashofclans.com"))
+        self.coc_token.setEchoMode(QLineEdit.EchoMode.Password)
+        self.coc_base = QLineEdit(placeholderText=coc_api.DEFAULT_BASE)
+        self.coc_base.setToolTip(tr("Leave empty for the official API. A proxy with a fixed IP address can "
+                                    "go here when your own address changes."))
+        system.body.addWidget(self.coc_token)
+        system.body.addWidget(self.coc_base)
+        self.coc_status = text("", "muted", wrap=True)
+        system.body.addWidget(self.coc_status)
+        for edit in (self.discord, self.telegram_token, self.telegram_chat, self.coc_token, self.coc_base):
             edit.editingFinished.connect(self._alerts_edited)
         self.tabs.add("notifications", system)
 
@@ -285,6 +295,8 @@ class SettingsPage(QWidget):
             telegram_token=self._alert_value(self.telegram_token, notify.valid_telegram_token,
                                              "telegram_token"),
             telegram_chat=self._alert_value(self.telegram_chat, notify.valid_telegram_chat, "telegram_chat"),
+            coc_api_token=self._alert_value(self.coc_token, coc_api.valid_token, "coc_api_token"),
+            coc_api_base=self._alert_value(self.coc_base, coc_api.valid_base, "coc_api_base"),
             check_updates=self.check_at_start.isChecked(),
             theme=self.theme.value(),
             accent=next((n for n, b in self.accents.items() if b.isChecked()), self._base.accent),
@@ -300,7 +312,9 @@ class SettingsPage(QWidget):
         self.notify_breaks.setChecked(s.notify_breaks)
         for edit, valid, value in ((self.discord, notify.valid_discord, s.discord_webhook),
                                    (self.telegram_token, notify.valid_telegram_token, s.telegram_token),
-                                   (self.telegram_chat, notify.valid_telegram_chat, s.telegram_chat)):
+                                   (self.telegram_chat, notify.valid_telegram_chat, s.telegram_chat),
+                                   (self.coc_token, coc_api.valid_token, s.coc_api_token),
+                                   (self.coc_base, coc_api.valid_base, s.coc_api_base)):
             typed = edit.text().strip()
             if typed == "" or valid(typed):  # a typo stays in the box with its warning, not saved
                 edit.setText(value)
@@ -326,7 +340,24 @@ class SettingsPage(QWidget):
         self._show_alert_status()
         self._emit()
 
+    def _show_coc_status(self) -> None:
+        tok, base = self.coc_token.text().strip(), self.coc_base.text().strip()
+        if tok and not coc_api.valid_token(tok):
+            msg = tr("Not saved, that is not an API key (copy the whole key from "
+                     "developer.clashofclans.com).")
+        elif base and not coc_api.valid_base(base):
+            msg = tr("Not saved, the API address must start with https://.")
+        elif tok:
+            msg = tr("Key set. Sync a profile on the Profiles page. The key only works from the IP addresses "
+                     "it lists.")
+        else:
+            msg = tr("Optional: create a key at developer.clashofclans.com (allow this computer's public IP "
+                     "address) and paste it here to sync your troops, spells and heroes. Only your player "
+                     "tag is sent, to the Clash of Clans API.")
+        self.coc_status.setText(msg)
+
     def _show_alert_status(self) -> None:
+        self._show_coc_status()
         d, tok, chat = (e.text().strip() for e in (self.discord, self.telegram_token, self.telegram_chat))
         bad = []
         if d and not notify.valid_discord(d):

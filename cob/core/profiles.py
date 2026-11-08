@@ -113,6 +113,10 @@ class Profiles:
             return self.root / "farm.json"
         return self.root / "profiles" / profile_id / "farm.json"
 
+    def player_path(self, profile_id: str) -> Path:
+        """Where the profile's last Clash of Clans API sync is cached (D-035)."""
+        return self.root / "profiles" / profile_id / "player.json"
+
     def load_config(self, profile_id: str) -> FarmConfig:
         return load_farm_config(self.farm_path(profile_id))
 

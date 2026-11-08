@@ -22,11 +22,13 @@ record in [DECISIONS.md](DECISIONS.md).
 
 ## 2. Privacy and network
 
-8. **No network calls** except the opt-in update check (GitHub releases API) and the notifications the
-   user configures (Discord webhook, Telegram bot). No telemetry, no analytics, no crash upload.
-9. **Send nothing about the user.** Update checks send no user data; alerts send only the alert text.
-10. **Secrets stay local.** Webhook URLs and bot tokens live only in the user data folder, are never
-    logged, and never appear in error messages.
+8. **No network calls** except the opt-in update check (GitHub releases API), the notifications the
+   user configures (Discord webhook, Telegram bot) and the Clash of Clans API sync the user starts with
+   their own API key (D-035). No telemetry, no analytics, no crash upload.
+9. **Send nothing about the user.** Update checks send no user data; alerts send only the alert text; the
+   Clash of Clans API sync sends only the player tag, to the API address the user set.
+10. **Secrets stay local.** Webhook URLs, bot tokens and API keys live only in the user data folder, are
+    never logged, and never appear in error messages.
 11. **Reports are private by default.** Failure reports never keep screenshots of other apps or the
     notification shade; exports warn that they may contain the player's village.
 12. **No personal data in the repository.** Test screenshots are committed only after
