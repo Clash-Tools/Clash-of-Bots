@@ -687,3 +687,14 @@ def test_a_spell_card_is_cast_one_tap_at_a_time_until_empty(cfg):
     assert ok and taps == 5 and dev.troops == 0
     field = [t for t in dev.taps if t[1] < 730]
     assert len(set(field)) == 5  # different spots
+
+
+def test_a_counted_card_left_of_the_heroes_is_a_troop_whatever_its_colour():
+    # The bar is troops, siege, heroes, then spells: order beats a hue that wanders into the spell band.
+    from cob.attack.troops import Card, by_order
+
+    bar = [Card(0, 110, SPELL, False), Card(120, 230, TROOP, False), Card(240, 350, SINGLE, False),
+           Card(360, 470, SPELL, False)]
+    assert [c.kind for c in by_order(bar)] == [TROOP, TROOP, SINGLE, SPELL]
+    no_heroes = [Card(0, 110, SPELL, False), Card(120, 230, TROOP, False)]
+    assert by_order(no_heroes) == no_heroes  # nothing to anchor on: colours decide

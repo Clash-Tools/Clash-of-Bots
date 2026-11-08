@@ -53,7 +53,19 @@ def read_bar(bgr: np.ndarray, cfg: dict) -> list[Card]:
         a, b = found.x0, found.x0 + width
         body_sat = float(hsv[by + 10:by + bh - 10, a + 6:b - 6, 1].mean())
         cards.append(_classify(bgr, hsv, a, b, body_sat, cfg, white))
-    return cards
+    return by_order(cards)
+
+
+def by_order(cards: list[Card]) -> list[Card]:
+    """The game lays the bar out as troops, siege machines, heroes / clan castle, then spells, so a counted
+    card left of the last single unit is a troop whatever its colour (event and super troops come in
+    colours the spell-hue band was never measured on)."""
+    singles = [i for i, c in enumerate(cards) if c.kind == SINGLE]
+    if not singles:
+        return cards
+    last = singles[-1]
+    return [Card(c.x0, c.x1, TROOP, c.used) if c.kind == SPELL and i < last else c
+            for i, c in enumerate(cards)]
 
 
 def _classify(bgr: np.ndarray, hsv: np.ndarray, a: int, b: int, body_sat: float, cfg: dict,
