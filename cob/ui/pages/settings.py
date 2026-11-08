@@ -1,0 +1,411 @@
+"""Settings / Preferences (#67, design D9): appearance, tray + notifications, data folder, config
+export/import/reset, release channel and about. No update check over the network (CONSTRAINTS)."""
+
+from __future__ import annotations
+
+from PySide6.QtCore import Qt, QUrl, Signal
+from PySide6.QtGui import QDesktopServices
+from PySide6.QtWidgets import (
+    QButtonGroup,
+    QComboBox,
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
+    QProgressBar,
+    QPushButton,
+    QTextBrowser,
+    QVBoxLayout,
+    QWidget,
+)
+
+from cob import __version__
+from cob.core import i18n, notify, ui_settings
+from cob.core.i18n import tr
+from cob.core.paths import user_data_dir
+from cob.ui.shell import logo_pixmap
+from cob.ui.style import tokens as t
+from cob.ui.style.icons import icon
+from cob.ui.widgets import Card, CategoryTabs, IconLabel, SegmentedControl, ToggleRow
+from cob.ui.widgets import label as text
+
+RELEASES_URL = "https://github.com/Clash-Tools/Clash-of-Bots/releases"
+SETTINGS_CATEGORIES = [  # key, icon, title, subtitle (tabs, #101: no scrolling)
+    ("appearance", "palette", tr("Appearance"), tr("Theme")),
+    ("notifications", "notifications", tr("Tray & Notifications"), tr("Alerts and start-up")),
+    ("data", "folder_data", tr("Data & Storage"), tr("Folder, export, reset")),
+    ("release", "system_update_alt", tr("Release"), tr("Version and updates")),
+    ("about", "info", tr("About"), tr("Licence and privacy")),
+]
+
+
+ACCENT_NAMES = {"teal": tr("Teal"), "blue": tr("Blue"), "purple": tr("Purple"), "orange": tr("Orange"),
+                "pink": tr("Pink"), "green": tr("Green")}
+
+
+def channel(version: str = __version__) -> str:
+    for name in ("alpha", "beta", "rc"):
+        if f"-{name}." in version:
+            return {"alpha": tr("Alpha"), "beta": tr("Beta"), "rc": tr("Release candidate")}[name]
+    return tr("Stable")
+
+
+def human_size(n: int) -> str:
+    for unit in ("B", "KB", "MB", "GB"):
+        if n < 1024 or unit == "GB":
+            return f"{n:.0f} {unit}" if unit == "B" else f"{n:.1f} {unit}"
+        n /= 1024
+    return f"{n} B"
+
+
+class SettingsPage(QWidget):
+    changed = Signal(object)  # UiSettings
+    export_config = Signal()
+    import_config = Signal()
+    reset_config = Signal()
+    test_notification = Signal()
+    run_wizard = Signal()
+    restart_requested = Signal()  # theme / accent change: they apply at start-up
+    check_updates = Signal()  # Check for updates pressed (the window runs it in the background)
+
+    def __init__(self, settings: ui_settings.UiSettings | None = None, tray_available: bool = True):
+        super().__init__()
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        root.setSpacing(t.LG)
+        head = QHBoxLayout()
+        titles = QVBoxLayout()
+        titles.setSpacing(4)
+        titles.addWidget(text(tr("APP & DATA"), "eyebrowAccent"))
+        titles.addWidget(text(tr("Preferences"), "headline"))
+        titles.addWidget(text(tr("How the app looks, notifies you and keeps its data."), "muted"))
+        head.addLayout(titles, 1)
+        local = text("  " + tr("LOCAL ONLY"), "tag")
+        head.addWidget(local, 0, Qt.AlignmentFlag.AlignBottom)
+        root.addLayout(head)
+
+        self.tabs = CategoryTabs(SETTINGS_CATEGORIES, tr("Preferences"))
+        root.addWidget(self.tabs)
+        root.addStretch(1)
+
+        look = Card(tr("Appearance"), "palette")
+        look.body.addWidget(text(tr("THEME"), "eyebrow"))
+        self.theme = SegmentedControl([(tr("Dark"), "dark", "dark_mode"),
+                                       (tr("Light"), "light", "light_mode"),
+                                       (tr("AMOLED"), "amoled", "nights_stay")])
+        self.theme.changed.connect(self._emit)
+        look.body.addWidget(self.theme)
+        look.body.addWidget(text(tr("ACCENT COLOUR"), "eyebrow"))
+        swatches = QHBoxLayout()
+        swatches.setSpacing(t.SM + 4)
+        self.accents: dict[str, QPushButton] = {}
+        group = QButtonGroup(self)
+        group.setExclusive(True)
+        for name in ui_settings.CHOICES["accent"]:
+            dark, light = t.ACCENTS[name]
+            sw = QPushButton()
+            sw.setCheckable(True)
+            sw.setFixedSize(36, 36)
+            sw.setToolTip(ACCENT_NAMES[name])
+            sw.setCursor(Qt.CursorShape.PointingHandCursor)
+            colour = light[0] if t.THEME == "light" else dark[2]
+            sw.setStyleSheet(f"QPushButton {{ background: {colour}; border-radius: 18px; "
+                             f"border: 2px solid transparent; }} "
+                             f"QPushButton:checked {{ border: 3px solid {t.ON_SURFACE}; }}")
+            sw.clicked.connect(self._emit)
+            group.addButton(sw)
+            swatches.addWidget(sw)
+            self.accents[name] = sw
+        swatches.addStretch(1)
+        look.body.addLayout(swatches)
+        look.body.addWidget(text(tr("LANGUAGE"), "eyebrow"))
+        self.language = QComboBox()
+        for code, name in i18n.available().items():
+            self.language.addItem(name, code)
+        self.language.setToolTip(tr("More languages come as translation files in assets/i18n."))
+        self.language.currentIndexChanged.connect(self._emit)
+        look.body.addWidget(self.language)
+        restart = QHBoxLayout()
+        self.theme_note = text("", "muted", wrap=True)
+        restart.addWidget(self.theme_note, 1)
+        self.restart_button = QPushButton("  " + tr("Restart now"))
+        self.restart_button.setIcon(icon("restart_alt", t.ON_SURFACE, 18))
+        self.restart_button.clicked.connect(self.restart_requested)
+        restart.addWidget(self.restart_button)
+        look.body.addLayout(restart)
+        self.tabs.add("appearance", look)
+
+        system = Card(tr("Tray & Notifications"), "notifications")
+        self.test_button = QPushButton("  " + tr("Test notification"))
+        self.test_button.setIcon(icon("send_time_extension", t.ON_SURFACE, 18))
+        self.test_button.clicked.connect(self.test_notification)
+        system.header.addWidget(self.test_button)
+        self.start_minimized = ToggleRow(tr("Start minimised to the system tray"),
+                                         tr("The window opens from the tray icon; farming controls stay in "
+                                         "its menu."))
+        self.notify_safety = ToggleRow(tr("Safety stops and errors"),
+                                       tr("A safety rule or an error stopped farming."))
+        self.notify_finished = ToggleRow(tr("Farming finished"),
+                                         tr("A limit was reached or you pressed Stop."))
+        self.notify_breaks = ToggleRow(tr("Breaks"), tr("A rest between cycles starts."))
+        for row in (self.start_minimized, self.notify_safety, self.notify_finished, self.notify_breaks):
+            system.body.addWidget(row)
+            row.switch.toggled.connect(self._emit)
+        if not tray_available:  # the alert toggles still drive Discord / Telegram
+            self.start_minimized.setEnabled(False)
+            system.body.addWidget(text(tr("No system tray on this desktop: alerts go only to Discord or "
+                                          "Telegram."), "muted"))
+        system.body.addWidget(text(tr("PHONE ALERTS (OPTIONAL)"), "eyebrow"))
+        self.discord = QLineEdit(placeholderText=tr("Discord webhook URL"))
+        self.telegram_token = QLineEdit(placeholderText=tr("Telegram bot token"))
+        self.telegram_token.setEchoMode(QLineEdit.EchoMode.Password)
+        self.telegram_chat = QLineEdit(placeholderText=tr("Chat id"))
+        self.telegram_chat.setMaximumWidth(180)
+        self.discord.setEchoMode(QLineEdit.EchoMode.PasswordEchoOnEdit)
+        system.body.addWidget(self.discord)
+        telegram = QHBoxLayout()
+        telegram.addWidget(self.telegram_token, 1)
+        telegram.addWidget(self.telegram_chat)
+        system.body.addLayout(telegram)
+        self.alert_status = text("", "muted", wrap=True)
+        system.body.addWidget(self.alert_status)
+        for edit in (self.discord, self.telegram_token, self.telegram_chat):
+            edit.editingFinished.connect(self._alerts_edited)
+        self.tabs.add("notifications", system)
+
+        data = Card(tr("Data & Local Storage"), "folder_data")
+        self.used = text("", "tag")
+        data.header.addWidget(self.used)
+        row = QHBoxLayout()
+        row.addWidget(IconLabel("dns", 18, t.ON_SURFACE_VARIANT))
+        self.folder = text(str(user_data_dir()), "mono")
+        self.folder.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        row.addWidget(self.folder, 1)
+        open_button = QPushButton("  " + tr("Open folder"))
+        open_button.setIcon(icon("open_in_new", t.ON_SURFACE, 18))
+        open_button.clicked.connect(
+            lambda: QDesktopServices.openUrl(QUrl.fromLocalFile(str(user_data_dir()))))
+        row.addWidget(open_button)
+        data.body.addLayout(row)
+        self.usage = QVBoxLayout()
+        self.usage.setSpacing(6)
+        data.body.addLayout(self.usage)
+        buttons = QHBoxLayout()
+        exp = QPushButton("  " + tr("Export settings (.json)"))
+        exp.setIcon(icon("file_download", t.ON_SURFACE, 18))
+        exp.clicked.connect(self.export_config)
+        imp = QPushButton("  " + tr("Import settings"))
+        imp.setIcon(icon("file_upload", t.ON_SURFACE, 18))
+        imp.clicked.connect(self.import_config)
+        reset = QPushButton("  " + tr("Reset automation to defaults"))
+        reset.setObjectName("text")
+        reset.setStyleSheet(f"color: {t.ERROR};")
+        reset.setIcon(icon("restart_alt", t.ERROR, 18))
+        reset.clicked.connect(self.reset_config)
+        for b in (exp, imp):
+            buttons.addWidget(b)
+        buttons.addStretch(1)
+        buttons.addWidget(reset)
+        data.body.addLayout(buttons)
+        self.tabs.add("data", data)
+
+        rel = Card(tr("Release"), "system_update_alt", tag=channel())
+        rel.body.addWidget(text(tr("Version {v}", v=__version__), "title"))
+        rel.body.addWidget(text(tr("Checking reads this app's release list on GitHub; nothing about you or "
+                                "your device is sent, and nothing is downloaded."), "muted", wrap=True))
+        row = QHBoxLayout()
+        self.update_button = QPushButton("  " + tr("Check for updates"), objectName="tonal")
+        self.update_button.setIcon(icon("sync", t.ON_SURFACE, 18))
+        self.update_button.clicked.connect(self._check_clicked)
+        row.addWidget(self.update_button)
+        self.release_button = QPushButton("  " + tr("Open releases page"))
+        self.release_button.setIcon(icon("open_in_new", t.ON_SURFACE, 18))
+        self.release_button.clicked.connect(lambda: QDesktopServices.openUrl(QUrl(self._release_url)))
+        row.addWidget(self.release_button)
+        row.addStretch(1)
+        rel.body.addLayout(row)
+        self.update_status = text("", wrap=True)
+        rel.body.addWidget(self.update_status)
+        self.changelog = QTextBrowser()
+        self.changelog.setOpenExternalLinks(True)
+        self.changelog.setMinimumHeight(220)
+        self.changelog.setStyleSheet(f"font-family: '{t.FONT_BODY}'; font-size: 13px;")  # not the log font
+        self.changelog.hide()
+        rel.body.addWidget(self.changelog)
+        self.check_at_start = ToggleRow(tr("Check for updates at start-up"),
+                                        tr("Once per start, in the background. Off by default."))
+        self.check_at_start.switch.toggled.connect(self._emit)
+        rel.body.addWidget(self.check_at_start)
+        self._release_url = RELEASES_URL
+        self.tabs.add("release", rel)
+
+        privacy = Card(tr("Local by design"), "enhanced_encryption", tone="low")
+        for line in (tr("Screens are read on this computer only"), tr("No account logins, no telemetry"),
+                     tr("Diagnostics are saved only when you ask, with private details removed")):
+            r = QHBoxLayout()
+            r.addWidget(IconLabel("check", 16, t.PRIMARY))
+            r.addWidget(text(line, "muted"), 1)
+            privacy.body.addLayout(r)
+
+        about = Card(tr("About"), "info")
+        row = QHBoxLayout()
+        logo = QLabel()
+        logo.setPixmap(logo_pixmap(48))
+        row.addWidget(logo)
+        names = QVBoxLayout()
+        names.addWidget(text(tr("Clash of Bots"), "title"))
+        names.addWidget(text(f"{__version__}  •  {channel()}", "mono"))
+        row.addLayout(names, 1)
+        about.body.addLayout(row)
+        about.body.addWidget(text(tr("Automating the game breaks its terms of service and can get an account "
+                                  "banned. Use a test account."), "muted", wrap=True))
+        wizard = QPushButton("  " + tr("Run setup wizard"))
+        wizard.setIcon(icon("restart_alt", t.ON_SURFACE, 18))
+        wizard.clicked.connect(self.run_wizard)
+        about.body.addWidget(wizard, 0, Qt.AlignmentFlag.AlignLeft)
+        about_page = QWidget()
+        ab = QVBoxLayout(about_page)
+        ab.setContentsMargins(0, 0, 0, 0)
+        ab.setSpacing(t.LG)
+        ab.addWidget(about)
+        ab.addWidget(privacy)
+        self.tabs.add("about", about_page)
+
+        self.set_settings(settings or ui_settings.UiSettings())
+
+    # --- data -----------------------------------------------------------------------------------
+
+    def settings(self) -> ui_settings.UiSettings:
+        return ui_settings.UiSettings(
+            wizard_done=self._base.wizard_done, risk_accepted=self._base.risk_accepted,
+            start_minimized=self.start_minimized.isChecked(),
+            notify_safety_stop=self.notify_safety.isChecked(),
+            notify_finished=self.notify_finished.isChecked(),
+            notify_breaks=self.notify_breaks.isChecked(),
+            discord_webhook=self._alert_value(self.discord, notify.valid_discord, "discord_webhook"),
+            telegram_token=self._alert_value(self.telegram_token, notify.valid_telegram_token,
+                                             "telegram_token"),
+            telegram_chat=self._alert_value(self.telegram_chat, notify.valid_telegram_chat, "telegram_chat"),
+            check_updates=self.check_at_start.isChecked(),
+            theme=self.theme.value(),
+            accent=next((n for n, b in self.accents.items() if b.isChecked()), self._base.accent),
+            language=self.language.currentData() or self._base.language,
+        )
+
+    def set_settings(self, s: ui_settings.UiSettings) -> None:
+        self._base = s  # keeps the fields this page does not show (wizard state)
+        self._loading = True
+        self.start_minimized.setChecked(s.start_minimized)
+        self.notify_safety.setChecked(s.notify_safety_stop)
+        self.notify_finished.setChecked(s.notify_finished)
+        self.notify_breaks.setChecked(s.notify_breaks)
+        for edit, valid, value in ((self.discord, notify.valid_discord, s.discord_webhook),
+                                   (self.telegram_token, notify.valid_telegram_token, s.telegram_token),
+                                   (self.telegram_chat, notify.valid_telegram_chat, s.telegram_chat)):
+            typed = edit.text().strip()
+            if typed == "" or valid(typed):  # a typo stays in the box with its warning, not saved
+                edit.setText(value)
+        self._show_alert_status()
+        self.check_at_start.setChecked(s.check_updates)
+        self.theme.set_value(s.theme)
+        if s.accent in self.accents:
+            self.accents[s.accent].setChecked(True)
+        i = self.language.findData(s.language)
+        self.language.setCurrentIndex(i if i >= 0 else 0)
+        pending = (s.theme, s.accent, s.language) != (t.THEME, t.ACCENT, i18n.LANGUAGE)
+        self.theme_note.setText(tr("Restart to apply the new look or language.") if pending else
+                                tr("Theme, accent and language apply after a restart."))
+        self.restart_button.setVisible(pending)
+        self._loading = False
+
+    def _alert_value(self, edit: QLineEdit, valid, name: str) -> str:
+        """The typed value when it is empty or well formed, else the saved one (a typo never wipes it)."""
+        v = edit.text().strip()
+        return v if v == "" or valid(v) else getattr(self._base, name)
+
+    def _alerts_edited(self) -> None:
+        self._show_alert_status()
+        self._emit()
+
+    def _show_alert_status(self) -> None:
+        d, tok, chat = (e.text().strip() for e in (self.discord, self.telegram_token, self.telegram_chat))
+        bad = []
+        if d and not notify.valid_discord(d):
+            bad.append(tr("the Discord webhook URL"))
+        if tok and not notify.valid_telegram_token(tok):
+            bad.append(tr("the Telegram bot token"))
+        if chat and not notify.valid_telegram_chat(chat):
+            bad.append(tr("the Telegram chat id"))
+        if bad:
+            msg = tr("Not saved, check {fields}.", fields=", ".join(bad))
+        elif bool(tok) != bool(chat):
+            msg = tr("Telegram needs both the bot token and the chat id.")
+        elif d or tok:
+            msg = tr("Alerts also go to your phone. Only the alert text is sent. Press Test notification.")
+        else:
+            msg = tr("Paste a Discord webhook, or a Telegram bot token and chat id, to get alerts on "
+                     "your phone.")
+        self.alert_status.setText(msg)
+
+    def show_alert_result(self, errors: list) -> None:
+        self.alert_status.setText(tr("Sent.") if not errors else
+                                  tr("Not sent: {errors}", errors="; ".join(errors)))
+
+    def _check_clicked(self) -> None:
+        self.update_button.setEnabled(False)
+        self.update_status.setText(tr("Checking…"))
+        self.check_updates.emit()
+
+    def show_update(self, info) -> None:
+        """info: cob.core.updates.UpdateInfo."""
+        self.update_button.setEnabled(True)
+        if info.available:
+            latest = info.newer[0]
+            self.update_status.setText(tr("Version {v} is available ({n} release(s) newer than yours).",
+                                          v=latest.tag.lstrip("v"), n=len(info.newer)))
+            self._release_url = latest.url or RELEASES_URL
+            self.release_button.setText("  " + tr("Open the {v} release page", v=latest.tag))
+            self.changelog.setMarkdown(info.changelog())
+            self.changelog.show()
+        else:
+            self.update_status.setText(tr("You have the latest version ({v}).", v=info.current))
+            self._release_url = RELEASES_URL
+            self.release_button.setText("  " + tr("Open releases page"))
+            self.changelog.hide()
+
+    def show_update_error(self, message: str) -> None:
+        self.update_button.setEnabled(True)
+        self.update_status.setText(tr("Could not check for updates: {why}", why=message))
+        self.changelog.hide()
+
+    def _emit(self, *_args) -> None:
+        if not getattr(self, "_loading", False):
+            self.changed.emit(self.settings())
+
+    def show_usage(self, sizes: dict[str, int]) -> None:
+        while self.usage.count():
+            item = self.usage.takeAt(0)
+            if item.layout():
+                while item.layout().count():
+                    w = item.layout().takeAt(0).widget()
+                    if w:
+                        w.setParent(None)
+        total = sum(sizes.values()) or 1
+        self.used.setText(f"{human_size(sum(sizes.values()))} USED")
+        for name, n in sizes.items():
+            r = QHBoxLayout()
+            cap = text(name, "muted")
+            cap.setFixedWidth(140)
+            bar = QProgressBar()
+            bar.setRange(0, 1000)
+            bar.setValue(round(1000 * n / total))
+            bar.setTextVisible(False)
+            r.addWidget(cap)
+            r.addWidget(bar, 1)
+            val = text(human_size(n), "mono")
+            val.setFixedWidth(80)
+            val.setAlignment(Qt.AlignmentFlag.AlignRight)
+            r.addWidget(val)
+            self.usage.addLayout(r)
+
+    def refresh_usage(self) -> None:
+        self.show_usage(ui_settings.folder_sizes())

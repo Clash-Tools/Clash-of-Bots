@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Roboto+Flex:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-background": "#d8e3fb", "tertiary": "#ffb77d", "error": "#ffb4ab", "on-error": "#690005", "surface-bright": "#2f3a4c", "surface-container-highest": "#2a3548", "secondary-fixed-dim": "#b9c7df", "surface-container-high": "#1f2a3c", "surface-dim": "#081425", "tertiary-fixed-dim": "#ffb77d", "inverse-primary": "#006a63", "on-surface": "#d8e3fb", "primary-fixed-dim": "#80d5cb", "secondary-container": "#3c4a5e", "surface-container": "#152031", "primary-container": "#0f766e", "on-tertiary-fixed-variant": "#6e3900", "on-error-container": "#ffdad6", "inverse-surface": "#d8e3fb", "on-primary-fixed-variant": "#00504a", "background": "#081425", "inverse-on-surface": "#263143", "on-secondary": "#233144", "secondary": "#b9c7df", "on-tertiary": "#4d2600", "on-tertiary-container": "#ffe6d5", "on-secondary-fixed": "#0d1c2e", "on-tertiary-fixed": "#2f1500", "on-secondary-container": "#abb9d1", "tertiary-container": "#a15600", "surface-variant": "#2a3548", "on-primary-fixed": "#00201d", "outline-variant": "#3e4947", "primary-fixed": "#9cf2e8", "surface-tint": "#80d5cb", "secondary-fixed": "#d5e3fc", "on-surface-variant": "#bdc9c6", "surface-container-lowest": "#040e1f", "outline": "#889391", "surface-container-low": "#111c2d", "error-container": "#93000a", "primary": "#80d5cb", "on-primary-container": "#a3faef", "on-primary": "#003733", "surface": "#081425", "tertiary-fixed": "#ffdcc3", "on-secondary-fixed-variant": "#3a485b" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-desktop": "2rem", "margin": "1rem", "space-md": "1rem", "space-xxl": "3rem", "space-xl": "2rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "space-lg": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "body-lg": ["Inter"], "body-sm": ["Inter"], "display-lg-mobile": ["Roboto Flex"], "label-sm": ["Inter"], "title-md": ["Roboto Flex"], "display-lg": ["Roboto Flex"], "label-md": ["Inter"], "title-lg": ["Roboto Flex"], "body-md": ["Inter"], "headline-sm": ["Roboto Flex"], "headline-md": ["Roboto Flex"], "label-lg": ["Inter"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "label-sm": ["11px", { "lineHeight": "16px", "fontWeight": "600" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "display-lg": ["36px", { "lineHeight": "44px", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased min-w-[1280px]"><aside class="fixed left-0 top-16 bottom-10 w-24 bg-surface-container-low flex flex-col items-center py-space-sm z-40 select-none"><nav class="flex flex-col items-center gap-space-xs w-full px-space-xs" data-active-classes="bg-secondary-container text-on-surface font-semibold"><a aria-current="page" class="group flex flex-col items-center justify-center w-full py-2 rounded-xl transition-all bg-secondary-container text-on-surface font-semibold" data-path="dashboard" href="#"><div class="flex items-center justify-center w-14 h-8 rounded-full mb-1 group-[.active]:bg-secondary-container transition-colors"><span class="material-symbols-outlined text-[22px]">dashboard</span></div><span class="font-label-sm text-label-sm text-center tracking-tight">Dashboard</span></a><a class="group flex flex-col items-center justify-center w-full py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="devices" href="#"><div class="flex items-center justify-center w-14 h-8 rounded-full mb-1 group-[.active]:bg-secondary-container transition-colors"><span class="material-symbols-outlined text-[22px]">devices</span></div><span class="font-label-sm text-label-sm text-center tracking-tight">Devices</span></a><a class="group flex flex-col items-center justify-center w-full py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="automation" href="#"><div class="flex items-center justify-center w-14 h-8 rounded-full mb-1 group-[.active]:bg-secondary-container transition-colors"><span class="material-symbols-outlined text-[22px]">smart_toy</span></div><span class="font-label-sm text-label-sm text-center tracking-tight">Automation</span></a><a class="group flex flex-col items-center justify-center w-full py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="safety-and-schedule" href="#"><div class="flex items-center justify-center w-14 h-8 rounded-full mb-1 group-[.active]:bg-secondary-container transition-colors"><span class="material-symbols-outlined text-[22px]">shield</span></div><span class="font-label-sm text-label-sm text-center tracking-tight">Safety</span></a><a class="group flex flex-col items-center justify-center w-full py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="history" href="#"><div class="flex items-center justify-center w-14 h-8 rounded-full mb-1 group-[.active]:bg-secondary-container transition-colors"><span class="material-symbols-outlined text-[22px]">history</span></div><span class="font-label-sm text-label-sm text-center tracking-tight">History</span></a><a class="group flex flex-col items-center justify-center w-full py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="logs" href="#"><div class="flex items-center justify-center w-14 h-8 rounded-full mb-1 group-[.active]:bg-secondary-container transition-colors"><span class="material-symbols-outlined text-[22px]">terminal</span></div><span class="font-label-sm text-label-sm text-center tracking-tight">Logs</span></a><a class="group flex flex-col items-center justify-center w-full py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><div class="flex items-center justify-center w-14 h-8 rounded-full mb-1 group-[.active]:bg-secondary-container transition-colors"><span class="material-symbols-outlined text-[22px]">settings</span></div><span class="font-label-sm text-label-sm text-center tracking-tight">Settings</span></a></nav></aside><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-low/90 backdrop-blur-md z-50 px-space-md select-none"><div class="h-full w-full flex items-center justify-between"><div class="flex items-center gap-space-md"><img alt="Clash of Bots logo: a clean flat minimalist robot head enclosed inside a classic curved shield outline, rendered in deep teal (#0F766E) on transparent background. Friendly, calm, safety-first automation emblem.. Brand logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X0UktTyRoeVVcOBghnaxrsYnDzdtK5a6Kf8wgx3-tMkxumHEO6QjxR1BhENQ31tnSXLzrvOrc5IYrZN_CgwyDKveN7PWph0GgI-e2_2ecfHHUw6vL41kVXeXdlWYaQdcj7XWSeJ6LlsI1NVZrFWDi238Xea3WdAfP0DV3gVp0GUF07OGIWWJ-nvMRgv38eWmY2i5owqp5nnCMwXrrkkcNVu_xKmNiO6vfLbJz9m04"/><span class="font-title-lg text-title-lg text-on-surface font-semibold tracking-normal">Clash of Bots</span><div class="h-5 w-[1px] bg-outline-variant/40 ml-2 mr-2"></div><div class="flex items-center gap-space-sm bg-surface-container px-3 py-1.5 rounded-full cursor-pointer hover:bg-surface-container-high transition-colors"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="font-label-md text-label-md text-on-surface font-medium">Pixel 7 Pro (USB)</span><span class="material-symbols-outlined text-on-surface-variant text-[16px]">expand_more</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-2 bg-primary-container text-on-primary-container px-3.5 py-1.5 rounded-full"><span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span></span><span class="font-label-md text-label-md font-semibold tracking-wide uppercase">Running</span></div><button class="flex items-center justify-center h-9 px-3.5 bg-error-container text-on-error-container hover:bg-error hover:text-on-error rounded-full gap-1.5 transition-colors" title="Emergency Kill Switch"><span class="material-symbols-outlined text-[18px]">stop_circle</span><span class="font-label-md text-label-md font-bold uppercase tracking-wider">Kill Switch</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><div class="pl-24"><main class="w-full min-h-[calc(100vh-6.5rem)] pt-16 pb-10 px-margin-desktop bg-background"><div class="flex flex-col w-full gap-space-lg select-none">
+<!-- Operational Overview & Hero Control Banner -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-space-md shadow-sm">
+<div class="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col gap-1 z-10">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm tracking-wider uppercase font-semibold">Active Session</span>
+<span class="text-outline-variant font-label-sm text-label-sm">•</span>
+<span class="text-on-surface-variant font-label-md text-label-md">Profile: <strong class="text-on-surface font-semibold">Gold &amp; Elixir Farm (TH13 Default)</strong></span>
+<span class="text-outline-variant font-label-sm text-label-sm">•</span>
+<span class="text-on-surface-variant font-label-md text-label-md font-mono">Strategy: Smart Barch v3.4.1</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight font-bold">Automation Operations Center</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time heuristics, randomized micro-delays, and continuous telemetry stream for connected device <span class="font-mono text-primary font-medium">Pixel 7 Pro</span>.</p>
+</div>
+<!-- Quick Operations Master Controls -->
+<div class="flex items-center gap-space-sm z-10 flex-wrap">
+<button class="flex items-center gap-space-sm h-12 px-6 rounded-full bg-error-container text-on-error-container hover:bg-error hover:text-on-error active:scale-95 transition-all shadow-md group" id="masterKillSwitch">
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:scale-110" style="font-variation-settings: 'FILL' 1;">stop_circle</span>
+<div class="flex flex-col items-start leading-none">
+<span class="font-label-lg text-label-lg font-bold tracking-wide uppercase">STOP BOT</span>
+</div>
+<kbd class="ml-2 px-1.5 py-0.5 rounded bg-surface-container-lowest/40 font-mono font-label-sm text-label-sm text-on-error-container">ESC</kbd>
+</button>
+<button class="flex items-center gap-2 h-12 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface active:scale-95 transition-all">
+<span class="material-symbols-outlined text-tertiary text-[20px]">coffee</span>
+<span class="font-label-md text-label-md font-semibold">Pause (15m Break)</span>
+</button>
+<button class="flex items-center justify-center w-12 h-12 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="View Safety Logs">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</button>
+</div>
+</div>
+<!-- Telemetry 4-Metric Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Gold Harvest Metric -->
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-[#E0A800]">
+<span class="material-symbols-outlined text-[18px]">monetization_on</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Loot Gold</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-mono font-semibold">+820k / hr</span>
+</div>
+<div class="mt-4 flex flex-col">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight font-mono">3,840,000</span>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span>Target cap: 12,000,000</span>
+<span class="text-[#E0A800] font-medium">32% filled</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-[#E0A800] h-full rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<!-- Elixir Harvest Metric -->
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-[#D946EF]">
+<span class="material-symbols-outlined text-[18px]">opacity</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Loot Elixir</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-mono font-semibold">+890k / hr</span>
+</div>
+<div class="mt-4 flex flex-col">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight font-mono">4,150,000</span>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span>Target cap: 12,000,000</span>
+<span class="text-[#D946EF] font-medium">34.5% filled</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-[#D946EF] h-full rounded-full" style="width: 34.5%"></div>
+</div>
+</div>
+<!-- Dark Elixir Harvest Metric -->
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-[#B9C7DF]">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Dark Elixir</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-mono font-semibold">+7,200 / hr</span>
+</div>
+<div class="mt-4 flex flex-col">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight font-mono">28,450</span>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span>Target cap: 180,000</span>
+<span class="text-secondary font-medium">15.8% filled</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 15.8%"></div>
+</div>
+</div>
+<!-- Battles / Trophies Metric -->
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">military_tech</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Raid Record</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-mono font-semibold">12 Raids (91.6% Win)</span>
+</div>
+<div class="mt-4 flex flex-col">
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight font-mono">+64</span>
+<span class="font-label-md text-label-md text-primary font-medium">Trophies</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span>11 Wins • 1 Loss</span>
+<span class="font-mono">Avg duration: 2m 18s</span>
+</div>
+</div>
+<div class="flex items-center gap-1 mt-3">
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-error"></span>
+<span class="w-2.5 h-1.5 rounded-sm bg-primary"></span>
+</div>
+</div>
+</div>
+<!-- Primary Split View: Live Telemetry / Computer Vision Viewport vs Safety & Health Checklist -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left: Real-time Inspection Viewport & Live Heuristics (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Live Game Screen Inspection Card -->
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<h2 class="font-title-md text-title-md font-semibold text-on-surface">Target Base OCR &amp; Vision Scanner</h2>
+</div>
+<div class="flex items-center gap-2 font-mono text-label-sm font-label-sm text-on-surface-variant">
+<span>FPS: 45.2</span>
+<span>•</span>
+<span>RES: 1920x1080</span>
+</div>
+</div>
+<!-- Simulated Viewport with OCR Bounding Boxes -->
+<div class="relative w-full h-[270px] bg-surface-container-lowest rounded-lg overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 bg-cover bg-center opacity-40" data-alt="Dark aesthetic top-down screenshot simulation of a high-level fantasy fortress base with stone walls and resource storages, seen through a tactical teal night-vision HUD filter with high contrast grid lines and subtle digital overlay." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUBiTiXMERHJuIGuCq5NrU003xEva0h-nIvBnqQHZ-fq9FHdA7BcQG5fJsPxvvTZfSRfGSAk8hmKDbY4aNO5nMxXyzBvv0F_Toco4xv2fvL4inbTAmO-vobmMWjgEmGHbRfI9uNWlizF8mOfKWQt0cMoRcn8130v6u4ddkzRcj8EHQ-PZCIIjD84kzWbaXo-kAMjB0Ac_CiqvWUURkIMRpqLfjquAik8dOiuExMHmhHEHNuBIFa2SW')"></div>
+<!-- Bounding Boxes Overlays -->
+<div class="absolute top-6 left-8 px-2 py-1 bg-surface-container-highest/90 rounded text-[11px] font-mono text-primary flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>[CV_MATCH] TH13 Confirmed (98.4%)</span>
+</div>
+<div class="absolute bottom-10 left-12 px-2 py-1 bg-surface-container-highest/90 rounded text-[11px] font-mono text-[#E0A800] flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E0A800]"></span>
+<span>Gold Mine #4: 92% Full</span>
+</div>
+<div class="absolute bottom-10 right-14 px-2 py-1 bg-surface-container-highest/90 rounded text-[11px] font-mono text-[#D946EF] flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D946EF]"></span>
+<span>Elixir Collector #2: 88% Full</span>
+</div>
+<div class="absolute top-12 right-10 px-2 py-1 bg-surface-container-highest/90 rounded text-[11px] font-mono text-on-surface-variant flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[13px] text-primary">check_circle</span>
+<span>Eagle Artillery: Inactive / Unloaded</span>
+</div>
+<!-- Crosshairs & Detection Grid overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-32 h-32 rounded-lg bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary/40 text-[48px]">filter_center_focus</span>
+</div>
+</div>
+<!-- Bottom Live Status Bar inside viewport -->
+<div class="absolute bottom-2 left-2 right-2 bg-surface-container-low/90 backdrop-blur-sm px-3 py-1.5 rounded flex items-center justify-between text-label-sm font-label-sm">
+<div class="flex items-center gap-2">
+<span class="text-tertiary material-symbols-outlined text-[15px] animate-spin">sync</span>
+<span class="text-on-surface font-medium font-mono">Evaluating Match #14 (Skip threshold: Min 450k/450k)</span>
+</div>
+<span class="text-on-surface-variant font-mono">Heuristic Latency: 42ms</span>
+</div>
+</div>
+<!-- Strategy Rule Heuristics Checkers -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Min. Gold Threshold</span>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-mono text-on-surface font-semibold">≥ 450,000</span>
+<span class="material-symbols-outlined text-primary text-[18px]">done</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Min. Elixir Threshold</span>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-mono text-on-surface font-semibold">≥ 450,000</span>
+<span class="material-symbols-outlined text-primary text-[18px]">done</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dead Base Indicator</span>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-mono text-on-surface font-semibold">Exterior Tombs</span>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Safety, Guardrails & Hardware Health Panel (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col gap-space-md shadow-sm h-full justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<h2 class="font-title-md text-title-md font-semibold text-on-surface">Safety Guard &amp; Device Health</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-primary-container/40 text-on-primary-container font-semibold">Level 3 Hardened</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Autonomous anti-detection protocols enforce humanized physical interactions and session pacing.</p>
+</div>
+<!-- Diagnostic Checklist Stack -->
+<div class="flex flex-col gap-2">
+<!-- Item 1: ADB Latency -->
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">cable</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">ADB Transport Pipeline</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">USB Direct @ 18ms latency</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">STABLE</span>
+</div>
+<!-- Item 2: Session Pacing -->
+<div class="flex flex-col p-2.5 bg-surface-container-low rounded-lg gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">schedule</span>
+<span class="font-label-md text-label-md text-on-surface font-medium">Auto-Rest Pacer</span>
+</div>
+<span class="font-label-sm text-label-sm font-mono text-on-surface-variant">02h 14m / 04h 00m</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 55.8%"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Scheduled mandatory 30m pause in 1h 46m</span>
+</div>
+<!-- Item 3: Anti-detection Bézier Curves -->
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">gesture</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Humanized Input Trajectories</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bézier curves + 1.8-3.4s jitter</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</div>
+<!-- Item 4: Thermal Health -->
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">device_thermostat</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Battery &amp; SoC Thermals</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Battery: 38.2°C • CPU Load: 14%</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">OPTIMAL</span>
+</div>
+<!-- Item 5: Danger Guardrail (Strict zero gem expenditure) -->
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-error text-[18px]">lock_reset</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Resource Spending Lock</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Zero Gem/Magic Item use enforced</span>
+</div>
+</div>
+<!-- Danger Toggle Switch disabled/locked state -->
+<div class="w-9 h-5 bg-primary-container rounded-full relative p-0.5 flex items-center justify-end cursor-default">
+<div class="w-4 h-4 rounded-full bg-on-primary"></div>
+</div>
+</div>
+</div>
+<div class="pt-1 flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>Safety Engine SHA-256: <code class="font-mono text-on-surface">9f2e...7d1a</code></span>
+<a class="text-primary hover:underline font-medium" href="#">Guardrail Policy</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Battle Log / Raid Outcomes Section -->
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col gap-space-md shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">history_edu</span>
+<h2 class="font-title-lg text-title-lg font-bold text-on-surface">Recent Raid Operations</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-mono font-label-sm text-label-sm">Session Raids: 12</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span>Filter 3-Stars</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Table of Battle Logs -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-2.5 px-3 rounded-l-lg">Timestamp</th>
+<th class="py-2.5 px-3">Opponent / Base Type</th>
+<th class="py-2.5 px-3">Gold Looted</th>
+<th class="py-2.5 px-3">Elixir Looted</th>
+<th class="py-2.5 px-3">Dark Elixir</th>
+<th class="py-2.5 px-3">Outcome</th>
+<th class="py-2.5 px-3">Duration</th>
+<th class="py-2.5 px-3 rounded-r-lg">Execution Intelligence</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y divide-surface-container-high/40">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3 px-3 font-mono text-label-sm font-label-sm text-on-surface-variant">14:28:10</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="font-medium">VikingRaider_88</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[11px] font-mono text-on-surface-variant">TH13 Dead</span>
+</div>
+</td>
+<td class="py-3 px-3 font-mono font-medium text-[#E0A800]">+512,400</td>
+<td class="py-3 px-3 font-mono font-medium text-[#D946EF]">+540,800</td>
+<td class="py-3 px-3 font-mono font-medium text-secondary">+3,900</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">star</span> 3 Stars (100%)
+              </span>
+</td>
+<td class="py-3 px-3 font-mono text-label-sm font-label-sm text-on-surface-variant">2m 14s</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm text-body-sm">Perimeter collector sweep with Barbarian distraction wall</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3 px-3 font-mono text-label-sm font-label-sm text-on-surface-variant">14:12:45</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="font-medium">ShadowClaw</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[11px] font-mono text-on-surface-variant">TH12 Farm</span>
+</div>
+</td>
+<td class="py-3 px-3 font-mono font-medium text-[#E0A800]">+480,200</td>
+<td class="py-3 px-3 font-mono font-medium text-[#D946EF]">+495,100</td>
+<td class="py-3 px-3 font-mono font-medium text-secondary">+2,850</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">star</span> 2 Stars (74%)
+              </span>
+</td>
+<td class="py-3 px-3 font-mono text-label-sm font-label-sm text-on-surface-variant">1m 58s</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm text-body-sm">Town Hall snipe achieved; early surrender triggered on target depletion</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3 px-3 font-mono text-label-sm font-label-sm text-on-surface-variant">13:54:02</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="font-medium">ApexTitan_X</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[11px] font-mono text-on-surface-variant">TH13 Ring</span>
+</div>
+</td>
+<td class="py-3 px-3 font-mono font-medium text-[#E0A800]">+620,000</td>
+<td class="py-3 px-3 font-mono font-medium text-[#D946EF]">+590,000</td>
+<td class="py-3 px-3 font-mono font-medium text-secondary">+4,100</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">star</span> 3 Stars (100%)
+              </span>
+</td>
+<td class="py-3 px-3 font-mono text-label-sm font-label-sm text-on-surface-variant">2m 40s</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm text-body-sm">Double funnel deployment; 0 heroes used, pure barch efficiency</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3 px-3 font-mono text-label-sm font-label-sm text-on-surface-variant">13:38:19</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="font-medium">GhostTown_21</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[11px] font-mono text-on-surface-variant">TH12 Max</span>
+</div>
+</td>
+<td class="py-3 px-3 font-mono font-medium text-[#E0A800]">+410,500</td>
+<td class="py-3 px-3 font-mono font-medium text-[#D946EF]">+430,000</td>
+<td class="py-3 px-3 font-mono font-medium text-secondary">+1,900</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container/40 text-on-error-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">close</span> 0 Stars (42%)
+              </span>
+</td>
+<td class="py-3 px-3 font-mono text-label-sm font-label-sm text-on-surface-variant">1m 15s</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm text-body-sm">Intentional trophy drop calculation: 82% loot acquired prior to 50% threshold</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Battle Log Footer Pagination / Metadata -->
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-2">
+<span>Showing last 4 of 12 logged battles in active session</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container-high text-on-surface disabled:opacity-50" disabled="">Previous</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container-high text-on-surface">Next</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Micro-interaction for the Master Kill Switch hotkey listener
+  window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      const killBtn = document.getElementById('masterKillSwitch');
+      if (killBtn) {
+        killBtn.classList.add('scale-95');
+        setTimeout(() => killBtn.classList.remove('scale-95'), 150);
+      }
+    }
+  });
+</script></main></div><footer class="fixed bottom-0 left-0 right-0 h-10 bg-surface-container-lowest/95 backdrop-blur-sm z-50 px-space-md select-none"><div class="h-full w-full flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="text-on-surface">Connected: ADB over USB (500 Mbps)</span></div><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-tertiary">radar</span><span>Current step: <strong class="text-on-surface font-medium">Searching for a base (Skip #14)...</strong></span></div></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-1.5 font-mono"><span class="material-symbols-outlined text-[15px]">timer</span><span>Session: <span class="text-on-surface font-medium">02h 14m 32s</span></span></div><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[15px]">verified_user</span><span class="text-on-surface-variant">Safety Guard Active • 0 resource limits reached</span></div></div></div></footer></body></html>

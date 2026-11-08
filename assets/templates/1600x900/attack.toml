@@ -1,0 +1,54 @@
+# Attack geometry and troop-bar detection for 1600x900 @ 240 DPI. Measured on LDPlayer 14 frames,
+# 2026-10-18 (green, dark Halloween and older scenery; two zoom levels). See FEATURE-004.
+
+# Red "no deploy" border around the base. Colour varies with scenery tint (green: H12 S235 V180,
+# dark: H7 S182 V158), so the HSV band is wide and red must dominate green and blue.
+[border]
+hsv_lo = [4, 150, 120]
+hsv_hi = [16, 255, 235]
+min_r_minus_g = 60
+min_r_minus_b = 90
+iso_slope = 0.73          # screen slope of the isometric grid lines (dy/dx)
+percentile = 1            # ignore the outermost 1% of border pixels on each side (stray red)
+min_pixels = 800          # fewer border pixels -> no border found (not a battle view)
+max_width = 1500          # fitted outline larger than this -> scenery mixed in, base skipped
+max_height = 1150         # (normal bases: 1130-1400 x 920-1020 px)
+# UI boxes [x, y, w, h] never counted as border and never deployed on
+ui = [
+  [0, 0, 330, 250],       # name + available loot
+  [690, 0, 220, 95],      # battle timer
+  [1230, 0, 370, 210],    # own resources
+  [0, 625, 760, 105],     # End Battle / Surrender, boosts
+  [1320, 575, 280, 130],  # Next / damage panel
+  [0, 730, 1600, 170],    # troop bar
+]
+
+# Overall Damage percentage, right-aligned under the "Overall Damage" label. Read with the loot glyphs
+# scaled up (same font, larger). The cyan bar above it disappears after the first star (#78).
+[damage]
+region = [1420, 640, 180, 65]
+digits = "digits/loot"
+scale = 1.4
+threshold = 0.85
+
+[deploy]
+edge = "auto"             # or top_left / top_right / bottom_right / bottom_left; auto = most usable points
+margin = 25               # px outside the border along the edge normal
+t_from = 0.08             # part of the edge used (0 = first corner, 1 = second corner)
+t_to = 0.92
+points = 12               # deploy points spread along that part
+min_y = 40                # keep points on screen
+
+# Troop bar. Every card has a level badge (black square, white digits) at its bottom-left: that
+# finds the cards; thin dark outlines, when visible, give the exact left edge.
+[bar]
+band = [0, 780, 1600, 90]        # rows sampled for the card body colour (used = greyed out)
+card_nominal_width = 111
+count_box = [-48, 748, 42, 30]   # "xN" text, x relative to the card's right edge
+count_white_min = 0.12           # white share in count_box -> card has a count (troop or spell)
+count_white_v = 225              # count text brightness (min channel) on a normal frame ...
+count_white_margin = 30          # ... or the bar's brightest pixels minus this on a faded frame
+bg_box = [6, 752, 16, 20]        # card background, x relative to the card's left edge
+spell_hue_min = 118              # background hue in [min, max) -> spell (purple), else troop
+spell_hue_max = 165              # red super-troop cards wrap round to hue ~179: troops
+used_body_saturation = 30        # card greyed out (all deployed)

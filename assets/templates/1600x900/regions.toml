@@ -1,0 +1,18 @@
+# Named read regions for 1600x900 @ 240 DPI: [x, y, w, h]. Wide enough for 7-digit values.
+
+# Attack search / battle: "Available Loot" rows (digits/loot glyphs)
+[loot]
+gold = [74, 112, 146, 32]
+elixir = [74, 158, 146, 34]
+dark = [74, 206, 146, 34]
+
+# Own resources, top-right bar (same font as loot -> digits/loot glyphs). Numbers are right-aligned.
+[bar]
+gold = [1320, 30, 210, 34]        # wide enough for 8 digits (full storage: 23 000 000)
+elixir = [1320, 92, 210, 34]
+dark = [1320, 154, 210, 34]
+
+# Variable costs (differ by Town Hall / league); anchors must never include these areas.
+[costs]
+next_search = [1400, 640, 180, 50]
+find_match = [165, 665, 210, 45]

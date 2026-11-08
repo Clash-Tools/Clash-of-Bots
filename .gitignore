@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+captures/
+*.pdf
+.nuitka-cache/
+
+# Private working notes: kept on the developer's disk, never in the repository
+docs/handoff/
+docs/research/
+docs/HANDOVER.md

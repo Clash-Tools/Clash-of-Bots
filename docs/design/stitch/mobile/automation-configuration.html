@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}@keyframes pulse-ring{0%{transform:scale(0.95);opacity:0.8;}50%{transform:scale(1.35);opacity:0.2;}100%{transform:scale(0.95);opacity:0.8;}}</style><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Roboto+Flex:opsz,wght@8..144,400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#3c4a5e", "error-container": "#93000a", "on-primary": "#003733", "secondary-fixed": "#d5e3fc", "on-primary-fixed-variant": "#00504a", "surface-variant": "#2a3548", "on-error-container": "#ffdad6", "secondary-fixed-dim": "#b9c7df", "on-secondary": "#233144", "on-surface": "#d8e3fb", "on-secondary-container": "#abb9d1", "background": "#081425", "surface-tint": "#80d5cb", "on-tertiary-fixed-variant": "#6e3900", "surface-container-high": "#1f2a3c", "tertiary-container": "#a15600", "tertiary-fixed-dim": "#ffb77d", "surface-container": "#152031", "primary-fixed": "#9cf2e8", "surface-container-lowest": "#040e1f", "on-tertiary": "#4d2600", "error": "#ffb4ab", "primary-container": "#0f766e", "secondary": "#b9c7df", "on-primary-fixed": "#00201d", "inverse-surface": "#d8e3fb", "on-surface-variant": "#bdc9c6", "outline": "#889391", "on-tertiary-container": "#ffe6d5", "surface-dim": "#081425", "on-background": "#d8e3fb", "primary-fixed-dim": "#80d5cb", "surface-container-highest": "#2a3548", "surface": "#081425", "outline-variant": "#3e4947", "on-primary-container": "#a3faef", "surface-bright": "#2f3a4c", "on-error": "#690005", "on-secondary-fixed": "#0d1c2e", "tertiary": "#ffb77d", "inverse-primary": "#006a63", "surface-container-low": "#111c2d", "on-secondary-fixed-variant": "#3a485b", "inverse-on-surface": "#263143", "on-tertiary-fixed": "#2f1500", "primary": "#80d5cb", "tertiary-fixed": "#ffdcc3" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-xl": "2rem", "margin": "1rem", "space-xs": "0.25rem", "space-md": "1rem", "gutter": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "title-md": ["Roboto Flex"], "display-lg-mobile": ["Roboto Flex"], "body-lg": ["Roboto Flex"], "label-lg": ["Roboto Flex"], "label-sm": ["Roboto Flex"], "body-code": ["JetBrains Mono"], "headline-md": ["Roboto Flex"], "display-lg": ["Roboto Flex"], "title-lg": ["Roboto Flex"] }, "fontSize": { "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "body-code": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-lg text-body-lg text-on-surface flex flex-col min-h-screen selection:bg-primary selection:text-on-primary"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Clash of Bots brand logo - flat, single color minimal vector emblem featuring a clean rounded robot head inside an outer safety shield silhouette. Trustworthy, friendly, technical.. Brand logo. - Primary color: #0f766e
+- Font: robotoFlex
+- Mode: dark
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VYHLLcn8V5FmYfBFBDiJzrUhw7CtoReBJIEAAI0ZBoT4lghkAsIyaEUtdKCU-9SliNb2CsQtp2G4Bb2kRBkne-mN6NL-FGq_sL6s6off_aUaECVtRlcSnlyLw9NNHFpRqhRkiJErIRaOu_kw1dVfn2k2h9BARUTglVg6QUGiAJiwG1vz9Xvom0V1UtWzJLnq2iThTIa5H_q_K9hmwVYumkZbBVvvMLpdrphj9ti6systbMVgAJFOTI2ELo"/><div class="flex flex-col min-w-0"><span class="text-label-sm font-label-sm text-on-surface-variant truncate uppercase tracking-wider">Clash of Bots</span><span class="text-title-md font-title-md text-on-surface truncate">Automation</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><div class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-lg bg-primary-container/20 text-primary-fixed-dim"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="text-label-sm font-label-sm tracking-wide">Running</span></div><button aria-label="More options" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface active:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[24px]">more_vert</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 ml-0.5"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-surface"><div class="flex flex-col w-full pb-24 space-y-4 px-margin">
+<!-- Overview Header / Profile Card -->
+<div class="w-full bg-surface-container rounded-xl p-space-md shadow-md">
+<div class="flex items-start justify-between gap-space-sm mb-3">
+<div class="min-w-0 flex-1">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-primary">Automation Profile</span>
+<h2 class="text-title-lg font-title-lg text-on-surface truncate">Smart Trophy &amp; Farm</h2>
+</div>
+<button aria-label="Switch active preset" class="flex-shrink-0 inline-flex items-center gap-1 py-1 px-2.5 rounded-lg bg-surface-container-high text-primary hover:bg-surface-container-highest transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span class="text-label-sm font-label-sm">Switch</span>
+</button>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-4">
+      Autonomous raid orchestration with defensive trophy lock and resource reserve limits.
+    </p>
+<!-- Status Badges -->
+<div class="flex flex-wrap items-center gap-2">
+<div class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-lg bg-primary-container/25 text-primary-fixed">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-label-sm font-label-sm">Safety Guard Active</span>
+</div>
+<div class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-lg bg-secondary-container/40 text-secondary-fixed">
+<span class="material-symbols-outlined text-[15px]">widgets</span>
+<span class="text-label-sm font-label-sm">5 Modules Enabled</span>
+</div>
+<div class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-lg bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px]">bolt</span>
+<span class="text-label-sm font-label-sm">ADB Loop: 120ms</span>
+</div>
+</div>
+</div>
+<!-- Accordion 1: Farming (Expanded) -->
+<div class="w-full bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-space-md text-left active:bg-surface-container transition-colors" onclick="toggleAccordion('acc-farming', 'icon-farming')" type="button">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">agriculture</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-title-md font-title-md text-on-surface truncate">Farming (Home Village)</span>
+<span class="text-label-sm font-label-sm py-0.5 px-2 rounded-full bg-primary/20 text-primary-fixed-dim">Active</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Thresholds &amp; deployment algorithms</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200 rotate-180" id="icon-farming">expand_more</span>
+</button>
+<div class="px-space-md pb-space-md space-y-4" id="acc-farming">
+<div class="h-px w-full bg-surface-container"></div>
+<!-- Loot Threshold Targets -->
+<div>
+<label class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant block mb-2">Minimum Loot Requirements</label>
+<div class="space-y-2.5">
+<!-- Gold -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-7 h-7 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary-fixed">
+<span class="material-symbols-outlined text-[16px]">monetization_on</span>
+</div>
+<span class="text-body-lg font-body-lg text-on-surface">Min Gold</span>
+</div>
+<div class="flex items-center gap-1.5">
+<input class="w-24 text-right bg-surface-container-high text-on-surface font-body-code text-body-code px-2 py-1 rounded focus:outline-none focus:bg-surface-bright" type="text" value="450,000"/>
+</div>
+</div>
+<!-- Elixir -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-secondary-fixed">
+<span class="material-symbols-outlined text-[16px]">water_drop</span>
+</div>
+<span class="text-body-lg font-body-lg text-on-surface">Min Elixir</span>
+</div>
+<div class="flex items-center gap-1.5">
+<input class="w-24 text-right bg-surface-container-high text-on-surface font-body-code text-body-code px-2 py-1 rounded focus:outline-none focus:bg-surface-bright" type="text" value="450,000"/>
+</div>
+</div>
+<!-- Dark Elixir -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-7 h-7 rounded-full bg-surface-variant flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">opacity</span>
+</div>
+<span class="text-body-lg font-body-lg text-on-surface">Min Dark Elixir</span>
+</div>
+<div class="flex items-center gap-1.5">
+<input class="w-24 text-right bg-surface-container-high text-on-surface font-body-code text-body-code px-2 py-1 rounded focus:outline-none focus:bg-surface-bright" type="text" value="4,000"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Toggles & Sliders -->
+<div class="space-y-3 pt-1">
+<!-- Dead Base Detector -->
+<div class="flex items-center justify-between py-1">
+<div class="min-w-0 pr-3">
+<span class="text-title-md font-title-md text-on-surface block">Dead Base Detector</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Check tombstone count &amp; full external collectors</span>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary block shadow-sm transform translate-x-5 transition-transform"></span>
+</button>
+</div>
+<!-- Max Next Searches Slider -->
+<div class="p-3 rounded-lg bg-surface-container space-y-2">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Max "Next" Search Retries</span>
+<span class="text-primary font-body-code text-body-code" id="next-label">45 Skips</span>
+</div>
+<input class="w-full accent-primary h-1.5 bg-surface-container-highest rounded-lg cursor-pointer" max="150" min="10" oninput="document.getElementById('next-label').innerText = this.value + ' Skips'; markUnsaved();" type="range" value="45"/>
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>10</span>
+<span>80</span>
+<span>150</span>
+</div>
+</div>
+<!-- Troop Strategy Picker -->
+<div>
+<label class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant block mb-2">Deployment Strategy</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="strategy-btn py-2 px-2 rounded-lg bg-primary-container text-on-primary-container text-label-sm font-label-sm flex flex-col items-center gap-1 shadow-sm transition-all" onclick="selectStrategy(this)" type="button">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span>BArch</span>
+</button>
+<button class="strategy-btn py-2 px-2 rounded-lg bg-surface-container text-on-surface-variant text-label-sm font-label-sm flex flex-col items-center gap-1 hover:text-on-surface transition-all" onclick="selectStrategy(this)" type="button">
+<span class="material-symbols-outlined text-[18px]">electric_bolt</span>
+<span>Sneaky Gobs</span>
+</button>
+<button class="strategy-btn py-2 px-2 rounded-lg bg-surface-container text-on-surface-variant text-label-sm font-label-sm flex flex-col items-center gap-1 hover:text-on-surface transition-all" onclick="selectStrategy(this)" type="button">
+<span class="material-symbols-outlined text-[18px]">front_hand</span>
+<span>Four-Finger</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 2: Builder Base (Collapsed) -->
+<div class="w-full bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-space-md text-left active:bg-surface-container transition-colors" onclick="toggleAccordion('acc-builder', 'icon-builder')" type="button">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-secondary-container/40 flex items-center justify-center text-secondary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">construction</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-title-md font-title-md text-on-surface truncate">Builder Base</span>
+<span class="text-label-sm font-label-sm py-0.5 px-2 rounded-full bg-surface-container-high text-on-surface-variant">Standby</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Star bonus &amp; clock tower boosts</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="icon-builder">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md space-y-3" id="acc-builder">
+<div class="h-px w-full bg-surface-container"></div>
+<div class="flex items-center justify-between py-1">
+<div class="min-w-0 pr-3">
+<span class="text-title-md font-title-md text-on-surface block">Auto-Attack for Daily Star Bonus</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Run consecutive raids until star bank is filled</span>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary block shadow-sm transform translate-x-5 transition-transform"></span>
+</button>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="min-w-0 pr-3">
+<span class="text-title-md font-title-md text-on-surface block">Clock Tower Auto-Boost</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Activate 30m acceleration once cooled down</span>
+</div>
+<button aria-checked="false" class="w-12 h-7 rounded-full bg-surface-container-highest relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-outline block shadow-sm transform translate-x-0 transition-transform"></span>
+</button>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="min-w-0 pr-3">
+<span class="text-title-md font-title-md text-on-surface block">Hero Machine Auto-Ability</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Cycle lightning blast immediately as ready</span>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary block shadow-sm transform translate-x-5 transition-transform"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Accordion 3: Resource Collectors (Collapsed) -->
+<div class="w-full bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-space-md text-left active:bg-surface-container transition-colors" onclick="toggleAccordion('acc-collect', 'icon-collect')" type="button">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-variant flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-title-md font-title-md text-on-surface truncate">Resource Collectors</span>
+<span class="text-label-sm font-label-sm py-0.5 px-2 rounded-full bg-primary/20 text-primary-fixed-dim">Every 15m</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Mines, drills, and treasury vault sweeps</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="icon-collect">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md space-y-3" id="acc-collect">
+<div class="h-px w-full bg-surface-container"></div>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary" onchange="markUnsaved()" type="checkbox"/>
+<span class="text-body-lg font-body-lg text-on-surface">Gold Mines</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary" onchange="markUnsaved()" type="checkbox"/>
+<span class="text-body-lg font-body-lg text-on-surface">Elixir Pumps</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary" onchange="markUnsaved()" type="checkbox"/>
+<span class="text-body-lg font-body-lg text-on-surface">DE Drills</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary" onchange="markUnsaved()" type="checkbox"/>
+<span class="text-body-lg font-body-lg text-on-surface">Gem Mine</span>
+</label>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container mt-2">
+<div>
+<span class="text-body-lg font-body-lg text-on-surface block">Auto-Collect Treasury</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Empty Clan Castle cart to safe storage</span>
+</div>
+<button aria-checked="false" class="w-12 h-7 rounded-full bg-surface-container-highest relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-outline block shadow-sm transform translate-x-0 transition-transform"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Accordion 4: Clan Castle & Social (Collapsed) -->
+<div class="w-full bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-space-md text-left active:bg-surface-container transition-colors" onclick="toggleAccordion('acc-clan', 'icon-clan')" type="button">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-variant flex items-center justify-center text-secondary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">castle</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-title-md font-title-md text-on-surface truncate">Clan Castle &amp; Troops</span>
+<span class="text-label-sm font-label-sm py-0.5 px-2 rounded-full bg-surface-container-high text-on-surface-variant">Enabled</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Automated request &amp; safe donations</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="icon-clan">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md space-y-3" id="acc-clan">
+<div class="h-px w-full bg-surface-container"></div>
+<div>
+<label class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant block mb-1.5">Auto-Request Dispatch Message</label>
+<div class="relative">
+<input class="w-full bg-surface-container text-on-surface font-body-lg text-body-lg px-3 py-2.5 rounded-lg focus:outline-none focus:bg-surface-container-high" onchange="markUnsaved()" type="text" value="Reinforce please / Loons or Sneakies"/>
+<span class="absolute right-3 top-2.5 material-symbols-outlined text-on-surface-variant text-[20px]">chat</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="min-w-0 pr-3">
+<span class="text-title-md font-title-md text-on-surface block">Safe Donation Relay</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Fulfill clanmates using predefined safe whitelist</span>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary block shadow-sm transform translate-x-5 transition-transform"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Accordion 5: Clan Games & Events (Collapsed) -->
+<div class="w-full bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-space-md text-left active:bg-surface-container transition-colors" onclick="toggleAccordion('acc-games', 'icon-games')" type="button">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-variant flex items-center justify-center text-tertiary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">military_tech</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-title-md font-title-md text-on-surface truncate">Clan Games &amp; Events</span>
+<span class="text-label-sm font-label-sm py-0.5 px-2 rounded-full bg-surface-container-high text-on-surface-variant">Passive</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Task optimization &amp; reward claiming</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="icon-games">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md space-y-3" id="acc-games">
+<div class="h-px w-full bg-surface-container"></div>
+<div class="flex items-center justify-between py-1">
+<div class="min-w-0 pr-3">
+<span class="text-title-md font-title-md text-on-surface block">Prioritize Fast Raids</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Auto-pick destruction %, stars, and wall-break tasks</span>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary block shadow-sm transform translate-x-5 transition-transform"></span>
+</button>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="min-w-0 pr-3">
+<span class="text-title-md font-title-md text-on-surface block">Trash Stagnant Challenges</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Discard quests inactive for &gt; 12 hours</span>
+</div>
+<button aria-checked="false" class="w-12 h-7 rounded-full bg-surface-container-highest relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-outline block shadow-sm transform translate-x-0 transition-transform"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 6: Upgrades & Spending (Danger Toggles) -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-md shadow-sm space-y-4">
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-title-md font-title-md text-on-surface">Upgrades &amp; Auto-Spending</span>
+<span class="text-label-sm font-label-sm py-0.5 px-2 rounded-full bg-error-container text-on-error-container font-semibold">Strict Guard</span>
+</div>
+<span class="text-body-lg font-body-lg text-on-surface-variant block mt-0.5">
+          Autonomous spending actions consume in-game reserves. All toggles require explicit authorization.
+        </span>
+</div>
+</div>
+<!-- Danger Rows Container -->
+<div class="space-y-3 pt-1">
+<!-- Danger Toggle 1: Wall Sink -->
+<div class="p-3 rounded-lg bg-surface-container flex items-center justify-between gap-3">
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">warning</span>
+<span class="text-title-md font-title-md text-on-surface">Auto-Upgrade Walls (Resource Sink)</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Dumps excess gold/elixir when bank exceeds 90%</span>
+</div>
+<!-- Inactive switch that prompts modal -->
+<button aria-checked="false" class="danger-toggle w-12 h-7 rounded-full bg-surface-container-highest relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" data-action="WALL_UPGRADE" onclick="requestDangerAuthorization(this, 'Auto-Upgrade Walls', 'Clash of Bots will automatically consume surplus Gold and Elixir to upgrade wall segments.')" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-outline block shadow-sm transform translate-x-0 transition-transform"></span>
+</button>
+</div>
+<!-- Danger Toggle 2: Defenses & Heroes -->
+<div class="p-3 rounded-lg bg-surface-container flex items-center justify-between gap-3">
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">shield</span>
+<span class="text-title-md font-title-md text-on-surface">Auto-Upgrade Defenses &amp; Heroes</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Dispatches free builders automatically to lowest level targets</span>
+</div>
+<button aria-checked="false" class="danger-toggle w-12 h-7 rounded-full bg-surface-container-highest relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" data-action="DEFENSE_UPGRADE" onclick="requestDangerAuthorization(this, 'Upgrade Defenses &amp; Heroes', 'Clash of Bots will bind idle builders to upgrade defenses or hero tiers whenever storage caps are achieved.')" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-outline block shadow-sm transform translate-x-0 transition-transform"></span>
+</button>
+</div>
+<!-- Danger Toggle 3: Gem Spending (High Urgency) -->
+<div class="p-3 rounded-lg bg-error-container/20 flex items-center justify-between gap-3">
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="material-symbols-outlined text-[16px] text-error">diamond</span>
+<span class="text-title-md font-title-md text-error">Spend Gems to Boost / Finish</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-error-container block">Consumes premium gems to expedite lab research &amp; boosts</span>
+</div>
+<button aria-checked="false" class="danger-toggle w-12 h-7 rounded-full bg-surface-container-highest relative p-0.5 flex-shrink-0 transition-colors focus:outline-none" data-action="SPEND_GEMS" onclick="requestDangerAuthorization(this, 'Spend Premium Gems', 'Clash of Bots will permanently consume your premium account Gems to instantly boost barracks or complete active lab spells.')" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-outline block shadow-sm transform translate-x-0 transition-transform"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Safety Policy Disclaimer Card -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0 mt-0.5">verified</span>
+<div class="min-w-0">
+<span class="text-title-md font-title-md text-on-surface block">Zero-Discrepancy Guarantee</span>
+<span class="text-body-lg font-body-lg text-on-surface-variant block mt-0.5">
+        Session timeouts, naturalized mouse jitters, and humanized tap distributions are applied globally across all automated profiles.
+      </span>
+</div>
+</div>
+</div>
+<!-- Sticky Floating Save Bar (Hidden until modification) -->
+<div class="fixed bottom-20 inset-x-0 z-40 px-margin transition-all duration-300 translate-y-28 opacity-0 pointer-events-none" id="sticky-save-bar">
+<div class="max-w-md mx-auto bg-surface-container-high/95 backdrop-blur-lg rounded-xl p-3 shadow-xl flex items-center justify-between gap-3">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse flex-shrink-0"></span>
+<span class="text-label-lg font-label-lg text-on-surface truncate" id="save-bar-text">Unsaved modifications</span>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<button class="px-3 py-1.5 rounded-lg text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface active:bg-surface-container transition-colors" onclick="discardChanges()" type="button">
+        Discard
+      </button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary text-on-primary text-label-sm font-label-sm font-semibold shadow-md active:scale-95 transition-all" onclick="commitChanges()" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+<span>Save</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Danger Confirmation Modal Bottom Sheet (Level 4 Dialog) -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-200 opacity-0 flex items-end" id="danger-modal-backdrop">
+<div class="w-full bg-surface-container-highest rounded-t-2xl p-space-lg shadow-2xl max-w-lg mx-auto transform transition-transform duration-300 translate-y-full" id="danger-modal-content">
+<!-- Sheet Drag Handle Indicator -->
+<div class="w-12 h-1 bg-surface-variant rounded-full mx-auto mb-4"></div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-error-container/40 text-error flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">gpp_maybe</span>
+</div>
+<div>
+<h3 class="text-title-lg font-title-lg text-on-surface" id="danger-modal-title">Enable Resource Spending?</h3>
+<span class="text-label-sm font-label-sm text-error">Irreversible Automated Action</span>
+</div>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-5" id="danger-modal-desc">
+      Clash of Bots will automatically consume your in-game resources/gems when thresholds are met. This cannot be undone.
+    </p>
+<!-- Confirmation Security Pass -->
+<div class="space-y-2 mb-6">
+<label class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant block" for="danger-confirm-input">
+        Type <span class="font-bold text-on-surface font-body-code">SPEND</span> to authorize
+      </label>
+<input autocomplete="off" class="w-full bg-surface-container text-on-surface font-body-code text-title-md px-3.5 py-2.5 rounded-lg focus:outline-none uppercase tracking-widest" id="danger-confirm-input" oninput="validateDangerPass(this)" placeholder="SPEND" type="text"/>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end gap-3">
+<button class="px-4 py-2 rounded-lg text-label-lg font-label-lg text-on-surface-variant hover:text-on-surface active:bg-surface-container transition-colors" onclick="closeDangerModal()" type="button">
+        Cancel
+      </button>
+<button class="px-5 py-2.5 rounded-lg bg-error text-on-error text-label-lg font-label-lg font-semibold shadow-sm transition-all opacity-40 cursor-not-allowed inline-flex items-center gap-1.5" disabled="" id="danger-confirm-btn" onclick="executeDangerAuthorization()" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+<span>Confirm &amp; Enable</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  let pendingDangerSwitch = null;
+  let unsavedModifications = 0;
+
+  function toggleAccordion(contentId, iconId) {
+    const el = document.getElementById(contentId);
+    const icon = document.getElementById(iconId);
+    if (!el || !icon) return;
+    
+    const isHidden = el.classList.contains('hidden');
+    if (isHidden) {
+      el.classList.remove('hidden');
+      icon.classList.add('rotate-180');
+    } else {
+      el.classList.add('hidden');
+      icon.classList.remove('rotate-180');
+    }
+  }
+
+  function toggleSwitch(btn) {
+    const isChecked = btn.getAttribute('aria-checked') === 'true';
+    const knob = btn.firstElementChild;
+    if (isChecked) {
+      btn.setAttribute('aria-checked', 'false');
+      btn.classList.remove('bg-primary');
+      btn.classList.add('bg-surface-container-highest');
+      knob.classList.remove('bg-on-primary', 'translate-x-5');
+      knob.classList.add('bg-outline', 'translate-x-0');
+    } else {
+      btn.setAttribute('aria-checked', 'true');
+      btn.classList.remove('bg-surface-container-highest');
+      btn.classList.add('bg-primary');
+      knob.classList.remove('bg-outline', 'translate-x-0');
+      knob.classList.add('bg-on-primary', 'translate-x-5');
+    }
+    markUnsaved();
+  }
+
+  function selectStrategy(selectedBtn) {
+    const all = selectedBtn.parentElement.querySelectorAll('.strategy-btn');
+    all.forEach(btn => {
+      btn.classList.remove('bg-primary-container', 'text-on-primary-container');
+      btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+    });
+    selectedBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+    selectedBtn.classList.add('bg-primary-container', 'text-on-primary-container');
+    markUnsaved();
+  }
+
+  function requestDangerAuthorization(btn, title, description) {
+    const isCurrentlyChecked = btn.getAttribute('aria-checked') === 'true';
+    if (isCurrentlyChecked) {
+      // Direct turn off without security challenge
+      toggleSwitch(btn);
+      return;
+    }
+
+    pendingDangerSwitch = btn;
+    document.getElementById('danger-modal-title').innerText = title;
+    document.getElementById('danger-modal-desc').innerText = description;
+    
+    const input = document.getElementById('danger-confirm-input');
+    input.value = '';
+    validateDangerPass(input);
+
+    const backdrop = document.getElementById('danger-modal-backdrop');
+    const sheet = document.getElementById('danger-modal-content');
+
+    backdrop.classList.remove('hidden');
+    // slight delay for transition
+    requestAnimationFrame(() => {
+      backdrop.classList.add('opacity-100');
+      sheet.classList.remove('translate-y-full');
+      sheet.classList.add('translate-y-0');
+      input.focus();
+    });
+  }
+
+  function validateDangerPass(input) {
+    const confirmBtn = document.getElementById('danger-confirm-btn');
+    if (input.value.trim().toUpperCase() === 'SPEND') {
+      confirmBtn.disabled = false;
+      confirmBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+      confirmBtn.classList.add('active:scale-95');
+    } else {
+      confirmBtn.disabled = true;
+      confirmBtn.classList.add('opacity-40', 'cursor-not-allowed');
+      confirmBtn.classList.remove('active:scale-95');
+    }
+  }
+
+  function closeDangerModal() {
+    const backdrop = document.getElementById('danger-modal-backdrop');
+    const sheet = document.getElementById('danger-modal-content');
+    
+    sheet.classList.remove('translate-y-0');
+    sheet.classList.add('translate-y-full');
+    backdrop.classList.remove('opacity-100');
+    
+    setTimeout(() => {
+      backdrop.classList.add('hidden');
+      pendingDangerSwitch = null;
+    }, 250);
+  }
+
+  function executeDangerAuthorization() {
+    if (pendingDangerSwitch) {
+      toggleSwitch(pendingDangerSwitch);
+    }
+    closeDangerModal();
+  }
+
+  function markUnsaved() {
+    unsavedModifications++;
+    const bar = document.getElementById('sticky-save-bar');
+    const text = document.getElementById('save-bar-text');
+    text.innerText = unsavedModifications === 1 
+      ? '1 unsaved modification' 
+      : `${unsavedModifications} unsaved modifications`;
+
+    bar.classList.remove('translate-y-28', 'opacity-0', 'pointer-events-none');
+    bar.classList.add('translate-y-0', 'opacity-100');
+  }
+
+  function discardChanges() {
+    unsavedModifications = 0;
+    const bar = document.getElementById('sticky-save-bar');
+    bar.classList.add('translate-y-28', 'opacity-0', 'pointer-events-none');
+    bar.classList.remove('translate-y-0', 'opacity-100');
+  }
+
+  function commitChanges() {
+    unsavedModifications = 0;
+    const bar = document.getElementById('sticky-save-bar');
+    const text = document.getElementById('save-bar-text');
+    text.innerText = 'Saved to bot controller!';
+    setTimeout(() => {
+      bar.classList.add('translate-y-28', 'opacity-0', 'pointer-events-none');
+      bar.classList.remove('translate-y-0', 'opacity-100');
+    }, 700);
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-high/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.2)]" data-active-classes="text-primary font-label-lg"><div class="flex justify-around items-center h-20 px-space-xs max-w-md mx-auto"><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 rounded-xl text-on-surface-variant hover:text-on-surface active:bg-surface-container transition-all" data-path="home" href="#"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="text-label-sm font-label-sm">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 rounded-xl active:bg-surface-container transition-all text-primary font-label-lg" data-path="automation" href="#"><span class="material-symbols-outlined text-[24px]">smart_toy</span><span class="text-label-sm font-label-sm">Automation</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 rounded-xl text-on-surface-variant hover:text-on-surface active:bg-surface-container transition-all" data-path="history" href="#"><span class="material-symbols-outlined text-[24px]">history</span><span class="text-label-sm font-label-sm">History</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 rounded-xl text-on-surface-variant hover:text-on-surface active:bg-surface-container transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-[24px]">settings</span><span class="text-label-sm font-label-sm">Settings</span></a></div></nav></body></html>

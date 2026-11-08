@@ -1,0 +1,73 @@
+# Reusable: Nuitka Windows build + smoke test. Windows minutes bill at 2x, so only release.yml and
+# the opt-in build-exe.yml call this.
+name: build-windows
+
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        description: "Upload the zip to this (draft) release instead of a workflow artifact"
+        type: string
+        default: ""
+    outputs:
+      version:
+        value: ${{ jobs.build.outputs.version }}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    outputs:
+      version: ${{ steps.ver.outputs.version }}
+    env:
+      NUITKA_CACHE_DIR: ${{ github.workspace }}\.nuitka-cache
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0  # upstream has no floating v10 tag
+        with:
+          enable-cache: true
+      - run: uv sync --python 3.13 --group build
+      - run: uv run pytest -q
+      - id: ver
+        shell: pwsh
+        run: |
+          "version=$(uv run python scripts/release.py current)" >> $env:GITHUB_OUTPUT
+          "file_version=$(uv run python scripts/release.py file-version)" >> $env:GITHUB_OUTPUT
+      # Compiled C objects are reused across builds -> big cut in build minutes after the first run.
+      - uses: actions/cache@v6
+        with:
+          path: .nuitka-cache
+          key: nuitka-${{ runner.os }}-${{ hashFiles('uv.lock') }}-${{ github.sha }}
+          restore-keys: |
+            nuitka-${{ runner.os }}-${{ hashFiles('uv.lock') }}-
+            nuitka-${{ runner.os }}-
+      - name: Build exe
+        shell: pwsh
+        run: ./scripts/build_windows.ps1 -Version "${{ steps.ver.outputs.version }}" -FileVersion "${{ steps.ver.outputs.file_version }}"
+      - name: Smoke test
+        shell: pwsh
+        run: |
+          $exe = "build/ClashOfBots/ClashOfBots.exe"
+          & $exe selftest
+          if ($LASTEXITCODE -ne 0) { throw "selftest failed: $LASTEXITCODE" }
+          $v = & $exe --version
+          if ($v -ne "cob ${{ steps.ver.outputs.version }}") { throw "version mismatch: $v" }
+      - name: Zip + checksum
+        shell: pwsh
+        run: |
+          $name = "ClashOfBots-${{ steps.ver.outputs.version }}-win64.zip"
+          Compress-Archive -Path build/ClashOfBots -DestinationPath $name
+          "$((Get-FileHash $name -Algorithm SHA256).Hash.ToLower())  $name" | Out-File -Encoding ascii "$name.sha256"
+      - name: Upload to the draft release
+        if: inputs.release_tag != ''
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ inputs.release_tag }}" ClashOfBots-*-win64.zip* --clobber
+      - uses: actions/upload-artifact@v7
+        if: inputs.release_tag == ''
+        continue-on-error: true  # a manual test build: a full artifact quota must not fail it
+        with:
+          name: windows-exe
+          path: ClashOfBots-*-win64.zip*
+          retention-days: 3  # releases keep their own copies; 14 days filled the storage quota

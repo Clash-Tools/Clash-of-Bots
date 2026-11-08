@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Roboto+Flex:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#1f2a3c", "secondary-fixed": "#d5e3fc", "tertiary": "#ffb77d", "on-secondary-fixed": "#0d1c2e", "surface-bright": "#2f3a4c", "on-primary": "#003733", "on-surface-variant": "#bdc9c6", "on-surface": "#d8e3fb", "surface-dim": "#081425", "tertiary-fixed": "#ffdcc3", "surface-container-lowest": "#040e1f", "on-tertiary": "#4d2600", "on-tertiary-fixed-variant": "#6e3900", "error": "#ffb4ab", "on-primary-fixed": "#00201d", "inverse-on-surface": "#263143", "secondary-container": "#3c4a5e", "outline": "#889391", "primary-fixed-dim": "#80d5cb", "on-secondary-fixed-variant": "#3a485b", "on-tertiary-fixed": "#2f1500", "on-primary-container": "#a3faef", "surface-container-low": "#111c2d", "outline-variant": "#3e4947", "surface-container-highest": "#2a3548", "inverse-surface": "#d8e3fb", "surface-container": "#152031", "on-error-container": "#ffdad6", "primary-container": "#0f766e", "tertiary-container": "#a15600", "primary-fixed": "#9cf2e8", "on-background": "#d8e3fb", "surface": "#081425", "error-container": "#93000a", "on-primary-fixed-variant": "#00504a", "secondary": "#b9c7df", "primary": "#80d5cb", "on-secondary": "#233144", "background": "#081425", "on-secondary-container": "#abb9d1", "tertiary-fixed-dim": "#ffb77d", "inverse-primary": "#006a63", "on-tertiary-container": "#ffe6d5", "surface-tint": "#80d5cb", "secondary-fixed-dim": "#b9c7df", "surface-variant": "#2a3548", "on-error": "#690005" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-desktop": "2rem", "space-md": "1rem", "space-xs": "0.25rem", "margin": "1rem", "gutter": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-desktop": "1.5rem" }, "fontFamily": { "label-sm": ["Roboto Flex"], "display-lg-mobile": ["Roboto Flex"], "body-lg": ["Roboto Flex"], "display-lg": ["Roboto Flex"], "label-lg": ["Roboto Flex"], "title-lg": ["Roboto Flex"], "body-code": ["JetBrains Mono"], "headline-md": ["Roboto Flex"], "title-md": ["Roboto Flex"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-code": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#081425;color:#d8e3fb;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-lg text-body-lg flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-20 px-margin flex flex-col justify-center"><div class="flex items-center justify-between h-14"><div class="flex items-center gap-space-sm"><button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><div class="flex items-center gap-space-sm"><img alt="Clash of Bots brand logo - flat, single color minimal vector emblem featuring a clean rounded robot head inside an outer safety shield silhouette. Trustworthy, friendly, technical.. Brand logo. - Primary color: #0f766e - Font: robotoFlex - Mode: dark - Roundness: rounded-md " class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VYHLLcn8V5FmYfBFBDiJzrUhw7CtoReBJIEAAI0ZBoT4lghkAsIyaEUtdKCU-9SliNb2CsQtp2G4Bb2kRBkne-mN6NL-FGq_sL6s6off_aUaECVtRlcSnlyLw9NNHFpRqhRkiJErIRaOu_kw1dVfn2k2h9BARUTglVg6QUGiAJiwG1vz9Xvom0V1UtWzJLnq2iThTIa5H_q_K9hmwVYumkZbBVvvMLpdrphj9ti6systbMVgAJFOTI2ELo"/><div class="flex flex-col"><span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold">Clash of Bots</span><span class="font-title-md text-title-md font-medium text-on-surface leading-tight">Resolution Setup</span></div></div></div><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="w-full flex items-center gap-1.5 h-1.5 pb-2"><div class="h-1 flex-1 rounded-full bg-primary transition-all duration-300"></div><div class="h-1 flex-1 rounded-full bg-surface-container-highest transition-all duration-300"></div><div class="h-1 flex-1 rounded-full bg-surface-container-highest transition-all duration-300"></div><div class="h-1 flex-1 rounded-full bg-surface-container-highest transition-all duration-300"></div><div class="h-1 flex-1 rounded-full bg-surface-container-highest transition-all duration-300"></div></div></div></header><main class="flex flex-col flex-1 relative w-full px-margin pt-20 pb-28 bg-surface"><div class="flex flex-col w-full pb-6 space-y-space-md">
+<!-- Step Subtitle & Guidance Note -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold">Step 2 of 5</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Safety Verification</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+      Please review our safety advisory and terms of operation before enabling device simulation.
+    </p>
+</div>
+<!-- Safety & Ban-Risk Advisory Card (Tonal M3 Container with Warm Amber Accent) -->
+<section class="rounded-xl bg-surface-container-low shadow-sm overflow-hidden flex flex-col">
+<!-- Top Alert Header Ribbon -->
+<div class="bg-tertiary-container px-space-md py-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-on-tertiary-container/15 flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">gpp_maybe</span>
+</div>
+<span class="font-title-md text-title-md font-semibold text-on-tertiary-container tracking-tight">
+          Important Ban-Risk Notice
+        </span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-on-tertiary-container/10 text-on-tertiary-container">
+        Advisory
+      </span>
+</div>
+<!-- Body Content -->
+<div class="p-space-md flex flex-col space-y-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+        Automation violates the Supercell Terms of Service. While <span class="font-semibold text-primary">Clash of Bots</span> deploys non-invasive screen inspection, micro-randomized delays, and bezier curve touch gestures, using third-party orchestration always carries an inherent risk of detection and account suspension.
+      </p>
+<!-- Key Safeguard Bullets -->
+<div class="grid grid-cols-1 gap-space-xs pt-1">
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-tertiary text-[18px] mt-0.5">verified_user</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-medium text-on-surface">Secondary Account Recommendation</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant leading-snug">
+              We strongly urge all operators to validate workflows exclusively on secondary or mini village accounts first.
+            </span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">neurology</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-medium text-on-surface">Humanized Jitter &amp; Sleep Cycles</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant leading-snug">
+              Built-in anti-fatigue breaks periodically suspend automation to replicate authentic player rest windows.
+            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Local Privacy Guarantee Banner (Success / Teal Surface Container) -->
+<section class="rounded-xl bg-surface-container p-space-md flex items-start gap-space-sm shadow-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container flex-shrink-0 flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md font-semibold text-on-surface">100% Device-Isolated Sandbox</span>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-0.5 leading-snug">
+        All telemetry stays on this device. Clash of Bots operates solely through standard accessibility and input injection—we never inspect, harvest, or prompt for your Supercell ID, Google credentials, or passwords.
+      </p>
+</div>
+</section>
+<!-- Deep Dive Link Chip -->
+<div class="flex items-center justify-between p-space-sm px-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">menu_book</span>
+<span class="font-label-lg text-label-lg text-on-surface group-hover:text-primary transition-colors">Safety Architecture Whitepaper &amp; Terms</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary text-[18px] transition-transform group-hover:translate-x-0.5">open_in_new</span>
+</div>
+<!-- Mandatory Consent Card & Interactive Checkbox -->
+<section class="rounded-xl bg-surface-container-high p-space-md shadow-sm">
+<label class="flex items-start gap-space-md cursor-pointer select-none" id="consent-container">
+<!-- M3 Custom Styled Checkbox Container -->
+<div class="relative flex items-center justify-center mt-0.5">
+<input checked="" class="sr-only" id="consent-toggle" type="checkbox"/>
+<div class="w-6 h-6 rounded-lg bg-primary flex items-center justify-center transition-all duration-200 shadow-sm" id="checkbox-box">
+<span class="material-symbols-outlined text-on-primary text-[18px] font-bold" id="checkbox-icon">check</span>
+</div>
+</div>
+<!-- Consent Copy -->
+<div class="flex flex-col min-w-0 pr-1">
+<span class="font-title-md text-title-md font-semibold text-on-surface leading-snug">
+          I understand the risks and confirm I will use a test account.
+        </span>
+<span class="font-body-lg text-body-lg text-on-surface-variant mt-1 leading-normal">
+          You retain full personal custody and responsibility over your game profiles and operational sessions.
+        </span>
+</div>
+</label>
+</section>
+<!-- Decline & Exit Secondary Option -->
+<div class="pt-2 flex flex-col items-center justify-center">
+<button class="h-10 px-space-lg rounded-full text-on-surface-variant hover:text-error hover:bg-surface-container transition-all font-label-lg text-label-lg flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+<span>Decline &amp; Exit Setup</span>
+</button>
+</div>
+</div>
+<script>
+  (function() {
+    const toggle = document.getElementById('consent-toggle');
+    const box = document.getElementById('checkbox-box');
+    const icon = document.getElementById('checkbox-icon');
+    const nextButtons = document.querySelectorAll('footer button');
+    
+    // Target the primary action in the sticky app shell footer if available
+    let continueBtn = null;
+    nextButtons.forEach(btn => {
+      if (btn.textContent.includes('Continue')) {
+        continueBtn = btn;
+      }
+    });
+
+    function updateState() {
+      const isChecked = toggle.checked;
+      if (isChecked) {
+        box.classList.remove('bg-surface-container-lowest', 'text-transparent');
+        box.classList.add('bg-primary');
+        icon.classList.remove('opacity-0', 'scale-75');
+        icon.classList.add('opacity-100', 'scale-100');
+        if (continueBtn) {
+          continueBtn.classList.remove('opacity-40', 'pointer-events-none');
+        }
+      } else {
+        box.classList.remove('bg-primary');
+        box.classList.add('bg-surface-container-lowest');
+        icon.classList.remove('opacity-100', 'scale-100');
+        icon.classList.add('opacity-0', 'scale-75');
+        if (continueBtn) {
+          continueBtn.classList.add('opacity-40', 'pointer-events-none');
+        }
+      }
+    }
+
+    if (toggle) {
+      toggle.addEventListener('change', updateState);
+      updateState();
+    }
+  })();
+</script></main><footer class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-high/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(0,0,0,0.25)] pb-safe"><div class="h-20 px-margin flex items-center justify-between gap-gutter"><button class="h-12 px-space-lg min-w-[88px] rounded-full flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors" onclick="history.back()" type="button">Back</button><div class="flex items-center gap-space-sm"><button class="h-12 px-space-xl rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold flex items-center justify-center gap-space-xs shadow-[0_4px_12px_rgba(0,0,0,0.25)] hover:brightness-110 active:brightness-95 transition-all" type="button"><span>Continue</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div></div></footer></body></html>

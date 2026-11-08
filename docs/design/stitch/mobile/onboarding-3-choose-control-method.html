@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Roboto+Flex:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#1f2a3c", "secondary-fixed": "#d5e3fc", "tertiary": "#ffb77d", "on-secondary-fixed": "#0d1c2e", "surface-bright": "#2f3a4c", "on-primary": "#003733", "on-surface-variant": "#bdc9c6", "on-surface": "#d8e3fb", "surface-dim": "#081425", "tertiary-fixed": "#ffdcc3", "surface-container-lowest": "#040e1f", "on-tertiary": "#4d2600", "on-tertiary-fixed-variant": "#6e3900", "error": "#ffb4ab", "on-primary-fixed": "#00201d", "inverse-on-surface": "#263143", "secondary-container": "#3c4a5e", "outline": "#889391", "primary-fixed-dim": "#80d5cb", "on-secondary-fixed-variant": "#3a485b", "on-tertiary-fixed": "#2f1500", "on-primary-container": "#a3faef", "surface-container-low": "#111c2d", "outline-variant": "#3e4947", "surface-container-highest": "#2a3548", "inverse-surface": "#d8e3fb", "surface-container": "#152031", "on-error-container": "#ffdad6", "primary-container": "#0f766e", "tertiary-container": "#a15600", "primary-fixed": "#9cf2e8", "on-background": "#d8e3fb", "surface": "#081425", "error-container": "#93000a", "on-primary-fixed-variant": "#00504a", "secondary": "#b9c7df", "primary": "#80d5cb", "on-secondary": "#233144", "background": "#081425", "on-secondary-container": "#abb9d1", "tertiary-fixed-dim": "#ffb77d", "inverse-primary": "#006a63", "on-tertiary-container": "#ffe6d5", "surface-tint": "#80d5cb", "secondary-fixed-dim": "#b9c7df", "surface-variant": "#2a3548", "on-error": "#690005" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-desktop": "2rem", "space-md": "1rem", "space-xs": "0.25rem", "margin": "1rem", "gutter": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-desktop": "1.5rem" }, "fontFamily": { "label-sm": ["Roboto Flex"], "display-lg-mobile": ["Roboto Flex"], "body-lg": ["Roboto Flex"], "display-lg": ["Roboto Flex"], "label-lg": ["Roboto Flex"], "title-lg": ["Roboto Flex"], "body-code": ["JetBrains Mono"], "headline-md": ["Roboto Flex"], "title-md": ["Roboto Flex"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-code": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#081425;color:#d8e3fb;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-lg text-body-lg flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-20 px-margin flex flex-col justify-center"><div class="flex items-center justify-between h-14"><div class="flex items-center gap-space-sm"><button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><div class="flex items-center gap-space-sm"><img alt="Clash of Bots brand logo - flat, single color minimal vector emblem featuring a clean rounded robot head inside an outer safety shield silhouette. Trustworthy, friendly, technical.. Brand logo. - Primary color: #0f766e - Font: robotoFlex - Mode: dark - Roundness: rounded-md " class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VYHLLcn8V5FmYfBFBDiJzrUhw7CtoReBJIEAAI0ZBoT4lghkAsIyaEUtdKCU-9SliNb2CsQtp2G4Bb2kRBkne-mN6NL-FGq_sL6s6off_aUaECVtRlcSnlyLw9NNHFpRqhRkiJErIRaOu_kw1dVfn2k2h9BARUTglVg6QUGiAJiwG1vz9Xvom0V1UtWzJLnq2iThTIa5H_q_K9hmwVYumkZbBVvvMLpdrphj9ti6systbMVgAJFOTI2ELo"/><div class="flex flex-col"><span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold">Clash of Bots</span><span class="font-title-md text-title-md font-medium text-on-surface leading-tight">Safety Rules</span></div></div></div><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="w-full flex items-center gap-1.5 h-1.5 pb-2"><div class="h-1 flex-1 rounded-full bg-primary transition-all duration-300"></div><div class="h-1 flex-1 rounded-full bg-surface-container-highest transition-all duration-300"></div><div class="h-1 flex-1 rounded-full bg-surface-container-highest transition-all duration-300"></div><div class="h-1 flex-1 rounded-full bg-surface-container-highest transition-all duration-300"></div><div class="h-1 flex-1 rounded-full bg-surface-container-highest transition-all duration-300"></div></div></div></header><main class="flex flex-col flex-1 relative w-full px-margin pt-20 pb-28 bg-surface"><div class="flex flex-col w-full space-y-space-md">
+<!-- Interactive Character Greeting / Delight Header -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md shadow-sm">
+<div class="flex items-start gap-space-md relative z-10">
+<div class="relative flex-shrink-0">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[26px]">smart_toy</span>
+</div>
+<span class="absolute -bottom-1 -right-1 flex h-4 w-4">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-4 w-4 bg-primary text-[9px] text-on-primary font-bold items-center justify-center">✓</span>
+</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs mb-0.5">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Step 3 of 5</span>
+<span class="text-outline text-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">60% complete</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface leading-snug">Choose Control Method</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Select how Clash of Bots interacts with your game. You can change this later in Settings.</p>
+</div>
+</div>
+<!-- Ambient subtle background glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+</div>
+<!-- Cards Selector Container -->
+<div aria-label="Control method options" class="flex flex-col gap-space-sm" role="radiogroup">
+<!-- Card 1: Accessibility (Recommended & Selected) -->
+<label class="group relative flex flex-col p-space-md rounded-xl bg-surface-container-high shadow-md transition-all duration-200 cursor-pointer overflow-hidden border-2 border-primary-container" id="label-acc">
+<!-- Glow accent -->
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-bl-full pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-sm relative z-10">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">accessibility_new</span>
+</div>
+<div>
+<span class="font-title-lg text-title-lg text-on-surface block leading-tight">Accessibility</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Standard mode (no root)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold tracking-wide shadow-xs">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+            Recommended
+          </span>
+<!-- Radio Indicator -->
+<input checked="" class="sr-only" name="control_method" onchange="selectMethod('accessibility')" type="radio" value="accessibility"/>
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary ml-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+</div>
+</div>
+<!-- Feature Pros -->
+<div class="mt-space-md space-y-1.5 pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface">Works on most Android phones</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface">Pinch-to-zoom supported natively</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface">No computer or unlocked bootloader needed</span>
+</div>
+</div>
+<!-- Con/Caution Item -->
+<div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-[18px] flex-shrink-0 mt-0.5">info</span>
+<span class="font-label-sm text-label-sm leading-tight text-on-surface-variant">Requires one extra Android permission step (Restricted Settings dialog)</span>
+</div>
+</label>
+<!-- Card 2: Shizuku (Available) -->
+<label class="group relative flex flex-col p-space-md rounded-xl bg-surface-container-low shadow-sm transition-all duration-200 cursor-pointer overflow-hidden hover:bg-surface-container" id="label-shizuku">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div>
+<span class="font-title-lg text-title-lg text-on-surface block leading-tight">Shizuku</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ADB-level bridge</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+            Needs Shizuku app
+          </span>
+<input class="sr-only" name="control_method" onchange="selectMethod('shizuku')" type="radio" value="shizuku"/>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center text-transparent ml-1 radio-dot group-hover:bg-secondary-container">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+</div>
+<!-- Feature Pros -->
+<div class="mt-space-md space-y-1.5 pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface">Precise touch &amp; input injection</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface">No accessibility service lag</span>
+</div>
+</div>
+<!-- Con/Caution Item -->
+<div class="mt-space-sm p-space-sm rounded-lg bg-surface-container flex items-start gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-[18px] flex-shrink-0 mt-0.5">refresh</span>
+<span class="font-label-sm text-label-sm leading-tight text-on-surface-variant">Must re-start Shizuku via wireless debugging after every phone reboot</span>
+</div>
+</label>
+<!-- Card 3: Root (Disabled) -->
+<div class="relative flex flex-col p-space-md rounded-xl bg-surface-container-lowest opacity-60 overflow-hidden shadow-none select-none">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container text-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-title-lg text-title-lg text-on-surface-variant block leading-tight">Root</span>
+<span class="material-symbols-outlined text-error text-[16px]">block</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Superuser privilege</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-outline font-label-sm text-label-sm font-semibold">
+          Rooted phones only
+        </span>
+</div>
+<!-- Feature Pros & Cons (Dimmed) -->
+<div class="mt-space-md space-y-1.5 pt-space-xs">
+<div class="flex items-center gap-space-xs text-outline">
+<span class="material-symbols-outlined text-[18px] flex-shrink-0">bolt</span>
+<span class="font-body-lg text-body-lg">Fastest execution, full background control</span>
+</div>
+<div class="flex items-center gap-space-xs text-outline">
+<span class="material-symbols-outlined text-[18px] flex-shrink-0">construction</span>
+<span class="font-body-lg text-body-lg">Requires Magisk or KernelSU</span>
+</div>
+</div>
+<!-- Clear Disabled Diagnostic Banner -->
+<div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-high flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-error text-[18px] flex-shrink-0 mt-0.5">shield</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-error">Not available on this phone</span>
+<span class="font-body-code text-body-code text-outline mt-0.5">No su binary detected in /system/bin or /sbin</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Interactive Helper & Micro-Action Panel -->
+<div class="mt-space-sm p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" id="info-icon">check_circle</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface" id="helper-note">
+        Accessibility mode selected. Compatible with Android 11–15.
+      </p>
+</div>
+<!-- Interactive Next Step Trigger -->
+<button class="w-full h-12 rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold flex items-center justify-center gap-space-xs shadow-md hover:brightness-110 active:scale-[0.99] transition-all" onclick="continueSetup()" type="button">
+<span>Next: Permissions</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+  function selectMethod(method) {
+    const cardAcc = document.getElementById('label-acc');
+    const cardShizuku = document.getElementById('label-shizuku');
+    const helperNote = document.getElementById('helper-note');
+    const infoIcon = document.getElementById('info-icon');
+
+    if (method === 'accessibility') {
+      // Style Accessibility active
+      cardAcc.className = "group relative flex flex-col p-space-md rounded-xl bg-surface-container-high shadow-md transition-all duration-200 cursor-pointer overflow-hidden border-2 border-primary-container";
+      cardAcc.querySelector('.radio-dot, .w-6').className = "w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary ml-1 shadow-sm";
+      cardAcc.querySelector('.radio-dot span, .w-6 span').className = "material-symbols-outlined text-[16px] font-bold";
+      
+      // Style Shizuku inactive
+      cardShizuku.className = "group relative flex flex-col p-space-md rounded-xl bg-surface-container-low shadow-sm transition-all duration-200 cursor-pointer overflow-hidden hover:bg-surface-container";
+      const sDot = cardShizuku.querySelector('.radio-dot, .w-6');
+      sDot.className = "w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center text-transparent ml-1 radio-dot group-hover:bg-secondary-container";
+
+      helperNote.textContent = "Accessibility mode selected. Compatible with Android 11–15.";
+      infoIcon.textContent = "check_circle";
+      infoIcon.className = "material-symbols-outlined text-[18px] text-primary";
+    } else if (method === 'shizuku') {
+      // Style Shizuku active
+      cardShizuku.className = "group relative flex flex-col p-space-md rounded-xl bg-surface-container-high shadow-md transition-all duration-200 cursor-pointer overflow-hidden border-2 border-primary-container";
+      const sDot = cardShizuku.querySelector('.radio-dot, .w-6');
+      sDot.className = "w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary ml-1 shadow-sm";
+      sDot.querySelector('span').className = "material-symbols-outlined text-[16px] font-bold";
+
+      // Style Accessibility inactive
+      cardAcc.className = "group relative flex flex-col p-space-md rounded-xl bg-surface-container-low shadow-sm transition-all duration-200 cursor-pointer overflow-hidden hover:bg-surface-container";
+      const aDot = cardAcc.querySelector('.radio-dot, .w-6');
+      aDot.className = "w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center text-transparent ml-1 radio-dot group-hover:bg-secondary-container";
+      
+      helperNote.textContent = "Shizuku mode selected. Requires Shizuku running on port 5555.";
+      infoIcon.textContent = "terminal";
+      infoIcon.className = "material-symbols-outlined text-[18px] text-secondary";
+    }
+  }
+
+  function continueSetup() {
+    const selected = document.querySelector('input[name="control_method"]:checked')?.value || 'accessibility';
+    console.log("Selected Control Method: " + selected);
+  }
+</script></main><footer class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-high/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(0,0,0,0.25)] pb-safe"><div class="h-20 px-margin flex items-center justify-between gap-gutter"><button class="h-12 px-space-lg min-w-[88px] rounded-full flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors" onclick="history.back()" type="button">Back</button><div class="flex items-center gap-space-sm"><button class="h-12 px-space-xl rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold flex items-center justify-center gap-space-xs shadow-[0_4px_12px_rgba(0,0,0,0.25)] hover:brightness-110 active:brightness-95 transition-all" type="button"><span>Continue</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div></div></footer></body></html>

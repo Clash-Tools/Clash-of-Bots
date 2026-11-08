@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Clash of Bots
+Comment=Clash of Clans farming bot for Android phones over adb
+Exec=clashofbots
+Icon=clash-of-bots
+Terminal=false
+Categories=Game;Utility;

@@ -1,0 +1,4 @@
+#!/bin/sh
+# AppImage entry: the Nuitka tree lives under opt/ like in the .deb/.rpm; arguments pass through.
+HERE="$(dirname "$(readlink -f "$0")")"
+exec "$HERE/opt/clash-of-bots/clashofbots" "$@"

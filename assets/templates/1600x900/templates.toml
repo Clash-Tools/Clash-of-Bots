@@ -1,0 +1,282 @@
+# Template metadata for 1600x900 @ 240 DPI (D-006, D-008).
+# region = [x, y, w, h] search area in frame pixels (smaller = faster, fewer false hits).
+# threshold = min TM_CCOEFF_NORMED score. gray = false when only color tells it apart.
+# PNGs are captured with: cob crop <frame.png> <name> x y w h   (prints a snippet for this file)
+# Anchors cut from LDPlayer 14 frames, 2026-10-18 (CoC UI with Battle / Ranked Battle menu).
+
+[defaults]
+threshold = 0.85
+gray = true
+
+# HOME: yellow "Battle" button, bottom-left (sword + label, no border)
+[templates.attack_button]
+region = [15, 705, 180, 195]
+
+# ATTACK_MENU: "Find a Match" label on the Multiplayer > Battle card (cost below it is left out)
+[templates.find_match]
+region = [135, 597, 280, 94]
+
+# ARMY_TRAINING: the attack menu while the army trains: "Attack available in:" (grey) where "Find a Match"
+# is otherwise (#180, moto g84 2026-11-06)
+[templates.attack_available_label]
+region = [123, 590, 298, 114]
+
+# ARMY: "My Army" tab label. Phones draw dialogs ~2 % larger (moto g84: 0.84 at 1.0, 0.98 at 1.02).
+[templates.army_tab_header]
+region = [225, 47, 195, 90]
+scales = [1.0, 1.02]
+
+# SEARCHING: "for opponents" on the cloud screen (magnifier swings and dots animate, so both left out)
+[templates.searching_text]
+region = [722, 444, 340, 94]
+
+# ARMY after Find a Match: green "Attack!" confirm (Edit Army shows a brown Battle button instead)
+[templates.army_attack]
+region = [1340, 751, 200, 96]
+scales = [1.0, 1.02]
+
+# SEARCH_BLOCKED: "Unable to attack Village! Try again later." on the cloud screen
+[templates.search_blocked_text]
+region = [437, 453, 350, 80]
+
+# Return Home button on the cloud screen (searching and blocked)
+[templates.clouds_return_home]
+region = [15, 780, 185, 110]
+
+# ATTACK_SEARCH: magnifier + "Next" (search cost below it is left out)
+[templates.next_button]
+region = [1315, 562, 260, 108]
+
+# ATTACK_SEARCH -> HOME: red "End Battle" (in battle the same button says Surrender)
+[templates.end_battle]
+region = [0, 615, 230, 110]
+
+# BATTLE -> surrender: red "Surrender" (End Battle before any troop is deployed)
+[templates.surrender_button]
+region = [20, 630, 190, 80]
+
+# SURRENDER_CONFIRM: "Surrender?" dialog title and its green Okay
+[templates.surrender_title]
+region = [625, 230, 350, 95]
+scales = [1.0, 1.02]  # phones draw dialogs ~2 % larger: no match there, 6 s lost per surrender (#166)
+
+[templates.okay_button]
+region = [887, 535, 165, 90]
+scales = [1.0, 1.02]
+
+# BATTLE: "Overall Damage" label, only shown once the battle has started
+[templates.overall_damage]
+region = [1328, 594, 256, 88]
+
+# BATTLE_END: green "Return Home" button. Searched wider than the 1-2 star layout (#135): the 3-star
+# results screen was never recognised, so a shifted button must still match.
+[templates.return_home]
+region = [560, 640, 480, 260]
+
+# POPUP_RELOAD: Android "Connection lost" dialog button
+[templates.reload_button]
+region = [388, 484, 170, 86]
+scales = [1.0, 1.02]  # phones draw dialogs ~2 % larger
+
+# POPUP_RELOAD: "Anyone there?" idle-disconnect dialog button, same spot as TRY AGAIN
+[templates.reload_game]
+region = [388, 484, 206, 86]
+scales = [1.0, 1.02]  # phones draw dialogs ~2 % larger
+
+# POPUP_OTHER_DEVICE: "Another device is connecting to this Village." (someone else is playing)
+[templates.other_device_text]
+region = [400, 404, 340, 64]
+scales = [1.0, 1.02]  # phones draw dialogs ~2 % larger
+
+# POPUP_OTHER_DEVICE: its RELOAD button, tapped only after the opt-in wait (#117)
+[templates.other_device_reload]
+region = [372, 470, 174, 114]
+scales = [1.0, 1.02]  # phones draw dialogs ~2 % larger
+
+# POPUP_GENERIC: red close X; its position differs per window, so search the whole top-right
+[templates.close_x]
+region = [1350, 0, 250, 170]
+
+# POPUP_GENERIC: same X with a lighter gradient (attack/defense log window)
+[templates.close_x_log]
+region = [1350, 0, 250, 170]
+
+# SHOP: close X on the shop's black header (tab highlight moves, so tabs are not used)
+[templates.shop_close]
+region = [1474, 4, 126, 128]
+
+# BUILDER_MENU: "Buildings & Heroes" panel title (opened by the hammer) and its small close X
+[templates.builder_menu_title]
+region = [1267, 0, 235, 60]
+
+[templates.builder_close]
+region = [1536, 0, 64, 74]
+
+# LOADING: "Loading" label above the progress bar (background art changes every season)
+[templates.loading_logo]
+region = [703, 716, 198, 87]
+
+# --- Builder Base (captured 2026-10-18, LDPlayer 14, BH with 2-stage battles) ---
+
+# BB_HOME: crossed-axes Battle button (main village has a sword)
+[templates.bb_attack_button]
+region = [15, 705, 180, 190]
+
+# BB_HOME -> main village: boat bubble on the map; position follows the camera, so whole frame.
+# The bubble is drawn at the camera zoom: 0.9 at full zoom-out (live 2026-10-21: 0.88 vs 0.57 at 1.0).
+# Phones (moto g84) draw it softer: 0.76 at 0.9 while look-alikes stay <= 0.54, so 0.72.
+[templates.bb_boat_icon]
+scales = [1.0, 0.95, 0.9, 0.85, 0.8, 1.1]
+threshold = 0.72
+
+# BB_ATTACK_MENU: "Start Attack" dialog and its green Find Now!
+[templates.bb_start_attack_title]
+region = [630, 125, 380, 95]
+
+[templates.bb_find_now]
+region = [1060, 543, 255, 95]
+
+# BB_RESULTS: green Return Home below the star banner (different art from the main village one)
+[templates.bb_return_home]
+region = [715, 690, 170, 120]
+
+# BB_SEARCHING: "Searching for opponents..." on the white BB clouds, and its red Cancel
+[templates.bb_searching_text]
+region = [710, 505, 310, 86]
+
+[templates.bb_search_cancel]
+region = [725, 743, 150, 80]
+
+# BB_STAGE_WAIT: "Attacker" label (BB battles only) + "Battle starts in:" (0.9: "Battle ends in" scores 0.72)
+[templates.bb_attacker_label]
+region = [1395, 0, 145, 66]
+
+[templates.battle_starts_text]
+region = [690, 0, 220, 66]
+threshold = 0.9
+
+# Home village -> Builder Base: same boat bubble as bb_boat_icon, cut while half under the event bar
+# (bb_boat_icon is tried first; follows the camera, so whole frame)
+[templates.home_boat_icon]
+threshold = 0.7
+scales = [1.0, 0.9, 1.1]
+
+# BB_STAR_BONUS: daily "Star Bonus!" reward over BB home (blocks Battle and hides the boat); Okay closes it
+[templates.bb_star_bonus_title]
+region = [615, 135, 370, 100]
+
+[templates.bb_bonus_okay]
+region = [725, 655, 150, 90]
+
+# --- Village maintenance (M3) ---
+# Collector bubbles over full collectors/mines/drills. Colour tells them apart, so no gray matching;
+# searched over the whole village view (any number of hits, task uses match_all).
+[templates.collect_gold]
+gray = false
+threshold = 0.8
+
+[templates.collect_elixir]
+gray = false
+threshold = 0.8
+
+[templates.collect_dark]
+gray = false
+threshold = 0.8
+
+# LDPLAYER_TOPUP: LDPlayer's own real-money "Top-Up [Clash of Clans] via LDPlayer" offer, shown over the
+# game. Only its small grey X is ever tapped (never the items or the Top Up button).
+[templates.ld_topup_title]
+region = [587, 131, 426, 80]
+
+[templates.ld_topup_close]
+region = [1190, 140, 54, 54]
+threshold = 0.8
+
+# WELCOME_BACK: "Welcome Back Chief!" banner after a long break (village shows through the dim backdrop)
+[templates.welcome_back_title]
+region = [520, 63, 560, 94]
+
+# BOOST_DIALOG: "Boost Production!" gem offer (opens when a bare collector is tapped). Only the red X is
+# ever tapped, never the green gem button.
+[templates.boost_title]
+region = [560, 175, 465, 92]
+scales = [1.0, 1.02]  # phones draw dialogs ~2 % larger
+
+[templates.boost_close]
+region = [1108, 172, 104, 100]
+scales = [1.0, 1.02]  # phones draw dialogs ~2 % larger
+
+# Loot cart (gets the loot lost to raids): dashed "Collect" label over the wagon (map position, whole
+# frame); tapping it selects the cart and shows "Loot Cart" + a Collect action button.
+[templates.loot_cart_label]
+threshold = 0.8
+
+[templates.loot_cart_title]
+region = [675, 560, 250, 80]
+
+[templates.loot_cart_collect]
+region = [715, 620, 170, 170]
+
+# --- Request donations ---
+# "Request" text of the dashed label over the clan castle (text only: the label border picks up
+# selection arrows); map position and size follow the camera -> whole frame, scale search in the task
+[templates.cc_request_label]
+threshold = 0.75
+
+# Clan castle selected: name line and its Request button (button row position depends on the building)
+[templates.cc_panel_title]
+region = [500, 560, 600, 80]
+
+[templates.cc_request_button]
+region = [250, 625, 1100, 160]
+
+# REQUEST_DIALOG: "Request Reinforcements" with Cancel / Send (Send posts to clan chat)
+[templates.request_dialog_title]
+region = [480, 50, 640, 92]
+
+[templates.request_send]
+region = [855, 570, 250, 105]
+
+[templates.request_cancel]
+region = [500, 570, 245, 105]
+
+# EVENTS_WINDOW: "Events" list (calendar icon) and its red X (further left than other windows)
+[templates.events_title]
+region = [695, 20, 215, 92]
+
+[templates.events_close]
+region = [1274, 22, 92, 90]
+
+# HOME_STAR_BONUS: "Star Bonus Received!" after the daily stars (covers the resource bar!), Okay closes it
+[templates.star_bonus_title]
+region = [502, 50, 615, 100]
+scales = [1.0, 1.02]  # phones draw dialogs ~2 % larger
+
+[templates.star_bonus_okay]
+region = [730, 725, 150, 85]
+
+# Builder Base collector bubbles (purple elixir drop, gold bar, gem mine), captured fully zoomed out
+# on BB_HOME 2026-10-21 (the BB collect step zooms out first). BB has no collect-all: every bubble is
+# tapped. Home dark-elixir bubbles score 0.76 on bb_collect_elixir: only searched on BB_HOME.
+[templates.bb_collect_elixir]
+threshold = 0.8
+
+[templates.bb_collect_gold]
+threshold = 0.75  # 0.79-0.83 on live frames (lighting)
+
+[templates.bb_collect_gems]
+threshold = 0.8
+
+# --- Army recipes (#185, moto g84 2026-11-07) ---
+# "Edit Army" on the attack menu (also on the "Attack available in" menu while the army trains)
+[templates.edit_army_label]
+region = [100, 792, 232, 120]
+
+# Army screen: the Saved Recipes dropdown arrow; open list: its pointer under the dimmed arrow
+[templates.recipes_arrow]
+region = [895, 28, 146, 126]
+scales = [1.0, 1.02]
+
+[templates.recipes_list_open]
+region = [880, 64, 175, 110]
+scales = [1.0, 1.02]

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#081425;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-tint": "#80d5cb", "primary-fixed": "#9cf2e8", "on-tertiary-container": "#ffe6d5", "secondary": "#b9c7df", "surface-bright": "#2f3a4c", "surface": "#081425", "tertiary-fixed-dim": "#ffb77d", "on-error": "#690005", "inverse-on-surface": "#263143", "on-secondary-container": "#abb9d1", "inverse-primary": "#006a63", "on-primary-fixed": "#00201d", "surface-container-high": "#1f2a3c", "error-container": "#93000a", "on-primary-fixed-variant": "#00504a", "secondary-fixed-dim": "#b9c7df", "inverse-surface": "#d8e3fb", "on-background": "#d8e3fb", "on-tertiary": "#4d2600", "surface-container": "#152031", "primary": "#80d5cb", "surface-dim": "#081425", "tertiary": "#ffb77d", "secondary-container": "#3c4a5e", "on-secondary": "#233144", "outline": "#889391", "secondary-fixed": "#d5e3fc", "on-tertiary-fixed-variant": "#6e3900", "on-error-container": "#ffdad6", "surface-container-low": "#111c2d", "primary-fixed-dim": "#80d5cb", "tertiary-fixed": "#ffdcc3", "outline-variant": "#3e4947", "surface-container-highest": "#2a3548", "surface-variant": "#2a3548", "on-tertiary-fixed": "#2f1500", "on-surface": "#d8e3fb", "on-surface-variant": "#bdc9c6", "surface-container-lowest": "#040e1f", "background": "#081425", "on-primary-container": "#a3faef", "on-primary": "#003733", "tertiary-container": "#a15600", "on-secondary-fixed-variant": "#3a485b", "error": "#ffb4ab", "primary-container": "#0f766e", "on-secondary-fixed": "#0d1c2e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1rem", "margin": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "label-lg": ["Roboto Flex"], "label-sm": ["Roboto Flex"], "title-md": ["Roboto Flex"], "display-lg": ["Roboto Flex"], "title-lg": ["Roboto Flex"], "display-lg-mobile": ["Roboto Flex"], "headline-md": ["Roboto Flex"], "body-lg": ["Roboto Flex"], "body-code": ["JetBrains Mono"] }, "fontSize": { "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-code": ["13px", { "lineHeight": "18px", "fontWeight": "500" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-lg text-body-lg flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Clash of Bots brand logo - flat, single color minimal vector emblem featuring a clean rounded robot head inside an outer safety shield silhouette. Trustworthy, friendly, technical.. Brand logo. - Primary color: #0f766e
+- Font: robotoFlex
+- Mode: dark
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VYHLLcn8V5FmYfBFBDiJzrUhw7CtoReBJIEAAI0ZBoT4lghkAsIyaEUtdKCU-9SliNb2CsQtp2G4Bb2kRBkne-mN6NL-FGq_sL6s6off_aUaECVtRlcSnlyLw9NNHFpRqhRkiJErIRaOu_kw1dVfn2k2h9BARUTglVg6QUGiAJiwG1vz9Xvom0V1UtWzJLnq2iThTIa5H_q_K9hmwVYumkZbBVvvMLpdrphj9ti6systbMVgAJFOTI2ELo"/><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Clash of Bots</span><span class="font-title-lg text-title-lg text-on-surface truncate">History &amp; Logs</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Refresh status" class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors active:bg-surface-container-high"><span class="material-symbols-outlined text-[20px]">sync</span></button><button aria-label="Export telemetry" class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors active:bg-surface-container-high"><span class="material-symbols-outlined text-[20px]">ios_share</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 px-margin bg-surface"><div class="flex flex-col w-full gap-space-md">
+<!-- Segmented View Controller -->
+<div class="w-full bg-surface-container-low p-space-xs rounded-full flex items-center">
+<button class="flex-1 py-space-sm px-space-md rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-space-xs transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Run History</span>
+</button>
+<button class="flex-1 py-space-sm px-space-md rounded-full font-label-lg text-label-lg bg-surface-container-high text-primary flex items-center justify-center gap-space-xs shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span>Diagnostic Logs</span>
+</button>
+</div>
+<!-- Privacy Sanitizer Banner Card -->
+<section class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<span class="font-label-lg text-label-lg text-primary tracking-wide uppercase">Privacy Shield v3.1</span>
+</div>
+<button class="h-9 px-space-md bg-primary-container text-on-primary-container hover:brightness-110 active:scale-95 transition-all rounded-full flex items-center gap-space-xs font-label-lg text-label-lg shrink-0" id="shareLogsBtn" type="button">
+<span class="material-symbols-outlined text-[16px]">share</span>
+<span>Share Diagnostics</span>
+</button>
+</div>
+<div class="flex items-start gap-space-xs bg-surface-container/70 rounded-lg p-space-sm">
+<span class="material-symbols-outlined text-secondary text-[16px] shrink-0 mt-[1px]">verified_user</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-tight">
+        Sanitizer active: IP addresses, device serials, account tokens, and village map coordinates are automatically scrubbed before export.
+      </p>
+</div>
+</section>
+<!-- Filter & Search Controls -->
+<div class="flex flex-col gap-space-sm">
+<!-- Live Search Field -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none">search</span>
+<input class="w-full h-12 bg-surface-container pl-11 pr-10 rounded-xl font-body-lg text-body-lg text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-high transition-colors" id="logSearchInput" placeholder="Search log messages, modules, or tags..." type="text"/>
+<button aria-label="Clear search" class="hidden absolute right-space-sm top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface" id="clearSearchBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Scrollable Filter Chips -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs -mx-margin px-margin no-scrollbar select-none" id="chipContainer">
+<button class="filter-chip h-8 px-space-md rounded-full bg-primary text-on-primary font-label-sm text-label-sm shrink-0 flex items-center gap-1.5 transition-all" data-filter="ALL" type="button">
+<span>All</span>
+<span class="bg-on-primary/20 text-on-primary px-1.5 py-0.5 rounded-full text-[10px]">1,248</span>
+</button>
+<button class="filter-chip h-8 px-space-md rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm shrink-0 flex items-center gap-1.5 transition-all" data-filter="SAFETY" type="button">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>SAFETY</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.5 rounded-full text-[10px]">12</span>
+</button>
+<button class="filter-chip h-8 px-space-md rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm shrink-0 flex items-center gap-1.5 transition-all" data-filter="ACTION" type="button">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>ACTIONS</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.5 rounded-full text-[10px]">580</span>
+</button>
+<button class="filter-chip h-8 px-space-md rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm shrink-0 flex items-center gap-1.5 transition-all" data-filter="WARNING" type="button">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span>WARNING</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.5 rounded-full text-[10px]">142</span>
+</button>
+<button class="filter-chip h-8 px-space-md rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm shrink-0 flex items-center gap-1.5 transition-all" data-filter="ERROR" type="button">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>ERROR</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.5 rounded-full text-[10px]">26</span>
+</button>
+<button class="filter-chip h-8 px-space-md rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm shrink-0 flex items-center gap-1.5 transition-all" data-filter="INFO" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>INFO</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.5 rounded-full text-[10px]">1,080</span>
+</button>
+</div>
+</div>
+<!-- Telemetry Stream / Logs Timeline -->
+<div class="flex flex-col gap-space-sm min-h-[380px]" id="logStreamList">
+<!-- Log Item 1: SAFETY -->
+<article class="log-entry bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container" data-level="SAFETY" data-module="GuardrailEngine">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-code text-body-code text-secondary">16:45:12</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+            SAFETY
+          </span>
+<span class="font-body-code text-body-code text-primary-fixed-dim bg-surface-container-high px-1.5 py-0.5 rounded">
+            [GuardrailEngine]
+          </span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">bedtime</span>
+</div>
+<p class="font-body-code text-body-code text-on-surface break-words leading-relaxed pl-space-xs border-l-2 border-tertiary/40">
+        Quiet hours trigger reached (16:45). Safely returning to village and putting bot into hibernation mode.
+      </p>
+</article>
+<!-- Log Item 2: ACTION -->
+<article class="log-entry bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container" data-level="ACTION" data-module="CombatDeployer">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-code text-body-code text-secondary">16:43:08</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary-container/40 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+            ACTION
+          </span>
+<span class="font-body-code text-body-code text-primary-fixed-dim bg-surface-container-high px-1.5 py-0.5 rounded">
+            [CombatDeployer]
+          </span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">swords</span>
+</div>
+<p class="font-body-code text-body-code text-on-surface break-words leading-relaxed pl-space-xs border-l-2 border-primary/40">
+        Deployed 18x Sneaky Goblins on target storage sector [X: 420, Y: 810]. Target loot captured: <span class="text-tertiary font-bold">480,000 Gold</span>.
+      </p>
+</article>
+<!-- Log Item 3: INFO -->
+<article class="log-entry bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container" data-level="INFO" data-module="ScreenWatcher">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-code text-body-code text-secondary">16:40:22</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">info</span>
+            INFO
+          </span>
+<span class="font-body-code text-body-code text-primary-fixed-dim bg-surface-container-high px-1.5 py-0.5 rounded">
+            [ScreenWatcher]
+          </span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">visibility</span>
+</div>
+<p class="font-body-code text-body-code text-on-surface break-words leading-relaxed pl-space-xs border-l-2 border-outline-variant">
+        Detected battle victory screen (2 Stars, 74% destruction). Tapping return home button after 2.4s humanized delay.
+      </p>
+</article>
+<!-- Log Item 4: WARNING -->
+<article class="log-entry bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container" data-level="WARNING" data-module="OCRRecognizer">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-code text-body-code text-secondary">16:32:04</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-tertiary/20 text-tertiary-fixed-dim font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+            WARNING
+          </span>
+<span class="font-body-code text-body-code text-primary-fixed-dim bg-surface-container-high px-1.5 py-0.5 rounded">
+            [OCRRecognizer]
+          </span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">timer</span>
+</div>
+<p class="font-body-code text-body-code text-on-surface break-words leading-relaxed pl-space-xs border-l-2 border-tertiary-fixed-dim/40">
+        Cloud search took 42s (&gt;30s expected). Re-verifying game state integrity.
+      </p>
+</article>
+<!-- Log Item 5: ACTION -->
+<article class="log-entry bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container" data-level="ACTION" data-module="VillageCollector">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-code text-body-code text-secondary">16:15:00</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary-container/40 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+            ACTION
+          </span>
+<span class="font-body-code text-body-code text-primary-fixed-dim bg-surface-container-high px-1.5 py-0.5 rounded">
+            [VillageCollector]
+          </span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">toll</span>
+</div>
+<p class="font-body-code text-body-code text-on-surface break-words leading-relaxed pl-space-xs border-l-2 border-primary/40">
+        Collected 6x Gold Mines and 6x Elixir Collectors. Stored yield updated.
+      </p>
+</article>
+<!-- Log Item 6: ERROR -->
+<article class="log-entry bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container" data-level="ERROR" data-module="HealthCheck">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-code text-body-code text-secondary">15:58:19</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-error-container/40 text-error font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">error</span>
+            ERROR
+          </span>
+<span class="font-body-code text-body-code text-primary-fixed-dim bg-surface-container-high px-1.5 py-0.5 rounded">
+            [HealthCheck]
+          </span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">build</span>
+</div>
+<p class="font-body-code text-body-code text-on-surface break-words leading-relaxed pl-space-xs border-l-2 border-error/40">
+        Minor touch offset deviation detected (+2px). Calibrating virtual touch inject coordinates.
+      </p>
+</article>
+<!-- Empty Search State (hidden by default) -->
+<div class="hidden flex-col items-center justify-center p-space-xl bg-surface-container-low rounded-xl gap-space-sm text-center" id="noResultsState">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-secondary mb-space-xs">
+<span class="material-symbols-outlined text-[30px]">manage_search</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">No logs matching filter</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs">
+        Try broadening your search term or select "All" from the level filter bar.
+      </p>
+<button class="mt-space-xs px-space-md py-space-sm bg-surface-container-high text-primary rounded-full font-label-lg text-label-lg hover:bg-secondary-container" id="resetFilterBtn" type="button">
+        Reset filters
+      </button>
+</div>
+</div>
+<!-- Persistent Sticky Diagnostic Action Bar -->
+<aside class="sticky bottom-2 z-30 w-full bg-surface-container-high/95 backdrop-blur-md rounded-2xl p-space-sm shadow-xl flex items-center justify-between gap-space-xs">
+<!-- Live Scroll Toggle (M3 Switch pattern) -->
+<label class="flex items-center gap-space-xs cursor-pointer select-none px-space-xs py-1 rounded-lg hover:bg-surface-container-highest transition-colors">
+<div class="relative inline-flex items-center">
+<input checked="" class="sr-only peer" id="autoScrollToggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container rounded-full peer peer-checked:bg-primary-container transition-colors"></div>
+<div class="dot absolute left-1 top-1 bg-outline w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5 peer-checked:bg-primary"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-medium shrink-0">Live Scroll</span>
+</label>
+<div class="flex items-center gap-space-xs">
+<!-- Clear Visible Logs Trigger -->
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-surface-container transition-colors" id="clearLogsBtn" title="Clear view" type="button">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</button>
+<!-- Export Formats Trigger -->
+<div class="relative">
+<button class="h-10 px-space-md bg-secondary-container text-on-secondary-container hover:bg-surface-bright rounded-full flex items-center gap-space-xs font-label-lg text-label-lg transition-all active:scale-95 shadow-sm" id="exportMenuBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<!-- Export Dropdown Flyout -->
+<div class="hidden absolute right-0 bottom-12 w-48 bg-surface-container-highest rounded-xl p-space-xs shadow-xl flex flex-col gap-1 z-50" id="exportFlyout">
+<button class="w-full text-left px-space-sm py-2 rounded-lg text-on-surface hover:bg-surface-container font-label-lg text-label-lg flex items-center gap-space-xs transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">data_object</span>
+<span>Sanitized JSON</span>
+</button>
+<button class="w-full text-left px-space-sm py-2 rounded-lg text-on-surface hover:bg-surface-container font-label-lg text-label-lg flex items-center gap-space-xs transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">description</span>
+<span>Raw Plaintext (.txt)</span>
+</button>
+<button class="w-full text-left px-space-sm py-2 rounded-lg text-on-surface hover:bg-surface-container font-label-lg text-label-lg flex items-center gap-space-xs transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">content_copy</span>
+<span>Copy to Clipboard</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Export / Share Toast notification feedback -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-y-2 bg-surface-container-highest text-primary-fixed px-space-md py-space-sm rounded-full shadow-lg flex items-center gap-space-xs font-label-lg text-label-lg" id="statusToast">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span id="toastMessage">Sanitized logs exported safely</span>
+</div>
+</div>
+<script>
+  (function () {
+    const searchInput = document.getElementById('logSearchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const chipContainer = document.getElementById('chipContainer');
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const logEntries = document.querySelectorAll('.log-entry');
+    const noResultsState = document.getElementById('noResultsState');
+    const resetFilterBtn = document.getElementById('resetFilterBtn');
+    const exportMenuBtn = document.getElementById('exportMenuBtn');
+    const exportFlyout = document.getElementById('exportFlyout');
+    const shareLogsBtn = document.getElementById('shareLogsBtn');
+    const clearLogsBtn = document.getElementById('clearLogsBtn');
+    const autoScrollToggle = document.getElementById('autoScrollToggle');
+    const statusToast = document.getElementById('statusToast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    let activeFilter = 'ALL';
+    let searchQuery = '';
+
+    function showToast(message) {
+      toastMessage.textContent = message;
+      statusToast.classList.remove('opacity-0', 'translate-y-2');
+      statusToast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        statusToast.classList.add('opacity-0', 'translate-y-2');
+        statusToast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2400);
+    }
+
+    function applyFilters() {
+      let visibleCount = 0;
+      logEntries.forEach(entry => {
+        const level = entry.getAttribute('data-level');
+        const text = entry.textContent.toLowerCase();
+        const matchesLevel = (activeFilter === 'ALL' || level === activeFilter);
+        const matchesSearch = (!searchQuery || text.includes(searchQuery));
+
+        if (matchesLevel && matchesSearch) {
+          entry.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          entry.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        noResultsState.classList.remove('hidden');
+        noResultsState.classList.add('flex');
+      } else {
+        noResultsState.classList.add('hidden');
+        noResultsState.classList.remove('flex');
+      }
+    }
+
+    // Search query changes
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      if (searchQuery.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+      applyFilters();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      applyFilters();
+    });
+
+    // Chip click selection
+    chipContainer.addEventListener('click', (e) => {
+      const chip = e.target.closest('.filter-chip');
+      if (!chip) return;
+
+      activeFilter = chip.getAttribute('data-filter');
+
+      filterChips.forEach(c => {
+        c.classList.remove('bg-primary', 'text-on-primary');
+        c.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+
+      chip.classList.add('bg-primary', 'text-on-primary');
+      chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+
+      applyFilters();
+    });
+
+    resetFilterBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      activeFilter = 'ALL';
+      clearSearchBtn.classList.add('hidden');
+
+      filterChips.forEach(c => {
+        if (c.getAttribute('data-filter') === 'ALL') {
+          c.classList.add('bg-primary', 'text-on-primary');
+          c.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        } else {
+          c.classList.remove('bg-primary', 'text-on-primary');
+          c.classList.add('bg-surface-container', 'text-on-surface-variant');
+        }
+      });
+
+      applyFilters();
+    });
+
+    // Share & Export triggers
+    shareLogsBtn.addEventListener('click', () => {
+      showToast('Sanitized diagnostics ready to share');
+    });
+
+    exportMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      exportFlyout.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!exportFlyout.contains(e.target) && e.target !== exportMenuBtn) {
+        exportFlyout.classList.add('hidden');
+      }
+    });
+
+    exportFlyout.addEventListener('click', (e) => {
+      const option = e.target.closest('button');
+      if (option) {
+        exportFlyout.classList.add('hidden');
+        showToast(option.innerText.trim() + ' downloaded');
+      }
+    });
+
+    clearLogsBtn.addEventListener('click', () => {
+      logEntries.forEach(item => item.classList.add('hidden'));
+      noResultsState.classList.remove('hidden');
+      noResultsState.classList.add('flex');
+      showToast('Console buffer cleared');
+    });
+
+    autoScrollToggle.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        showToast('Auto-scroll stream attached');
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } else {
+        showToast('Auto-scroll paused');
+      }
+    });
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-high/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary-fixed [&amp;&gt;div:first-child]:bg-primary-container [&amp;&gt;div:first-child]:text-on-primary-container [&amp;&gt;div:first-child]:scale-105 font-bold"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center flex-1 min-w-[44px] h-[52px] gap-space-xs text-on-surface-variant transition-all select-none" data-path="home" href="#"><div class="w-12 h-8 rounded-full flex items-center justify-center transition-all"><span class="material-symbols-outlined text-[22px]">smart_toy</span></div><span class="font-label-sm text-label-sm tracking-wide">Home</span></a><a class="flex flex-col items-center justify-center flex-1 min-w-[44px] h-[52px] gap-space-xs text-on-surface-variant transition-all select-none" data-path="automation" href="#"><div class="w-12 h-8 rounded-full flex items-center justify-center transition-all"><span class="material-symbols-outlined text-[22px]">tune</span></div><span class="font-label-sm text-label-sm tracking-wide">Automation</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 min-w-[44px] h-[52px] gap-space-xs transition-all select-none text-primary-fixed [&amp;&gt;div:first-child]:bg-primary-container [&amp;&gt;div:first-child]:text-on-primary-container [&amp;&gt;div:first-child]:scale-105 font-bold" data-path="history-&amp;-logs" href="#"><div class="w-12 h-8 rounded-full flex items-center justify-center transition-all"><span class="material-symbols-outlined text-[22px]">history_edu</span></div><span class="font-label-sm text-label-sm tracking-wide">Logs</span></a><a class="flex flex-col items-center justify-center flex-1 min-w-[44px] h-[52px] gap-space-xs text-on-surface-variant transition-all select-none" data-path="settings" href="#"><div class="w-12 h-8 rounded-full flex items-center justify-center transition-all"><span class="material-symbols-outlined text-[22px]">settings</span></div><span class="font-label-sm text-label-sm tracking-wide">Settings</span></a></div></nav></body></html>

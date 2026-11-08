@@ -1,0 +1,17 @@
+# Opt-in test build of the Linux packages: run manually on any branch, or add the `build-linux` label
+# to a PR. Builds and smoke-tests the .deb, .rpm and AppImage; never publishes.
+name: build-linux
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled, synchronize]
+
+concurrency:
+  group: build-linux-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'build-linux')
+    uses: ./.github/workflows/_build-linux.yml

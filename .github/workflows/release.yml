@@ -1,0 +1,80 @@
+# Tag push vX.Y.Z[-alpha.N|-beta.N|-rc.N] (made by scripts/release.py) -> Windows exe + Linux
+# packages (built in parallel, each smoke-tested) -> one GitHub release with all of them.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0  # upstream has no floating v10 tag
+        with:
+          enable-cache: true
+      - run: uv sync --python 3.13
+      - name: Tag matches cob/__init__.py and CHANGELOG has the section
+        run: |
+          v=$(uv run python scripts/release.py current)
+          test "v$v" = "$GITHUB_REF_NAME" || { echo "tag $GITHUB_REF_NAME != v$v"; exit 1; }
+          uv run python scripts/release.py notes "$v" > /dev/null
+      - run: uv run ruff check .
+      # Same as ci.yml: Qt needs a few system libraries even on the offscreen platform (GUI tests).
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq libegl1 libgl1 libxkbcommon0 libfontconfig1 libdbus-1-3
+      - run: uv run pytest -q
+        env:
+          QT_QPA_PLATFORM: offscreen
+
+  # The release starts as a draft; each build uploads its files to it (no workflow artifacts: their
+  # storage quota ran out, 2026-11-06), and publish makes it public once every build passed.
+  draft:
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - name: Draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v="${GITHUB_REF_NAME#v}"
+          python3 scripts/release.py notes "$v" > notes.md
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 \
+            || gh release create "$GITHUB_REF_NAME" --draft --verify-tag --title "Clash of Bots v$v" --notes-file notes.md
+
+  build:
+    needs: draft
+    uses: ./.github/workflows/_build-windows.yml
+    with:
+      release_tag: ${{ github.ref_name }}
+
+  build-linux:
+    needs: draft
+    uses: ./.github/workflows/_build-linux.yml
+    with:
+      release_tag: ${{ github.ref_name }}
+
+  publish:
+    needs: [build, build-linux]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v="${{ needs.build.outputs.version }}"
+          case "$v" in
+            *-alpha.*) label="Alpha"; flags="--prerelease --latest=false" ;;
+            *-beta.*)  label="Beta"; flags="--prerelease --latest=false" ;;
+            *-rc.*)    label="Release Candidate"; flags="--prerelease --latest=false" ;;
+            *)         label="Stable"; flags="--latest" ;;
+          esac
+          gh release edit "$GITHUB_REF_NAME" --draft=false --title "Clash of Bots v$v ($label)" $flags

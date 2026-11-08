@@ -1,0 +1,70 @@
+# .deb and .rpm for the Nuitka build in build/ClashOfBots (scripts/build_linux.sh sets VERSION).
+# The tree goes to /opt/clash-of-bots; clashofbots and cob in /usr/bin start it (no args = GUI).
+name: clash-of-bots
+arch: amd64
+platform: linux
+version: ${VERSION}
+version_schema: semver
+maintainer: Clash Tools <clash-tools@users.noreply.github.com>
+description: |
+  Clash of Bots: Clash of Clans farming bot (GUI + command line).
+  Drives a real Android phone over adb (USB debugging); no emulator on Linux.
+homepage: https://github.com/Clash-Tools/Clash-of-Bots
+license: Proprietary
+
+contents:
+  - src: ./build/ClashOfBots
+    dst: /opt/clash-of-bots
+  - src: /opt/clash-of-bots/clashofbots
+    dst: /usr/bin/clashofbots
+    type: symlink
+  - src: /opt/clash-of-bots/clashofbots
+    dst: /usr/bin/cob
+    type: symlink
+  - src: ./packaging/linux/clash-of-bots.desktop
+    dst: /usr/share/applications/clash-of-bots.desktop
+  - src: ./build/clash-of-bots.png
+    dst: /usr/share/icons/hicolor/256x256/apps/clash-of-bots.png
+
+# adb plus the system libraries Qt's xcb platform plugin loads (Nuitka bundles Qt itself).
+overrides:
+  deb:
+    depends:
+      - adb
+      - libdbus-1-3
+      - libegl1
+      - libfontconfig1
+      - libgl1
+      - libglib2.0-0t64 | libglib2.0-0
+      - libx11-xcb1
+      - libxcb-cursor0
+      - libxcb-icccm4
+      - libxcb-image0
+      - libxcb-keysyms1
+      - libxcb-randr0
+      - libxcb-render-util0
+      - libxcb-shape0
+      - libxcb-xinerama0
+      - libxcb-xkb1
+      - libxkbcommon-x11-0
+      - libxkbcommon0
+  rpm:
+    depends:
+      - android-tools
+      - dbus-libs
+      - fontconfig
+      - glib2
+      - libX11-xcb
+      - libxkbcommon
+      - libxkbcommon-x11
+      - mesa-libEGL
+      - mesa-libGL
+      - xcb-util-cursor
+      - xcb-util-image
+      - xcb-util-keysyms
+      - xcb-util-renderutil
+      - xcb-util-wm
+
+section: games
+rpm:
+  group: Amusements/Games

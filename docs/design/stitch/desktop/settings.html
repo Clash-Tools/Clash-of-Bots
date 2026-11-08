@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Roboto+Flex:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-background": "#d8e3fb", "tertiary": "#ffb77d", "error": "#ffb4ab", "on-error": "#690005", "surface-bright": "#2f3a4c", "surface-container-highest": "#2a3548", "secondary-fixed-dim": "#b9c7df", "surface-container-high": "#1f2a3c", "surface-dim": "#081425", "tertiary-fixed-dim": "#ffb77d", "inverse-primary": "#006a63", "on-surface": "#d8e3fb", "primary-fixed-dim": "#80d5cb", "secondary-container": "#3c4a5e", "surface-container": "#152031", "primary-container": "#0f766e", "on-tertiary-fixed-variant": "#6e3900", "on-error-container": "#ffdad6", "inverse-surface": "#d8e3fb", "on-primary-fixed-variant": "#00504a", "background": "#081425", "inverse-on-surface": "#263143", "on-secondary": "#233144", "secondary": "#b9c7df", "on-tertiary": "#4d2600", "on-tertiary-container": "#ffe6d5", "on-secondary-fixed": "#0d1c2e", "on-tertiary-fixed": "#2f1500", "on-secondary-container": "#abb9d1", "tertiary-container": "#a15600", "surface-variant": "#2a3548", "on-primary-fixed": "#00201d", "outline-variant": "#3e4947", "primary-fixed": "#9cf2e8", "surface-tint": "#80d5cb", "secondary-fixed": "#d5e3fc", "on-surface-variant": "#bdc9c6", "surface-container-lowest": "#040e1f", "outline": "#889391", "surface-container-low": "#111c2d", "error-container": "#93000a", "primary": "#80d5cb", "on-primary-container": "#a3faef", "on-primary": "#003733", "surface": "#081425", "tertiary-fixed": "#ffdcc3", "on-secondary-fixed-variant": "#3a485b" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-desktop": "2rem", "margin": "1rem", "space-md": "1rem", "space-xxl": "3rem", "space-xl": "2rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "space-lg": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "body-lg": ["Inter"], "body-sm": ["Inter"], "display-lg-mobile": ["Roboto Flex"], "label-sm": ["Inter"], "title-md": ["Roboto Flex"], "display-lg": ["Roboto Flex"], "label-md": ["Inter"], "title-lg": ["Roboto Flex"], "body-md": ["Inter"], "headline-sm": ["Roboto Flex"], "headline-md": ["Roboto Flex"], "label-lg": ["Inter"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "label-sm": ["11px", { "lineHeight": "16px", "fontWeight": "600" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "display-lg": ["36px", { "lineHeight": "44px", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased min-w-[1280px]"><aside class="fixed left-0 top-16 bottom-10 w-24 bg-surface-container-low flex flex-col items-center py-space-sm z-40 select-none"><nav class="flex flex-col items-center gap-space-xs w-full px-space-xs" data-active-classes="bg-secondary-container text-on-surface font-semibold"><a class="flex flex-col items-center justify-center w-full py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="font-label-sm text-label-sm text-center tracking-tight">Dashboard</span></a><a class="flex flex-col items-center justify-center w-full py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="devices" href="#"><span class="font-label-sm text-label-sm text-center tracking-tight">Devices</span></a><a class="flex flex-col items-center justify-center w-full py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="automation" href="#"><span class="font-label-sm text-label-sm text-center tracking-tight">Automation</span></a><a class="flex flex-col items-center justify-center w-full py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="safety-and-schedule" href="#"><span class="font-label-sm text-label-sm text-center tracking-tight">Safety</span></a><a class="flex flex-col items-center justify-center w-full py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="history" href="#"><span class="font-label-sm text-label-sm text-center tracking-tight">History</span></a><a aria-current="page" class="flex flex-col items-center justify-center w-full py-2.5 rounded-xl transition-all bg-secondary-container text-on-surface font-semibold" data-path="logs" href="#"><span class="font-label-sm text-label-sm text-center tracking-tight">Logs</span></a><a class="flex flex-col items-center justify-center w-full py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><span class="font-label-sm text-label-sm text-center tracking-tight">Settings</span></a></nav></aside><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-low/90 backdrop-blur-md z-50 px-space-md select-none"><div class="h-full w-full flex items-center justify-between"><div class="flex items-center gap-space-md"><img alt="Clash of Bots logo: a clean flat minimalist robot head enclosed inside a classic curved shield outline, rendered in deep teal (#0F766E) on transparent background. Friendly, calm, safety-first automation emblem.. Brand logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X0UktTyRoeVVcOBghnaxrsYnDzdtK5a6Kf8wgx3-tMkxumHEO6QjxR1BhENQ31tnSXLzrvOrc5IYrZN_CgwyDKveN7PWph0GgI-e2_2ecfHHUw6vL41kVXeXdlWYaQdcj7XWSeJ6LlsI1NVZrFWDi238Xea3WdAfP0DV3gVp0GUF07OGIWWJ-nvMRgv38eWmY2i5owqp5nnCMwXrrkkcNVu_xKmNiO6vfLbJz9m04"/><span class="font-title-lg text-title-lg text-on-surface font-semibold tracking-normal">Clash of Bots</span><div class="h-5 w-[1px] bg-outline-variant/40 ml-2 mr-2"></div><div class="flex items-center gap-space-sm bg-surface-container px-3 py-1.5 rounded-full cursor-pointer hover:bg-surface-container-high transition-colors"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="font-label-md text-label-md text-on-surface font-medium">Pixel 7 Pro (USB)</span><span class="material-symbols-outlined text-on-surface-variant text-[16px]">expand_more</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-2 bg-primary-container text-on-primary-container px-3.5 py-1.5 rounded-full"><span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span></span><span class="font-label-md text-label-md font-semibold tracking-wide uppercase">Running</span></div><button class="flex items-center justify-center h-9 px-3.5 bg-error-container text-on-error-container hover:bg-error hover:text-on-error rounded-full gap-1.5 transition-colors" title="Emergency Kill Switch"><span class="material-symbols-outlined text-[18px]">stop_circle</span><span class="font-label-md text-label-md font-bold uppercase tracking-wider">Kill Switch</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><div class="pl-24"><main class="w-full min-h-[calc(100vh-6.5rem)] pt-16 pb-10 px-margin-desktop bg-background"><div class="flex flex-col w-full">
+<!-- Active Sidebar Highlighter script & Header meta sync -->
+<script>
+    (function() {
+      // Sync sidebar active state visually
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'settings') {
+          link.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+          link.classList.add('bg-secondary-container', 'text-on-surface', 'font-semibold');
+        } else {
+          link.classList.remove('bg-secondary-container', 'text-on-surface', 'font-semibold');
+          link.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+        }
+      });
+    })();
+  </script>
+<!-- Page Header: Analytical, calm, developer-suite demeanor -->
+<div class="flex flex-col md:flex-row md:items-end justify-between pb-6 mb-8 gap-4">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2 text-primary font-mono text-label-sm tracking-wider uppercase">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Runtime Environment &amp; Host Orchestration</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight font-bold">Preferences</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Configure host system integration, localized telemetry persistence, automated distribution channels, and privacy bounds.
+      </p>
+</div>
+<!-- Quick State Badges -->
+<div class="flex items-center gap-3 self-start md:self-auto">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Daemon: PID 19824</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary">lock</span>
+<span>Local Memory Only</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Configuration Matrix -->
+<div class="grid grid-cols-12 gap-gutter-desktop">
+<!-- LEFT COLUMN: Settings & System Switches (7 Cols) -->
+<div class="col-span-12 xl:col-span-7 flex flex-col gap-gutter-desktop">
+<!-- Section 1: Appearance & Localization -->
+<section class="bg-surface-container rounded-xl p-6 shadow-md flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+</div>
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Appearance &amp; Localization</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage interface theme calibration and language packs</p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high font-mono text-label-sm text-primary">v4.18-UI</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+<!-- Theme Picker Segmented Stack -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface font-medium">Interface Color Theme</label>
+<div class="grid grid-cols-3 p-1 rounded-lg bg-surface-container-low gap-1">
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] mb-1">brightness_auto</span>
+<span class="font-label-sm text-label-sm">Auto</span>
+</button>
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors opacity-60 cursor-not-allowed" title="Light theme disabled for analytical dark room safety" type="button">
+<span class="material-symbols-outlined text-[18px] mb-1">light_mode</span>
+<span class="font-label-sm text-label-sm">Light</span>
+</button>
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded bg-secondary-container text-on-surface shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] mb-1 text-primary">dark_mode</span>
+<span class="font-label-sm text-label-sm font-semibold">OLED Dark</span>
+</button>
+</div>
+</div>
+<!-- Language Selector -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface font-medium">Application Language</label>
+<div class="relative">
+<select class="w-full h-11 px-3.5 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md appearance-none focus:outline-none cursor-pointer">
+<option selected="">English (United States) [en-US]</option>
+<option>Deutsch (Standard) [de-DE]</option>
+<option>Español (Latinoamérica) [es-419]</option>
+<option>Français (France) [fr-FR]</option>
+<option>中文 (简体 - 社区翻译) [zh-CN]</option>
+<option>日本語 (コミュニティ) [ja-JP]</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">unfold_more</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+              100% string localization verified
+            </span>
+</div>
+</div>
+</section>
+<!-- Section 2: System Integration & Notifications -->
+<section class="bg-surface-container rounded-xl p-6 shadow-md flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">System Integration &amp; Dispatcher</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">OS daemon lifecycle, tray minimizing, and toast broadcast alerts</p>
+</div>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-high text-on-surface hover:bg-secondary-container transition-all text-label-sm" id="test-toast-btn">
+<span class="material-symbols-outlined text-[15px]">send_time_extension</span>
+<span>Test Dispatch</span>
+</button>
+</div>
+<!-- Toggles Grid -->
+<div class="flex flex-col gap-3 pt-2">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container-high/40 transition-colors">
+<div class="flex flex-col pr-4">
+<span class="font-title-md text-title-md text-on-surface">Start Minimized to System Tray</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Keep background worker daemon running without taking taskbar or dock real estate</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-on-primary-container after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container peer-checked:after:bg-on-primary-container"></div>
+</label>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container-high/40 transition-colors">
+<div class="flex flex-col pr-4">
+<span class="font-title-md text-title-md text-on-surface">Launch on Operating System Startup</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Register systemd unit or Windows Run registry entry with passive idle state</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container peer-checked:after:bg-on-primary-container"></div>
+</label>
+</div>
+<!-- Granular Alert Interlocks -->
+<div class="p-3.5 rounded-lg bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">notifications_active</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Telemetry Notification Rules</span>
+</div>
+<span class="font-mono text-label-sm text-on-surface-variant">3 of 3 Active</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+<!-- Item A -->
+<label class="flex items-start gap-2.5 p-2 rounded bg-surface-container cursor-pointer hover:bg-surface-container-high/70 transition-colors">
+<input checked="" class="mt-0.5 rounded text-primary focus:ring-0 accent-primary bg-surface-container-highest h-4 w-4" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Safety Guard Stop</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tripwire halts bot</span>
+</div>
+</label>
+<!-- Item B -->
+<label class="flex items-start gap-2.5 p-2 rounded bg-surface-container cursor-pointer hover:bg-surface-container-high/70 transition-colors">
+<input checked="" class="mt-0.5 rounded text-primary focus:ring-0 accent-primary bg-surface-container-highest h-4 w-4" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Vision Anomaly</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">OCR match fails</span>
+</div>
+</label>
+<!-- Item C -->
+<label class="flex items-start gap-2.5 p-2 rounded bg-surface-container cursor-pointer hover:bg-surface-container-high/70 transition-colors">
+<input checked="" class="mt-0.5 rounded text-primary focus:ring-0 accent-primary bg-surface-container-highest h-4 w-4" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Rest Periods</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Humanized breaks</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Data, Profiles & Configuration Management -->
+<section class="bg-surface-container rounded-xl p-6 shadow-md flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">folder_data</span>
+</div>
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Data &amp; Local Persistence</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Local model cache, debug logs, export snapshots, and factory resets</p>
+</div>
+</div>
+<span class="font-mono text-label-sm text-secondary px-2.5 py-1 rounded bg-secondary-container">142.4 MB Used</span>
+</div>
+<!-- Path Bar -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface font-medium">Application Working Storage Directory</label>
+<div class="flex items-center gap-2">
+<div class="flex-1 flex items-center gap-2 h-10 px-3.5 rounded-lg bg-surface-container-lowest font-mono text-label-sm text-on-surface-variant select-all overflow-x-auto whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px] text-outline">dns</span>
+<span>~/.clash-of-bots/data/profiles/default/</span>
+</div>
+<button class="flex items-center gap-1.5 h-10 px-4 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface text-label-md transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+<span>Open Folder</span>
+</button>
+</div>
+</div>
+<!-- Storage Breakdown Visual Sparkline / Bar -->
+<div class="p-3.5 rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex justify-between items-center text-label-sm font-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Vision Models (84 MB)
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> ADB Screencaps (42 MB)
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Execution Logs (16.4 MB)
+            </span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 59%;"></div>
+<div class="h-full bg-secondary" style="width: 29%;"></div>
+<div class="h-full bg-tertiary" style="width: 12%;"></div>
+</div>
+</div>
+<!-- Import / Export Actions -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 h-9 px-3.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface text-label-md font-medium transition-colors">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Config (.json)</span>
+</button>
+<button class="flex items-center gap-2 h-9 px-3.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface text-label-md font-medium transition-colors">
+<span class="material-symbols-outlined text-[16px]">file_upload</span>
+<span>Import Config</span>
+</button>
+</div>
+<button class="flex items-center gap-1.5 text-error hover:text-on-error hover:bg-error-container/80 px-3 py-1.5 rounded-lg transition-colors text-label-md font-medium">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Reset to Factory Defaults</span>
+</button>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN: Updates, Engine Privacy, & Changelog (5 Cols) -->
+<div class="col-span-12 xl:col-span-5 flex flex-col gap-gutter-desktop">
+<!-- Section 4: Updates & Release Channel -->
+<section class="bg-surface-container rounded-xl p-6 shadow-md flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">system_update_alt</span>
+</div>
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Release Channel</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Update train and binary signatures</p>
+</div>
+</div>
+<span class="flex items-center gap-1.5 font-mono text-label-sm text-primary">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+            Up to date
+          </span>
+</div>
+<!-- Channel Selector -->
+<div class="flex flex-col gap-2">
+<div class="grid grid-cols-3 p-1 rounded-lg bg-surface-container-low gap-1">
+<button class="flex items-center justify-center gap-1.5 py-2 rounded bg-primary-container text-on-primary-container font-semibold font-label-md" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Stable</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md transition-colors" type="button">
+<span>Beta</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md transition-colors" type="button">
+<span>Nightly</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant bg-surface-container-low/70 p-2.5 rounded-lg flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary mt-0.5 flex-shrink-0">info</span>
+<span><strong>Stable Track:</strong> Recommended for daily resource accumulation. Thoroughly sanitized against client detection and patched within 2h of game maintenance.</span>
+</p>
+</div>
+<!-- Check Update Row -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-mono">v4.18.2-stable (x86_64)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Last polled 15 minutes ago</span>
+</div>
+<button class="flex items-center gap-1.5 px-4 h-9 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface text-label-md font-medium transition-colors">
+<span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
+<span>Check Now</span>
+</button>
+</div>
+</section>
+<!-- Section 5: Security & Privacy Guarantee Banner -->
+<section class="bg-gradient-to-br from-primary-container/30 via-surface-container to-surface-container rounded-xl p-6 shadow-md flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none text-primary">
+<span class="material-symbols-outlined text-[140px]">shield</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">enhanced_encryption</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface font-semibold">Zero-Cloud Privacy Guarantee</h3>
+<p class="font-label-sm text-label-sm text-primary tracking-wide uppercase font-mono">100% Local Sandboxed Execution</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Clash of Bots operates strictly within your local kernel space. Credentials, device identifiers, and real-time screen captures never leave this machine. No third-party analytical trackers, telemetry pings, or cloud relays are enabled.
+        </p>
+<div class="grid grid-cols-2 gap-2 pt-1 font-mono text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">check_circle</span>
+<span>In-memory OCR only</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">check_circle</span>
+<span>Zero outbound metrics</span>
+</div>
+</div>
+</section>
+<!-- Section 6: About & Expandable Changelog -->
+<section class="bg-surface-container rounded-xl p-6 shadow-md flex flex-col gap-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high p-2 flex items-center justify-center flex-shrink-0">
+<img alt="Clash of Bots shield logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X0UktTyRoeVVcOBghnaxrsYnDzdtK5a6Kf8wgx3-tMkxumHEO6QjxR1BhENQ31tnSXLzrvOrc5IYrZN_CgwyDKveN7PWph0GgI-e2_2ecfHHUw6vL41kVXeXdlWYaQdcj7XWSeJ6LlsI1NVZrFWDi238Xea3WdAfP0DV3gVp0GUF07OGIWWJ-nvMRgv38eWmY2i5owqp5nnCMwXrrkkcNVu_xKmNiO6vfLbJz9m04"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-lg text-title-lg text-on-surface font-bold">Clash of Bots</span>
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container text-label-sm font-mono font-semibold">STABLE</span>
+</div>
+<span class="font-mono text-label-sm text-on-surface-variant">Build 2024.11-rc4 • Revision a8f09d2</span>
+</div>
+</div>
+<!-- Changelog Accordion Stack -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between pb-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Release Changelog Notes</span>
+<a class="text-primary hover:underline text-label-sm font-medium flex items-center gap-0.5" href="#">
+<span>View GitHub Commits</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<div class="flex flex-col gap-2 bg-surface-container-low p-3.5 rounded-lg font-mono text-body-sm">
+<div class="flex flex-col gap-1 pb-2">
+<div class="flex items-center justify-between text-on-surface font-medium">
+<span class="text-primary">v4.18.2</span>
+<span class="text-on-surface-variant text-label-sm">Today</span>
+</div>
+<p class="text-on-surface-variant font-sans text-body-sm">
+                Optimized Town Hall 16 Sneaky Goblin deployment vector micro-jitter to completely replicate physiological finger touches.
+              </p>
+</div>
+<div class="flex flex-col gap-1 py-2">
+<div class="flex items-center justify-between text-on-surface font-medium">
+<span class="text-secondary">v4.18.1</span>
+<span class="text-on-surface-variant text-label-sm">4 days ago</span>
+</div>
+<p class="text-on-surface-variant font-sans text-body-sm">
+                Enhanced modal watchdog for seasonal event reward prompts preventing edge-case search pauses.
+              </p>
+</div>
+<div class="flex flex-col gap-1 pt-1">
+<div class="flex items-center justify-between text-on-surface font-medium">
+<span class="text-secondary">v4.18.0</span>
+<span class="text-on-surface-variant text-label-sm">Nov 12</span>
+</div>
+<p class="text-on-surface-variant font-sans text-body-sm">
+                Multi-session collision detection v2 with automatic handoff &amp; zero reconnect delay.
+              </p>
+</div>
+</div>
+</div>
+<!-- Legal and Licensing Disclaimers -->
+<div class="flex items-center justify-between pt-1 text-label-sm text-on-surface-variant font-body-sm">
+<span>Licensed under GNU GPLv3</span>
+<div class="flex items-center gap-3">
+<a class="hover:text-on-surface transition-colors" href="#">Documentation</a>
+<span>•</span>
+<a class="hover:text-on-surface transition-colors" href="#">Safety Advisory</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Micro-interaction feedback toast (hidden initially) -->
+<div class="fixed bottom-14 right-8 transform translate-y-20 opacity-0 transition-all duration-300 ease-out bg-surface-container-highest text-on-surface px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 z-50 pointer-events-none" id="toast-notification">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">System Dispatcher Active</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">OS toast notifications successfully registered</span>
+</div>
+</div>
+<script>
+    // Toast trigger handler
+    const testBtn = document.getElementById('test-toast-btn');
+    const toast = document.getElementById('toast-notification');
+    let toastTimeout;
+
+    if (testBtn && toast) {
+      testBtn.addEventListener('click', () => {
+        clearTimeout(toastTimeout);
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 3200);
+      });
+    }
+  </script>
+</div></main></div><footer class="fixed bottom-0 left-0 right-0 h-10 bg-surface-container-lowest/95 backdrop-blur-sm z-50 px-space-md select-none"><div class="h-full w-full flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="text-on-surface">Connected: ADB over USB (500 Mbps)</span></div><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-tertiary">radar</span><span>Current step: <strong class="text-on-surface font-medium">Searching for a base (Skip #14)...</strong></span></div></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-1.5 font-mono"><span class="material-symbols-outlined text-[15px]">timer</span><span>Session: <span class="text-on-surface font-medium">02h 14m 32s</span></span></div><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[15px]">verified_user</span><span class="text-on-surface-variant">Safety Guard Active • 0 resource limits reached</span></div></div></div></footer></body></html>

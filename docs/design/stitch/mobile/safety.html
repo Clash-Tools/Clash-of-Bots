@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Roboto+Flex:opsz,wght@8..144,400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-on-surface": "#263143", "surface-container-high": "#1f2a3c", "surface": "#081425", "inverse-surface": "#d8e3fb", "surface-tint": "#80d5cb", "surface-container-lowest": "#040e1f", "secondary": "#b9c7df", "surface-variant": "#2a3548", "on-tertiary": "#4d2600", "on-secondary-container": "#abb9d1", "surface-container-highest": "#2a3548", "on-secondary-fixed-variant": "#3a485b", "on-error-container": "#ffdad6", "inverse-primary": "#006a63", "primary-fixed": "#9cf2e8", "on-primary-container": "#a3faef", "on-tertiary-container": "#ffe6d5", "on-tertiary-fixed": "#2f1500", "on-secondary-fixed": "#0d1c2e", "outline-variant": "#3e4947", "on-primary-fixed-variant": "#00504a", "error-container": "#93000a", "background": "#081425", "tertiary-fixed": "#ffdcc3", "on-secondary": "#233144", "on-surface-variant": "#bdc9c6", "secondary-container": "#3c4a5e", "on-background": "#d8e3fb", "on-primary-fixed": "#00201d", "on-primary": "#003733", "tertiary-container": "#a15600", "secondary-fixed-dim": "#b9c7df", "outline": "#889391", "on-error": "#690005", "on-surface": "#d8e3fb", "surface-container": "#152031", "on-tertiary-fixed-variant": "#6e3900", "surface-container-low": "#111c2d", "primary-container": "#0f766e", "primary-fixed-dim": "#80d5cb", "secondary-fixed": "#d5e3fc", "surface-bright": "#2f3a4c", "surface-dim": "#081425", "error": "#ffb4ab", "tertiary": "#ffb77d", "tertiary-fixed-dim": "#ffb77d", "primary": "#80d5cb" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter-desktop": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "margin-desktop": "2rem", "margin": "1rem", "gutter": "1rem", "space-md": "1rem", "space-xl": "2rem", "space-lg": "1.5rem" }, fontFamily: { "label-lg": ["Roboto Flex"], "display-lg-mobile": ["Roboto Flex"], "label-sm": ["Roboto Flex"], "display-lg": ["Roboto Flex"], "body-code": ["JetBrains Mono"], "title-md": ["Roboto Flex"], "body-lg": ["Roboto Flex"], "title-lg": ["Roboto Flex"], "headline-md": ["Roboto Flex"] }, fontSize: { "label-lg": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600" }], "display-lg-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.03em", fontWeight: "500" }], "display-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-code": ["13px", { lineHeight: "18px", fontWeight: "500" }], "title-md": ["16px", { lineHeight: "24px", fontWeight: "500" }], "body-lg": ["14px", { lineHeight: "20px", fontWeight: "400" }], "title-lg": ["18px", { lineHeight: "24px", fontWeight: "600" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-lg text-body-lg text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface-container/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.2)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Clash of Bots brand logo - flat, single color minimal vector emblem featuring a clean rounded robot head inside an outer safety shield silhouette. Trustworthy, friendly, technical.. Brand logo. - Primary color: #0f766e
+- Font: robotoFlex
+- Mode: dark
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VYHLLcn8V5FmYfBFBDiJzrUhw7CtoReBJIEAAI0ZBoT4lghkAsIyaEUtdKCU-9SliNb2CsQtp2G4Bb2kRBkne-mN6NL-FGq_sL6s6off_aUaECVtRlcSnlyLw9NNHFpRqhRkiJErIRaOu_kw1dVfn2k2h9BARUTglVg6QUGiAJiwG1vz9Xvom0V1UtWzJLnq2iThTIa5H_q_K9hmwVYumkZbBVvvMLpdrphj9ti6systbMVgAJFOTI2ELo"/><div class="flex flex-col truncate"><span class="font-title-lg text-title-lg text-on-surface truncate leading-tight">Clash of Bots</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Safety</span></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="flex items-center gap-space-xs px-2.5 py-1 rounded-lg bg-surface-container-high text-secondary border border-outline-variant/40"><span class="material-symbols-outlined text-[14px] text-primary">verified_user</span><span class="font-label-sm text-label-sm">Protected / Idle</span></div><button aria-label="Overflow menu" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/40 transition-colors"><span class="material-symbols-outlined text-[24px]">more_vert</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-surface flex-1 min-h-[calc(100vh-5rem)]"><div class="flex flex-col w-full pb-12">
+<!-- Status Overview Hero Card -->
+<div class="px-margin pt-space-md pb-space-sm flex flex-col gap-space-sm">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-md">
+<div class="absolute -right-6 -bottom-6 w-36 h-36 rounded-full bg-primary/10 blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-lg text-label-lg text-secondary uppercase tracking-wider">Guardrails Active</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container/25 text-primary">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-label-sm text-label-sm font-semibold text-primary-fixed-dim">Shield Enforced</span>
+</div>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight mb-1">Safety &amp; Guardrails</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+        All anti-ban heuristics, device safeguards, and locked financial boundaries are active on local sandbox.
+      </p>
+<!-- Trust Metrics Inline -->
+<div class="mt-space-md grid grid-cols-3 gap-space-xs pt-space-xs">
+<div class="flex flex-col rounded-lg bg-surface-container p-2.5">
+<span class="font-label-sm text-label-sm text-secondary">Local Checks</span>
+<span class="font-body-code text-body-code text-primary font-bold mt-0.5">14/14 Pass</span>
+</div>
+<div class="flex flex-col rounded-lg bg-surface-container p-2.5">
+<span class="font-label-sm text-label-sm text-secondary">Risk Score</span>
+<span class="font-body-code text-body-code text-on-primary-container font-bold mt-0.5">0.02% (Min)</span>
+</div>
+<div class="flex flex-col rounded-lg bg-surface-container p-2.5">
+<span class="font-label-sm text-label-sm text-secondary">Sandbox</span>
+<span class="font-body-code text-body-code text-secondary font-bold mt-0.5">Isolated</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Hero Feature: Hardware Emergency Killswitch -->
+<div class="px-margin py-space-xs">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-high p-space-md shadow-lg">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="inline-flex items-center gap-space-xs px-2.5 py-0.5 rounded-full bg-error-container/30 text-error">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">fmd_bad</span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wider">Hardware Emergency Stop</span>
+</div>
+<span class="material-symbols-outlined text-secondary/60 text-[26px]">volume_down</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface font-bold tracking-tight">
+        Press Volume Down 3× quickly
+      </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1.5 leading-normal">
+        Instantly severs accessibility injection, clears screen overlay, and suspends tasks without needing to unlock device or touch canvas.
+      </p>
+<div class="mt-space-md pt-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">lock_reset</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-medium leading-tight">Hardware Hook</span>
+<span class="font-label-sm text-label-sm text-secondary">Kernel broadcast listener active</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded bg-secondary-container/60 text-secondary-fixed font-semibold">ALWAYS ON</span>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-surface-bright text-on-surface hover:bg-surface-variant transition-colors active:scale-[0.99]" id="testGestureBtn" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">vibration</span>
+<span class="font-label-lg text-label-lg font-semibold tracking-wide">Test Gesture Simulation</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Locked Spending Guardrails (Security Card) -->
+<div class="px-margin py-space-xs">
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-sm relative overflow-hidden">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[22px]" style="font-variation-settings: 'FILL' 1;">gite</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-tertiary uppercase font-bold tracking-wider">Zero-Spend Guarantee</span>
+<span class="material-symbols-outlined text-[14px] text-tertiary">lock</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface font-semibold tracking-tight mt-0.5">
+            Spending Guardrails: LOCKED
+          </h3>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2.5 leading-relaxed">
+        The bot is strictly banned from executing gem speedups, claim confirmation prompts, or IAP popups.
+      </p>
+<!-- Security Tags -->
+<div class="flex flex-wrap gap-1.5 mt-space-sm">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-high text-error font-body-code text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">block</span> Gems: BLOCKED
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-high text-error font-body-code text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">block</span> Magic Items: BLOCKED
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-high text-error font-body-code text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">block</span> Real-Money IAP: BLOCKED
+        </span>
+</div>
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-lowest/70 flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-secondary min-w-0">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0">verified</span>
+<span class="font-label-sm text-label-sm truncate">Enforced by Local Sandbox Policy</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-body-code shrink-0">POLICY-IMMUTABLE</span>
+</div>
+</div>
+</div>
+<!-- Fatigue & Break Schedules -->
+<div class="px-margin pt-space-md pb-space-xs flex flex-col gap-space-xs">
+<div class="flex flex-col">
+<h2 class="font-title-lg text-title-lg text-on-surface font-bold tracking-tight">Fatigue &amp; Break Schedule</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-0.5">
+        Mimics authentic human gaming habits to minimize session pattern detection.
+      </p>
+</div>
+<!-- Breaks Bento Container -->
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<!-- Micro breaks Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">coffee</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Micro-breaks</span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Brief pauses to break continuous clicks</span>
+</div>
+</div>
+<!-- Custom Switch Toggle -->
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary p-0.5 flex items-center justify-end transition-colors duration-200 cursor-pointer" data-toggle="micro-breaks" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-on-surface">
+<span class="font-label-sm text-label-sm text-secondary">Active Interval</span>
+<span class="font-body-code text-body-code text-primary font-semibold">3–8m pause every 45–60m</span>
+</div>
+</div>
+<!-- Long Breaks Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">hotel</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Long Rest Period</span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Emulates meals or away-from-keyboard</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary p-0.5 flex items-center justify-end transition-colors duration-200 cursor-pointer" data-toggle="long-breaks" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-on-surface">
+<span class="font-label-sm text-label-sm text-secondary">Active Interval</span>
+<span class="font-body-code text-body-code text-primary font-semibold">25–40m pause every 3 hrs</span>
+</div>
+</div>
+<!-- Randomized Jitter Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[20px]">shuffle</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Gaussian Jitter Variance</span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Non-repeating touch timings</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary p-0.5 flex items-center justify-end transition-colors duration-200 cursor-pointer" data-toggle="jitter" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-on-surface">
+<span class="font-label-sm text-label-sm text-secondary">Dynamic Offset</span>
+<span class="font-body-code text-body-code text-primary font-semibold">±15% randomized variance</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Limits & Quiet Hours -->
+<div class="px-margin pt-space-md pb-space-xs flex flex-col gap-space-xs">
+<div class="flex flex-col">
+<h2 class="font-title-lg text-title-lg text-on-surface font-bold tracking-tight">Limits &amp; Scheduling</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-0.5">
+        Hard session ceilings to prevent non-stop botting flags.
+      </p>
+</div>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<!-- Daily Farming Cap Tile -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">timelapse</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-on-surface font-medium">Daily Farming Cap</span>
+<div class="font-label-sm text-label-sm text-secondary">Automatic hard stop at threshold</div>
+</div>
+</div>
+<span class="font-body-code text-body-code text-primary font-bold">3.5 / 5.0 hrs</span>
+</div>
+<!-- Meter Progress Bar -->
+<div class="w-full bg-surface-container rounded-full h-3 overflow-hidden p-0.5 flex items-center">
+<div class="bg-primary h-2 rounded-full transition-all duration-500" style="width: 70%;"></div>
+</div>
+<div class="flex justify-between items-center text-label-sm font-label-sm text-secondary">
+<span>Current usage: 70%</span>
+<span class="text-on-surface font-medium">1.5 hrs remaining today</span>
+</div>
+</div>
+<!-- Quiet Hours Tile -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">bedtime</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Quiet Hours (Night Rest)</span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Strict suspension during sleep times</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary p-0.5 flex items-center justify-end transition-colors duration-200 cursor-pointer" data-toggle="quiet-hours" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">schedule</span>
+<span class="font-label-sm text-label-sm text-secondary">Active Window</span>
+</div>
+<span class="font-body-code text-body-code text-primary font-semibold">11:00 PM – 07:00 AM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Device & Hardware Guardrails -->
+<div class="px-margin pt-space-md pb-space-xs flex flex-col gap-space-xs">
+<div class="flex flex-col">
+<h2 class="font-title-lg text-title-lg text-on-surface font-bold tracking-tight">Device &amp; Hardware Guardrails</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-0.5">
+        Mobile environment triggers preventing device damage and user interruptions.
+      </p>
+</div>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<!-- Incoming Call Rule -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between shadow-sm">
+<div class="flex items-start gap-space-sm min-w-0 pr-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Stop on Incoming Call</span>
+<span class="font-label-sm text-label-sm text-secondary leading-tight mt-0.5">Pause instantly when cellular or VoIP call sounds</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary p-0.5 flex items-center justify-end transition-colors duration-200 cursor-pointer shrink-0" data-toggle="incoming-call" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</span>
+</button>
+</div>
+<!-- Screen Lock Rule -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between shadow-sm">
+<div class="flex items-start gap-space-sm min-w-0 pr-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">screen_lock_portrait</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Stop on Screen Lock</span>
+<span class="font-label-sm text-label-sm text-secondary leading-tight mt-0.5">Emergency sleep when power button tapped</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary p-0.5 flex items-center justify-end transition-colors duration-200 cursor-pointer shrink-0" data-toggle="screen-lock" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</span>
+</button>
+</div>
+<!-- Battery Threshold Safety Tile -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">battery_saver</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Battery Threshold Safety</span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Halt execution on low reserve</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container text-secondary font-body-code text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">battery_charging_full</span> 74% Current
+          </div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">Auto Cut-off Level</span>
+<span class="font-body-code text-body-code text-on-surface font-semibold">20% remaining</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-lg bg-surface-variant flex items-center justify-center text-on-surface active:bg-surface-bright">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-body-code text-body-code text-primary font-bold w-10 text-center">20%</span>
+<button class="w-8 h-8 rounded-lg bg-surface-variant flex items-center justify-center text-on-surface active:bg-surface-bright">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Thermal Protection Tile -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">device_thermostat</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Thermal Protection Watchdog</span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Prevents battery swelling &amp; throttling</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary p-0.5 flex items-center justify-end transition-colors duration-200 cursor-pointer shrink-0" data-toggle="thermal" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-secondary">Sensor: <span class="text-on-surface font-medium font-body-code">34.2°C (Optimal)</span></span>
+</div>
+<span class="font-body-code text-body-code text-secondary font-semibold">Stop if &gt; 41.0°C</span>
+</div>
+</div>
+<!-- Unknown Screen Watchdog -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between shadow-sm">
+<div class="flex items-start gap-space-sm min-w-0 pr-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-medium truncate">Unknown Screen Watchdog</span>
+<span class="font-label-sm text-label-sm text-secondary leading-tight mt-0.5">Emergency abort if unrecognized dialog persists &gt; 60s</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-7 rounded-full bg-primary p-0.5 flex items-center justify-end transition-colors duration-200 cursor-pointer shrink-0" data-toggle="unknown-screen" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-on-primary shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Trust & Cryptographic Verification Note -->
+<div class="px-margin pt-space-lg pb-space-sm flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-secondary text-label-sm font-label-sm mb-2">
+<span class="material-symbols-outlined text-[16px] text-primary">security</span>
+<span>Heuristics Engine v2.4 (Strict Android Sandbox)</span>
+</div>
+<p class="font-label-sm text-label-sm text-secondary max-w-xs">
+      All decision matrices calculate strictly on-device via isolated accessibility hooks. Zero user telemetry or game state is broadcast.
+    </p>
+</div>
+</div>
+<script>
+  // Micro-interaction for toggles
+  document.querySelectorAll('button[role="switch"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isChecked = btn.getAttribute('aria-checked') === 'true';
+      const newState = !isChecked;
+      btn.setAttribute('aria-checked', String(newState));
+      
+      const thumb = btn.querySelector('span');
+      const icon = thumb ? thumb.querySelector('.material-symbols-outlined') : null;
+
+      if (newState) {
+        btn.classList.remove('bg-surface-container-high');
+        btn.classList.add('bg-primary', 'justify-end');
+        btn.classList.remove('justify-start');
+        if (thumb) {
+          thumb.classList.remove('bg-secondary');
+          thumb.classList.add('bg-on-primary');
+        }
+        if (icon) {
+          icon.textContent = 'check';
+          icon.classList.remove('text-surface-container-high');
+          icon.classList.add('text-primary');
+        }
+      } else {
+        btn.classList.remove('bg-primary', 'justify-end');
+        btn.classList.add('bg-surface-container-high', 'justify-start');
+        if (thumb) {
+          thumb.classList.remove('bg-on-primary');
+          thumb.classList.add('bg-secondary');
+        }
+        if (icon) {
+          icon.textContent = 'close';
+          icon.classList.remove('text-primary');
+          icon.classList.add('text-surface-container-high');
+        }
+      }
+    });
+  });
+
+  // Test gesture button feedback
+  const testBtn = document.getElementById('testGestureBtn');
+  if (testBtn) {
+    testBtn.addEventListener('click', () => {
+      const origText = testBtn.innerHTML;
+      testBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[18px] text-primary animate-spin">sync</span>
+        <span class="font-label-lg text-label-lg font-semibold tracking-wide text-primary">Listening for Volume Down 3×...</span>
+      `;
+      testBtn.classList.add('bg-primary/10');
+      
+      setTimeout(() => {
+        testBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px] text-primary">check_circle</span>
+          <span class="font-label-lg text-label-lg font-semibold tracking-wide text-primary">Gesture Verified! Emergency Stop Armed</span>
+        `;
+        setTimeout(() => {
+          testBtn.innerHTML = origText;
+          testBtn.classList.remove('bg-primary/10');
+        }, 2200);
+      }, 1500);
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-high/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.35)]" data-active-classes="text-primary-fixed-dim bg-primary-container/30"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 px-3 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="home" href="#"><span class="material-symbols-outlined text-[24px]">home</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 px-3 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="automation" href="#"><span class="material-symbols-outlined text-[24px]">smart_toy</span><span class="font-label-sm text-label-sm">Automation</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 px-3 rounded-full transition-all duration-200 text-primary-fixed-dim bg-primary-container/30" data-path="safety" href="#"><span class="material-symbols-outlined text-[24px]">shield</span><span class="font-label-sm text-label-sm">Safety</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 px-3 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="settings" href="#"><span class="material-symbols-outlined text-[24px]">settings</span><span class="font-label-sm text-label-sm">Settings</span></a></div></nav></body></html>

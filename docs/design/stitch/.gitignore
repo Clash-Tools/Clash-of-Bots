@@ -1,0 +1,4 @@
+# Full-size (2560 px) Stitch screenshots stay local; previews, HTML, logo and SCREENS.md are tracked.
+*.png
+!*-preview.png
+!clash-of-bots-logo.png

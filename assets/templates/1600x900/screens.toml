@@ -1,0 +1,167 @@
+# Screen definitions (D-010). Higher priority checked first: popups above the screens they cover.
+# A screen is disabled automatically until all its anchor PNGs exist.
+
+[screens.LOADING]
+priority = 100
+all = ["loading_logo"]
+to_home = "wait"
+
+# Daily home-village star bonus over the village: Battle shows through and the resource bar is covered,
+# so it must never count as HOME (own resources were misread as millions lost).
+[screens.HOME_STAR_BONUS]
+priority = 94
+all = ["star_bonus_title"]
+to_home = "tap star_bonus_okay"
+
+# Real-money offer from LDPlayer over the game (game buttons show through it): close it, nothing else.
+[screens.LDPLAYER_TOPUP]
+priority = 98
+all = ["ld_topup_title"]
+to_home = "tap ld_topup_close"
+
+# "Welcome Back Chief!" rewards dialog after a long break; Back closes it (confirmed screen, D-015).
+[screens.WELCOME_BACK]
+priority = 93
+all = ["welcome_back_title"]
+to_home = "back"
+
+# Gem-spend offer over the village; the Battle button shows through. Close with its X only.
+[screens.BOOST_DIALOG]
+priority = 92
+all = ["boost_title"]
+to_home = "tap boost_close"
+
+# Clan castle request form over the village. Towards home = Cancel (never Send).
+[screens.REQUEST_DIALOG]
+priority = 91
+all = ["request_dialog_title"]
+to_home = "tap request_cancel"
+
+# The village was opened on another device. Reloading would kick that player off, so the bot stops.
+[screens.POPUP_OTHER_DEVICE]
+priority = 95
+all = ["other_device_text"]
+to_home = "stop"
+
+# Connection lost (TRY AGAIN) or idle disconnect "Anyone there?" (RELOAD GAME).
+[screens.POPUP_RELOAD]
+priority = 90
+any = ["reload_button", "reload_game"]
+to_home = "tap reload_button reload_game"
+
+# Shop shows real-money offers: recognise it so the bot only ever closes it.
+[screens.SHOP]
+priority = 88
+all = ["shop_close"]
+to_home = "tap shop_close"
+
+# Builder menu hides the Battle button; close it with its own X (Back would exit the game).
+[screens.BUILDER_MENU]
+priority = 86
+all = ["builder_menu_title"]
+to_home = "tap builder_close"
+
+# Events list (Claim / Go! buttons inside are never tapped by navigation)
+[screens.EVENTS_WINDOW]
+priority = 87
+all = ["events_title"]
+to_home = "tap events_close"
+
+# Army window has its own close X, so it must rank above the generic popup.
+[screens.ARMY]
+priority = 85
+all = ["army_tab_header"]
+to_home = "tap close_x"
+
+# Current CoC dialogs (upgrade, info, not enough resources) all close with a red X; no Okay button seen.
+[screens.POPUP_GENERIC]
+priority = 80
+any = ["close_x", "close_x_log"]
+to_home = "tap close_x close_x_log"
+
+# "Surrender?" over the battle (Cancel / Okay). Towards home means confirming.
+[screens.SURRENDER_CONFIRM]
+priority = 70
+all = ["surrender_title"]
+to_home = "tap okay_button"
+
+[screens.BATTLE_END]
+priority = 60
+all = ["return_home"]
+to_home = "tap return_home"
+
+# Search also shows the red End Battle button, so BATTLE keys on the damage panel instead.
+[screens.BATTLE]
+priority = 50
+all = ["overall_damage"]
+to_home = "wait"  # surrender comes with the attack task (M2 PR 3)
+
+# Matchmaking refused ("Try again later"), e.g. right after an interrupted battle.
+[screens.SEARCH_BLOCKED]
+priority = 46
+all = ["search_blocked_text"]
+to_home = "tap clouds_return_home"
+
+# Cloud screen between searches; Return Home is the only button.
+[screens.SEARCHING]
+priority = 45
+all = ["searching_text"]
+to_home = "wait"
+
+[screens.ATTACK_SEARCH]
+priority = 40
+all = ["next_button"]
+to_home = "tap end_battle"
+
+[screens.ATTACK_MENU]
+priority = 35
+all = ["find_match"]
+to_home = "back"
+
+# Attack menu while the army still trains: Battle shows "Attack available in: 39s" instead of Find a Match.
+[screens.ARMY_TRAINING]
+priority = 34
+all = ["attack_available_label"]
+to_home = "back"
+
+# --- Builder Base ---
+# Countdown before stage 1 / stage 2 of a BB battle (deploy now). Above BATTLE: both show Attacker.
+[screens.BB_STAGE_WAIT]
+priority = 52
+all = ["bb_attacker_label", "battle_starts_text"]
+to_home = "wait"  # the BB attack task deploys; idle, the timer starts the battle anyway
+
+[screens.BB_SEARCHING]
+priority = 44
+all = ["bb_searching_text"]
+to_home = "tap bb_search_cancel"
+
+# Reward dialog over BB home after the daily stars; the Battle button still shows through behind it.
+[screens.BB_STAR_BONUS]
+priority = 82
+all = ["bb_star_bonus_title"]
+to_home = "tap bb_bonus_okay"
+
+[screens.BB_ATTACK_MENU]
+priority = 36
+all = ["bb_start_attack_title"]
+to_home = "back"
+
+[screens.BB_RESULTS]
+priority = 59
+all = ["bb_return_home"]
+none = ["return_home"]
+to_home = "tap bb_return_home"
+
+# Builder Base village. Towards the main village = take the boat; if it is off screen, zoom out (once),
+# then drag the map so the dock (top right of the island) comes into view and look again.
+[screens.BB_HOME]
+priority = 11
+all = ["bb_attack_button"]
+to_home = "tap bb_boat_icon else zoom else swipe 1000 300 800 450"
+
+[screens.HOME]
+priority = 10
+all = ["attack_button"]
+none = ["next_button"]
+to_home = "wait"  # already home

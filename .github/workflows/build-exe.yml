@@ -1,0 +1,16 @@
+# Opt-in test build of the Windows exe: run manually on any branch, or add the `build-exe` label to a PR.
+name: build-exe
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled, synchronize]
+
+concurrency:
+  group: build-exe-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'build-exe')
+    uses: ./.github/workflows/_build-windows.yml
