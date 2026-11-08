@@ -36,6 +36,7 @@ PAGES = [
     ("automation", tr("Automation"), "smart_toy"),
     ("safety", tr("Safety"), "shield"),
     ("history", tr("History"), "history"),
+    ("cards", tr("Cards"), "swords"),
     ("logs", tr("Logs"), "terminal"),
     ("settings", tr("Settings"), "settings"),
 ]

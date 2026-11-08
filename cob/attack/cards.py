@@ -66,8 +66,14 @@ class CardLibrary:
         self.folder = folder or cards_dir()
         self.unknown_dir = self.folder / "unknown"
         self.labelled_dir = self.folder / "labelled"
+        self._db = (db_root, db_cards or {})
+        self.reload()
+
+    def reload(self) -> None:
+        """Read the folders again (the running bot saves new pictures with its own library)."""
+        db_root, db_cards = self._db
         self.known: list[Known] = []
-        for unit_id, files in (db_cards or {}).items():
+        for unit_id, files in db_cards.items():
             for f in files:
                 self._add_known(unit_id, Path(db_root or ".") / f)
         for png in sorted(self.labelled_dir.glob("*.png")):
@@ -151,3 +157,19 @@ def observe(lib: CardLibrary, bgr: np.ndarray, cards: list[Card]) -> list[str | 
             log.debug("card@%d not observed: %s", c.x0, exc)
             out.append(None)
     return out
+
+
+def export_labelled(lib: CardLibrary, dest: Path, resolution: str = "1600x900") -> int:
+    """Zip the labelled pictures in the data repository's layout (detection/<res>/cards/<id>[-n].png) with
+    cards.json listing unit and file, for clash-of-bots-data's tools/import_cards.py. Returns the count."""
+    import zipfile
+
+    files = sorted(lib.labelled_dir.glob("*.png"))
+    entries = []
+    with zipfile.ZipFile(dest, "w", zipfile.ZIP_DEFLATED) as z:
+        for png in files:
+            arc = f"detection/{resolution}/cards/{png.name}"
+            z.write(png, arc)
+            entries.append({"unit": png.stem.split("-")[0], "file": arc, "resolution": resolution})
+        z.writestr("cards.json", json.dumps({"cards": entries}, indent=2) + "\n")
+    return len(entries)
