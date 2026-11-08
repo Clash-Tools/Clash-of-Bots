@@ -1,0 +1,162 @@
+{
+  "id": "electro_owl",
+  "name": "Electro Owl",
+  "game_name": "Electro Owl",
+  "global_id": null,
+  "kind": "pet",
+  "village": "home",
+  "housing_space": null,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "speed": 250,
+  "range_tiles": 5.5,
+  "attack_speed_ms": 1400,
+  "icon": "icon_unit_pet_electrowl",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 1600,
+      "dps": 100,
+      "lab_level": 2,
+      "upgrade_cost": 30000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 2,
+      "hitpoints": 1700,
+      "dps": 105,
+      "lab_level": 2,
+      "upgrade_cost": 45000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 3,
+      "hitpoints": 1800,
+      "dps": 110,
+      "lab_level": 2,
+      "upgrade_cost": 60000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 4,
+      "hitpoints": 1900,
+      "dps": 115,
+      "lab_level": 2,
+      "upgrade_cost": 75000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 5,
+      "hitpoints": 2000,
+      "dps": 120,
+      "lab_level": 2,
+      "upgrade_cost": 90000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 108
+    },
+    {
+      "level": 6,
+      "hitpoints": 2100,
+      "dps": 125,
+      "lab_level": 2,
+      "upgrade_cost": 105000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 7,
+      "hitpoints": 2200,
+      "dps": 130,
+      "lab_level": 2,
+      "upgrade_cost": 120000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 8,
+      "hitpoints": 2300,
+      "dps": 135,
+      "lab_level": 2,
+      "upgrade_cost": 135000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 9,
+      "hitpoints": 2400,
+      "dps": 140,
+      "lab_level": 2,
+      "upgrade_cost": 150000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 10,
+      "hitpoints": 2500,
+      "dps": 145,
+      "lab_level": 2,
+      "upgrade_cost": 165000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 11,
+      "hitpoints": 2600,
+      "dps": 150,
+      "lab_level": 9,
+      "upgrade_cost": 180000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 12,
+      "hitpoints": 2700,
+      "dps": 155,
+      "lab_level": 9,
+      "upgrade_cost": 195000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 13,
+      "hitpoints": 2800,
+      "dps": 160,
+      "lab_level": 9,
+      "upgrade_cost": 210000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 14,
+      "hitpoints": 2900,
+      "dps": 165,
+      "lab_level": 9,
+      "upgrade_cost": 225000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 15,
+      "hitpoints": 3000,
+      "dps": 170,
+      "lab_level": 9,
+      "upgrade_cost": 225000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

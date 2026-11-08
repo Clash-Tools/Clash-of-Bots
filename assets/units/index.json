@@ -1,0 +1,1014 @@
+{
+  "schema_version": 1,
+  "game_version": "18.647.5",
+  "units": [
+    {
+      "id": "bb_battle_copter",
+      "name": "Battle Copter",
+      "kind": "hero",
+      "village": "builder",
+      "path": "units/hero/bb_battle_copter.json"
+    },
+    {
+      "id": "bb_battle_machine",
+      "name": "Battle Machine",
+      "kind": "hero",
+      "village": "builder",
+      "path": "units/hero/bb_battle_machine.json"
+    },
+    {
+      "id": "bb_baby_dragon",
+      "name": "Baby Dragon",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_baby_dragon.json"
+    },
+    {
+      "id": "bb_beta_minion",
+      "name": "Beta Minion",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_beta_minion.json"
+    },
+    {
+      "id": "bb_bomber",
+      "name": "Bomber",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_bomber.json"
+    },
+    {
+      "id": "bb_boxer_giant",
+      "name": "Boxer Giant",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_boxer_giant.json"
+    },
+    {
+      "id": "bb_cannon_cart",
+      "name": "Cannon Cart",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_cannon_cart.json"
+    },
+    {
+      "id": "bb_drop_ship",
+      "name": "Drop Ship",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_drop_ship.json"
+    },
+    {
+      "id": "bb_electrofire_wizard",
+      "name": "Electrofire Wizard",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_electrofire_wizard.json"
+    },
+    {
+      "id": "bb_hog_glider",
+      "name": "Hog Glider",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_hog_glider.json"
+    },
+    {
+      "id": "bb_night_witch",
+      "name": "Night Witch",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_night_witch.json"
+    },
+    {
+      "id": "bb_power_pekka",
+      "name": "Power P.E.K.K.A",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_power_pekka.json"
+    },
+    {
+      "id": "bb_raged_barbarian",
+      "name": "Raged Barbarian",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_raged_barbarian.json"
+    },
+    {
+      "id": "bb_sneaky_archer",
+      "name": "Sneaky Archer",
+      "kind": "troop",
+      "village": "builder",
+      "path": "units/troop/bb_sneaky_archer.json"
+    },
+    {
+      "id": "bag_of_frostmites",
+      "name": "Bag of Frostmites",
+      "kind": "event_spell",
+      "village": "home",
+      "path": "units/event_spell/bag_of_frostmites.json"
+    },
+    {
+      "id": "birthday_boom",
+      "name": "Birthday Boom",
+      "kind": "event_spell",
+      "village": "home",
+      "path": "units/event_spell/birthday_boom.json"
+    },
+    {
+      "id": "earthquake_spell_debris_explosion_2",
+      "name": "Earthquake Spell",
+      "kind": "event_spell",
+      "village": "home",
+      "path": "units/event_spell/earthquake_spell_debris_explosion_2.json"
+    },
+    {
+      "id": "santas_surprise",
+      "name": "Santa's Surprise",
+      "kind": "event_spell",
+      "village": "home",
+      "path": "units/event_spell/santas_surprise.json"
+    },
+    {
+      "id": "yellow_card",
+      "name": "Yellow Card",
+      "kind": "event_spell",
+      "village": "home",
+      "path": "units/event_spell/yellow_card.json"
+    },
+    {
+      "id": "azure_dragon",
+      "name": "Azure Dragon",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/azure_dragon.json"
+    },
+    {
+      "id": "barbarian_kicker",
+      "name": "Barbarian Kicker",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/barbarian_kicker.json"
+    },
+    {
+      "id": "barcher",
+      "name": "Barcher",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/barcher.json"
+    },
+    {
+      "id": "battle_ram",
+      "name": "Battle Ram",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/battle_ram.json"
+    },
+    {
+      "id": "broom_witch",
+      "name": "Broom Witch",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/broom_witch.json"
+    },
+    {
+      "id": "cookie",
+      "name": "C.O.O.K.I.E",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/cookie.json"
+    },
+    {
+      "id": "cookie_mega_cookie",
+      "name": "C.O.O.K.I.E",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/cookie_mega_cookie.json"
+    },
+    {
+      "id": "debt_collector",
+      "name": "Debt Collector",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/debt_collector.json"
+    },
+    {
+      "id": "elephant_rider",
+      "name": "Elephant Rider",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/elephant_rider.json"
+    },
+    {
+      "id": "firecracker",
+      "name": "Firecracker",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/firecracker.json"
+    },
+    {
+      "id": "giant_giant",
+      "name": "Giant Giant",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/giant_giant.json"
+    },
+    {
+      "id": "giant_skeleton",
+      "name": "Giant Skeleton",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/giant_skeleton.json"
+    },
+    {
+      "id": "giant_thrower",
+      "name": "Giant Thrower",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/giant_thrower.json"
+    },
+    {
+      "id": "hog_wizard",
+      "name": "Hog Wizard",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/hog_wizard.json"
+    },
+    {
+      "id": "ice_minion",
+      "name": "Ice Minion",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/ice_minion.json"
+    },
+    {
+      "id": "ice_wizard",
+      "name": "Ice Wizard",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/ice_wizard.json"
+    },
+    {
+      "id": "kane",
+      "name": "K.A.N.E",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/kane.json"
+    },
+    {
+      "id": "lavaloon",
+      "name": "Lavaloon",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/lavaloon.json"
+    },
+    {
+      "id": "mecha",
+      "name": "M.E.C.H.A",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/mecha.json"
+    },
+    {
+      "id": "meteor_golem_event_meteor_golem",
+      "name": "Meteor Golem",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/meteor_golem_event_meteor_golem.json"
+    },
+    {
+      "id": "party_wizard",
+      "name": "Party Wizard",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/party_wizard.json"
+    },
+    {
+      "id": "pumpkin_barbarian",
+      "name": "Pumpkin Barbarian",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/pumpkin_barbarian.json"
+    },
+    {
+      "id": "ram_rider",
+      "name": "Ram Rider",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/ram_rider.json"
+    },
+    {
+      "id": "royal_ghost",
+      "name": "Royal Ghost",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/royal_ghost.json"
+    },
+    {
+      "id": "skeleton_barrel",
+      "name": "Skeleton Barrel",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/skeleton_barrel.json"
+    },
+    {
+      "id": "snake_barrel",
+      "name": "Snake Barrel",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/snake_barrel.json"
+    },
+    {
+      "id": "the_disarmer",
+      "name": "The Disarmer",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/the_disarmer.json"
+    },
+    {
+      "id": "totem_thrower",
+      "name": "Totem Thrower",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/totem_thrower.json"
+    },
+    {
+      "id": "witch_golem",
+      "name": "Witch Golem",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/witch_golem.json"
+    },
+    {
+      "id": "yeeter",
+      "name": "YEETer",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/yeeter.json"
+    },
+    {
+      "id": "yeti_undertaker",
+      "name": "Yeti Undertaker",
+      "kind": "event_troop",
+      "village": "home",
+      "path": "units/event_troop/yeti_undertaker.json"
+    },
+    {
+      "id": "archer_queen",
+      "name": "Archer Queen",
+      "kind": "hero",
+      "village": "home",
+      "path": "units/hero/archer_queen.json"
+    },
+    {
+      "id": "barbarian_king",
+      "name": "Barbarian King",
+      "kind": "hero",
+      "village": "home",
+      "path": "units/hero/barbarian_king.json"
+    },
+    {
+      "id": "dragon_duke",
+      "name": "Dragon Duke",
+      "kind": "hero",
+      "village": "home",
+      "path": "units/hero/dragon_duke.json"
+    },
+    {
+      "id": "grand_warden",
+      "name": "Grand Warden",
+      "kind": "hero",
+      "village": "home",
+      "path": "units/hero/grand_warden.json"
+    },
+    {
+      "id": "minion_prince",
+      "name": "Minion Prince",
+      "kind": "hero",
+      "village": "home",
+      "path": "units/hero/minion_prince.json"
+    },
+    {
+      "id": "royal_champion",
+      "name": "Royal Champion",
+      "kind": "hero",
+      "village": "home",
+      "path": "units/hero/royal_champion.json"
+    },
+    {
+      "id": "angry_jelly",
+      "name": "Angry Jelly",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/angry_jelly.json"
+    },
+    {
+      "id": "diggy",
+      "name": "Diggy",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/diggy.json"
+    },
+    {
+      "id": "electro_owl",
+      "name": "Electro Owl",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/electro_owl.json"
+    },
+    {
+      "id": "frosty",
+      "name": "Frosty",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/frosty.json"
+    },
+    {
+      "id": "greedy_raven",
+      "name": "Greedy Raven",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/greedy_raven.json"
+    },
+    {
+      "id": "lassi",
+      "name": "L.A.S.S.I",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/lassi.json"
+    },
+    {
+      "id": "mighty_yak",
+      "name": "Mighty Yak",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/mighty_yak.json"
+    },
+    {
+      "id": "phoenix",
+      "name": "Phoenix",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/phoenix.json"
+    },
+    {
+      "id": "poison_lizard",
+      "name": "Poison Lizard",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/poison_lizard.json"
+    },
+    {
+      "id": "sneezy",
+      "name": "Sneezy",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/sneezy.json"
+    },
+    {
+      "id": "spirit_fox",
+      "name": "Spirit Fox",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/spirit_fox.json"
+    },
+    {
+      "id": "unicorn",
+      "name": "Unicorn",
+      "kind": "pet",
+      "village": "home",
+      "path": "units/pet/unicorn.json"
+    },
+    {
+      "id": "battle_blimp",
+      "name": "Battle Blimp",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/battle_blimp.json"
+    },
+    {
+      "id": "battle_drill",
+      "name": "Battle Drill",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/battle_drill.json"
+    },
+    {
+      "id": "flame_flinger",
+      "name": "Flame Flinger",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/flame_flinger.json"
+    },
+    {
+      "id": "log_launcher",
+      "name": "Log Launcher",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/log_launcher.json"
+    },
+    {
+      "id": "siege_barracks",
+      "name": "Siege Barracks",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/siege_barracks.json"
+    },
+    {
+      "id": "sky_wagon",
+      "name": "Sky Wagon",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/sky_wagon.json"
+    },
+    {
+      "id": "stone_slammer",
+      "name": "Stone Slammer",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/stone_slammer.json"
+    },
+    {
+      "id": "troop_launcher",
+      "name": "Troop Launcher",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/troop_launcher.json"
+    },
+    {
+      "id": "wall_wrecker",
+      "name": "Wall Wrecker",
+      "kind": "siege",
+      "village": "home",
+      "path": "units/siege/wall_wrecker.json"
+    },
+    {
+      "id": "angry_spell",
+      "name": "Angry Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/angry_spell.json"
+    },
+    {
+      "id": "bat_spell",
+      "name": "Bat Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/bat_spell.json"
+    },
+    {
+      "id": "clone_spell",
+      "name": "Clone Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/clone_spell.json"
+    },
+    {
+      "id": "earthquake_spell",
+      "name": "Earthquake Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/earthquake_spell.json"
+    },
+    {
+      "id": "freeze_spell",
+      "name": "Freeze Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/freeze_spell.json"
+    },
+    {
+      "id": "haste_spell",
+      "name": "Haste Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/haste_spell.json"
+    },
+    {
+      "id": "healing_spell",
+      "name": "Healing Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/healing_spell.json"
+    },
+    {
+      "id": "ice_block_spell",
+      "name": "Ice Block Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/ice_block_spell.json"
+    },
+    {
+      "id": "invisibility_spell",
+      "name": "Invisibility Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/invisibility_spell.json"
+    },
+    {
+      "id": "jump_spell",
+      "name": "Jump Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/jump_spell.json"
+    },
+    {
+      "id": "lightning_spell",
+      "name": "Lightning Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/lightning_spell.json"
+    },
+    {
+      "id": "overgrowth_spell",
+      "name": "Overgrowth Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/overgrowth_spell.json"
+    },
+    {
+      "id": "poison_spell",
+      "name": "Poison Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/poison_spell.json"
+    },
+    {
+      "id": "rage_spell",
+      "name": "Rage Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/rage_spell.json"
+    },
+    {
+      "id": "recall_spell",
+      "name": "Recall Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/recall_spell.json"
+    },
+    {
+      "id": "revive_spell",
+      "name": "Revive Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/revive_spell.json"
+    },
+    {
+      "id": "skeleton_spell",
+      "name": "Skeleton Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/skeleton_spell.json"
+    },
+    {
+      "id": "totem_spell",
+      "name": "Totem Spell",
+      "kind": "spell",
+      "village": "home",
+      "path": "units/spell/totem_spell.json"
+    },
+    {
+      "id": "ice_hound",
+      "name": "Ice Hound",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/ice_hound.json"
+    },
+    {
+      "id": "inferno_dragon",
+      "name": "Inferno Dragon",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/inferno_dragon.json"
+    },
+    {
+      "id": "rocket_balloon",
+      "name": "Rocket Balloon",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/rocket_balloon.json"
+    },
+    {
+      "id": "sneaky_goblin",
+      "name": "Sneaky Goblin",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/sneaky_goblin.json"
+    },
+    {
+      "id": "super_archer",
+      "name": "Super Archer",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_archer.json"
+    },
+    {
+      "id": "super_barbarian",
+      "name": "Super Barbarian",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_barbarian.json"
+    },
+    {
+      "id": "super_bowler",
+      "name": "Super Bowler",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_bowler.json"
+    },
+    {
+      "id": "super_dragon",
+      "name": "Super Dragon",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_dragon.json"
+    },
+    {
+      "id": "super_giant",
+      "name": "Super Giant",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_giant.json"
+    },
+    {
+      "id": "super_hog_rider",
+      "name": "Super Hog Rider",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_hog_rider.json"
+    },
+    {
+      "id": "super_miner",
+      "name": "Super Miner",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_miner.json"
+    },
+    {
+      "id": "super_minion",
+      "name": "Super Minion",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_minion.json"
+    },
+    {
+      "id": "super_valkyrie",
+      "name": "Super Valkyrie",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_valkyrie.json"
+    },
+    {
+      "id": "super_wall_breaker",
+      "name": "Super Wall Breaker",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_wall_breaker.json"
+    },
+    {
+      "id": "super_witch",
+      "name": "Super Witch",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_witch.json"
+    },
+    {
+      "id": "super_wizard",
+      "name": "Super Wizard",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_wizard.json"
+    },
+    {
+      "id": "super_yeti",
+      "name": "Super Yeti",
+      "kind": "super_troop",
+      "village": "home",
+      "path": "units/super_troop/super_yeti.json"
+    },
+    {
+      "id": "apprentice_warden",
+      "name": "Apprentice Warden",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/apprentice_warden.json"
+    },
+    {
+      "id": "archer",
+      "name": "Archer",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/archer.json"
+    },
+    {
+      "id": "baby_dragon",
+      "name": "Baby Dragon",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/baby_dragon.json"
+    },
+    {
+      "id": "balloon",
+      "name": "Balloon",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/balloon.json"
+    },
+    {
+      "id": "barbarian",
+      "name": "Barbarian",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/barbarian.json"
+    },
+    {
+      "id": "bowler",
+      "name": "Bowler",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/bowler.json"
+    },
+    {
+      "id": "dragon",
+      "name": "Dragon",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/dragon.json"
+    },
+    {
+      "id": "dragon_rider",
+      "name": "Dragon Rider",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/dragon_rider.json"
+    },
+    {
+      "id": "druid",
+      "name": "Druid",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/druid.json"
+    },
+    {
+      "id": "electro_dragon",
+      "name": "Electro Dragon",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/electro_dragon.json"
+    },
+    {
+      "id": "electro_titan",
+      "name": "Electro Titan",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/electro_titan.json"
+    },
+    {
+      "id": "furnace",
+      "name": "Furnace",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/furnace.json"
+    },
+    {
+      "id": "giant",
+      "name": "Giant",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/giant.json"
+    },
+    {
+      "id": "goblin",
+      "name": "Goblin",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/goblin.json"
+    },
+    {
+      "id": "golem",
+      "name": "Golem",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/golem.json"
+    },
+    {
+      "id": "headhunter",
+      "name": "Headhunter",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/headhunter.json"
+    },
+    {
+      "id": "healer",
+      "name": "Healer",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/healer.json"
+    },
+    {
+      "id": "hog_rider",
+      "name": "Hog Rider",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/hog_rider.json"
+    },
+    {
+      "id": "ice_golem",
+      "name": "Ice Golem",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/ice_golem.json"
+    },
+    {
+      "id": "lava_hound",
+      "name": "Lava Hound",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/lava_hound.json"
+    },
+    {
+      "id": "meteor_golem",
+      "name": "Meteor Golem",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/meteor_golem.json"
+    },
+    {
+      "id": "miner",
+      "name": "Miner",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/miner.json"
+    },
+    {
+      "id": "minion",
+      "name": "Minion",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/minion.json"
+    },
+    {
+      "id": "pekka",
+      "name": "P.E.K.K.A",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/pekka.json"
+    },
+    {
+      "id": "root_rider",
+      "name": "Root Rider",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/root_rider.json"
+    },
+    {
+      "id": "ruin_witch",
+      "name": "Ruin Witch",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/ruin_witch.json"
+    },
+    {
+      "id": "thrower",
+      "name": "Thrower",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/thrower.json"
+    },
+    {
+      "id": "valkyrie",
+      "name": "Valkyrie",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/valkyrie.json"
+    },
+    {
+      "id": "wall_breaker",
+      "name": "Wall Breaker",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/wall_breaker.json"
+    },
+    {
+      "id": "witch",
+      "name": "Witch",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/witch.json"
+    },
+    {
+      "id": "wizard",
+      "name": "Wizard",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/wizard.json"
+    },
+    {
+      "id": "yeti",
+      "name": "Yeti",
+      "kind": "troop",
+      "village": "home",
+      "path": "units/troop/yeti.json"
+    }
+  ]
+}

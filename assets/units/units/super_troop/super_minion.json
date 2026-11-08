@@ -1,0 +1,109 @@
+{
+  "id": "super_minion",
+  "name": "Super Minion",
+  "game_name": "Super Minion",
+  "global_id": 4000084,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 12,
+  "dark": true,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 200,
+  "range_tiles": 3.5,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_minion",
+  "levels": [
+    {
+      "level": 4,
+      "hitpoints": 1100,
+      "dps": 200,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 1200,
+      "dps": 225,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 1300,
+      "dps": 250,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 1400,
+      "dps": 275,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 1500,
+      "dps": 300,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 1600,
+      "dps": 325,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 1700,
+      "dps": 350,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 1800,
+      "dps": 360,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 1900,
+      "dps": 370,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 2100,
+      "dps": 385,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 14,
+      "hitpoints": 2300,
+      "dps": 400,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    }
+  ],
+  "super_of": "minion",
+  "super_min_original_level": 7,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

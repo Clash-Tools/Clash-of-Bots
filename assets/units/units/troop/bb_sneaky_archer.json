@@ -1,0 +1,210 @@
+{
+  "id": "bb_sneaky_archer",
+  "name": "Sneaky Archer",
+  "game_name": "BB Sneaky Archer",
+  "global_id": 4000032,
+  "kind": "troop",
+  "village": "builder",
+  "housing_space": 3,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 360,
+  "range_tiles": 3.5,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_stealthy_archer",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 196,
+      "dps": 60,
+      "lab_level": 1,
+      "upgrade_cost": 5000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 0
+    },
+    {
+      "level": 2,
+      "hitpoints": 196,
+      "dps": 60,
+      "lab_level": 1,
+      "upgrade_cost": 8000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 0
+    },
+    {
+      "level": 3,
+      "hitpoints": 216,
+      "dps": 66,
+      "lab_level": 2,
+      "upgrade_cost": 12000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 0
+    },
+    {
+      "level": 4,
+      "hitpoints": 216,
+      "dps": 66,
+      "lab_level": 2,
+      "upgrade_cost": 100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 6
+    },
+    {
+      "level": 5,
+      "hitpoints": 237,
+      "dps": 72,
+      "lab_level": 3,
+      "upgrade_cost": 200000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 11
+    },
+    {
+      "level": 6,
+      "hitpoints": 237,
+      "dps": 72,
+      "lab_level": 3,
+      "upgrade_cost": 320000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 16
+    },
+    {
+      "level": 7,
+      "hitpoints": 261,
+      "dps": 79,
+      "lab_level": 4,
+      "upgrade_cost": 350000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 21
+    },
+    {
+      "level": 8,
+      "hitpoints": 261,
+      "dps": 79,
+      "lab_level": 4,
+      "upgrade_cost": 800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 9,
+      "hitpoints": 287,
+      "dps": 86,
+      "lab_level": 5,
+      "upgrade_cost": 1000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 10,
+      "hitpoints": 287,
+      "dps": 86,
+      "lab_level": 5,
+      "upgrade_cost": 1100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 11,
+      "hitpoints": 316,
+      "dps": 95,
+      "lab_level": 6,
+      "upgrade_cost": 1300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 60
+    },
+    {
+      "level": 12,
+      "hitpoints": 316,
+      "dps": 95,
+      "lab_level": 6,
+      "upgrade_cost": 2100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 84
+    },
+    {
+      "level": 13,
+      "hitpoints": 347,
+      "dps": 104,
+      "lab_level": 7,
+      "upgrade_cost": 2300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 108
+    },
+    {
+      "level": 14,
+      "hitpoints": 347,
+      "dps": 104,
+      "lab_level": 7,
+      "upgrade_cost": 3100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 15,
+      "hitpoints": 382,
+      "dps": 112,
+      "lab_level": 8,
+      "upgrade_cost": 3300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 16,
+      "hitpoints": 382,
+      "dps": 112,
+      "lab_level": 8,
+      "upgrade_cost": 3900000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 17,
+      "hitpoints": 420,
+      "dps": 119,
+      "lab_level": 9,
+      "upgrade_cost": 4100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 18,
+      "hitpoints": 420,
+      "dps": 119,
+      "lab_level": 9,
+      "upgrade_cost": 4700000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 19,
+      "hitpoints": 462,
+      "dps": 125,
+      "lab_level": 10,
+      "upgrade_cost": 5300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 20,
+      "hitpoints": 462,
+      "dps": 125,
+      "lab_level": 10,
+      "upgrade_cost": 5300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

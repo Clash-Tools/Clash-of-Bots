@@ -1,0 +1,66 @@
+{
+  "id": "ruin_witch",
+  "name": "Ruin Witch",
+  "game_name": "Ruin Witch",
+  "global_id": 4000109,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 26,
+  "dark": true,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 150,
+  "range_tiles": 0.8,
+  "attack_speed_ms": 2000,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_ruinwitch",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 2300,
+      "dps": 25,
+      "lab_level": 1,
+      "upgrade_cost": 220000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 264
+    },
+    {
+      "level": 2,
+      "hitpoints": 2550,
+      "dps": 26,
+      "lab_level": 14,
+      "upgrade_cost": 300000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 288
+    },
+    {
+      "level": 3,
+      "hitpoints": 2800,
+      "dps": 27,
+      "lab_level": 15,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 372
+    },
+    {
+      "level": 4,
+      "hitpoints": 3050,
+      "dps": 28,
+      "lab_level": 16,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 372
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

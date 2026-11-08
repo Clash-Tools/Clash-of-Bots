@@ -1,0 +1,27 @@
+{
+  "id": "earthquake_spell_debris_explosion_2",
+  "name": "Earthquake Spell",
+  "game_name": "Debris Explosion 2",
+  "global_id": 26000095,
+  "kind": "event_spell",
+  "village": "home",
+  "housing_space": 2,
+  "dark": false,
+  "icon": "icon_unit_b",
+  "levels": [
+    {
+      "level": 1,
+      "damage": 500,
+      "radius": 2000,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "yellow_card",
+  "name": "Yellow Card",
+  "game_name": "Yellow Card",
+  "global_id": 26000084,
+  "kind": "event_spell",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "icon": "icon_spell_suspension",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 0,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

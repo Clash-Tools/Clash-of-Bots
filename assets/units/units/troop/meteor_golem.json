@@ -1,0 +1,57 @@
+{
+  "id": "meteor_golem",
+  "name": "Meteor Golem",
+  "game_name": "Meteor Golem",
+  "global_id": 4000177,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 40,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 150,
+  "range_tiles": 5.0,
+  "attack_speed_ms": 1000,
+  "damage_radius": 100,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_splitgolem",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 15300,
+      "dps": 480,
+      "lab_level": 1,
+      "upgrade_cost": 28000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 336
+    },
+    {
+      "level": 2,
+      "hitpoints": 16900,
+      "dps": 530,
+      "lab_level": 15,
+      "upgrade_cost": 30000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    },
+    {
+      "level": 3,
+      "hitpoints": 18500,
+      "dps": 580,
+      "lab_level": 16,
+      "upgrade_cost": 30000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

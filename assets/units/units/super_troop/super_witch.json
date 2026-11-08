@@ -1,0 +1,88 @@
+{
+  "id": "super_witch",
+  "name": "Super Witch",
+  "game_name": "Super Witch",
+  "global_id": 4000066,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 40,
+  "dark": true,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 150,
+  "range_tiles": 4.0,
+  "attack_speed_ms": 700,
+  "damage_radius": 30,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_witch",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 2400,
+      "dps": 240,
+      "lab_level": 10,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 2600,
+      "dps": 270,
+      "lab_level": 10,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 2800,
+      "dps": 300,
+      "lab_level": 10,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 3000,
+      "dps": 330,
+      "lab_level": 10,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 3200,
+      "dps": 360,
+      "lab_level": 10,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 3400,
+      "dps": 390,
+      "lab_level": 10,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 3750,
+      "dps": 430,
+      "lab_level": 10,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 4100,
+      "dps": 470,
+      "lab_level": 10,
+      "upgrade_resource": "DarkElixir"
+    }
+  ],
+  "super_of": "witch",
+  "super_min_original_level": 4,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

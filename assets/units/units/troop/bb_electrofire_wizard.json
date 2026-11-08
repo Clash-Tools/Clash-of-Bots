@@ -1,0 +1,66 @@
+{
+  "id": "bb_electrofire_wizard",
+  "name": "Electrofire Wizard",
+  "game_name": "BB Electrofire Wizard",
+  "global_id": 4000106,
+  "kind": "troop",
+  "village": "builder",
+  "housing_space": 14,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 280,
+  "range_tiles": 3.5,
+  "attack_speed_ms": 128,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_electrofire_wizard_fire",
+  "levels": [
+    {
+      "level": 17,
+      "hitpoints": 1100,
+      "dps": 220,
+      "lab_level": 10,
+      "upgrade_cost": 4400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 18,
+      "hitpoints": 1100,
+      "dps": 220,
+      "lab_level": 10,
+      "upgrade_cost": 5400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 19,
+      "hitpoints": 1210,
+      "dps": 253,
+      "lab_level": 10,
+      "upgrade_cost": 5800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 20,
+      "hitpoints": 1210,
+      "dps": 253,
+      "lab_level": 10,
+      "upgrade_cost": 5800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

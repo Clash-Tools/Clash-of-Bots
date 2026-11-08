@@ -1,0 +1,793 @@
+{
+  "id": "grand_warden",
+  "name": "Grand Warden",
+  "game_name": "Grand Warden",
+  "global_id": null,
+  "kind": "hero",
+  "village": "home",
+  "housing_space": null,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "speed": 200,
+  "range_tiles": 7.0,
+  "attack_speed_ms": 1800,
+  "unlock_town_hall": 11,
+  "icon": "icon_hero_grandwarden",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 850,
+      "dps": 43,
+      "required_town_hall": 11,
+      "upgrade_cost": 1000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 2
+    },
+    {
+      "level": 2,
+      "hitpoints": 868,
+      "dps": 44,
+      "required_town_hall": 11,
+      "upgrade_cost": 1100000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 4
+    },
+    {
+      "level": 3,
+      "hitpoints": 886,
+      "dps": 46,
+      "required_town_hall": 11,
+      "upgrade_cost": 1200000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 8
+    },
+    {
+      "level": 4,
+      "hitpoints": 904,
+      "dps": 48,
+      "required_town_hall": 11,
+      "upgrade_cost": 1400000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 10
+    },
+    {
+      "level": 5,
+      "hitpoints": 923,
+      "dps": 49,
+      "required_town_hall": 11,
+      "upgrade_cost": 1500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 12
+    },
+    {
+      "level": 6,
+      "hitpoints": 942,
+      "dps": 51,
+      "required_town_hall": 11,
+      "upgrade_cost": 1700000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 14
+    },
+    {
+      "level": 7,
+      "hitpoints": 961,
+      "dps": 54,
+      "required_town_hall": 11,
+      "upgrade_cost": 1800000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 16
+    },
+    {
+      "level": 8,
+      "hitpoints": 982,
+      "dps": 56,
+      "required_town_hall": 11,
+      "upgrade_cost": 2000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 18
+    },
+    {
+      "level": 9,
+      "hitpoints": 1003,
+      "dps": 59,
+      "required_town_hall": 11,
+      "upgrade_cost": 2300000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 20
+    },
+    {
+      "level": 10,
+      "hitpoints": 1025,
+      "dps": 61,
+      "required_town_hall": 11,
+      "upgrade_cost": 2700000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 11,
+      "hitpoints": 1048,
+      "dps": 64,
+      "required_town_hall": 11,
+      "upgrade_cost": 3000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 12,
+      "hitpoints": 1072,
+      "dps": 66,
+      "required_town_hall": 11,
+      "upgrade_cost": 3400000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 13,
+      "hitpoints": 1097,
+      "dps": 70,
+      "required_town_hall": 11,
+      "upgrade_cost": 3700000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 14,
+      "hitpoints": 1122,
+      "dps": 73,
+      "required_town_hall": 11,
+      "upgrade_cost": 4100000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 15,
+      "hitpoints": 1148,
+      "dps": 77,
+      "required_town_hall": 11,
+      "upgrade_cost": 4400000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 16,
+      "hitpoints": 1173,
+      "dps": 80,
+      "required_town_hall": 11,
+      "upgrade_cost": 4800000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 17,
+      "hitpoints": 1199,
+      "dps": 83,
+      "required_town_hall": 11,
+      "upgrade_cost": 5100000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 18,
+      "hitpoints": 1224,
+      "dps": 87,
+      "required_town_hall": 11,
+      "upgrade_cost": 5500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 19,
+      "hitpoints": 1250,
+      "dps": 90,
+      "required_town_hall": 11,
+      "upgrade_cost": 6000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 20,
+      "hitpoints": 1275,
+      "dps": 94,
+      "required_town_hall": 11,
+      "upgrade_cost": 6100000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 21,
+      "hitpoints": 1301,
+      "dps": 98,
+      "required_town_hall": 12,
+      "upgrade_cost": 6200000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 22,
+      "hitpoints": 1327,
+      "dps": 102,
+      "required_town_hall": 12,
+      "upgrade_cost": 6300000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 23,
+      "hitpoints": 1354,
+      "dps": 106,
+      "required_town_hall": 12,
+      "upgrade_cost": 6400000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 24,
+      "hitpoints": 1381,
+      "dps": 111,
+      "required_town_hall": 12,
+      "upgrade_cost": 6500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 25,
+      "hitpoints": 1409,
+      "dps": 116,
+      "required_town_hall": 12,
+      "upgrade_cost": 6600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 26,
+      "hitpoints": 1438,
+      "dps": 121,
+      "required_town_hall": 12,
+      "upgrade_cost": 6700000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 27,
+      "hitpoints": 1467,
+      "dps": 126,
+      "required_town_hall": 12,
+      "upgrade_cost": 6800000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 28,
+      "hitpoints": 1497,
+      "dps": 131,
+      "required_town_hall": 12,
+      "upgrade_cost": 6900000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 29,
+      "hitpoints": 1527,
+      "dps": 137,
+      "required_town_hall": 12,
+      "upgrade_cost": 7000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 30,
+      "hitpoints": 1558,
+      "dps": 143,
+      "required_town_hall": 12,
+      "upgrade_cost": 7100000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 31,
+      "hitpoints": 1590,
+      "dps": 149,
+      "required_town_hall": 12,
+      "upgrade_cost": 7200000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 32,
+      "hitpoints": 1622,
+      "dps": 155,
+      "required_town_hall": 12,
+      "upgrade_cost": 7300000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 33,
+      "hitpoints": 1655,
+      "dps": 162,
+      "required_town_hall": 12,
+      "upgrade_cost": 7400000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 34,
+      "hitpoints": 1688,
+      "dps": 168,
+      "required_town_hall": 12,
+      "upgrade_cost": 7500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 35,
+      "hitpoints": 1722,
+      "dps": 175,
+      "required_town_hall": 12,
+      "upgrade_cost": 7600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 36,
+      "hitpoints": 1757,
+      "dps": 183,
+      "required_town_hall": 12,
+      "upgrade_cost": 7700000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 37,
+      "hitpoints": 1793,
+      "dps": 190,
+      "required_town_hall": 12,
+      "upgrade_cost": 7800000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 38,
+      "hitpoints": 1829,
+      "dps": 198,
+      "required_town_hall": 12,
+      "upgrade_cost": 7900000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 39,
+      "hitpoints": 1867,
+      "dps": 207,
+      "required_town_hall": 12,
+      "upgrade_cost": 8000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 40,
+      "hitpoints": 1904,
+      "dps": 215,
+      "required_town_hall": 12,
+      "upgrade_cost": 8300000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 41,
+      "hitpoints": 1921,
+      "dps": 221,
+      "required_town_hall": 13,
+      "upgrade_cost": 8600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 42,
+      "hitpoints": 1938,
+      "dps": 226,
+      "required_town_hall": 13,
+      "upgrade_cost": 8900000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 43,
+      "hitpoints": 1955,
+      "dps": 230,
+      "required_town_hall": 13,
+      "upgrade_cost": 9200000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 44,
+      "hitpoints": 1972,
+      "dps": 234,
+      "required_town_hall": 13,
+      "upgrade_cost": 9500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 45,
+      "hitpoints": 1989,
+      "dps": 237,
+      "required_town_hall": 13,
+      "upgrade_cost": 9800000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 46,
+      "hitpoints": 2006,
+      "dps": 241,
+      "required_town_hall": 13,
+      "upgrade_cost": 10100000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 47,
+      "hitpoints": 2023,
+      "dps": 244,
+      "required_town_hall": 13,
+      "upgrade_cost": 10400000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 48,
+      "hitpoints": 2040,
+      "dps": 247,
+      "required_town_hall": 13,
+      "upgrade_cost": 10700000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 49,
+      "hitpoints": 2057,
+      "dps": 251,
+      "required_town_hall": 13,
+      "upgrade_cost": 11000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 50,
+      "hitpoints": 2074,
+      "dps": 254,
+      "required_town_hall": 13,
+      "upgrade_cost": 11400000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 51,
+      "hitpoints": 2091,
+      "dps": 258,
+      "required_town_hall": 14,
+      "upgrade_cost": 11800000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 52,
+      "hitpoints": 2108,
+      "dps": 261,
+      "required_town_hall": 14,
+      "upgrade_cost": 12200000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 53,
+      "hitpoints": 2125,
+      "dps": 264,
+      "required_town_hall": 14,
+      "upgrade_cost": 12600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 54,
+      "hitpoints": 2142,
+      "dps": 268,
+      "required_town_hall": 14,
+      "upgrade_cost": 13000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 55,
+      "hitpoints": 2159,
+      "dps": 271,
+      "required_town_hall": 14,
+      "upgrade_cost": 13400000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 56,
+      "hitpoints": 2176,
+      "dps": 274,
+      "required_town_hall": 14,
+      "upgrade_cost": 13800000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 57,
+      "hitpoints": 2193,
+      "dps": 276,
+      "required_town_hall": 14,
+      "upgrade_cost": 14200000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 58,
+      "hitpoints": 2210,
+      "dps": 279,
+      "required_town_hall": 14,
+      "upgrade_cost": 14600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 59,
+      "hitpoints": 2227,
+      "dps": 281,
+      "required_town_hall": 14,
+      "upgrade_cost": 15000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 60,
+      "hitpoints": 2244,
+      "dps": 284,
+      "required_town_hall": 14,
+      "upgrade_cost": 15500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 61,
+      "hitpoints": 2261,
+      "dps": 286,
+      "required_town_hall": 15,
+      "upgrade_cost": 16000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 62,
+      "hitpoints": 2278,
+      "dps": 289,
+      "required_town_hall": 15,
+      "upgrade_cost": 16500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 63,
+      "hitpoints": 2295,
+      "dps": 292,
+      "required_town_hall": 15,
+      "upgrade_cost": 17000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 64,
+      "hitpoints": 2312,
+      "dps": 294,
+      "required_town_hall": 15,
+      "upgrade_cost": 17500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 65,
+      "hitpoints": 2329,
+      "dps": 297,
+      "required_town_hall": 15,
+      "upgrade_cost": 18000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 66,
+      "hitpoints": 2346,
+      "dps": 299,
+      "required_town_hall": 16,
+      "upgrade_cost": 18500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 67,
+      "hitpoints": 2363,
+      "dps": 302,
+      "required_town_hall": 16,
+      "upgrade_cost": 19000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 68,
+      "hitpoints": 2380,
+      "dps": 304,
+      "required_town_hall": 16,
+      "upgrade_cost": 19500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 69,
+      "hitpoints": 2397,
+      "dps": 307,
+      "required_town_hall": 16,
+      "upgrade_cost": 20000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 180
+    },
+    {
+      "level": 70,
+      "hitpoints": 2414,
+      "dps": 309,
+      "required_town_hall": 16,
+      "upgrade_cost": 20500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 71,
+      "hitpoints": 2431,
+      "dps": 312,
+      "required_town_hall": 17,
+      "upgrade_cost": 21000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 72,
+      "hitpoints": 2448,
+      "dps": 315,
+      "required_town_hall": 17,
+      "upgrade_cost": 21500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 73,
+      "hitpoints": 2465,
+      "dps": 318,
+      "required_town_hall": 17,
+      "upgrade_cost": 22000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 74,
+      "hitpoints": 2482,
+      "dps": 321,
+      "required_town_hall": 17,
+      "upgrade_cost": 22500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 75,
+      "hitpoints": 2499,
+      "dps": 324,
+      "required_town_hall": 17,
+      "upgrade_cost": 24000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 76,
+      "hitpoints": 2516,
+      "dps": 327,
+      "required_town_hall": 18,
+      "upgrade_cost": 25500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 77,
+      "hitpoints": 2533,
+      "dps": 330,
+      "required_town_hall": 18,
+      "upgrade_cost": 27000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 78,
+      "hitpoints": 2550,
+      "dps": 333,
+      "required_town_hall": 18,
+      "upgrade_cost": 27500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 79,
+      "hitpoints": 2567,
+      "dps": 336,
+      "required_town_hall": 18,
+      "upgrade_cost": 28000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 80,
+      "hitpoints": 2584,
+      "dps": 339,
+      "required_town_hall": 18,
+      "upgrade_cost": 28500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 81,
+      "hitpoints": 2601,
+      "dps": 342,
+      "required_town_hall": 18,
+      "upgrade_cost": 29000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 82,
+      "hitpoints": 2618,
+      "dps": 345,
+      "required_town_hall": 18,
+      "upgrade_cost": 29500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 83,
+      "hitpoints": 2635,
+      "dps": 348,
+      "required_town_hall": 18,
+      "upgrade_cost": 30000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 84,
+      "hitpoints": 2652,
+      "dps": 351,
+      "required_town_hall": 18,
+      "upgrade_cost": 30500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 85,
+      "hitpoints": 2669,
+      "dps": 354,
+      "required_town_hall": 18,
+      "upgrade_cost": 30500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

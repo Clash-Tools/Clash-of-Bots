@@ -1,0 +1,156 @@
+{
+  "id": "elephant_rider",
+  "name": "Elephant Rider",
+  "game_name": "Elephant Rider",
+  "global_id": 4000185,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 24,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 250,
+  "range_tiles": 0.8,
+  "attack_speed_ms": 1400,
+  "damage_radius": 150,
+  "unlock_town_hall": 1,
+  "icon": "icon_unit_elephant_rider",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 750,
+      "dps": 40,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 900,
+      "dps": 50,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 1050,
+      "dps": 60,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 1300,
+      "dps": 75,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 1550,
+      "dps": 85,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 1950,
+      "dps": 105,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 2300,
+      "dps": 125,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 2800,
+      "dps": 150,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 3300,
+      "dps": 175,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 3950,
+      "dps": 210,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 4450,
+      "dps": 235,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 5100,
+      "dps": 270,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 5700,
+      "dps": 305,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 14,
+      "hitpoints": 6500,
+      "dps": 345,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 15,
+      "hitpoints": 7300,
+      "dps": 385,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 16,
+      "hitpoints": 8250,
+      "dps": 440,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 17,
+      "hitpoints": 9300,
+      "dps": 495,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 18,
+      "hitpoints": 10500,
+      "dps": 560,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

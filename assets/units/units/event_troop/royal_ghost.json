@@ -1,0 +1,121 @@
+{
+  "id": "royal_ghost",
+  "name": "Royal Ghost",
+  "game_name": "Royal Ghost",
+  "global_id": 4000047,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 8,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 200,
+  "range_tiles": 0.5,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": 6,
+  "icon": "icon_unit_royale_ghost",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 130,
+      "dps": 235,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 160,
+      "dps": 315,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 190,
+      "dps": 395,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 215,
+      "dps": 475,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 240,
+      "dps": 555,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 265,
+      "dps": 635,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 300,
+      "dps": 720,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 325,
+      "dps": 800,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 350,
+      "dps": 880,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 380,
+      "dps": 965,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 410,
+      "dps": 1050,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 445,
+      "dps": 1135,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 480,
+      "dps": 1220,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

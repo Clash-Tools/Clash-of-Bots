@@ -1,0 +1,192 @@
+{
+  "id": "bb_beta_minion",
+  "name": "Beta Minion",
+  "game_name": "BB Beta Minion",
+  "global_id": 4000033,
+  "kind": "troop",
+  "village": "builder",
+  "housing_space": 3,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 480,
+  "range_tiles": 3.5,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_glowing_minion",
+  "levels": [
+    {
+      "level": 3,
+      "hitpoints": 200,
+      "dps": 60,
+      "lab_level": 3,
+      "upgrade_cost": 50000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 4
+    },
+    {
+      "level": 4,
+      "hitpoints": 200,
+      "dps": 60,
+      "lab_level": 3,
+      "upgrade_cost": 110000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 8
+    },
+    {
+      "level": 5,
+      "hitpoints": 220,
+      "dps": 65,
+      "lab_level": 3,
+      "upgrade_cost": 220000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 12
+    },
+    {
+      "level": 6,
+      "hitpoints": 220,
+      "dps": 65,
+      "lab_level": 3,
+      "upgrade_cost": 330000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 18
+    },
+    {
+      "level": 7,
+      "hitpoints": 242,
+      "dps": 72,
+      "lab_level": 4,
+      "upgrade_cost": 360000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 8,
+      "hitpoints": 242,
+      "dps": 72,
+      "lab_level": 4,
+      "upgrade_cost": 900000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 9,
+      "hitpoints": 266,
+      "dps": 81,
+      "lab_level": 5,
+      "upgrade_cost": 1100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 10,
+      "hitpoints": 266,
+      "dps": 81,
+      "lab_level": 5,
+      "upgrade_cost": 1300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 11,
+      "hitpoints": 293,
+      "dps": 90,
+      "lab_level": 6,
+      "upgrade_cost": 1500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 60
+    },
+    {
+      "level": 12,
+      "hitpoints": 293,
+      "dps": 90,
+      "lab_level": 6,
+      "upgrade_cost": 2300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 84
+    },
+    {
+      "level": 13,
+      "hitpoints": 322,
+      "dps": 99,
+      "lab_level": 7,
+      "upgrade_cost": 2500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 108
+    },
+    {
+      "level": 14,
+      "hitpoints": 322,
+      "dps": 99,
+      "lab_level": 7,
+      "upgrade_cost": 3300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 15,
+      "hitpoints": 355,
+      "dps": 108,
+      "lab_level": 8,
+      "upgrade_cost": 3500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 16,
+      "hitpoints": 355,
+      "dps": 108,
+      "lab_level": 8,
+      "upgrade_cost": 4000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 17,
+      "hitpoints": 390,
+      "dps": 117,
+      "lab_level": 9,
+      "upgrade_cost": 4200000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 18,
+      "hitpoints": 390,
+      "dps": 117,
+      "lab_level": 9,
+      "upgrade_cost": 4800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 19,
+      "hitpoints": 429,
+      "dps": 126,
+      "lab_level": 10,
+      "upgrade_cost": 5400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 20,
+      "hitpoints": 429,
+      "dps": 126,
+      "lab_level": 10,
+      "upgrade_cost": 5400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

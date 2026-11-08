@@ -1,0 +1,88 @@
+{
+  "id": "ice_hound",
+  "name": "Ice Hound",
+  "game_name": "Ice Hound",
+  "global_id": 4000076,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 40,
+  "dark": true,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Air Defense",
+  "speed": 250,
+  "range_tiles": 0.25,
+  "attack_speed_ms": 2000,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_icehound",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 7500,
+      "dps": 2,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 8000,
+      "dps": 4,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 8500,
+      "dps": 6,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 9000,
+      "dps": 8,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 9500,
+      "dps": 10,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 10000,
+      "dps": 15,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 10500,
+      "dps": 20,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 11500,
+      "dps": 25,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    }
+  ],
+  "super_of": "lava_hound",
+  "super_min_original_level": 4,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

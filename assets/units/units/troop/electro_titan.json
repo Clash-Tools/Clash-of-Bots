@@ -1,0 +1,75 @@
+{
+  "id": "electro_titan",
+  "name": "Electro Titan",
+  "game_name": "Electro Titan",
+  "global_id": 4000095,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 32,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 200,
+  "range_tiles": 1.25,
+  "attack_speed_ms": 1500,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_electrotitan",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 7200,
+      "dps": 180,
+      "lab_level": 1,
+      "upgrade_cost": 14000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 2,
+      "hitpoints": 7700,
+      "dps": 200,
+      "lab_level": 12,
+      "upgrade_cost": 16000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 3,
+      "hitpoints": 8200,
+      "dps": 220,
+      "lab_level": 13,
+      "upgrade_cost": 18500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 264
+    },
+    {
+      "level": 4,
+      "hitpoints": 8700,
+      "dps": 240,
+      "lab_level": 14,
+      "upgrade_cost": 30000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    },
+    {
+      "level": 5,
+      "hitpoints": 9200,
+      "dps": 270,
+      "lab_level": 16,
+      "upgrade_cost": 30000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

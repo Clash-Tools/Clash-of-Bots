@@ -1,0 +1,84 @@
+{
+  "id": "battle_drill",
+  "name": "Battle Drill",
+  "game_name": "Battle Drill",
+  "global_id": 4000092,
+  "kind": "siege",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 300,
+  "range_tiles": 1.0,
+  "attack_speed_ms": 1700,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_siege_machine_BattleDrill",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 4800,
+      "dps": 430,
+      "lab_level": 13,
+      "upgrade_cost": 6000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 2,
+      "hitpoints": 5100,
+      "dps": 470,
+      "lab_level": 13,
+      "upgrade_cost": 8500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 3,
+      "hitpoints": 5400,
+      "dps": 510,
+      "lab_level": 13,
+      "upgrade_cost": 10000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 4,
+      "hitpoints": 5800,
+      "dps": 550,
+      "lab_level": 13,
+      "upgrade_cost": 17000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 5,
+      "hitpoints": 6300,
+      "dps": 590,
+      "lab_level": 15,
+      "upgrade_cost": 28000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 372
+    },
+    {
+      "level": 6,
+      "hitpoints": 6900,
+      "dps": 640,
+      "lab_level": 16,
+      "upgrade_cost": 28000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 372
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

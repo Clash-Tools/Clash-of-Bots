@@ -1,0 +1,121 @@
+{
+  "id": "pumpkin_barbarian",
+  "name": "Pumpkin Barbarian",
+  "game_name": "Pumpkin Barbarian Armored",
+  "global_id": 4000048,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 200,
+  "range_tiles": 0.4,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": 6,
+  "icon": "icon_unit_pumpkin_barbarian",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 136,
+      "dps": 21,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 185,
+      "dps": 33,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 236,
+      "dps": 45,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 291,
+      "dps": 58,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 384,
+      "dps": 72,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 507,
+      "dps": 87,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 586,
+      "dps": 102,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 656,
+      "dps": 118,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 729,
+      "dps": 135,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 805,
+      "dps": 153,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 884,
+      "dps": 171,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 965,
+      "dps": 190,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 1050,
+      "dps": 210,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

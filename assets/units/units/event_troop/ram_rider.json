@@ -1,0 +1,121 @@
+{
+  "id": "ram_rider",
+  "name": "Ram Rider",
+  "game_name": "Ram Rider",
+  "global_id": 4000094,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 12,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 280,
+  "range_tiles": 3.5,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": 6,
+  "icon": "icon_unit_cookie_ramrider",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 700,
+      "dps": 60,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 1000,
+      "dps": 100,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 1100,
+      "dps": 125,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 1300,
+      "dps": 150,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 1600,
+      "dps": 175,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 1850,
+      "dps": 200,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 2350,
+      "dps": 255,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 2550,
+      "dps": 285,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 2750,
+      "dps": 315,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 3000,
+      "dps": 345,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 3250,
+      "dps": 380,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 3500,
+      "dps": 415,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 3800,
+      "dps": 455,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

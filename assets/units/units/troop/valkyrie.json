@@ -1,0 +1,138 @@
+{
+  "id": "valkyrie",
+  "name": "Valkyrie",
+  "game_name": "Valkyrie",
+  "global_id": 4000012,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 8,
+  "dark": true,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 300,
+  "range_tiles": 0.5,
+  "attack_speed_ms": 1800,
+  "damage_radius": 100,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_warriorGirl",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 750,
+      "dps": 94,
+      "lab_level": 1,
+      "upgrade_cost": 3000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 8
+    },
+    {
+      "level": 2,
+      "hitpoints": 850,
+      "dps": 106,
+      "lab_level": 6,
+      "upgrade_cost": 5000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 3,
+      "hitpoints": 950,
+      "dps": 119,
+      "lab_level": 7,
+      "upgrade_cost": 10000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 4,
+      "hitpoints": 1050,
+      "dps": 133,
+      "lab_level": 7,
+      "upgrade_cost": 16000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 42
+    },
+    {
+      "level": 5,
+      "hitpoints": 1300,
+      "dps": 148,
+      "lab_level": 8,
+      "upgrade_cost": 31500,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 6,
+      "hitpoints": 1500,
+      "dps": 167,
+      "lab_level": 9,
+      "upgrade_cost": 55000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 54
+    },
+    {
+      "level": 7,
+      "hitpoints": 1650,
+      "dps": 185,
+      "lab_level": 10,
+      "upgrade_cost": 77500,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 8,
+      "hitpoints": 1800,
+      "dps": 196,
+      "lab_level": 11,
+      "upgrade_cost": 105000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 108
+    },
+    {
+      "level": 9,
+      "hitpoints": 2000,
+      "dps": 208,
+      "lab_level": 12,
+      "upgrade_cost": 120000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 10,
+      "hitpoints": 2400,
+      "dps": 223,
+      "lab_level": 13,
+      "upgrade_cost": 170000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 11,
+      "hitpoints": 2600,
+      "dps": 238,
+      "lab_level": 14,
+      "upgrade_cost": 340000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 336
+    },
+    {
+      "level": 12,
+      "hitpoints": 2900,
+      "dps": 255,
+      "lab_level": 15,
+      "upgrade_cost": 340000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 336
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

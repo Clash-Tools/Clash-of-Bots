@@ -1,0 +1,84 @@
+{
+  "id": "druid",
+  "name": "Druid",
+  "game_name": "Druid",
+  "global_id": 4000123,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 16,
+  "dark": true,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 300,
+  "range_tiles": 5.0,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_druid_bear",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 1300,
+      "dps": -80,
+      "lab_level": 1,
+      "upgrade_cost": 125000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 2,
+      "hitpoints": 1400,
+      "dps": -85,
+      "lab_level": 12,
+      "upgrade_cost": 175000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 3,
+      "hitpoints": 1500,
+      "dps": -90,
+      "lab_level": 13,
+      "upgrade_cost": 187500,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 264
+    },
+    {
+      "level": 4,
+      "hitpoints": 1600,
+      "dps": -95,
+      "lab_level": 14,
+      "upgrade_cost": 300000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 288
+    },
+    {
+      "level": 5,
+      "hitpoints": 1700,
+      "dps": -105,
+      "lab_level": 15,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 372
+    },
+    {
+      "level": 6,
+      "hitpoints": 1850,
+      "dps": -115,
+      "lab_level": 16,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 372
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

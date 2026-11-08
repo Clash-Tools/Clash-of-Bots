@@ -13,6 +13,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field, replace
 
+from cob.attack.cards import observe
 from cob.attack.damage import damage_reader, read_damage
 from cob.attack.geometry import (
     BorderConfig,
@@ -89,7 +90,8 @@ class AttackOutcome:
 
 class AttackTask:
     def __init__(self, nav: Navigator, border: BorderConfig, deploy: DeployConfig, bar: dict,
-                 damage: dict, cfg: AttackConfig | None = None, loot: LootReader | None = None):
+                 damage: dict, cfg: AttackConfig | None = None, loot: LootReader | None = None,
+                 cards=None):
         self.nav = nav
         self.device = nav.device
         self.border = border
@@ -99,6 +101,7 @@ class AttackTask:
         self.percent = damage_reader(nav.store, damage)
         self.cfg = cfg or AttackConfig()
         self.loot = loot  # Available Loot rows, for the loot stall (#114)
+        self.cards = cards  # CardLibrary: names the bar's cards and saves unknown ones for labelling
 
     def run(self) -> AttackOutcome:
         out = self._attack()
@@ -151,7 +154,9 @@ class AttackTask:
             return AttackOutcome(FAILED, edge=edge, points=len(points), reason="no room to deploy")
 
         out = AttackOutcome(DONE, edge=edge, points=len(points))
-        log.info("bar: %s", ", ".join(f"{c.kind}@{c.center[0]}" for c in cards))
+        names = observe(self.cards, frame.bgr, cards) if self.cards is not None else [None] * len(cards)
+        log.info("bar: %s", ", ".join(f"{n or c.kind}@{c.center[0]}"
+                                      for c, n in zip(cards, names, strict=True)))
         wide = None  # same edge further out, for units the near points refused
         for card in [c for c in cards if c.kind == TROOP and not c.used]:
             taps, ok = self._deploy_troop(card, points)

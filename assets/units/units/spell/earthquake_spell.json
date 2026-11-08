@@ -1,0 +1,91 @@
+{
+  "id": "earthquake_spell",
+  "name": "Earthquake Spell",
+  "game_name": "Earthquake",
+  "global_id": 26000010,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 1,
+  "dark": true,
+  "icon": "icon_spell_earthquake",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 350,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_cost": 6000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 12
+    },
+    {
+      "level": 2,
+      "radius": 380,
+      "hits": 5,
+      "lab_level": 6,
+      "upgrade_cost": 12000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 3,
+      "radius": 410,
+      "hits": 5,
+      "lab_level": 7,
+      "upgrade_cost": 25500,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 4,
+      "radius": 440,
+      "hits": 5,
+      "lab_level": 8,
+      "upgrade_cost": 42000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 84
+    },
+    {
+      "level": 5,
+      "radius": 470,
+      "hits": 5,
+      "lab_level": 9,
+      "upgrade_cost": 120000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 6,
+      "radius": 470,
+      "hits": 5,
+      "lab_level": 12,
+      "upgrade_cost": 200000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 7,
+      "radius": 470,
+      "hits": 5,
+      "lab_level": 14,
+      "upgrade_cost": 330000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 324
+    },
+    {
+      "level": 8,
+      "radius": 470,
+      "hits": 5,
+      "lab_level": 16,
+      "upgrade_cost": 330000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 324
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

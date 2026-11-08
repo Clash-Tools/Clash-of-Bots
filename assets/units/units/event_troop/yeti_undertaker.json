@@ -1,0 +1,156 @@
+{
+  "id": "yeti_undertaker",
+  "name": "Yeti Undertaker",
+  "game_name": "UndeadWrestler",
+  "global_id": 4000190,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 80,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 300,
+  "range_tiles": 0.8,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": 4,
+  "icon": "icon_unit_undeadwrestler",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 500,
+      "dps": 150,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 600,
+      "dps": 175,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 750,
+      "dps": 200,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 950,
+      "dps": 240,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 1200,
+      "dps": 270,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 1500,
+      "dps": 300,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 1800,
+      "dps": 330,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 2000,
+      "dps": 360,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 2200,
+      "dps": 395,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 3000,
+      "dps": 435,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 3450,
+      "dps": 460,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 3750,
+      "dps": 500,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 4000,
+      "dps": 550,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 14,
+      "hitpoints": 4500,
+      "dps": 620,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 15,
+      "hitpoints": 5000,
+      "dps": 690,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 16,
+      "hitpoints": 5600,
+      "dps": 760,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 17,
+      "hitpoints": 6400,
+      "dps": 820,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 18,
+      "hitpoints": 7300,
+      "dps": 880,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

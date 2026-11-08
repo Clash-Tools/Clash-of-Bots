@@ -1,0 +1,192 @@
+{
+  "id": "bb_boxer_giant",
+  "name": "Boxer Giant",
+  "game_name": "BB Boxer Giant",
+  "global_id": 4000034,
+  "kind": "troop",
+  "village": "builder",
+  "housing_space": 18,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 180,
+  "range_tiles": 1.0,
+  "attack_speed_ms": 2000,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_boxergiant",
+  "levels": [
+    {
+      "level": 3,
+      "hitpoints": 2530,
+      "dps": 65,
+      "lab_level": 3,
+      "upgrade_cost": 60000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 5
+    },
+    {
+      "level": 4,
+      "hitpoints": 2530,
+      "dps": 65,
+      "lab_level": 3,
+      "upgrade_cost": 120000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 10
+    },
+    {
+      "level": 5,
+      "hitpoints": 2783,
+      "dps": 70,
+      "lab_level": 3,
+      "upgrade_cost": 240000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 16
+    },
+    {
+      "level": 6,
+      "hitpoints": 2783,
+      "dps": 70,
+      "lab_level": 3,
+      "upgrade_cost": 350000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 20
+    },
+    {
+      "level": 7,
+      "hitpoints": 3061,
+      "dps": 76,
+      "lab_level": 4,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 8,
+      "hitpoints": 3061,
+      "dps": 76,
+      "lab_level": 4,
+      "upgrade_cost": 1000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 9,
+      "hitpoints": 3367,
+      "dps": 83,
+      "lab_level": 5,
+      "upgrade_cost": 1200000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 10,
+      "hitpoints": 3367,
+      "dps": 83,
+      "lab_level": 5,
+      "upgrade_cost": 1300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 11,
+      "hitpoints": 3704,
+      "dps": 91,
+      "lab_level": 6,
+      "upgrade_cost": 1500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 60
+    },
+    {
+      "level": 12,
+      "hitpoints": 3704,
+      "dps": 91,
+      "lab_level": 6,
+      "upgrade_cost": 2300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 84
+    },
+    {
+      "level": 13,
+      "hitpoints": 4075,
+      "dps": 100,
+      "lab_level": 7,
+      "upgrade_cost": 2500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 108
+    },
+    {
+      "level": 14,
+      "hitpoints": 4075,
+      "dps": 100,
+      "lab_level": 7,
+      "upgrade_cost": 3300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 15,
+      "hitpoints": 4482,
+      "dps": 109,
+      "lab_level": 8,
+      "upgrade_cost": 3500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 16,
+      "hitpoints": 4482,
+      "dps": 109,
+      "lab_level": 8,
+      "upgrade_cost": 4000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 17,
+      "hitpoints": 4930,
+      "dps": 119,
+      "lab_level": 9,
+      "upgrade_cost": 4200000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 18,
+      "hitpoints": 4930,
+      "dps": 119,
+      "lab_level": 9,
+      "upgrade_cost": 4800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 19,
+      "hitpoints": 5423,
+      "dps": 129,
+      "lab_level": 10,
+      "upgrade_cost": 5400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 20,
+      "hitpoints": 5423,
+      "dps": 129,
+      "lab_level": 10,
+      "upgrade_cost": 5400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

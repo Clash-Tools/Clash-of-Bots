@@ -1,0 +1,66 @@
+{
+  "id": "headhunter",
+  "name": "Headhunter",
+  "game_name": "Headhunter",
+  "global_id": 4000082,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 6,
+  "dark": true,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 300,
+  "range_tiles": 3.0,
+  "attack_speed_ms": 600,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_headhunter",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 360,
+      "dps": 105,
+      "lab_level": 1,
+      "upgrade_cost": 57500,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 2,
+      "hitpoints": 400,
+      "dps": 115,
+      "lab_level": 10,
+      "upgrade_cost": 90000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 3,
+      "hitpoints": 440,
+      "dps": 125,
+      "lab_level": 11,
+      "upgrade_cost": 370000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 372
+    },
+    {
+      "level": 4,
+      "hitpoints": 500,
+      "dps": 135,
+      "lab_level": 16,
+      "upgrade_cost": 370000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 372
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

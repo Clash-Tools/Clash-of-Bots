@@ -1,0 +1,66 @@
+{
+  "id": "thrower",
+  "name": "Thrower",
+  "game_name": "Thrower",
+  "global_id": 4000132,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 16,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 200,
+  "range_tiles": 6.0,
+  "attack_speed_ms": 2500,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_thrower",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 2200,
+      "dps": 190,
+      "lab_level": 1,
+      "upgrade_cost": 16000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 228
+    },
+    {
+      "level": 2,
+      "hitpoints": 2350,
+      "dps": 210,
+      "lab_level": 14,
+      "upgrade_cost": 18000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 252
+    },
+    {
+      "level": 3,
+      "hitpoints": 2500,
+      "dps": 220,
+      "lab_level": 15,
+      "upgrade_cost": 27000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 360
+    },
+    {
+      "level": 4,
+      "hitpoints": 2650,
+      "dps": 230,
+      "lab_level": 16,
+      "upgrade_cost": 27000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 360
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

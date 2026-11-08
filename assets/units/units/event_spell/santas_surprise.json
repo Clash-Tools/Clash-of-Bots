@@ -1,0 +1,123 @@
+{
+  "id": "santas_surprise",
+  "name": "Santa's Surprise",
+  "game_name": "Santas Surprise",
+  "global_id": 26000006,
+  "kind": "event_spell",
+  "village": "home",
+  "housing_space": 2,
+  "dark": false,
+  "icon": "icon_spell_xmas",
+  "levels": [
+    {
+      "level": 1,
+      "damage": 180,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "damage": 190,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "damage": 200,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "damage": 210,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "damage": 230,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "damage": 260,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "damage": 280,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "damage": 300,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "damage": 330,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "damage": 350,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "damage": 370,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "damage": 390,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "damage": 410,
+      "radius": 150,
+      "hits": 5,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "troop_launcher",
+  "name": "Troop Launcher",
+  "game_name": "Troop Launcher",
+  "global_id": 4000135,
+  "kind": "siege",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 0,
+  "range_tiles": 80.0,
+  "attack_speed_ms": 6000,
+  "damage_radius": 1,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_siege_machine_commandtower",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 2000,
+      "dps": -1,
+      "lab_level": 13,
+      "upgrade_cost": 8500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 2,
+      "hitpoints": 2200,
+      "dps": -1,
+      "lab_level": 14,
+      "upgrade_cost": 10000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 3,
+      "hitpoints": 2400,
+      "dps": -1,
+      "lab_level": 14,
+      "upgrade_cost": 17000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 4,
+      "hitpoints": 2600,
+      "dps": -1,
+      "lab_level": 15,
+      "upgrade_cost": 17000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 216
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

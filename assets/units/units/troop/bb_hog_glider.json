@@ -1,0 +1,84 @@
+{
+  "id": "bb_hog_glider",
+  "name": "Hog Glider",
+  "game_name": "BB Hog Glider",
+  "global_id": 4000070,
+  "kind": "troop",
+  "village": "builder",
+  "housing_space": 12,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 300,
+  "range_tiles": 0.5,
+  "attack_speed_ms": 200,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_hog_glider",
+  "levels": [
+    {
+      "level": 15,
+      "hitpoints": 600,
+      "dps": 900,
+      "lab_level": 9,
+      "upgrade_cost": 4000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 16,
+      "hitpoints": 650,
+      "dps": 1100,
+      "lab_level": 9,
+      "upgrade_cost": 4200000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 17,
+      "hitpoints": 650,
+      "dps": 1100,
+      "lab_level": 9,
+      "upgrade_cost": 4400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 18,
+      "hitpoints": 650,
+      "dps": 1100,
+      "lab_level": 9,
+      "upgrade_cost": 5400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 19,
+      "hitpoints": 650,
+      "dps": 1100,
+      "lab_level": 10,
+      "upgrade_cost": 5800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 20,
+      "hitpoints": 700,
+      "dps": 1300,
+      "lab_level": 10,
+      "upgrade_cost": 5800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

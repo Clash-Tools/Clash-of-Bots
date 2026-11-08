@@ -1,0 +1,116 @@
+{
+  "id": "super_valkyrie",
+  "name": "Super Valkyrie",
+  "game_name": "Super Valkyrie",
+  "global_id": 4000064,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 20,
+  "dark": true,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 300,
+  "range_tiles": 0.5,
+  "attack_speed_ms": 1100,
+  "damage_radius": 100,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_valkyrie",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 1200,
+      "dps": 100,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 1400,
+      "dps": 125,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 1600,
+      "dps": 150,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 1800,
+      "dps": 175,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 2000,
+      "dps": 200,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 2200,
+      "dps": 225,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 2400,
+      "dps": 250,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 2700,
+      "dps": 300,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 2900,
+      "dps": 325,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 3400,
+      "dps": 350,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 3900,
+      "dps": 375,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 4500,
+      "dps": 405,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    }
+  ],
+  "super_of": "valkyrie",
+  "super_min_original_level": 6,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

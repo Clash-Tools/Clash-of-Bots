@@ -1,0 +1,100 @@
+{
+  "id": "clone_spell",
+  "name": "Clone Spell",
+  "game_name": "Clone",
+  "global_id": 26000016,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 3,
+  "dark": false,
+  "icon": "icon_spell_clone",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 1,
+      "upgrade_cost": 1500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 2,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 8,
+      "upgrade_cost": 2500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 3,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 8,
+      "upgrade_cost": 3000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 54
+    },
+    {
+      "level": 4,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 9,
+      "upgrade_cost": 4000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 60
+    },
+    {
+      "level": 5,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 9,
+      "upgrade_cost": 5000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 6,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 11,
+      "upgrade_cost": 8000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 7,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 12,
+      "upgrade_cost": 9000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 8,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 13,
+      "upgrade_cost": 26000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 324
+    },
+    {
+      "level": 9,
+      "radius": 350,
+      "hits": 60,
+      "lab_level": 16,
+      "upgrade_cost": 26000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 324
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

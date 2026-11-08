@@ -1,0 +1,253 @@
+{
+  "id": "dragon_duke",
+  "name": "Dragon Duke",
+  "game_name": "Dragon Duke",
+  "global_id": null,
+  "kind": "hero",
+  "village": "home",
+  "housing_space": null,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "speed": 250,
+  "range_tiles": 1.25,
+  "attack_speed_ms": 1200,
+  "unlock_town_hall": 15,
+  "icon": "icon_hero_dragonDuke",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 9100,
+      "dps": 304,
+      "required_town_hall": 15,
+      "upgrade_cost": 50000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 6
+    },
+    {
+      "level": 2,
+      "hitpoints": 9175,
+      "dps": 308,
+      "required_town_hall": 15,
+      "upgrade_cost": 60000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 12
+    },
+    {
+      "level": 3,
+      "hitpoints": 9250,
+      "dps": 312,
+      "required_town_hall": 15,
+      "upgrade_cost": 70000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 4,
+      "hitpoints": 9325,
+      "dps": 316,
+      "required_town_hall": 15,
+      "upgrade_cost": 80000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 5,
+      "hitpoints": 9400,
+      "dps": 320,
+      "required_town_hall": 15,
+      "upgrade_cost": 90000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 6,
+      "hitpoints": 9475,
+      "dps": 324,
+      "required_town_hall": 15,
+      "upgrade_cost": 100000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 7,
+      "hitpoints": 9550,
+      "dps": 328,
+      "required_town_hall": 15,
+      "upgrade_cost": 110000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 8,
+      "hitpoints": 9625,
+      "dps": 332,
+      "required_town_hall": 15,
+      "upgrade_cost": 120000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 9,
+      "hitpoints": 9700,
+      "dps": 336,
+      "required_town_hall": 15,
+      "upgrade_cost": 130000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 10,
+      "hitpoints": 9775,
+      "dps": 340,
+      "required_town_hall": 15,
+      "upgrade_cost": 150000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 11,
+      "hitpoints": 9850,
+      "dps": 344,
+      "required_town_hall": 16,
+      "upgrade_cost": 175000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 12,
+      "hitpoints": 9925,
+      "dps": 348,
+      "required_town_hall": 16,
+      "upgrade_cost": 200000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 13,
+      "hitpoints": 10000,
+      "dps": 352,
+      "required_town_hall": 16,
+      "upgrade_cost": 225000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 14,
+      "hitpoints": 10075,
+      "dps": 356,
+      "required_town_hall": 16,
+      "upgrade_cost": 250000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 15,
+      "hitpoints": 10150,
+      "dps": 360,
+      "required_town_hall": 16,
+      "upgrade_cost": 275000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 16,
+      "hitpoints": 10225,
+      "dps": 364,
+      "required_town_hall": 17,
+      "upgrade_cost": 300000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 17,
+      "hitpoints": 10300,
+      "dps": 368,
+      "required_town_hall": 17,
+      "upgrade_cost": 325000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 18,
+      "hitpoints": 10375,
+      "dps": 372,
+      "required_town_hall": 17,
+      "upgrade_cost": 350000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 19,
+      "hitpoints": 10450,
+      "dps": 376,
+      "required_town_hall": 17,
+      "upgrade_cost": 375000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 20,
+      "hitpoints": 10525,
+      "dps": 380,
+      "required_town_hall": 17,
+      "upgrade_cost": 400000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 21,
+      "hitpoints": 10600,
+      "dps": 384,
+      "required_town_hall": 18,
+      "upgrade_cost": 420000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 22,
+      "hitpoints": 10675,
+      "dps": 388,
+      "required_town_hall": 18,
+      "upgrade_cost": 440000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 23,
+      "hitpoints": 10750,
+      "dps": 392,
+      "required_town_hall": 18,
+      "upgrade_cost": 460000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 24,
+      "hitpoints": 10825,
+      "dps": 396,
+      "required_town_hall": 18,
+      "upgrade_cost": 480000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 25,
+      "hitpoints": 10900,
+      "dps": 400,
+      "required_town_hall": 18,
+      "upgrade_cost": 480000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

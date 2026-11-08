@@ -1,0 +1,64 @@
+{
+  "id": "jump_spell",
+  "name": "Jump Spell",
+  "game_name": "Jump",
+  "global_id": 26000003,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 2,
+  "dark": false,
+  "icon": "icon_spell_jump",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 350,
+      "hits": 81,
+      "lab_level": 4,
+      "upgrade_cost": 1000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 2,
+      "radius": 350,
+      "hits": 161,
+      "lab_level": 5,
+      "upgrade_cost": 2000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 3,
+      "radius": 350,
+      "hits": 241,
+      "lab_level": 8,
+      "upgrade_cost": 5000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 4,
+      "radius": 350,
+      "hits": 321,
+      "lab_level": 11,
+      "upgrade_cost": 8000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 5,
+      "radius": 350,
+      "hits": 401,
+      "lab_level": 13,
+      "upgrade_cost": 8000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 120
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

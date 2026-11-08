@@ -1,0 +1,66 @@
+{
+  "id": "furnace",
+  "name": "Furnace",
+  "game_name": "Furnace",
+  "global_id": 4000150,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 18,
+  "dark": true,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 0,
+  "range_tiles": 0.01,
+  "attack_speed_ms": 800,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_furnace",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 1530,
+      "dps": 1,
+      "lab_level": 1,
+      "upgrade_cost": 200000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 2,
+      "hitpoints": 1620,
+      "dps": 2,
+      "lab_level": 13,
+      "upgrade_cost": 260000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 264
+    },
+    {
+      "level": 3,
+      "hitpoints": 1710,
+      "dps": 3,
+      "lab_level": 14,
+      "upgrade_cost": 320000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 360
+    },
+    {
+      "level": 4,
+      "hitpoints": 1800,
+      "dps": 4,
+      "lab_level": 15,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 384
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

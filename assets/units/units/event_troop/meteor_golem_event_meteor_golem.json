@@ -1,0 +1,121 @@
+{
+  "id": "meteor_golem_event_meteor_golem",
+  "name": "Meteor Golem",
+  "game_name": "Event Meteor Golem",
+  "global_id": 4000167,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 40,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 150,
+  "range_tiles": 5.0,
+  "attack_speed_ms": 1000,
+  "damage_radius": 100,
+  "unlock_town_hall": 6,
+  "icon": "icon_unit_splitgolem",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 4000,
+      "dps": 170,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 5000,
+      "dps": 198,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 6000,
+      "dps": 226,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 7000,
+      "dps": 254,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 8000,
+      "dps": 282,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 8500,
+      "dps": 310,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 9000,
+      "dps": 338,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 10000,
+      "dps": 366,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 11000,
+      "dps": 394,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 12000,
+      "dps": 430,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 13000,
+      "dps": 465,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 14500,
+      "dps": 500,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 16000,
+      "dps": 550,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

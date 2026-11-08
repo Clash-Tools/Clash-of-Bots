@@ -1,0 +1,217 @@
+{
+  "id": "bb_battle_copter",
+  "name": "Battle Copter",
+  "game_name": "BB Battle Copter",
+  "global_id": null,
+  "kind": "hero",
+  "village": "builder",
+  "housing_space": null,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "speed": 180,
+  "range_tiles": 6.0,
+  "attack_speed_ms": 650,
+  "unlock_town_hall": 8,
+  "icon": "icon_hero_battlecopter",
+  "levels": [
+    {
+      "level": 15,
+      "hitpoints": 2857,
+      "dps": 112,
+      "required_town_hall": 8,
+      "upgrade_cost": 2600000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 16,
+      "hitpoints": 2885,
+      "dps": 116,
+      "required_town_hall": 8,
+      "upgrade_cost": 2700000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 17,
+      "hitpoints": 2915,
+      "dps": 119,
+      "required_town_hall": 8,
+      "upgrade_cost": 2800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 18,
+      "hitpoints": 2943,
+      "dps": 123,
+      "required_town_hall": 8,
+      "upgrade_cost": 2900000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 19,
+      "hitpoints": 2972,
+      "dps": 126,
+      "required_town_hall": 8,
+      "upgrade_cost": 3000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 20,
+      "hitpoints": 3003,
+      "dps": 130,
+      "required_town_hall": 8,
+      "upgrade_cost": 3100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 21,
+      "hitpoints": 3032,
+      "dps": 134,
+      "required_town_hall": 8,
+      "upgrade_cost": 3200000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 22,
+      "hitpoints": 3062,
+      "dps": 137,
+      "required_town_hall": 8,
+      "upgrade_cost": 3300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 23,
+      "hitpoints": 3094,
+      "dps": 141,
+      "required_town_hall": 8,
+      "upgrade_cost": 3400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 24,
+      "hitpoints": 3124,
+      "dps": 144,
+      "required_town_hall": 8,
+      "upgrade_cost": 3500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 25,
+      "hitpoints": 3155,
+      "dps": 148,
+      "required_town_hall": 8,
+      "upgrade_cost": 3600000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 26,
+      "hitpoints": 3187,
+      "dps": 153,
+      "required_town_hall": 9,
+      "upgrade_cost": 3700000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 27,
+      "hitpoints": 3220,
+      "dps": 157,
+      "required_town_hall": 9,
+      "upgrade_cost": 3800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 28,
+      "hitpoints": 3252,
+      "dps": 162,
+      "required_town_hall": 9,
+      "upgrade_cost": 3900000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 29,
+      "hitpoints": 3285,
+      "dps": 166,
+      "required_town_hall": 9,
+      "upgrade_cost": 4000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 30,
+      "hitpoints": 3318,
+      "dps": 171,
+      "required_town_hall": 9,
+      "upgrade_cost": 4100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 31,
+      "hitpoints": 3348,
+      "dps": 175,
+      "required_town_hall": 10,
+      "upgrade_cost": 4200000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 32,
+      "hitpoints": 3375,
+      "dps": 180,
+      "required_town_hall": 10,
+      "upgrade_cost": 4300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 33,
+      "hitpoints": 3402,
+      "dps": 184,
+      "required_town_hall": 10,
+      "upgrade_cost": 4400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 34,
+      "hitpoints": 3429,
+      "dps": 189,
+      "required_town_hall": 10,
+      "upgrade_cost": 4500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 35,
+      "hitpoints": 3456,
+      "dps": 193,
+      "required_town_hall": 10,
+      "upgrade_cost": 4500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 168
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

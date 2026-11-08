@@ -1,0 +1,109 @@
+{
+  "id": "super_dragon",
+  "name": "Super Dragon",
+  "game_name": "Super Dragon",
+  "global_id": 4000081,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 40,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 175,
+  "range_tiles": 3.0,
+  "attack_speed_ms": 1800,
+  "damage_radius": 160,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_dragon",
+  "levels": [
+    {
+      "level": 3,
+      "hitpoints": 3900,
+      "dps": 301,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 4500,
+      "dps": 326,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 5100,
+      "dps": 352,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 5600,
+      "dps": 377,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 6100,
+      "dps": 402,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 6400,
+      "dps": 427,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 6700,
+      "dps": 452,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 7200,
+      "dps": 477,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 7600,
+      "dps": 497,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 8000,
+      "dps": 517,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 8400,
+      "dps": 537,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "super_of": "dragon",
+  "super_min_original_level": 6,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

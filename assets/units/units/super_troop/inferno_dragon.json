@@ -1,0 +1,116 @@
+{
+  "id": "inferno_dragon",
+  "name": "Inferno Dragon",
+  "game_name": "Inferno Dragon",
+  "global_id": 4000063,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 15,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 225,
+  "range_tiles": 3.5,
+  "attack_speed_ms": 128,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_infernodragon",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 1150,
+      "dps": 55,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 1300,
+      "dps": 59,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 1450,
+      "dps": 63,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 1600,
+      "dps": 67,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 1750,
+      "dps": 71,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 1900,
+      "dps": 75,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 2050,
+      "dps": 79,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 2200,
+      "dps": 83,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 2300,
+      "dps": 85,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 2400,
+      "dps": 87,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 2500,
+      "dps": 89,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 2700,
+      "dps": 91,
+      "lab_level": 10,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "super_of": "baby_dragon",
+  "super_min_original_level": 5,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

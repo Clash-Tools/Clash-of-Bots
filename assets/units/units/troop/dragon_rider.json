@@ -1,0 +1,84 @@
+{
+  "id": "dragon_rider",
+  "name": "Dragon Rider",
+  "game_name": "Dragon Rider",
+  "global_id": 4000065,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 25,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": "Defense",
+  "speed": 250,
+  "range_tiles": 3.5,
+  "attack_speed_ms": 1200,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_dragon_rider",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 4100,
+      "dps": 340,
+      "lab_level": 1,
+      "upgrade_cost": 7500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 2,
+      "hitpoints": 4400,
+      "dps": 370,
+      "lab_level": 11,
+      "upgrade_cost": 12000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 3,
+      "hitpoints": 4700,
+      "dps": 400,
+      "lab_level": 12,
+      "upgrade_cost": 14500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 4,
+      "hitpoints": 5100,
+      "dps": 430,
+      "lab_level": 14,
+      "upgrade_cost": 19000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 246
+    },
+    {
+      "level": 5,
+      "hitpoints": 5600,
+      "dps": 470,
+      "lab_level": 15,
+      "upgrade_cost": 29500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 372
+    },
+    {
+      "level": 6,
+      "hitpoints": 5900,
+      "dps": 490,
+      "lab_level": 16,
+      "upgrade_cost": 29500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 372
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}
