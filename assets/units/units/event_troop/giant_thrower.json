@@ -1,0 +1,121 @@
+{
+  "id": "giant_thrower",
+  "name": "Giant Thrower",
+  "game_name": "Giant Thrower",
+  "global_id": 4000122,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 15,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 200,
+  "range_tiles": 0.7,
+  "attack_speed_ms": 1800,
+  "damage_radius": null,
+  "unlock_town_hall": 6,
+  "icon": "icon_unit_footballgiant",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 600,
+      "dps": 110,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 850,
+      "dps": 120,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 1500,
+      "dps": 130,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 1800,
+      "dps": 140,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 2050,
+      "dps": 150,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 2350,
+      "dps": 160,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 2700,
+      "dps": 175,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 3050,
+      "dps": 185,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 3400,
+      "dps": 195,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 3750,
+      "dps": 205,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 4100,
+      "dps": 215,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 4450,
+      "dps": 225,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 4800,
+      "dps": 235,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

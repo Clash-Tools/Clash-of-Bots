@@ -1,0 +1,64 @@
+{
+  "id": "revive_spell",
+  "name": "Revive Spell",
+  "game_name": "Revive",
+  "global_id": 26000098,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 2,
+  "dark": false,
+  "icon": "icon_spell_hero_revive",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 0,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_cost": 18000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 2,
+      "radius": 0,
+      "hits": 1,
+      "lab_level": 13,
+      "upgrade_cost": 19000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 3,
+      "radius": 0,
+      "hits": 1,
+      "lab_level": 14,
+      "upgrade_cost": 20000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 276
+    },
+    {
+      "level": 4,
+      "radius": 0,
+      "hits": 1,
+      "lab_level": 15,
+      "upgrade_cost": 29500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    },
+    {
+      "level": 5,
+      "radius": 0,
+      "hits": 1,
+      "lab_level": 16,
+      "upgrade_cost": 29500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

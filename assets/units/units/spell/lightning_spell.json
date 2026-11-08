@@ -1,0 +1,149 @@
+{
+  "id": "lightning_spell",
+  "name": "Lightning Spell",
+  "game_name": "Lightning",
+  "global_id": 26000000,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "icon": "icon_spell_lightning",
+  "levels": [
+    {
+      "level": 1,
+      "damage": 150,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_cost": 50000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 2
+    },
+    {
+      "level": 2,
+      "damage": 180,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_cost": 100000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 4
+    },
+    {
+      "level": 3,
+      "damage": 210,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 2,
+      "upgrade_cost": 200000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 6
+    },
+    {
+      "level": 4,
+      "damage": 240,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 3,
+      "upgrade_cost": 600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 5,
+      "damage": 270,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 6,
+      "upgrade_cost": 1500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 6,
+      "damage": 320,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 7,
+      "upgrade_cost": 2500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 7,
+      "damage": 400,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 8,
+      "upgrade_cost": 4200000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 84
+    },
+    {
+      "level": 8,
+      "damage": 480,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 9,
+      "upgrade_cost": 6300000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 9,
+      "damage": 560,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 10,
+      "upgrade_cost": 10000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 10,
+      "damage": 600,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 13,
+      "upgrade_cost": 13500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 11,
+      "damage": 640,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 14,
+      "upgrade_cost": 18500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 240
+    },
+    {
+      "level": 12,
+      "damage": 680,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 15,
+      "upgrade_cost": 27000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 336
+    },
+    {
+      "level": 13,
+      "damage": 720,
+      "radius": 200,
+      "hits": 1,
+      "lab_level": 16,
+      "upgrade_cost": 27000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 336
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

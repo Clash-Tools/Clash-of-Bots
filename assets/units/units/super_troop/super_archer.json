@@ -1,0 +1,102 @@
+{
+  "id": "super_archer",
+  "name": "Super Archer",
+  "game_name": "Super Archer",
+  "global_id": 4000027,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 12,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 300,
+  "range_tiles": 6.0,
+  "attack_speed_ms": 1500,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_archer",
+  "levels": [
+    {
+      "level": 5,
+      "hitpoints": 300,
+      "dps": 84,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 350,
+      "dps": 96,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 400,
+      "dps": 108,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 450,
+      "dps": 120,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 510,
+      "dps": 132,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 565,
+      "dps": 144,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 605,
+      "dps": 156,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 645,
+      "dps": 162,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 685,
+      "dps": 166,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 14,
+      "hitpoints": 725,
+      "dps": 170,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "super_of": "archer",
+  "super_min_original_level": 7,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

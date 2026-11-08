@@ -1,0 +1,27 @@
+{
+  "id": "birthday_boom",
+  "name": "Birthday Boom",
+  "game_name": "Birthday2017",
+  "global_id": 26000022,
+  "kind": "event_spell",
+  "village": "home",
+  "housing_space": 2,
+  "dark": false,
+  "icon": "icon_spell_birthday",
+  "levels": [
+    {
+      "level": 1,
+      "damage": 500,
+      "radius": 250,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "root_rider",
+  "name": "Root Rider",
+  "game_name": "Root Rider",
+  "global_id": 4000110,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 20,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 150,
+  "range_tiles": 1.0,
+  "attack_speed_ms": 2200,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_root_rider",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 6200,
+      "dps": 95,
+      "lab_level": 1,
+      "upgrade_cost": 15000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 2,
+      "hitpoints": 6350,
+      "dps": 105,
+      "lab_level": 13,
+      "upgrade_cost": 17600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 240
+    },
+    {
+      "level": 3,
+      "hitpoints": 6500,
+      "dps": 115,
+      "lab_level": 14,
+      "upgrade_cost": 30000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    },
+    {
+      "level": 4,
+      "hitpoints": 6700,
+      "dps": 125,
+      "lab_level": 16,
+      "upgrade_cost": 30000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

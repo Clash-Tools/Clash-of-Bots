@@ -1,0 +1,138 @@
+{
+  "id": "miner",
+  "name": "Miner",
+  "game_name": "Miner",
+  "global_id": 4000024,
+  "kind": "troop",
+  "village": "home",
+  "housing_space": 6,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 400,
+  "range_tiles": 0.6,
+  "attack_speed_ms": 1700,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_miner",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 550,
+      "dps": 80,
+      "lab_level": 1,
+      "upgrade_cost": 1500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 2,
+      "hitpoints": 610,
+      "dps": 88,
+      "lab_level": 8,
+      "upgrade_cost": 2600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 3,
+      "hitpoints": 670,
+      "dps": 96,
+      "lab_level": 8,
+      "upgrade_cost": 3000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 54
+    },
+    {
+      "level": 4,
+      "hitpoints": 730,
+      "dps": 104,
+      "lab_level": 9,
+      "upgrade_cost": 4000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 60
+    },
+    {
+      "level": 5,
+      "hitpoints": 800,
+      "dps": 112,
+      "lab_level": 9,
+      "upgrade_cost": 4800000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 6,
+      "hitpoints": 900,
+      "dps": 120,
+      "lab_level": 10,
+      "upgrade_cost": 6000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 7,
+      "hitpoints": 1000,
+      "dps": 128,
+      "lab_level": 11,
+      "upgrade_cost": 8600000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 8,
+      "hitpoints": 1150,
+      "dps": 136,
+      "lab_level": 12,
+      "upgrade_cost": 10500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 9,
+      "hitpoints": 1350,
+      "dps": 144,
+      "lab_level": 13,
+      "upgrade_cost": 12500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 10,
+      "hitpoints": 1550,
+      "dps": 160,
+      "lab_level": 14,
+      "upgrade_cost": 16500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 228
+    },
+    {
+      "level": 11,
+      "hitpoints": 1850,
+      "dps": 175,
+      "lab_level": 15,
+      "upgrade_cost": 28000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 348
+    },
+    {
+      "level": 12,
+      "hitpoints": 2150,
+      "dps": 195,
+      "lab_level": 16,
+      "upgrade_cost": 28000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 348
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

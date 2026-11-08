@@ -1,0 +1,84 @@
+{
+  "id": "stone_slammer",
+  "name": "Stone Slammer",
+  "game_name": "Stone Slammer",
+  "global_id": 4000062,
+  "kind": "siege",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 200,
+  "range_tiles": null,
+  "attack_speed_ms": 2500,
+  "damage_radius": 100,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_siege_machine_balloon",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 5600,
+      "dps": 400,
+      "lab_level": 9,
+      "upgrade_cost": 2500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 2,
+      "hitpoints": 5900,
+      "dps": 500,
+      "lab_level": 10,
+      "upgrade_cost": 3500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 3,
+      "hitpoints": 6200,
+      "dps": 600,
+      "lab_level": 10,
+      "upgrade_cost": 6500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 4,
+      "hitpoints": 6500,
+      "dps": 700,
+      "lab_level": 11,
+      "upgrade_cost": 10000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 5,
+      "hitpoints": 6800,
+      "dps": 750,
+      "lab_level": 13,
+      "upgrade_cost": 26000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 324
+    },
+    {
+      "level": 6,
+      "hitpoints": 7200,
+      "dps": 820,
+      "lab_level": 16,
+      "upgrade_cost": 26000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 324
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

@@ -371,3 +371,22 @@ Why:      Both are free, need no extra app account beyond what most players alre
 Trade-off: The webhook URL and bot token sit in plain text in ui.json (same as the rest of the user data
           folder); anyone with that file can post to the channel.
 Revisit if: users ask for other services, or secrets need the OS keychain.
+
+## D-033: Unit database in its own repository; bar cards recognised by their portrait  (ACCEPTED 2026-11-08)
+Date: 2026-11-08   Model: Claude Opus 5.5
+Context:  Troop detection: a Super Valkyrie card was read as a spell from its colour. Future attack
+          planning needs unit facts (kind, housing, targets, stats per level).
+Options:  1) Unit data from the game's own files in a separate, versioned repository, bundled by tag
+          2) Read coc.guide or another fan site at run time
+          3) Hard-code facts per unit in the bot
+Chosen:   1. Clash-Tools/clash-of-bots-data (tools/extract.py from the asset pack, JSON Schema, CI,
+          tags data-vN); scripts/update_units.py copies a tag into assets/units. Cards are recognised by a
+          colour fingerprint of the portrait band (rows 795-838, 14 px inset: no count, level, pet icon or
+          upgrade arrow); same unit >= 0.97, different units <= 0.78 on the fixtures, so match at 0.85.
+          Unrecognised cards are saved once to <user data>/cards/unknown for labelling in the app; labels
+          go to cards/labelled and are recognised from the next battle on.
+Why:      Exact numbers that follow game updates, no network dependency, new and event troops handled by
+          labelling a picture instead of a code change.
+Trade-off: The database has no card pictures until they are labelled and exported; until then the bar
+          still uses card colour and order for the kind.
+Revisit if: portraits change with skins (add variants per unit) or another resolution is supported.

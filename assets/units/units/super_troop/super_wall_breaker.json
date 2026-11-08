@@ -1,0 +1,102 @@
+{
+  "id": "super_wall_breaker",
+  "name": "Super Wall Breaker",
+  "game_name": "Super Wall Breaker",
+  "global_id": 4000028,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 8,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Wall",
+  "speed": 350,
+  "range_tiles": 0.6,
+  "attack_speed_ms": 1000,
+  "damage_radius": 80,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_wallbreaker",
+  "levels": [
+    {
+      "level": 5,
+      "hitpoints": 250,
+      "dps": 34,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 300,
+      "dps": 56,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 350,
+      "dps": 78,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 400,
+      "dps": 100,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 450,
+      "dps": 120,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 475,
+      "dps": 130,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 500,
+      "dps": 140,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 525,
+      "dps": 150,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 550,
+      "dps": 160,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 14,
+      "hitpoints": 575,
+      "dps": 170,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "super_of": "wall_breaker",
+  "super_min_original_level": 6,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

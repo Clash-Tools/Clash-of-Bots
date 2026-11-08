@@ -1,0 +1,121 @@
+{
+  "id": "lavaloon",
+  "name": "Lavaloon",
+  "game_name": "Lavaloon",
+  "global_id": 4000104,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 21,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Air Defense",
+  "speed": 200,
+  "range_tiles": null,
+  "attack_speed_ms": 2500,
+  "damage_radius": 180,
+  "unlock_town_hall": 6,
+  "icon": "icon_unit_lavaloon",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 1080,
+      "dps": 50,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 1575,
+      "dps": 70,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 2070,
+      "dps": 90,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 2565,
+      "dps": 110,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 3060,
+      "dps": 130,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 3555,
+      "dps": 150,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 4050,
+      "dps": 170,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 4455,
+      "dps": 190,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 4860,
+      "dps": 210,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 5265,
+      "dps": 230,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 5670,
+      "dps": 250,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 6100,
+      "dps": 280,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 6500,
+      "dps": 310,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

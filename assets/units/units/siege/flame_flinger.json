@@ -1,0 +1,75 @@
+{
+  "id": "flame_flinger",
+  "name": "Flame Flinger",
+  "game_name": "Flame Flinger",
+  "global_id": 4000091,
+  "kind": "siege",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 80,
+  "range_tiles": 10.05,
+  "attack_speed_ms": 5000,
+  "damage_radius": 100,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_siege_machine_catapult",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 1700,
+      "dps": 127,
+      "lab_level": 9,
+      "upgrade_cost": 5500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 2,
+      "hitpoints": 1800,
+      "dps": 141,
+      "lab_level": 10,
+      "upgrade_cost": 8000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 3,
+      "hitpoints": 1900,
+      "dps": 155,
+      "lab_level": 10,
+      "upgrade_cost": 10000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 4,
+      "hitpoints": 2000,
+      "dps": 169,
+      "lab_level": 11,
+      "upgrade_cost": 18000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 288
+    },
+    {
+      "level": 5,
+      "hitpoints": 2100,
+      "dps": 184,
+      "lab_level": 14,
+      "upgrade_cost": 18000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 288
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

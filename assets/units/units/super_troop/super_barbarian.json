@@ -1,0 +1,95 @@
+{
+  "id": "super_barbarian",
+  "name": "Super Barbarian",
+  "game_name": "Super Barbarian",
+  "global_id": 4000026,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 5,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 250,
+  "range_tiles": 0.6,
+  "attack_speed_ms": 800,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_barbarian",
+  "levels": [
+    {
+      "level": 5,
+      "hitpoints": 700,
+      "dps": 120,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 800,
+      "dps": 140,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 900,
+      "dps": 160,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 1000,
+      "dps": 180,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 1100,
+      "dps": 200,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 1200,
+      "dps": 220,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 1300,
+      "dps": 240,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 1350,
+      "dps": 250,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 1450,
+      "dps": 270,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "super_of": "barbarian",
+  "super_min_original_level": 7,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "cookie_mega_cookie",
+  "name": "C.O.O.K.I.E",
+  "game_name": "Mega COOKIE",
+  "global_id": 4000145,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 100,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 150,
+  "range_tiles": 1.6,
+  "attack_speed_ms": 2500,
+  "damage_radius": 180,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_cookie_pekka",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 25000,
+      "dps": 8200,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

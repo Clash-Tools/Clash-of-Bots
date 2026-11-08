@@ -1,0 +1,64 @@
+{
+  "id": "overgrowth_spell",
+  "name": "Overgrowth Spell",
+  "game_name": "Overgrowth",
+  "global_id": 26000070,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 2,
+  "dark": true,
+  "icon": "icon_spell_overgrowth",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 600,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_cost": 62500,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 2,
+      "radius": 600,
+      "hits": 1,
+      "lab_level": 10,
+      "upgrade_cost": 125000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 204
+    },
+    {
+      "level": 3,
+      "radius": 600,
+      "hits": 1,
+      "lab_level": 12,
+      "upgrade_cost": 175000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 240
+    },
+    {
+      "level": 4,
+      "radius": 600,
+      "hits": 1,
+      "lab_level": 14,
+      "upgrade_cost": 360000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 384
+    },
+    {
+      "level": 5,
+      "radius": 600,
+      "hits": 1,
+      "lab_level": 16,
+      "upgrade_cost": 360000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 384
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

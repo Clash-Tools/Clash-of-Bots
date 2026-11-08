@@ -1,0 +1,151 @@
+{
+  "id": "poison_spell",
+  "name": "Poison Spell",
+  "game_name": "Poison",
+  "global_id": 26000009,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 1,
+  "dark": true,
+  "icon": "icon_spell_toxic",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -26,
+      "lab_level": 1,
+      "upgrade_cost": 5000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 6
+    },
+    {
+      "level": 2,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -30,
+      "lab_level": 6,
+      "upgrade_cost": 10000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 18
+    },
+    {
+      "level": 3,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -34,
+      "lab_level": 7,
+      "upgrade_cost": 21500,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 4,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -38,
+      "lab_level": 8,
+      "upgrade_cost": 35000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 5,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -40,
+      "lab_level": 9,
+      "upgrade_cost": 55000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 96
+    },
+    {
+      "level": 6,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -42,
+      "lab_level": 10,
+      "upgrade_cost": 77500,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 120
+    },
+    {
+      "level": 7,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -44,
+      "lab_level": 11,
+      "upgrade_cost": 100000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 8,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -46,
+      "lab_level": 12,
+      "upgrade_cost": 135000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 9,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -48,
+      "lab_level": 13,
+      "upgrade_cost": 175000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 10,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -50,
+      "lab_level": 14,
+      "upgrade_cost": 230000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 232
+    },
+    {
+      "level": 11,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -51,
+      "lab_level": 15,
+      "upgrade_cost": 350000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 348
+    },
+    {
+      "level": 12,
+      "radius": 400,
+      "hits": 40,
+      "boost_ms": 500,
+      "speed_boost": -52,
+      "lab_level": 16,
+      "upgrade_cost": 350000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 348
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

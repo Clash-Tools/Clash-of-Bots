@@ -1,0 +1,74 @@
+{
+  "id": "sneaky_goblin",
+  "name": "Sneaky Goblin",
+  "game_name": "Sneaky Goblin",
+  "global_id": 4000055,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 3,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Resource",
+  "speed": 400,
+  "range_tiles": 0.4,
+  "attack_speed_ms": 1000,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_goblin",
+  "levels": [
+    {
+      "level": 5,
+      "hitpoints": 200,
+      "dps": 120,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 240,
+      "dps": 140,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 270,
+      "dps": 155,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 320,
+      "dps": 170,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 350,
+      "dps": 180,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 380,
+      "dps": 190,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "super_of": "goblin",
+  "super_min_original_level": 6,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "id": "bb_power_pekka",
+  "name": "Power P.E.K.K.A",
+  "game_name": "BB Power PEKKA",
+  "global_id": 4000036,
+  "kind": "troop",
+  "village": "builder",
+  "housing_space": 22,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 200,
+  "range_tiles": 0.8,
+  "attack_speed_ms": 1800,
+  "damage_radius": null,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_electric_pekka",
+  "levels": [
+    {
+      "level": 13,
+      "hitpoints": 3900,
+      "dps": 420,
+      "lab_level": 8,
+      "upgrade_cost": 3600000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 108
+    },
+    {
+      "level": 14,
+      "hitpoints": 3900,
+      "dps": 420,
+      "lab_level": 8,
+      "upgrade_cost": 3800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 15,
+      "hitpoints": 4290,
+      "dps": 460,
+      "lab_level": 8,
+      "upgrade_cost": 4000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 16,
+      "hitpoints": 4290,
+      "dps": 460,
+      "lab_level": 8,
+      "upgrade_cost": 4600000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 17,
+      "hitpoints": 4719,
+      "dps": 500,
+      "lab_level": 9,
+      "upgrade_cost": 4800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 18,
+      "hitpoints": 4719,
+      "dps": 500,
+      "lab_level": 9,
+      "upgrade_cost": 5600000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 19,
+      "hitpoints": 5191,
+      "dps": 560,
+      "lab_level": 10,
+      "upgrade_cost": 5800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 20,
+      "hitpoints": 5191,
+      "dps": 560,
+      "lab_level": 10,
+      "upgrade_cost": 5800000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

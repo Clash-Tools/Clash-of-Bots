@@ -1,0 +1,102 @@
+{
+  "id": "super_bowler",
+  "name": "Super Bowler",
+  "game_name": "Super Bowler",
+  "global_id": 4000080,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 30,
+  "dark": true,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 175,
+  "range_tiles": 3.0,
+  "attack_speed_ms": 2200,
+  "damage_radius": 60,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_bowler",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 1000,
+      "dps": 125,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 1200,
+      "dps": 140,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 1400,
+      "dps": 155,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 1600,
+      "dps": 170,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 1800,
+      "dps": 185,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 2000,
+      "dps": 200,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 2300,
+      "dps": 220,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 2600,
+      "dps": 240,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 3000,
+      "dps": 270,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 3700,
+      "dps": 310,
+      "lab_level": 1,
+      "upgrade_resource": "DarkElixir"
+    }
+  ],
+  "super_of": "bowler",
+  "super_min_original_level": 3,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

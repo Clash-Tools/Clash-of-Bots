@@ -1,0 +1,117 @@
+{
+  "id": "sneezy",
+  "name": "Sneezy",
+  "game_name": "Sneezy",
+  "global_id": null,
+  "kind": "pet",
+  "village": "home",
+  "housing_space": null,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "speed": 300,
+  "range_tiles": 2.5,
+  "attack_speed_ms": 800,
+  "icon": "icon_unit_pet_sneezy",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 3300,
+      "dps": 270,
+      "lab_level": 11,
+      "upgrade_cost": 200000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 2,
+      "hitpoints": 3450,
+      "dps": 290,
+      "lab_level": 11,
+      "upgrade_cost": 220000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 3,
+      "hitpoints": 3600,
+      "dps": 310,
+      "lab_level": 11,
+      "upgrade_cost": 240000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 4,
+      "hitpoints": 3750,
+      "dps": 330,
+      "lab_level": 11,
+      "upgrade_cost": 260000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 5,
+      "hitpoints": 3900,
+      "dps": 350,
+      "lab_level": 11,
+      "upgrade_cost": 280000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 6,
+      "hitpoints": 4050,
+      "dps": 370,
+      "lab_level": 11,
+      "upgrade_cost": 300000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 7,
+      "hitpoints": 4200,
+      "dps": 390,
+      "lab_level": 11,
+      "upgrade_cost": 320000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 8,
+      "hitpoints": 4350,
+      "dps": 410,
+      "lab_level": 11,
+      "upgrade_cost": 340000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 9,
+      "hitpoints": 4500,
+      "dps": 430,
+      "lab_level": 11,
+      "upgrade_cost": 360000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 10,
+      "hitpoints": 4650,
+      "dps": 450,
+      "lab_level": 11,
+      "upgrade_cost": 360000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

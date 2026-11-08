@@ -1,0 +1,174 @@
+{
+  "id": "bb_baby_dragon",
+  "name": "Baby Dragon",
+  "game_name": "BB Baby Dragon",
+  "global_id": 4000041,
+  "kind": "troop",
+  "village": "builder",
+  "housing_space": 12,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": null,
+  "speed": 300,
+  "range_tiles": 2.0,
+  "attack_speed_ms": 1000,
+  "damage_radius": 30,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_babydragon",
+  "levels": [
+    {
+      "level": 5,
+      "hitpoints": 1331,
+      "dps": 62,
+      "lab_level": 4,
+      "upgrade_cost": 360000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 16
+    },
+    {
+      "level": 6,
+      "hitpoints": 1331,
+      "dps": 62,
+      "lab_level": 4,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 20
+    },
+    {
+      "level": 7,
+      "hitpoints": 1464,
+      "dps": 68,
+      "lab_level": 4,
+      "upgrade_cost": 400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 24
+    },
+    {
+      "level": 8,
+      "hitpoints": 1464,
+      "dps": 68,
+      "lab_level": 4,
+      "upgrade_cost": 1000000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 36
+    },
+    {
+      "level": 9,
+      "hitpoints": 1611,
+      "dps": 75,
+      "lab_level": 5,
+      "upgrade_cost": 1200000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 10,
+      "hitpoints": 1611,
+      "dps": 75,
+      "lab_level": 5,
+      "upgrade_cost": 1400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 11,
+      "hitpoints": 1772,
+      "dps": 83,
+      "lab_level": 6,
+      "upgrade_cost": 1600000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 60
+    },
+    {
+      "level": 12,
+      "hitpoints": 1772,
+      "dps": 83,
+      "lab_level": 6,
+      "upgrade_cost": 2400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 84
+    },
+    {
+      "level": 13,
+      "hitpoints": 1949,
+      "dps": 91,
+      "lab_level": 7,
+      "upgrade_cost": 2600000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 108
+    },
+    {
+      "level": 14,
+      "hitpoints": 1949,
+      "dps": 91,
+      "lab_level": 7,
+      "upgrade_cost": 3400000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 15,
+      "hitpoints": 2144,
+      "dps": 100,
+      "lab_level": 8,
+      "upgrade_cost": 3600000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 132
+    },
+    {
+      "level": 16,
+      "hitpoints": 2144,
+      "dps": 100,
+      "lab_level": 8,
+      "upgrade_cost": 4100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 17,
+      "hitpoints": 2358,
+      "dps": 110,
+      "lab_level": 9,
+      "upgrade_cost": 4300000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 144
+    },
+    {
+      "level": 18,
+      "hitpoints": 2358,
+      "dps": 110,
+      "lab_level": 9,
+      "upgrade_cost": 5100000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 19,
+      "hitpoints": 2358,
+      "dps": 120,
+      "lab_level": 10,
+      "upgrade_cost": 5500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    },
+    {
+      "level": 20,
+      "hitpoints": 2358,
+      "dps": 120,
+      "lab_level": 10,
+      "upgrade_cost": 5500000,
+      "upgrade_resource": "Elixir2",
+      "upgrade_hours": 156
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

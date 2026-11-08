@@ -1,0 +1,84 @@
+{
+  "id": "battle_blimp",
+  "name": "Battle Blimp",
+  "game_name": "Battle Blimp",
+  "global_id": 4000052,
+  "kind": "siege",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": null,
+  "speed": 225,
+  "range_tiles": 1.5,
+  "attack_speed_ms": 1500,
+  "damage_radius": 300,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_siege_machine_flyer",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 3000,
+      "dps": 100,
+      "lab_level": 9,
+      "upgrade_cost": 2500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 48
+    },
+    {
+      "level": 2,
+      "hitpoints": 3500,
+      "dps": 140,
+      "lab_level": 10,
+      "upgrade_cost": 3500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 72
+    },
+    {
+      "level": 3,
+      "hitpoints": 4000,
+      "dps": 180,
+      "lab_level": 10,
+      "upgrade_cost": 6500000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 168
+    },
+    {
+      "level": 4,
+      "hitpoints": 4500,
+      "dps": 220,
+      "lab_level": 11,
+      "upgrade_cost": 10000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 216
+    },
+    {
+      "level": 5,
+      "hitpoints": 5000,
+      "dps": 260,
+      "lab_level": 13,
+      "upgrade_cost": 26000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 324
+    },
+    {
+      "level": 6,
+      "hitpoints": 5500,
+      "dps": 300,
+      "lab_level": 16,
+      "upgrade_cost": 26000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 324
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

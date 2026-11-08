@@ -1,0 +1,95 @@
+{
+  "id": "rocket_balloon",
+  "name": "Rocket Balloon",
+  "game_name": "Rocket Balloon",
+  "global_id": 4000057,
+  "kind": "super_troop",
+  "village": "home",
+  "housing_space": 8,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": false
+  },
+  "preferred_target": "Defense",
+  "speed": 150,
+  "range_tiles": null,
+  "attack_speed_ms": 3000,
+  "damage_radius": 120,
+  "unlock_town_hall": null,
+  "icon": "icon_unit_elite_balloon",
+  "levels": [
+    {
+      "level": 5,
+      "hitpoints": 390,
+      "dps": 170,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 545,
+      "dps": 220,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 690,
+      "dps": 260,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 840,
+      "dps": 270,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 940,
+      "dps": 280,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 1040,
+      "dps": 285,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 1140,
+      "dps": 290,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 1240,
+      "dps": 304,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 1360,
+      "dps": 326,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "super_of": "balloon",
+  "super_min_original_level": 7,
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

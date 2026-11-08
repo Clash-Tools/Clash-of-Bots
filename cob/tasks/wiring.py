@@ -178,6 +178,17 @@ def bb_farm_task(parts: FarmParts, limits: FarmLimits,
                     close_game=getattr(parts, "close_game", None))
 
 
+def _card_library():
+    """Card recognition (#troop detection); a broken database or folder must not stop a run."""
+    from cob.attack.cards import library
+
+    try:
+        return library()
+    except Exception as exc:
+        log.warning("card library unavailable: %s", exc)
+        return None
+
+
 def farm_limits(cfg: FarmConfig, max_cycles: int = 0, max_minutes: float = 0.0) -> FarmLimits:
     """Run limits from the command line / window plus breaks and safety rules from farm.json."""
     return FarmLimits(max_cycles=max_cycles, max_minutes=max_minutes, break_every=cfg.break_every,
@@ -243,7 +254,7 @@ def build_farm(serial: str, templates: Path | None = None, cfg: FarmConfig | Non
                         AttackConfig(loot_stall_s=cfg.loot_stall_s, end_at_damage=cfg.end_at_damage,
                                      sides=2 if cfg.two_sides else 1,
                                      cast_spells=bool(cfg.cast_spells)),
-                        loot=LootReader(digits, regions["loot"]))
+                        loot=LootReader(digits, regions["loot"]), cards=_card_library())
 
     def own_resources() -> Loot | None:
         """Own storages, once two reads 1.5 s apart agree: collected loot and battle rewards fly into the

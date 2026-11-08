@@ -1,0 +1,63 @@
+{
+  "id": "angry_spell",
+  "name": "Angry Spell",
+  "game_name": "AngrySpell",
+  "global_id": 26000123,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 1,
+  "dark": true,
+  "icon": "icon_spell_brainwash",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 600,
+      "hits": 50,
+      "boost_ms": 25000,
+      "speed_boost": 0,
+      "lab_level": 1,
+      "upgrade_cost": 150000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 224
+    },
+    {
+      "level": 2,
+      "radius": 600,
+      "hits": 50,
+      "boost_ms": 25000,
+      "speed_boost": 0,
+      "lab_level": 14,
+      "upgrade_cost": 250000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 288
+    },
+    {
+      "level": 3,
+      "radius": 600,
+      "hits": 50,
+      "boost_ms": 25000,
+      "speed_boost": 0,
+      "lab_level": 15,
+      "upgrade_cost": 400000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 360
+    },
+    {
+      "level": 4,
+      "radius": 600,
+      "hits": 50,
+      "boost_ms": 25000,
+      "speed_boost": 0,
+      "lab_level": 16,
+      "upgrade_cost": 400000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 360
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

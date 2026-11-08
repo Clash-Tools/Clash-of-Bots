@@ -1,0 +1,73 @@
+{
+  "id": "ice_block_spell",
+  "name": "Ice Block Spell",
+  "game_name": "Ice Block",
+  "global_id": 26000109,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 1,
+  "dark": true,
+  "icon": "icon_spell_ice_block",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_cost": 140000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 240
+    },
+    {
+      "level": 2,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 12,
+      "upgrade_cost": 200000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 264
+    },
+    {
+      "level": 3,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 13,
+      "upgrade_cost": 280000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 288
+    },
+    {
+      "level": 4,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 14,
+      "upgrade_cost": 320000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 336
+    },
+    {
+      "level": 5,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 15,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 384
+    },
+    {
+      "level": 6,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 16,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 384
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "id": "hog_wizard",
+  "name": "Hog Wizard",
+  "game_name": "Hog Wizard",
+  "global_id": 4000103,
+  "kind": "event_troop",
+  "village": "home",
+  "housing_space": 7,
+  "dark": false,
+  "flying": false,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "preferred_target": "Defense",
+  "speed": 300,
+  "range_tiles": 2.5,
+  "attack_speed_ms": 800,
+  "damage_radius": 80,
+  "unlock_town_hall": 6,
+  "icon": "icon_unit_hogwizard",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 280,
+      "dps": 65,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 2,
+      "hitpoints": 410,
+      "dps": 95,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 3,
+      "hitpoints": 540,
+      "dps": 125,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 4,
+      "hitpoints": 670,
+      "dps": 155,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 5,
+      "hitpoints": 800,
+      "dps": 185,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 6,
+      "hitpoints": 930,
+      "dps": 215,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 7,
+      "hitpoints": 1080,
+      "dps": 245,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 8,
+      "hitpoints": 1220,
+      "dps": 275,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 9,
+      "hitpoints": 1360,
+      "dps": 300,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 10,
+      "hitpoints": 1500,
+      "dps": 320,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 11,
+      "hitpoints": 1650,
+      "dps": 345,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 12,
+      "hitpoints": 1800,
+      "dps": 370,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    },
+    {
+      "level": 13,
+      "hitpoints": 1950,
+      "dps": 395,
+      "lab_level": 1,
+      "upgrade_resource": "Elixir"
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

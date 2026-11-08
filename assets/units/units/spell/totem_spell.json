@@ -1,0 +1,55 @@
+{
+  "id": "totem_spell",
+  "name": "Totem Spell",
+  "game_name": "Totem Spell",
+  "global_id": 26000120,
+  "kind": "spell",
+  "village": "home",
+  "housing_space": 1,
+  "dark": false,
+  "icon": "icon_spell_meteor_tower",
+  "levels": [
+    {
+      "level": 1,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 1,
+      "upgrade_cost": 21000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 288
+    },
+    {
+      "level": 2,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 14,
+      "upgrade_cost": 22000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 336
+    },
+    {
+      "level": 3,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 15,
+      "upgrade_cost": 23000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    },
+    {
+      "level": 4,
+      "radius": 500,
+      "hits": 1,
+      "lab_level": 16,
+      "upgrade_cost": 23000000,
+      "upgrade_resource": "Elixir",
+      "upgrade_hours": 384
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}

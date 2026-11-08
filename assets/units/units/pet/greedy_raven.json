@@ -1,0 +1,117 @@
+{
+  "id": "greedy_raven",
+  "name": "Greedy Raven",
+  "game_name": "Crow",
+  "global_id": null,
+  "kind": "pet",
+  "village": "home",
+  "housing_space": null,
+  "dark": false,
+  "flying": true,
+  "targets": {
+    "ground": true,
+    "air": true
+  },
+  "speed": 350,
+  "range_tiles": 8.0,
+  "attack_speed_ms": 420,
+  "icon": "icon_unit_pet_raven",
+  "levels": [
+    {
+      "level": 1,
+      "hitpoints": 2150,
+      "dps": 110,
+      "lab_level": 12,
+      "upgrade_cost": 260000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 2,
+      "hitpoints": 2300,
+      "dps": 115,
+      "lab_level": 12,
+      "upgrade_cost": 280000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 3,
+      "hitpoints": 2450,
+      "dps": 120,
+      "lab_level": 12,
+      "upgrade_cost": 300000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 4,
+      "hitpoints": 2600,
+      "dps": 125,
+      "lab_level": 12,
+      "upgrade_cost": 320000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 5,
+      "hitpoints": 2750,
+      "dps": 130,
+      "lab_level": 12,
+      "upgrade_cost": 340000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 6,
+      "hitpoints": 2900,
+      "dps": 135,
+      "lab_level": 12,
+      "upgrade_cost": 360000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 7,
+      "hitpoints": 3050,
+      "dps": 140,
+      "lab_level": 12,
+      "upgrade_cost": 380000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 8,
+      "hitpoints": 3200,
+      "dps": 145,
+      "lab_level": 12,
+      "upgrade_cost": 400000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 9,
+      "hitpoints": 3350,
+      "dps": 150,
+      "lab_level": 12,
+      "upgrade_cost": 420000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    },
+    {
+      "level": 10,
+      "hitpoints": 3500,
+      "dps": 155,
+      "lab_level": 12,
+      "upgrade_cost": 420000,
+      "upgrade_resource": "DarkElixir",
+      "upgrade_hours": 192
+    }
+  ],
+  "source": {
+    "game_version": "18.647.5"
+  },
+  "detection": {
+    "cards": []
+  }
+}
