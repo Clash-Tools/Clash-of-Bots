@@ -13,7 +13,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field, replace
 
-from cob.attack.cards import observe
+from cob.attack.cards import observe, with_unit_kinds
 from cob.attack.damage import damage_reader, read_damage
 from cob.attack.geometry import (
     BorderConfig,
@@ -155,6 +155,7 @@ class AttackTask:
 
         out = AttackOutcome(DONE, edge=edge, points=len(points))
         names = observe(self.cards, frame.bgr, cards) if self.cards is not None else [None] * len(cards)
+        cards = with_unit_kinds(self.cards, cards, names)  # a recognised unit knows its own kind
         log.info("bar: %s", ", ".join(f"{n or c.kind}@{c.center[0]}"
                                       for c, n in zip(cards, names, strict=True)))
         wide = None  # same edge further out, for units the near points refused

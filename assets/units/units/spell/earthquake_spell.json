@@ -86,6 +86,19 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [
+      {
+        "file": "detection/1600x900/cards/earthquake_spell.png",
+        "resolution": "1600x900",
+        "variant": "default"
+      }
+    ],
+    "portrait": {
+      "file": "detection/1600x900/portraits/earthquake_spell.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_spell_earthquake",
+      "game_version": "18.647.5"
+    }
   }
 }

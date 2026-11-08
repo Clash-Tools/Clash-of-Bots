@@ -58,6 +58,13 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [],
+    "portrait": {
+      "file": "detection/1600x900/portraits/angry_spell.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_spell_brainwash",
+      "game_version": "18.647.5"
+    }
   }
 }

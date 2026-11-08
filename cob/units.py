@@ -33,6 +33,8 @@ class Unit:
     targets_air: bool = False
     super_of: str | None = None
     cards: tuple[str, ...] = field(default=())  # card picture paths relative to the database root
+    portrait: str | None = None  # game-rendered portrait band (BGRA) relative to the database root
+    portrait_margin: int = 0  # px of border around the band in that picture
 
     @property
     def is_spell(self) -> bool:
@@ -73,9 +75,12 @@ def _read(path: Path) -> str:
 
 def _unit(d: dict) -> Unit:
     t = d.get("targets") or {}
+    det = d.get("detection") or {}
+    portrait = det.get("portrait") or {}
     return Unit(d["id"], d["name"], d["kind"], d["village"], d.get("housing_space"), bool(d.get("dark")),
                 bool(d.get("flying")), bool(t.get("ground", True)), bool(t.get("air", False)),
-                d.get("super_of"), tuple(c["file"] for c in (d.get("detection") or {}).get("cards", [])))
+                d.get("super_of"), tuple(c["file"] for c in det.get("cards", [])),
+                portrait.get("file"), int(portrait.get("margin", 0)))
 
 
 def default_root() -> Path:

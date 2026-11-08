@@ -432,3 +432,23 @@ Trade-off: Each user needs a developer account and a key bound to their public I
 Revisit if: Supercell changes the API terms, or the bot needs data the API lacks (builder upgrades,
           army composition), which still needs screen reading.
 
+## D-036: Recognise every unit from portraits rendered from the game's icons  (ACCEPTED 2026-11-08)
+Date: 2026-11-08   Model: Claude Opus 5.5
+Context:  Card pictures only covered units someone had labelled (4), so most cards were still read by
+          colour and order, and a red Super Valkyrie card was still taken for a spell.
+Options:  1) Render every unit's icon from the game's sc/ui.sc in the data repository (data-v2)
+          2) Label every unit by hand from battles
+          3) Pictures from a fan site
+Chosen:   1. clash-of-bots-data tools/sc.py reads the SC2 sprite file (our own reader) and
+          tools/portraits.py stores each home unit's card band (icon 106 px wide, standing on the card's
+          bottom edge; BGRA, 6 px margin). The bot compares a card's band with all 130 at once: masked
+          correlation (only where the icon is opaque and the card shows no white count / level glyph)
+          over 3 px shifts. A hit needs 0.82 and 0.1 over the next unit (real cards: own unit 0.89-0.99,
+          others <= 0.74, the clan castle slot <= 0.45). Real labelled pictures are tried first; a hit is
+          remembered for the rest of the run. A recognised unit's own kind replaces the colour guess.
+Why:      Every current unit, event units included, from day one and after each game update, with no
+          labelling; the card kind no longer depends on the card's colour.
+Trade-off: Siege machine cards use other art than their icon and still need a labelled picture; ~0.3 s
+          per new card in the first battle of a run.
+Revisit if: card layout changes (geometry lives in tools/portraits.py), or other resolutions are added.
+

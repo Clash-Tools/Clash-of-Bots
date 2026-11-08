@@ -788,6 +788,19 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [
+      {
+        "file": "detection/1600x900/cards/grand_warden.png",
+        "resolution": "1600x900",
+        "variant": "default"
+      }
+    ],
+    "portrait": {
+      "file": "detection/1600x900/portraits/grand_warden.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_hero_grandwarden",
+      "game_version": "18.647.5"
+    }
   }
 }

@@ -118,6 +118,13 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [],
+    "portrait": {
+      "file": "detection/1600x900/portraits/santas_surprise.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_spell_xmas",
+      "game_version": "18.647.5"
+    }
   }
 }

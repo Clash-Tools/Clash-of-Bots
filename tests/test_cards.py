@@ -38,13 +38,13 @@ def test_bundled_unit_database_loads():
 
 
 def test_same_unit_matches_across_counts_and_levels_others_do_not():
-    # golem x11 level 15 (green) and x12 level 17 (home_upgrade_arrows); the wall breaker is another unit
+    # totem thrower x11 (green) and x12 (home_upgrade_arrows) at other levels; the wall breaker differs
     f1, c1 = _cards("green")
     f2, c2 = _cards("home_upgrade_arrows")
-    golem_a, golem_b = (fingerprint(portrait(f, c[0])) for f, c in ((f1, c1), (f2, c2)))
+    thrower_a, thrower_b = (fingerprint(portrait(f, c[0])) for f, c in ((f1, c1), (f2, c2)))
     breaker = fingerprint(portrait(f1, c1[1]))
-    assert similarity(golem_a, golem_b) > 0.95
-    assert similarity(golem_a, breaker) < 0.8
+    assert similarity(thrower_a, thrower_b) > 0.95
+    assert similarity(thrower_a, breaker) < 0.8
 
 
 def test_unknown_cards_are_saved_once_then_labelled_and_recognised(tmp_path):
@@ -143,3 +143,77 @@ def test_cards_page_labels_and_discards(tmp_path, monkeypatch):
     page.unit.setCurrentIndex(-1)
     page.save_label()  # nothing picked: a hint, no label
     assert page.grid.count() == len(cards) - 2 and "Pick a unit" in page.guess.text()
+
+
+# --- game portraits (D-036) ---------------------------------------------------------------------
+
+EXPECTED = {  # every card of each bar, read from the game's own portraits; None = clan castle (any troops)
+    "super_valkyrie_spell": ["super_valkyrie", "totem_spell"],
+    "green": ["totem_thrower", "wall_breaker", None, "barbarian_king", "archer_queen", "royal_champion",
+              "dragon_duke", "rage_spell", "freeze_spell"],
+    "home_upgrade_arrows": ["totem_thrower", "wizard", None, "archer_queen", "grand_warden", "dragon_duke",
+                            "barbarian_king", "rage_spell", "freeze_spell"],
+    "dragons_x15": ["dragon", None, "barbarian_king", "archer_queen", "royal_champion", "dragon_duke",
+                    "rage_spell", "freeze_spell"],
+    "battle_used": ["freeze_spell"],
+}
+
+
+@pytest.fixture(scope="module")
+def game_library(tmp_path_factory):
+    from cob import units
+
+    db = units.load()
+    home = [u for u in db.units.values() if u.village == "home"]
+    return CardLibrary(db.root, {}, folder=tmp_path_factory.mktemp("cards"),
+                       portraits={u.id: (u.portrait, u.portrait_margin) for u in home if u.portrait},
+                       kinds={u.id: u.kind for u in db.units.values()})
+
+
+def test_bundled_database_has_a_portrait_for_every_home_unit():
+    db = UnitDB()
+    home = [u for u in db.units.values() if u.village == "home"]
+    assert db.version >= "data-v2" and all(u.portrait for u in home) and len(home) >= 130
+    img = cv2.imread(str(db.root / db.get("super_valkyrie").portrait), cv2.IMREAD_UNCHANGED)
+    m = db.get("super_valkyrie").portrait_margin
+    assert img.shape == (43 + 2 * m, 83 + 2 * m, 4)
+
+
+@pytest.mark.parametrize("name", sorted(EXPECTED))
+def test_every_home_card_is_recognised_from_game_portraits(game_library, name):
+    f, cards = _cards(name)
+    got = [hit[0] if (hit := game_library.portraits.identify(portrait(f, c))) else None for c in cards]
+    assert got == EXPECTED[name]
+
+
+def test_a_recognised_unit_corrects_the_card_kind(game_library):
+    from dataclasses import replace
+
+    from cob.attack.cards import with_unit_kinds
+    from cob.attack.troops import SINGLE, SPELL, TROOP
+
+    f, cards = _cards("super_valkyrie_spell")
+    misread = [replace(cards[0], kind=SPELL), replace(cards[1], kind=TROOP)]  # the old red-card bug
+    names = observe(game_library, f, misread)
+    fixed = with_unit_kinds(game_library, misread, names)
+    assert names == ["super_valkyrie", "totem_spell"] and [c.kind for c in fixed] == [TROOP, SPELL]
+    unknown = with_unit_kinds(game_library, [replace(cards[0], kind=SINGLE)], [None])
+    assert unknown[0].kind == SINGLE and with_unit_kinds(None, misread, names) == misread
+
+
+def test_portrait_hits_are_remembered_for_the_next_battle(game_library, monkeypatch):
+    f, cards = _cards("dragons_x3")
+    first = game_library.identify(portrait(f, cards[0]))
+    assert first[0] == "dragon"
+    monkeypatch.setattr(game_library.portraits, "identify", lambda img: pytest.fail("portraits used again"))
+    assert game_library.identify(portrait(f, cards[0]))[0] == "dragon"
+
+
+def test_portraits_tolerate_bad_pictures():
+    from cob.attack.cards import Portraits
+
+    p = Portraits({"a": (None, 6), "b": (np.zeros((10, 10, 3), np.uint8), 0),
+                   "c": (np.zeros((8, 8, 4), np.uint8), 6)})
+    assert len(p) == 0 and p.identify(np.zeros((43, 83, 3), np.uint8)) is None
+    blank = Portraits({"d": (np.zeros((55, 95, 4), np.uint8), 6)})  # fully transparent: nothing to compare
+    assert blank.identify(np.full((43, 83, 3), 90, np.uint8)) is None

@@ -116,6 +116,13 @@
     "game_version": "18.647.5"
   },
   "detection": {
-    "cards": []
+    "cards": [],
+    "portrait": {
+      "file": "detection/1600x900/portraits/giant_skeleton.png",
+      "resolution": "1600x900",
+      "margin": 6,
+      "export": "icon_unit_giant_skeleton",
+      "game_version": "18.647.5"
+    }
   }
 }
