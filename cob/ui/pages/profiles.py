@@ -7,6 +7,8 @@ profile's settings; the top bar switches the active profile.
 
 from __future__ import annotations
 
+import time
+
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
     QCheckBox,
@@ -52,6 +54,7 @@ class ProfilesPage(QWidget):
     changed = Signal()  # profiles added, removed, renamed or edited: the top bar lists them again
     use_requested = Signal(str)  # profile id to make active
     rotation_requested = Signal()
+    sync_requested = Signal(str)  # profile id: fetch its player from the Clash of Clans API (D-035)
 
     def __init__(self, store: Profiles, ask_name=_ask_name, confirm_delete=_confirm_delete):
         super().__init__()
@@ -120,6 +123,17 @@ class ProfilesPage(QWidget):
         buttons.addWidget(self.save_button)
         buttons.addWidget(self.use_button)
         form_card.body.addLayout(buttons)
+
+        form_card.body.addWidget(text(tr("CLASH OF CLANS ACCOUNT"), "eyebrow"))
+        self.player = text("", "muted", wrap=True)
+        self.player.setTextFormat(Qt.TextFormat.PlainText)
+        form_card.body.addWidget(self.player)
+        self.sync_button = QPushButton("  " + tr("Sync from Clash of Clans"))
+        self.sync_button.setIcon(icon("refresh", t.ON_SURFACE, 18))
+        self.sync_button.setToolTip(tr("Reads this profile's troops, spells, heroes and equipment from the "
+                                       "official Clash of Clans API (API key in Settings)."))
+        self.sync_button.clicked.connect(self.request_sync)
+        form_card.body.addWidget(self.sync_button, 0, Qt.AlignmentFlag.AlignLeft)
         form_card.body.addStretch(1)
         body.addWidget(form_card, 3)
         root.addLayout(body, 1)
@@ -192,7 +206,7 @@ class ProfilesPage(QWidget):
     def _selected(self, item: QListWidgetItem | None, _prev=None) -> None:
         p = self._current() if item is not None else None
         for w in (self.name, self.device, self.tag, self.rotation, self.save_button, self.use_button,
-                  self.copy_button):
+                  self.copy_button, self.sync_button):
             w.setEnabled(p is not None)
         self.delete_button.setEnabled(p is not None and p.id != DEFAULT_ID)
         self.form_status.setText("")
@@ -203,6 +217,52 @@ class ProfilesPage(QWidget):
         self.rotation.setChecked(p.rotation)
         self._fill_devices(p)
         self.use_button.setEnabled(p.id != self.store.active_id)
+        self.show_player(self._cached(p.id))
+
+    def _cached(self, profile_id: str):
+        from cob import units
+        from cob.core.coc_api import load_cached
+
+        return load_cached(self.store.player_path(profile_id), units.load())
+
+    def show_player(self, player) -> None:
+        """The profile's last sync (coc_api.Player), or how to get one."""
+        p = self._current()
+        if player is None:
+            self.player.setText(tr("Not synced yet. Set the player tag, save, then Sync.") if p and not
+                                p.player_tag else tr("Not synced yet."))
+            return
+        lines = [tr("{name} {tag}  •  Town Hall {th}  •  {trophies} trophies", name=player.name,
+                    tag=player.tag, th=player.town_hall, trophies=f"{player.trophies:,}")]
+        heroes = player.heroes()
+        if heroes:
+            lines.append(", ".join(f"{h.name} {h.level}" for h in heroes))
+        home = player.owned("home")
+        kinds = {"troops": 0, "spells": 0}
+        for u in home.values():
+            if u.group in kinds:
+                kinds[u.group] += 1
+        maxed = sum(u.maxed for u in home.values())
+        lines.append(tr("{troops} troops, {spells} spells, {equipment} hero equipment; {maxed} at max level",
+                        troops=kinds["troops"], spells=kinds["spells"], equipment=len(player.equipment()),
+                        maxed=maxed))
+        when = (time.strftime("%Y-%m-%d %H:%M", time.localtime(player.fetched_at)) if player.fetched_at
+                else "-")
+        lines.append(tr("Synced {when}", when=when))
+        self.player.setText("\n".join(lines))
+
+    def show_sync_error(self, message: str) -> None:
+        self.player.setText(message)
+
+    def request_sync(self) -> None:
+        p = self._current()
+        if p is None:
+            return
+        if not p.player_tag:
+            self.player.setText(tr("Set the player tag and save the profile first."))
+            return
+        self.player.setText(tr("Syncing…"))
+        self.sync_requested.emit(p.id)
 
     # --- actions --------------------------------------------------------------------------------
 

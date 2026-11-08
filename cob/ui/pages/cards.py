@@ -39,10 +39,12 @@ GUESS = {"troop": ("troop", "super_troop", "event_troop"), "spell": ("spell", "e
 class CardsPage(QWidget):
     export_requested = Signal()
 
-    def __init__(self, library=None, db=None):
+    def __init__(self, library=None, db=None, owned=None):
         super().__init__()
         self.lib = library
         self.db = db
+        # D-035: unit id -> coc_api.Owned of the active profile's last sync; owned units are listed first
+        self._owned = owned or (lambda: {})
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(t.LG)
@@ -172,11 +174,19 @@ class CardsPage(QWidget):
         self._fill_units(kinds)
 
     def _fill_units(self, first_kinds: tuple[str, ...]) -> None:
+        try:
+            owned = self._owned() or {}
+        except Exception:  # a broken sync file must not break labelling
+            owned = {}
         units = self.db.choices("home")
-        units.sort(key=lambda u: 0 if u.kind in first_kinds else 1)  # stable: likely kinds first
+        # stable: likely kinds first, and within them the units this account has (clan castle troops may
+        # still be others)
+        units.sort(key=lambda u: (u.kind not in first_kinds, u.id not in owned))
         self.unit.clear()
         for u in units:
-            self.unit.addItem(f"{u.name}  ({KIND_NAMES.get(u.kind, u.kind)})", u.id)
+            mine = owned.get(u.id)
+            extra = "  •  " + tr("yours, level {level}", level=mine.level) if mine else ""
+            self.unit.addItem(f"{u.name}  ({KIND_NAMES.get(u.kind, u.kind)}){extra}", u.id)
         self.unit.setCurrentIndex(-1)
         self.unit.setEditText("")
         self.unit.lineEdit().setPlaceholderText(tr("Type or pick the unit…"))

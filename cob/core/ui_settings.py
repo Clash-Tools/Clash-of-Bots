@@ -7,7 +7,7 @@ import logging
 from dataclasses import asdict, dataclass, fields
 from pathlib import Path
 
-from cob.core import notify
+from cob.core import coc_api, notify
 from cob.core.paths import user_data_dir
 
 log = logging.getLogger(__name__)
@@ -28,6 +28,8 @@ class UiSettings:
     discord_webhook: str = ""  # #43: alerts also go to this Discord webhook; empty = off
     telegram_token: str = ""  # #43: ... and to this Telegram bot (token from @BotFather) ...
     telegram_chat: str = ""  # ... in this chat (id or @channel); both needed
+    coc_api_token: str = ""  # D-035: the user's developer.clashofclans.com API key; empty = no sync
+    coc_api_base: str = ""  # API address; empty = the official one (a fixed-IP proxy may go here)
 
 
 CHOICES = {"theme": ("dark", "light", "amoled"),
@@ -36,7 +38,8 @@ CHOICES = {"theme": ("dark", "light", "amoled"),
 
 # Free-text fields and their checks: a bad value loads as empty.
 TEXT = {"discord_webhook": notify.valid_discord, "telegram_token": notify.valid_telegram_token,
-        "telegram_chat": notify.valid_telegram_chat}
+        "telegram_chat": notify.valid_telegram_chat, "coc_api_token": coc_api.valid_token,
+        "coc_api_base": coc_api.valid_base}
 
 
 def default_path() -> Path:
@@ -89,4 +92,4 @@ def folder_sizes(root: Path | None = None) -> dict[str, int]:
 
     return {"Logs": size(root / "logs"), "Snapshots": size(root / "snapshots"),
             "History": size(root / "history.csv"), "Phones & settings": sum(
-                size(root / n) for n in ("phones", "farm.json", "ui.json"))}
+                size(root / n) for n in ("phones", "farm.json", "ui.json", "profiles", "profiles.json"))}

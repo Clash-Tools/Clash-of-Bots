@@ -262,7 +262,42 @@ class MainWindow(QMainWindow):
         page.changed.connect(self._profiles_changed)
         page.use_requested.connect(self.switch_profile)
         page.rotation_requested.connect(self.start_rotation)
+        page.sync_requested.connect(self.sync_player)
         return page
+
+    def _owned_units(self) -> dict:
+        """The active profile's units from its last Clash of Clans API sync (D-035), else {}."""
+        from cob import units
+        from cob.core.coc_api import load_cached
+
+        player = load_cached(self.profiles.player_path(self.profiles.active_id), units.load())
+        return player.owned("home") if player else {}
+
+    def sync_player(self, profile_id: str) -> None:
+        """Fetch a profile's player from the Clash of Clans API in the background (D-035, opt-in)."""
+        from cob import units
+        from cob.core import coc_api
+
+        profile = self.profiles.get(profile_id)
+        if profile is None:
+            return
+        token, base = self.ui_settings.coc_api_token, self.ui_settings.coc_api_base
+        if not token:
+            self.profiles_page.show_sync_error(tr("Paste your Clash of Clans API key in Settings > Tray & "
+                                                  "Notifications first."))
+            return
+        cache = self.profiles.player_path(profile_id)
+
+        def done(player) -> None:
+            if self.profiles_page._current() and self.profiles_page._current().id == profile_id:
+                self.profiles_page.show_player(player)
+
+        def failed(message: str) -> None:
+            log.warning("sync of profile %s failed: %s", profile_id, message)
+            self.profiles_page.show_sync_error(message)
+
+        self._start_job(lambda: coc_api.sync(profile.player_tag, token, cache, base, units.load()), done,
+                        failed, busy=(self.profiles_page.sync_button,))
 
     def _fill_profiles(self) -> None:
         self.profile_combo.blockSignals(True)
@@ -586,7 +621,7 @@ class MainWindow(QMainWindow):
         """Troop detection: label the cards the bot does not recognise yet (D-033)."""
         from cob.ui.pages.cards import CardsPage
 
-        self.cards_page = CardsPage()
+        self.cards_page = CardsPage(owned=self._owned_units)
         self.cards_page.export_requested.connect(self.export_cards)
         return self.cards_page
 
