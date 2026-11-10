@@ -13,6 +13,12 @@ hand-written highlights go under Unreleased and are moved into the next release.
 
 ## [Unreleased]
 
+## [0.6.4] - 2026-11-10
+
+Channel: **Stable**
+
+### Highlights
+
 - **Attack:** a base is no longer skipped when the red deploy line is not showing in the first frame
   (it fades in and out while scouting): the bot looks again for up to six frames. Failure reports also
   keep the raw base frame next to the annotated one.
@@ -27,6 +33,34 @@ hand-written highlights go under Unreleased and are moved into the next release.
 - **Live screen stream (phones, experimental, `live_stream` flag):** Automation > Farming Heuristics. The phone streams its
   screen as video while the bot waits for a screen, instead of a screenshot every second or so; taps
   and readings still use exact screenshots. Falls back to screenshots on its own.
+
+### Features
+
+- **ui:** feature flags with hidden Developer options (#46) ([`a05bd13`](https://github.com/Clash-Tools/Clash-of-Bots/commit/a05bd13))
+  - Settings > About: clicking the version seven times unlocks a hidden Developer options tab with a switch per flag, a restart prompt and "Hide developer options"
+  - hidden unless flagged: Clan Games tab and building upgrades note (incomplete), Run profiles in turn and the Clash of Clans API sync (experimental); Builder Base mode and the Cards page are beta and stay on
+  - start_rotation refuses while profile_rotation is off
+  - removed the unused MainWindow._coming_soon; issue references fixed (#38 -> #1, #40 -> #3)
+  - docs/FEATURE_FLAGS.md: stages, how to turn flags on, current flags and the inventory of unused or incomplete features; CONTRIBUTING asks for a flag on unfinished work
+- **device:** optional live screen stream on phones for waiting on screens (#44) ([`3ff35b3`](https://github.com/Clash-Tools/Clash-of-Bots/commit/3ff35b3))
+  - cob.device.stream: ScreenStream keeps the newest frame, reconnects each recording (3 min limit), drops its frame between recordings and gives up after 3 recordings without a picture
+  - PhoneDevice.peek(): the newest stream frame scaled and cropped like capture(); the stream starts with the phone's display mode and stops before it is restored
+  - Navigator.wait_for / wait_leave watch the stream while the wanted screen is not showing and confirm with exact screenshots; only a screenshot is ever returned or acted on (H.264 keeps every screen recognisable but not thin red lines or every loot digit)
+  - any stream problem means screenshots, as before
+  - PyAV ==19.0.2 (BSD; LGPL FFmpeg) in DEPENDENCIES.md; D-037
+- **search:** skip a base without an outline with Next instead of ending the search (#48) ([`21a35ec`](https://github.com/Clash-Tools/Clash-of-Bots/commit/21a35ec))
+  - AttackTask: no outline while still scouting returns "skipped" (report saved, no going home); once the battle is on it stays a failed attack
+  - SearchTask.next_base(): Next on the shown base and search on with the same filter; the browsing loop is shared with run(); anything but a base to attack leaves the search
+  - FarmParts.attack_base(): up to max_skips (3) bases skipped per cycle, then the search ends as before; a search that has to stop after a skip (low gold) is a failed attack
+
+### Bug Fixes
+
+- **attack:** look for the base outline again when the red line is not showing (#47) ([`ab378f3`](https://github.com/Clash-Tools/Clash-of-Bots/commit/ab378f3))
+  - AttackTask._find_base tries up to border_looks (6) frames, border_pause_s (0.6 s) apart, and stops at once on Stop
+  - failure reports keep base_raw.png: the annotated base.png paints the red mask magenta, which hid what the detector saw
+- **attack:** stop watching a battle that is no longer on screen (#49) ([`4b24237`](https://github.com/Clash-Tools/Clash-of-Bots/commit/4b24237))
+  - any screen other than the battle or the surrender dialog for away_s (30 s) ends the watch; the attack goes home and counts as failed ("battle left on ARMY"), since its result is unknown
+  - a short other screen in between still lets the watch carry on
 
 ## [0.6.3] - 2026-11-08
 
