@@ -61,6 +61,8 @@ class AttackConfig:
     spell_depth: float = 0.3  # how far towards the base centre spells land (share of the distance)
     max_spell_taps: int = 15  # per spell card (counts are small: x5 is a full spell army)
     spell_pause_s: float = 0.3  # after each cast, before the card check
+    border_looks: int = 6  # frames tried for the red line before the base is skipped
+    border_pause_s: float = 0.6  # between those frames
 
 
 class _BarRead:
@@ -123,6 +125,7 @@ class AttackTask:
                                            getattr(self, "_points", None))
             except Exception as exc:  # the report must never break the attack
                 log.debug("base drawing failed: %s", exc)
+            images["base_raw"] = base_frame  # the drawing paints the red mask over the frame
         details = {"reason": out.reason, "edge": out.edge, "points": out.points, "taps": out.taps,
                    "deployed": out.deployed, "ended_by": out.ended_by, "damage": out.damage}
         save_snapshot(self.device.capture(), f"attack_failed_{out.reason[:30]}", details=details,
@@ -142,9 +145,7 @@ class AttackTask:
         if bar is None:
             return AttackOutcome(FAILED, reason="troop bar not readable")
         cards = bar.cards
-        frame = Frame(self.device.capture())
-        self._base_frame = frame.bgr
-        base = find_base(frame.bgr, self.border)
+        frame, base = self._find_base()
         if base is None:
             return AttackOutcome(FAILED, reason="base border not found or unclear")
         self._red = red_mask(frame.bgr, self.border, base)  # every point checked against the real red line
@@ -298,6 +299,25 @@ class AttackTask:
     def _tap_card(self, card: Card) -> None:
         """Somewhere on the card's picture (above the level badge, below the count)."""
         tap_card(self.nav, card)
+
+    def _find_base(self) -> tuple[Frame, object]:
+        """The base outline from the red no-deploy line. The line pulses and fades in after the camera
+        moves (live: 3 of 3 failed attacks had no red pixel at all in the frame looked at, the line was
+        there a moment later), so a frame without an outline is followed by a few more."""
+        for look in range(max(1, self.cfg.border_looks)):
+            if look:
+                self.nav.sleep(self.cfg.border_pause_s)
+                if self.nav.stop.is_set():
+                    break
+            frame = Frame(self.device.capture())
+            self._base_frame = frame.bgr
+            base = find_base(frame.bgr, self.border)
+            if base is not None:
+                if look:
+                    log.info("base outline found on look %d (the red line was not showing before)", look + 1)
+                return frame, base
+        log.info("no base outline in %d looks", look + 1)
+        return frame, None
 
     def _read_bar(self, frame: Frame) -> _BarRead | None:
         cards = read_bar(frame.bgr, self.bar)
