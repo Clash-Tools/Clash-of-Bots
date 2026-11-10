@@ -273,7 +273,7 @@ class AutomationPage(ConfigPage):
         s = self._add("games", _Section("military_tech", tr("Clan Games Automation"),
                                         tr("Pick and finish challenges.")))
         s.header.addWidget(text(tr("COMING SOON"), "tag"))
-        s.body.addWidget(text(tr("Planned in issue #38 (milestone v0.4.0)."), "muted"))
+        s.body.addWidget(text(tr("Planned in issue #1."), "muted"))
 
         s = self._add("upgrades", _Section("upgrade", tr("Upgrades"),
                                          tr("Spend gold and elixir on walls, safely.")))
@@ -291,7 +291,17 @@ class AutomationPage(ConfigPage):
         row.addWidget(self.walls_switch)
         s.body.addLayout(row)
         s.body.addLayout(self._grid("wall_upgrades", "wall_reserve"))
-        s.body.addWidget(text(tr("Buildings and laboratory upgrades are planned in issue #40."), "muted"))
+        self.upgrades_note = text(tr("Buildings and laboratory upgrades are planned in issue #3."), "muted")
+        s.body.addWidget(self.upgrades_note)
+        self._apply_flags()
+
+    def _apply_flags(self) -> None:
+        """D-038: tabs of features that are not finished stay hidden unless their flag is on."""
+        from cob.core import flags
+
+        self.tabs.set_visible("games", flags.enabled("clan_games"))
+        self.tabs.set_visible("builder", flags.enabled("builder_base"))
+        self.upgrades_note.setVisible(flags.enabled("building_upgrades"))
 
 
     # --- behaviour ------------------------------------------------------------------------------
