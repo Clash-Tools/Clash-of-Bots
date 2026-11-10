@@ -117,3 +117,37 @@ def test_developer_options_unlock_after_seven_clicks(qapp):
     page.set_developer(False)
     assert page.tabs.buttons["developer"].isHidden() and not flags.load().developer
     assert page.tabs.current() != "developer"
+
+
+def test_developer_switch_in_about_asks_first(qapp, monkeypatch):
+    from cob.ui.pages.settings import SettingsPage
+
+    asked = []
+    page = SettingsPage()
+    monkeypatch.setattr(page, "confirm", lambda parent: asked.append(parent) or False)
+    assert not page.developer_switch.isChecked() and page.tabs.buttons["developer"].isHidden()
+
+    page.developer_switch.setChecked(True)  # declined: stays off
+    assert len(asked) == 1 and not page.developer_switch.isChecked()
+    assert page.tabs.buttons["developer"].isHidden() and not flags.load().developer
+
+    monkeypatch.setattr(page, "confirm", lambda parent: asked.append(parent) or True)
+    page.developer_switch.setChecked(True)  # accepted: tab shown and opened, remembered
+    assert len(asked) == 2 and page.developer_switch.isChecked()
+    assert not page.tabs.buttons["developer"].isHidden() and page.tabs.current() == "developer"
+    assert flags.load().developer
+
+    page.set_developer(False)  # "Hide developer options" turns the switch off, no question
+    assert len(asked) == 2 and not page.developer_switch.isChecked()
+    page.developer_switch.setChecked(True)
+    page.developer_switch.setChecked(False)  # turning off never asks
+    assert len(asked) == 3 and page.tabs.buttons["developer"].isHidden() and not flags.load().developer
+
+
+def test_seven_clicks_turn_the_switch_on(qapp):
+    from cob.ui.pages.settings import SettingsPage
+
+    page = SettingsPage()
+    page.confirm = lambda parent: pytest.fail("the hidden unlock does not ask")
+    page.unlock_developer()
+    assert page.developer_switch.isChecked() and SettingsPage().developer_switch.isChecked()

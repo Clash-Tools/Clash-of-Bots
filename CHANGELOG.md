@@ -13,6 +13,12 @@ hand-written highlights go under Unreleased and are moved into the next release.
 
 ## [Unreleased]
 
+### Highlights
+
+- **Settings:** Settings > About has a **Show developer options** switch. Turning it on shows a warning
+  first (unfinished features may fail during a run; use a test account), then opens the Developer
+  options tab with the feature flags. Clicking the version seven times still works.
+
 ## [0.6.4] - 2026-11-10
 
 Channel: **Stable**

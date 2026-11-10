@@ -13,8 +13,10 @@ the flag's stage.
 
 ## Turning flags on
 
-- **App:** Settings > About, click the version text seven times. A **Developer options** tab appears
-  with a switch per flag. Changes apply after a restart; **Hide developer options** hides the tab again.
+- **App:** Settings > About > Developer options, turn on **Show developer options** and accept the
+  warning (unfinished features may fail during a run; use a test account). Clicking the version text
+  seven times is a shortcut without the question. A **Developer options** tab appears with a switch per
+  flag. Changes apply after a restart; **Hide developer options** hides the tab again.
 - **File:** `flags.json` in the user data folder: `{"developer": true, "flags": {"clan_games": true}}`.
   Only changes from the default are stored; a broken file means all defaults.
 - **Environment:** `COB_FLAGS=clan_games,-builder_base` (on / off) overrides the file. Tests use this.
