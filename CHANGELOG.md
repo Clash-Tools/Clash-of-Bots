@@ -16,6 +16,8 @@ hand-written highlights go under Unreleased and are moved into the next release.
 - **Attack:** a base is no longer skipped when the red deploy line is not showing in the first frame
   (it fades in and out while scouting): the bot looks again for up to six frames. Failure reports also
   keep the raw base frame next to the annotated one.
+- **Search:** a base whose outline never shows is skipped with Next and the search goes on with the
+  same filter (up to 3 bases per cycle), instead of ending the search and starting over from home.
 
 - **Feature flags:** unfinished or not yet proven features are hidden: Clan Games and building upgrades
   (placeholders), running profiles in turn and the Clash of Clans API sync (not checked live yet).

@@ -15,7 +15,8 @@ from cob.device.base import COC_PACKAGE, DeviceError
 from cob.device.phone import PhoneDevice, open_device, reconnect
 from cob.screens import ScreenClassifier
 from cob.screens.navigator import HOME, Navigator
-from cob.tasks.attack import AttackConfig, AttackTask
+from cob.tasks.attack import FAILED as ATTACK_FAILED
+from cob.tasks.attack import SKIPPED, AttackConfig, AttackOutcome, AttackTask
 from cob.tasks.builder import BbAttackTask
 from cob.tasks.farm import CycleResult, FarmLimits, FarmTask
 from cob.tasks.schedule import install_seed
@@ -134,6 +135,31 @@ class FarmParts:
         self.upgrade_walls()
         self.request_troops()
 
+    max_skips: int = 3  # bases skipped with Next per cycle when the attack cannot see their outline
+
+    def search_base(self) -> SearchOutcome:
+        self._found = self.search.run(dry_run=False)
+        return self._found
+
+    def attack_base(self) -> AttackOutcome:
+        """Attack the base the search stopped on. A base the attack cannot use (no outline while
+        scouting) is skipped with Next and the search goes on, up to max_skips bases."""
+        result = self.attack.run()
+        skips = 0
+        while result.status == SKIPPED and skips < self.max_skips and not self.nav.stop.is_set():
+            skips += 1
+            log.info("base skipped (%s); Next (%d/%d)", result.reason, skips, self.max_skips)
+            found = self.search.next_base(getattr(self, "_found", None) or SearchOutcome(ACCEPTED))
+            self._found = found
+            if not found.attack:  # the search has left (low gold, failure): nothing to attack
+                return AttackOutcome(ATTACK_FAILED, reason=f"base skipped, then search {found.status}"
+                                                           f"{': ' + found.reason if found.reason else ''}")
+            result = self.attack.run()
+        if result.status == SKIPPED:  # out of skips: end the search as a failed attack
+            self.nav.go_home()
+            result.status = ATTACK_FAILED
+        return result
+
     def farm_task(self, limits: FarmLimits, on_cycle: Callable[[CycleResult], None] | None = None,
                   on_break: Callable[[float], None] | None = None,
                   on_step: Callable[[str], None] | None = None) -> FarmTask:
@@ -144,7 +170,7 @@ class FarmParts:
             if on_cycle:
                 on_cycle(cycle)
 
-        return FarmTask(lambda: self.search.run(dry_run=False), self.attack.run, self.own_resources,
+        return FarmTask(self.search_base, self.attack_base, self.own_resources,
                         limits, stop=self.nav.stop, on_cycle=cycle_done, recover=self.recover,
                         restart_device=self.restart_device, storages=self.storages,
                         io=self.io_stats,

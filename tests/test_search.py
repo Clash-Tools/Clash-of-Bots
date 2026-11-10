@@ -10,7 +10,7 @@ from cob.core.config import FarmConfig, load_farm_config, save_farm_config
 from cob.core.human import Humanizer
 from cob.screens.classifier import ScreenClassifier
 from cob.screens.navigator import NavConfig, Navigator
-from cob.tasks.search import ACCEPTED, FAILED, LOW_GOLD, MAX_NEXTS, SearchTask
+from cob.tasks.search import ACCEPTED, FAILED, LOW_GOLD, MAX_NEXTS, SearchOutcome, SearchTask
 from cob.vision.ocr import DigitReader
 from cob.vision.regions import load_regions
 from cob.vision.templates import TemplateStore
@@ -246,3 +246,20 @@ def test_army_still_training_is_an_army_wait(parts, monkeypatch):
     assert out.status == FAILED and out.reason == ARMY_NOT_READY
     assert shots == []  # no failure report for an army wait
     assert dev.showing == "home"  # left the menu
+
+
+def test_next_base_skips_the_shown_base_and_searches_on(parts):
+    # the attack could not see search_e's outline: Next, and the next base that passes is attacked
+    dev = FakeDevice("search_e", "~searching", "search_a", "home")
+    task = _task(parts, dev)
+    before = SearchOutcome(ACCEPTED, None, 2)
+    out = task.next_base(before)
+    assert out.status == ACCEPTED and out.nexts == 3 and dev.showing == "search_a"
+    assert _taps(dev) == ["search_e"]  # only Next; never went home
+
+
+def test_next_base_that_has_to_stop_leaves_the_search(parts):
+    dev = FakeDevice("search_e", "~searching", "search_e", "home")
+    task = _task(parts, dev, FarmConfig(min_own_gold=10**9))  # own gold below reserve after the Next
+    out = task.next_base(SearchOutcome(ACCEPTED, None, 0))
+    assert out.status == LOW_GOLD and not out.attack
