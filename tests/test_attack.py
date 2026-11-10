@@ -733,3 +733,9 @@ def test_no_outline_after_every_look_gives_the_base_up(cfg):
     task2, _ = _attack(cfg, dev2)
     task2.nav.stop.set()
     assert task2._find_base()[1] is None and dev2.captures == 1  # Stop ends the looking at once
+
+
+@pytest.mark.parametrize("screen, status", [("search_a", "skipped"), ("battle", FAILED)])
+def test_no_outline_skips_while_scouting_and_fails_in_battle(cfg, screen, status):
+    task, _ = _attack(cfg, _Frames(screen))
+    assert task._no_outline().status == status

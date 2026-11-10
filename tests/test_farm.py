@@ -512,3 +512,62 @@ def test_game_down_wait_off_or_not_down_counts_failures():
     assert stats.stop_reason == "3 failures in a row" and closed == []
     stats, closed, _ = _down_farm([HOME_FAIL] * 3, down=False)
     assert stats.stop_reason == "3 failures in a row" and closed == []
+
+
+# --- skipping a base the attack cannot use -------------------------------------------------------
+
+
+def _skip_parts(results, searches, max_skips=3):
+    import threading
+    from types import SimpleNamespace
+
+    from cob.tasks.wiring import FarmParts
+
+    calls = {"attack": 0, "next": 0, "home": 0}
+    results, searches = list(results), list(searches)
+
+    def run():
+        calls["attack"] += 1
+        return results.pop(0)
+
+    def next_base(after):
+        calls["next"] += 1
+        return searches.pop(0)
+
+    def go_home():
+        calls["home"] += 1
+
+    nav = SimpleNamespace(stop=threading.Event(), go_home=go_home)
+    parts = SimpleNamespace(attack=SimpleNamespace(run=run), search=SimpleNamespace(next_base=next_base),
+                            nav=nav, max_skips=max_skips)
+    return (lambda: FarmParts.attack_base(parts)), calls
+
+
+def test_a_base_without_outline_is_skipped_with_next():
+    from cob.tasks.attack import DONE, SKIPPED, AttackOutcome
+    from cob.tasks.search import ACCEPTED, SearchOutcome
+
+    attack, calls = _skip_parts([AttackOutcome(SKIPPED, reason="no outline"), AttackOutcome(DONE)],
+                                [SearchOutcome(ACCEPTED, None, 4)])
+    assert attack().status == DONE and calls == {"attack": 2, "next": 1, "home": 0}
+
+
+def test_skipping_stops_after_max_skips_and_ends_the_search():
+    from cob.tasks.attack import FAILED, SKIPPED, AttackOutcome
+    from cob.tasks.search import ACCEPTED, SearchOutcome
+
+    skip = AttackOutcome(SKIPPED, reason="no outline")
+    attack, calls = _skip_parts([skip, AttackOutcome(SKIPPED), AttackOutcome(SKIPPED)],
+                                [SearchOutcome(ACCEPTED)] * 2, max_skips=2)
+    out = attack()
+    assert out.status == FAILED and calls == {"attack": 3, "next": 2, "home": 1}
+
+
+def test_a_search_that_stops_after_a_skip_is_a_failed_attack():
+    from cob.tasks.attack import FAILED, SKIPPED, AttackOutcome
+    from cob.tasks.search import LOW_GOLD, SearchOutcome
+
+    attack, calls = _skip_parts([AttackOutcome(SKIPPED)],
+                                [SearchOutcome(LOW_GOLD, reason="own gold below reserve")])
+    out = attack()
+    assert out.status == FAILED and "low_gold" in out.reason and calls["home"] == 0  # search already left

@@ -105,9 +105,26 @@ class SearchTask:
         if nxt[0].screen == ARMY and not self._tap(nxt, "army_attack"):
             return SearchOutcome(FAILED, reason=ARMY_NOT_READY)
 
-        nexts = 0
-        best: Loot | None = None
-        seen: list[Loot] = []
+        return self._browse(0, None, [])
+
+    def next_base(self, after: SearchOutcome) -> SearchOutcome:
+        """Tap Next on the base shown now and search on from there with the same filter (the attack
+        could not use that base: no outline). Like run(): anything but a base to attack leaves the search."""
+        current = self.nav.wait_for({ATTACK_SEARCH}, self.screen_timeout_s)
+        if current is None or not self._tap(current, "next_button"):
+            out = SearchOutcome(FAILED, nexts=after.nexts, best_skipped=after.best_skipped, seen=after.seen,
+                                reason="Next button not found")
+        else:
+            self._wait_next_base(after.loot)
+            out = self._browse(after.nexts + 1, after.best_skipped, list(after.seen))
+        log.info("search %s after %d nexts: %s%s", out.status, out.nexts, out.loot or "-",
+                 f" ({out.reason})" if out.reason else "")
+        if not out.attack:
+            self._leave()
+        return out
+
+    def _browse(self, nexts: int, best: Loot | None, seen: list[Loot]) -> SearchOutcome:
+        """Look at bases (Next between them) until one passes the filter or the search has to stop."""
         while True:
             got = self.nav.wait_for({ATTACK_SEARCH, SEARCH_BLOCKED, BATTLE}, self.screen_timeout_s)
             if got is not None and got[0].screen == BATTLE:

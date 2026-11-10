@@ -42,6 +42,7 @@ INTERRUPTS = frozenset({"POPUP_RELOAD", "POPUP_OTHER_DEVICE"})
 
 DONE = "done"  # battle ended, back home
 FAILED = "failed"
+SKIPPED = "skipped"  # base not usable (no outline), still on the scout screen: the caller may press Next
 
 
 @dataclass(frozen=True)
@@ -113,6 +114,8 @@ class AttackTask:
         if out.status == FAILED:
             self._report(out)
             self.nav.go_home()
+        elif out.status == SKIPPED:
+            self._report(out)  # the search goes on from this screen: no going home
         return out
 
     def _report(self, out: AttackOutcome) -> None:
@@ -147,7 +150,7 @@ class AttackTask:
         cards = bar.cards
         frame, base = self._find_base()
         if base is None:
-            return AttackOutcome(FAILED, reason="base border not found or unclear")
+            return self._no_outline()
         self._red = red_mask(frame.bgr, self.border, base)  # every point checked against the real red line
         edge, points = deploy_sides(base, self.deploy, self.border.ui, self.cfg.sides, red=self._red)
         self._points = points
@@ -299,6 +302,12 @@ class AttackTask:
     def _tap_card(self, card: Card) -> None:
         """Somewhere on the card's picture (above the level badge, below the count)."""
         tap_card(self.nav, card)
+
+    def _no_outline(self) -> AttackOutcome:
+        """No usable outline: while the base is still being scouted it can be skipped with Next instead
+        of ending the search (the caller decides); once the battle is on, the attack failed."""
+        scouting = self.nav.classify()[0].screen == ATTACK_SEARCH
+        return AttackOutcome(SKIPPED if scouting else FAILED, reason="base border not found or unclear")
 
     def _find_base(self) -> tuple[Frame, object]:
         """The base outline from the red no-deploy line. The line pulses and fades in after the camera
