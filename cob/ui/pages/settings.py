@@ -29,12 +29,32 @@ from cob.ui.widgets import Card, CategoryTabs, IconLabel, SegmentedControl, Togg
 from cob.ui.widgets import label as text
 
 RELEASES_URL = "https://github.com/Clash-Tools/Clash-of-Bots/releases"
+class VersionLabel(QLabel):
+    """The version text; clicking it seven times unlocks the Developer options (D-038)."""
+
+    unlock = Signal()
+    CLICKS = 7
+
+    def __init__(self, text_: str):
+        super().__init__(text_)
+        self.setProperty("role", "mono")
+        self._clicks = 0
+
+    def mousePressEvent(self, event) -> None:  # noqa: N802 (Qt)
+        self._clicks += 1
+        if self._clicks >= self.CLICKS:
+            self._clicks = 0
+            self.unlock.emit()
+        super().mousePressEvent(event)
+
+
 SETTINGS_CATEGORIES = [  # key, icon, title, subtitle (tabs, #101: no scrolling)
     ("appearance", "palette", tr("Appearance"), tr("Theme")),
     ("notifications", "notifications", tr("Tray & Notifications"), tr("Alerts and start-up")),
     ("data", "folder_data", tr("Data & Storage"), tr("Folder, export, reset")),
     ("release", "system_update_alt", tr("Release"), tr("Version and updates")),
     ("about", "info", tr("About"), tr("Licence and privacy")),
+    ("developer", "bug_report", "Developer options", "Feature flags"),  # hidden until unlocked (D-038)
 ]
 
 
@@ -168,7 +188,8 @@ class SettingsPage(QWidget):
         system.body.addLayout(telegram)
         self.alert_status = text("", "muted", wrap=True)
         system.body.addWidget(self.alert_status)
-        system.body.addWidget(text(tr("CLASH OF CLANS API (OPTIONAL)"), "eyebrow"))
+        self.coc_title = text(tr("CLASH OF CLANS API (OPTIONAL)"), "eyebrow")
+        system.body.addWidget(self.coc_title)
         self.coc_token = QLineEdit(placeholderText=tr("API key from developer.clashofclans.com"))
         self.coc_token.setEchoMode(QLineEdit.EchoMode.Password)
         self.coc_base = QLineEdit(placeholderText=coc_api.DEFAULT_BASE)
@@ -178,6 +199,10 @@ class SettingsPage(QWidget):
         system.body.addWidget(self.coc_base)
         self.coc_status = text("", "muted", wrap=True)
         system.body.addWidget(self.coc_status)
+        from cob.core import flags
+
+        for w in (self.coc_title, self.coc_token, self.coc_base, self.coc_status):  # D-038: experimental
+            w.setVisible(flags.enabled("coc_api_sync"))
         for edit in (self.discord, self.telegram_token, self.telegram_chat, self.coc_token, self.coc_base):
             edit.editingFinished.connect(self._alerts_edited)
         self.tabs.add("notifications", system)
@@ -263,7 +288,9 @@ class SettingsPage(QWidget):
         row.addWidget(logo)
         names = QVBoxLayout()
         names.addWidget(text(tr("Clash of Bots"), "title"))
-        names.addWidget(text(f"{__version__}  •  {channel()}", "mono"))
+        self.version_label = VersionLabel(f"{__version__}  •  {channel()}")
+        self.version_label.unlock.connect(self.unlock_developer)
+        names.addWidget(self.version_label)
         row.addLayout(names, 1)
         about.body.addLayout(row)
         about.body.addWidget(text(tr("Automating the game breaks its terms of service and can get an account "
@@ -279,8 +306,69 @@ class SettingsPage(QWidget):
         ab.addWidget(about)
         ab.addWidget(privacy)
         self.tabs.add("about", about_page)
+        self._developer_page()
 
         self.set_settings(settings or ui_settings.UiSettings())
+
+    # --- developer options (D-038) ---------------------------------------------------------------
+
+    def _developer_page(self) -> None:
+        from cob.core import flags
+
+        self.flags = flags.load()  # what is saved; the running app keeps what it started with
+        card = Card("Developer options", "bug_report", tag="HIDDEN")
+        card.setProperty("i18n_exempt", True)  # English only: for testers and contributors
+        card.body.addWidget(text("Feature flags for work that is not finished or not checked live yet. "
+                                 "Changes apply after a restart. Each flag is tracked by its issue on the "
+                                 "project board.", "muted", wrap=True))
+        self.flag_rows: dict[str, ToggleRow] = {}
+        for f in flags.FLAGS:
+            issue = f"  •  issue #{f.issue}" if f.issue else ""
+            row = ToggleRow(f"{f.title}  [{f.stage}]", f"{f.description}{issue}", self.flags.enabled(f.key))
+            row.switch.toggled.connect(lambda on, k=f.key: self._flag_toggled(k, on))
+            card.body.addWidget(row)
+            self.flag_rows[f.key] = row
+        bottom = QHBoxLayout()
+        self.flags_note = text("", "muted", wrap=True)
+        bottom.addWidget(self.flags_note, 1)
+        self.flags_restart = QPushButton("  " + tr("Restart now"))
+        self.flags_restart.setIcon(icon("restart_alt", t.ON_SURFACE, 18))
+        self.flags_restart.clicked.connect(self.restart_requested)
+        self.flags_restart.hide()
+        bottom.addWidget(self.flags_restart)
+        hide = QPushButton("  Hide developer options")
+        hide.clicked.connect(lambda: self.set_developer(False))
+        bottom.addWidget(hide)
+        card.body.addLayout(bottom)
+        self.tabs.add("developer", card)
+        self.tabs.buttons["developer"].setProperty("i18n_exempt", True)
+        self.tabs.set_visible("developer", self.flags.developer)
+
+    def unlock_developer(self) -> None:
+        self.set_developer(True)
+        self.tabs.open("developer")
+
+    def set_developer(self, on: bool) -> None:
+        self.flags.developer = on
+        self._save_flags()
+        self.tabs.set_visible("developer", on)
+
+    def _flag_toggled(self, key: str, on: bool) -> None:
+        from cob.core import flags
+
+        self.flags.set(key, on)
+        self._save_flags()
+        pending = self.flags.values != flags.current().values
+        self.flags_note.setText("Restart to apply the changed flags." if pending else "")
+        self.flags_restart.setVisible(pending)
+
+    def _save_flags(self) -> None:
+        from cob.core import flags
+
+        try:
+            flags.save(self.flags)
+        except OSError as exc:
+            self.flags_note.setText(f"Flags not saved: {exc}")
 
     # --- data -----------------------------------------------------------------------------------
 

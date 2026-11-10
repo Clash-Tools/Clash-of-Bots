@@ -8,7 +8,9 @@ Thanks for helping. Before you start:
    before every push).
 4. Work on a branch, write Conventional Commit messages (`fix(attack): ...`, `feat(ui): ...`), and open a
    pull request that says what changed, how it was tested, and whether it ran live on a device.
-5. New screenshots for tests: run `python scripts/anonymize_fixtures.py <file>` first and check that no
+5. A feature that is not finished or not checked live yet goes behind a feature flag
+   ([docs/FEATURE_FLAGS.md](docs/FEATURE_FLAGS.md)) with its issue on the project board.
+6. New screenshots for tests: run `python scripts/anonymize_fixtures.py <file>` first and check that no
    player, clan or opponent name can be read.
 
 By contributing you agree that your work is published under the project's [GPL-3.0 licence](LICENSE).

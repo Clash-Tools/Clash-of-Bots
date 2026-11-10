@@ -71,3 +71,11 @@ class CategoryTabs(QWidget):
 
     def current(self) -> str:
         return self._current
+
+    def set_visible(self, key: str, visible: bool) -> None:
+        """Show or hide a category (feature flags); hiding the open one opens the first visible one."""
+        self.buttons[key].setVisible(visible)
+        if not visible and self._current == key:
+            first = next((k for k, b in self.buttons.items() if k != key and not b.isHidden()), None)
+            if first in self.sections:
+                self.open(first)

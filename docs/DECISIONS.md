@@ -452,3 +452,20 @@ Trade-off: Siege machine cards use other art than their icon and still need a la
           per new card in the first battle of a run.
 Revisit if: card layout changes (geometry lives in tools/portraits.py), or other resolutions are added.
 
+## D-038: Feature flags with hidden Developer options  (ACCEPTED 2026-11-10)
+Date: 2026-11-10   Model: Claude Opus 5.5
+Context:  Several features were visible although unfinished (Clan Games placeholder) or not checked live
+          (running profiles in turn, Clash of Clans API sync).
+Options:  1) Flags in the app, switched on a hidden Developer options page
+          2) Separate builds / branches for testers
+          3) Leave them visible with "coming soon" tags
+Chosen:   1. cob.core.flags: a registry (key, title, description, stage, issue) with stages beta (on),
+          experimental and incomplete (off). Switches live in flags.json and are read once at start-up
+          (a change applies after a restart); COB_FLAGS overrides for tests. Settings > About: seven
+          clicks on the version unlock the Developer options tab. Pages hide the flagged widgets; the
+          code stays and is tested with the flags on. Every flag has an issue on the project board
+          (Feature flag field). docs/FEATURE_FLAGS.md lists them and the inventory.
+Why:      Users see only what works, testers can still reach everything, and one release serves both.
+Trade-off: Restart to apply; flagged code paths need tests with the flag on.
+Revisit if: flags pile up (remove each one a release after it reaches beta).
+

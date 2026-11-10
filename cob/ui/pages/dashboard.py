@@ -213,6 +213,9 @@ class DashboardPage(QWidget):
             tr("AUTOMATION COPILOT  •  BUILDER BASE") if v == "bb"
             else tr("AUTOMATION COPILOT  •  HOME VILLAGE")))
         card.body.addWidget(self.mode)
+        from cob.core import flags
+
+        self.mode.setVisible(flags.enabled("builder_base"))  # D-038: off = home village only
         nums = QHBoxLayout()
         nums.setSpacing(t.MD)
         self.cycles = NumberField(tr("Cycles limit"), 0, 10_000, 5, hint=tr("0 = unlimited"))

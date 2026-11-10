@@ -41,3 +41,14 @@ def _isolated_user_data(tmp_path, monkeypatch):
     """Snapshots, logs and farm.json go to a temp folder, never the real user data dir."""
     monkeypatch.setenv("LOCALAPPDATA", str(tmp_path / "localappdata"))
     monkeypatch.setenv("XDG_DATA_HOME", str(tmp_path / "xdg"))
+
+
+@pytest.fixture(autouse=True)
+def _fresh_feature_flags(monkeypatch):
+    """Each test starts from the flag defaults (D-038); a test turns flags on with COB_FLAGS."""
+    from cob.core import flags
+
+    monkeypatch.delenv("COB_FLAGS", raising=False)
+    flags.reset()
+    yield
+    flags.reset()

@@ -28,12 +28,11 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QSystemTrayIcon,
     QToolButton,
-    QVBoxLayout,
     QWidget,
 )
 
 from cob import __version__
-from cob.core import history, ui_settings
+from cob.core import flags, history, ui_settings
 from cob.core.config import FarmConfig, load_farm_config, save_farm_config
 from cob.core.i18n import tr
 from cob.core.profiles import Profiles
@@ -52,8 +51,6 @@ from cob.ui.pages.settings import SettingsPage
 from cob.ui.shell import Shell, logo_icon
 from cob.ui.style import tokens
 from cob.ui.style.icons import icon
-from cob.ui.widgets import Card
-from cob.ui.widgets import label as text_label
 from cob.ui.widgets.busy import Spinner
 from cob.ui.wizard import SetupWizard
 from cob.ui.worker import FarmWorker
@@ -202,6 +199,7 @@ class MainWindow(QMainWindow):
         self.shell.add_page("settings", self._settings_page(tray))
         self.shell.add_page("health", self._health_page())
         self.shell.show_page("dashboard")
+        self.shell.nav["cards"].setVisible(flags.enabled("card_labelling"))  # D-038
         self.setCentralWidget(self.shell)
         # Esc = emergency stop everywhere in the window (designs: "Stop farming (Esc)").
         self.esc_shortcut = QShortcut(QKeySequence(Qt.Key.Key_Escape), self, activated=lambda: self.stop())
@@ -333,6 +331,8 @@ class MainWindow(QMainWindow):
     def start_rotation(self) -> None:
         """Run every ticked profile in turn (#2): each starts when the one before it stops."""
         if self._worker is not None and self._worker.isRunning():
+            return
+        if not flags.enabled("profile_rotation"):  # D-038: experimental
             return
         turn = self.profiles.rotation()
         missing = [shown(p) for p in turn if not p.serial]
@@ -479,16 +479,6 @@ class MainWindow(QMainWindow):
             self.set_filter(FarmConfig())
             self.save_filter()
 
-    def _coming_soon(self, title: str, icon_name: str, text: str) -> QWidget:
-        card = Card(title, icon_name, tag=tr("Coming soon"))
-        card.body.addWidget(text_label(text, "muted", wrap=True))
-        holder = QWidget()
-        lay = QVBoxLayout(holder)
-        lay.setContentsMargins(0, 0, 0, 0)
-        lay.addWidget(card)
-        lay.addStretch(1)
-        return holder
-
     def _set_status(self, text: str, state: str | None = None, icon_name: str = "radar") -> None:
         """Current step in the status strip (+ run state); icon_name: "info" when stopped, "gpp_maybe" on
         an error (passed in, as the translated text can't be checked)."""
@@ -621,7 +611,7 @@ class MainWindow(QMainWindow):
         """Troop detection: label the cards the bot does not recognise yet (D-033)."""
         from cob.ui.pages.cards import CardsPage
 
-        self.cards_page = CardsPage(owned=self._owned_units)
+        self.cards_page = CardsPage(owned=self._owned_units if flags.enabled("coc_api_sync") else None)
         self.cards_page.export_requested.connect(self.export_cards)
         return self.cards_page
 

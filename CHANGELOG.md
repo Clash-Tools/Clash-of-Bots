@@ -13,6 +13,10 @@ hand-written highlights go under Unreleased and are moved into the next release.
 
 ## [Unreleased]
 
+- **Feature flags:** unfinished or not yet proven features are hidden: Clan Games and building upgrades
+  (placeholders), running profiles in turn and the Clash of Clans API sync (not checked live yet).
+  Testers turn them on in **Developer options** (Settings > About: click the version seven times).
+
 ## [0.6.3] - 2026-11-08
 
 Channel: **Stable**

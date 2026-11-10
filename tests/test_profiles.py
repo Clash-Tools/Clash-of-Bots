@@ -177,6 +177,7 @@ def test_profiles_page_edits_the_store(qapp, tmp_path):
 
 
 def test_window_switches_profiles_and_runs_them_in_turn(qapp, monkeypatch):
+    monkeypatch.setenv("COB_FLAGS", "profile_rotation")  # experimental (D-038)
     from PySide6.QtWidgets import QMessageBox
 
     from cob.ui.main_window import MainWindow
@@ -222,6 +223,7 @@ def test_window_switches_profiles_and_runs_them_in_turn(qapp, monkeypatch):
 
 
 def test_stop_ends_a_run_in_turn(qapp, monkeypatch):
+    monkeypatch.setenv("COB_FLAGS", "profile_rotation")  # experimental (D-038)
     import threading
 
     from cob.ui.main_window import MainWindow

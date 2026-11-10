@@ -124,7 +124,8 @@ class ProfilesPage(QWidget):
         buttons.addWidget(self.use_button)
         form_card.body.addLayout(buttons)
 
-        form_card.body.addWidget(text(tr("CLASH OF CLANS ACCOUNT"), "eyebrow"))
+        self.api_title = text(tr("CLASH OF CLANS ACCOUNT"), "eyebrow")
+        form_card.body.addWidget(self.api_title)
         self.player = text("", "muted", wrap=True)
         self.player.setTextFormat(Qt.TextFormat.PlainText)
         form_card.body.addWidget(self.player)
@@ -154,7 +155,22 @@ class ProfilesPage(QWidget):
         row.addWidget(self.run_button)
         turn.body.addLayout(row)
         root.addWidget(turn)
+        self.turn_card = turn
+        self._apply_flags(form)
         self.refresh()
+
+    def _apply_flags(self, form) -> None:
+        """D-038: running in turn and the Clash of Clans API sync are experimental."""
+        from cob.core import flags
+
+        self.rotation_enabled = flags.enabled("profile_rotation")
+        self.api_enabled = flags.enabled("coc_api_sync")
+        self.turn_card.setVisible(self.rotation_enabled)
+        self.rotation.setVisible(self.rotation_enabled)
+        for w in (self.tag, self.api_title, self.player, self.sync_button):
+            w.setVisible(self.api_enabled)
+        if (label := form.labelForField(self.tag)) is not None:
+            label.setVisible(self.api_enabled)
 
     # --- data -----------------------------------------------------------------------------------
 

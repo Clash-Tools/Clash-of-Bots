@@ -39,9 +39,20 @@ nothing = lambda *a: None
 roots = [MainWindow(devices=lambda: [("Phone", "AB12CD34EF")]),
          SetupWizard(None, lambda: [("Phone", "AB12CD34EF")], nothing, nothing, nothing, nothing, nothing)]
 
+def exempt(w):
+    """Inside a widget marked i18n_exempt (the English-only Developer options, D-038)."""
+    while w is not None:
+        if w.property("i18n_exempt"):
+            return True
+        w = w.parentWidget()
+    return False
+
+
 texts = []
 for root in roots:
     for w in [root, *root.findChildren(QWidget)]:
+        if exempt(w):
+            continue
         if isinstance(w, (QLabel, QAbstractButton)):
             texts.append(w.text())
         if isinstance(w, QLineEdit):
