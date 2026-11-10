@@ -698,3 +698,38 @@ def test_a_counted_card_left_of_the_heroes_is_a_troop_whatever_its_colour():
     assert [c.kind for c in by_order(bar)] == [TROOP, TROOP, SINGLE, SPELL]
     no_heroes = [Card(0, 110, SPELL, False), Card(120, 230, TROOP, False)]
     assert by_order(no_heroes) == no_heroes  # nothing to anchor on: colours decide
+
+
+class _Frames:
+    """Hands out frames in order (the last one repeats) and counts the screenshots."""
+
+    serial = "fake"
+
+    def __init__(self, *names):
+        self.frames = [cv2.imread(str(FRAMES / f"{n}.jpg")) for n in names]
+        self.captures = 0
+
+    def capture(self):
+        self.captures += 1
+        return self.frames[min(self.captures - 1, len(self.frames) - 1)]
+
+
+def test_a_base_outline_is_looked_for_again_when_the_line_is_not_showing(cfg):
+    # live: the red line fades in and out during scouting; a frame without it must not lose the attack
+    dev = _Frames("army", "army", "search_a")
+    task, clock = _attack(cfg, dev)
+    frame, base = task._find_base()
+    assert base is not None and dev.captures == 3 and frame.bgr is dev.frames[2]
+    assert task._base_frame is dev.frames[2]
+
+
+def test_no_outline_after_every_look_gives_the_base_up(cfg):
+    dev = _Frames("army")
+    task, clock = _attack(cfg, dev)
+    frame, base = task._find_base()
+    assert base is None and dev.captures == task.cfg.border_looks
+    task.nav.stop.set()
+    dev2 = _Frames("army")
+    task2, _ = _attack(cfg, dev2)
+    task2.nav.stop.set()
+    assert task2._find_base()[1] is None and dev2.captures == 1  # Stop ends the looking at once
