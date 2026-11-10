@@ -452,6 +452,26 @@ Trade-off: Siege machine cards use other art than their icon and still need a la
           per new card in the first battle of a run.
 Revisit if: card layout changes (geometry lives in tools/portraits.py), or other resolutions are added.
 
+## D-037: Optional live screen stream on phones, for waiting only  (ACCEPTED 2026-11-10)
+Date: 2026-11-10   Model: Claude Opus 5.5
+Context:  #37: farm cycles take 5-7 min on a phone over Wi-Fi. In 99 live cycles 58 % of the time was
+          screenshots (median 1.3 s each, up to 5 s), most of them taken while waiting for a screen.
+Options:  1) `screenrecord` H.264 stream decoded with PyAV; stream frames only for waiting
+          2) Stream frames for everything
+          3) Keep screenshots, cut fewer of them
+Chosen:   1, opt-in per profile ("Live screen stream", off by default). Every real test frame run through
+          H.264 (1744x896, 4-20 Mbit/s) is still classified right, but thin red deploy lines and one loot
+          number come out wrong at every bit rate, so a stream frame never drives an action: the
+          navigator's wait_for / wait_leave watch the stream while the wanted screen is NOT showing and
+          take an exact screenshot to confirm; only that screenshot is returned. The stream reconnects
+          each recording (screenrecord stops at 3 min), drops its frame between recordings, and gives up
+          after 3 recordings without a picture; then, and on any error, waits use screenshots as before.
+          PyAV ==19.0.2 is a new dependency (BSD; wheels bundle LGPL FFmpeg).
+Why:      Waiting costs no adb round trips while nothing changes; everything the bot reads or taps is
+          still from an exact screenshot.
+Trade-off: ~30 MB more in the packages; an extra recording process on the phone while the bot runs.
+Revisit if: the live speed-up is small, or a phone's encoder misbehaves (then option 3).
+
 ## D-038: Feature flags with hidden Developer options  (ACCEPTED 2026-11-10)
 Date: 2026-11-10   Model: Claude Opus 5.5
 Context:  Several features were visible although unfinished (Clan Games placeholder) or not checked live

@@ -64,7 +64,7 @@ def test_incomplete_features_are_hidden_by_default(qapp):
 
     win = MainWindow(devices=lambda: [])
     a = win.automation
-    assert a.tabs.buttons["games"].isHidden() and a.upgrades_note.isHidden()
+    assert a.tabs.buttons["games"].isHidden() and a.upgrades_note.isHidden() and a.stream_row.isHidden()
     assert not a.tabs.buttons["builder"].isHidden() and not win.dashboard.mode.isHidden()  # beta: on
     p = win.profiles_page
     assert p.turn_card.isHidden() and p.rotation.isHidden() and p.sync_button.isHidden() and p.tag.isHidden()
@@ -80,10 +80,11 @@ def test_flags_show_the_features(qapp, monkeypatch):
     from cob.ui.main_window import MainWindow
 
     monkeypatch.setenv("COB_FLAGS", "clan_games,building_upgrades,profile_rotation,coc_api_sync,"
-                                    "-builder_base,-card_labelling")
+                                    "live_stream,-builder_base,-card_labelling")
     win = MainWindow(devices=lambda: [])
     a = win.automation
     assert not a.tabs.buttons["games"].isHidden() and not a.upgrades_note.isHidden()
+    assert not a.stream_row.isHidden()
     assert a.tabs.buttons["builder"].isHidden() and win.dashboard.mode.isHidden()
     p = win.profiles_page
     assert not p.turn_card.isHidden() and not p.sync_button.isHidden() and not p.tag.isHidden()

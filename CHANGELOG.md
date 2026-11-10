@@ -16,6 +16,9 @@ hand-written highlights go under Unreleased and are moved into the next release.
 - **Feature flags:** unfinished or not yet proven features are hidden: Clan Games and building upgrades
   (placeholders), running profiles in turn and the Clash of Clans API sync (not checked live yet).
   Testers turn them on in **Developer options** (Settings > About: click the version seven times).
+- **Live screen stream (phones, experimental, `live_stream` flag):** Automation > Farming Heuristics. The phone streams its
+  screen as video while the bot waits for a screen, instead of a screenshot every second or so; taps
+  and readings still use exact screenshots. Falls back to screenshots on its own.
 
 ## [0.6.3] - 2026-11-08
 
