@@ -11,6 +11,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QLabel,
     QLineEdit,
+    QMessageBox,
     QProgressBar,
     QPushButton,
     QTextBrowser,
@@ -29,6 +30,18 @@ from cob.ui.widgets import Card, CategoryTabs, IconLabel, SegmentedControl, Togg
 from cob.ui.widgets import label as text
 
 RELEASES_URL = "https://github.com/Clash-Tools/Clash-of-Bots/releases"
+
+DEVELOPER_WARNING = tr("Developer options turn on features that are not finished or not checked live "
+                       "yet. They can fail during a run, waste troops or misread screens. Use them only "
+                       "on a test account and report what you find.")
+
+
+def confirm_developer(parent: QWidget) -> bool:
+    """Ask before showing the Developer options: their features are not finished (D-038)."""
+    answer = QMessageBox.warning(parent, tr("Turn on Developer options?"), DEVELOPER_WARNING,
+                                 QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                                 QMessageBox.StandardButton.No)
+    return answer == QMessageBox.StandardButton.Yes
 class VersionLabel(QLabel):
     """The version text; clicking it seven times unlocks the Developer options (D-038)."""
 
@@ -305,17 +318,28 @@ class SettingsPage(QWidget):
         ab.setSpacing(t.LG)
         ab.addWidget(about)
         ab.addWidget(privacy)
-        self.tabs.add("about", about_page)
         self._developer_page()
+        ab.addWidget(self.developer_card)
+        self.tabs.add("about", about_page)
 
         self.set_settings(settings or ui_settings.UiSettings())
 
     # --- developer options (D-038) ---------------------------------------------------------------
 
+    confirm = staticmethod(confirm_developer)  # tests replace it
+
     def _developer_page(self) -> None:
         from cob.core import flags
 
         self.flags = flags.load()  # what is saved; the running app keeps what it started with
+        self._syncing = False
+        self.developer_card = Card(tr("Developer options"), "bug_report", tone="low")
+        self.developer_switch = ToggleRow(tr("Show developer options"),
+                                          tr("Feature flags for testers. Unfinished features may fail "
+                                             "during a run: use a test account."),
+                                          self.flags.developer, icon_name="warning")
+        self.developer_switch.switch.toggled.connect(self._developer_toggled)
+        self.developer_card.body.addWidget(self.developer_switch)
         card = Card("Developer options", "bug_report", tag="HIDDEN")
         card.setProperty("i18n_exempt", True)  # English only: for testers and contributors
         card.body.addWidget(text("Feature flags for work that is not finished or not checked live yet. "
@@ -352,6 +376,20 @@ class SettingsPage(QWidget):
         self.flags.developer = on
         self._save_flags()
         self.tabs.set_visible("developer", on)
+        if self.developer_switch.isChecked() != on:
+            self._syncing = True  # the switch follows; no second question
+            self.developer_switch.setChecked(on)
+            self._syncing = False
+
+    def _developer_toggled(self, on: bool) -> None:
+        if self._syncing:
+            return
+        if on and not self.confirm(self):
+            self.set_developer(False)  # declined: the switch goes back off
+        elif on:
+            self.unlock_developer()
+        else:
+            self.set_developer(False)
 
     def _flag_toggled(self, key: str, on: bool) -> None:
         from cob.core import flags

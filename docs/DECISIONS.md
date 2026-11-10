@@ -488,4 +488,7 @@ Chosen:   1. cob.core.flags: a registry (key, title, description, stage, issue) 
 Why:      Users see only what works, testers can still reach everything, and one release serves both.
 Trade-off: Restart to apply; flagged code paths need tests with the flag on.
 Revisit if: flags pile up (remove each one a release after it reaches beta).
+Update 2026-11-10: Settings > About also has a visible "Show developer options" switch that asks first,
+          with a warning that unfinished features may fail during a run (testers asked for a way in
+          that does not need the hidden clicks). The seven clicks stay as a shortcut.
 
