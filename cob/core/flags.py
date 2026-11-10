@@ -55,6 +55,9 @@ FLAGS: tuple[Flag, ...] = (
     Flag("coc_api_sync", "Clash of Clans API sync",
          "API key in Settings, player tag and Sync on the Profiles page, own units first on the Cards page. "
          "Not checked against the live API yet.", EXPERIMENTAL, 45),
+    Flag("live_stream", "Live screen stream (phones)",
+         "Automation > Farming Heuristics switch: waits watch an H.264 stream of the phone screen, actions "
+         "still use screenshots. Speed-up not measured live yet.", EXPERIMENTAL, 37),
     Flag("clan_games", "Clan Games",
          "Automation tab for Clan Games. Placeholder only: nothing is automated yet.", INCOMPLETE, 1),
     Flag("building_upgrades", "Building and lab upgrades",

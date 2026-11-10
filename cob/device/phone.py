@@ -176,10 +176,56 @@ class PhoneDevice(AdbDevice):
 
     compress_capture = True
 
-    def __init__(self, serial: str):
+    def __init__(self, serial: str, stream: bool = False):
         super().__init__(serial)
         self._active = False
         self.x0 = 0  # frame/tap offset: how far the game pads its HUD from the screen edge
+        self.use_stream = stream  # D-037: live H.264 frames for waits (peek); screenshots stay exact
+        self._stream = None
+        self._width = TARGET_SIZE[0]  # display width while the bot runs (game area + 2 x x0)
+
+    def peek(self):
+        """Newest frame of the live stream, shaped like capture()'s, or None (no stream, no picture
+        yet). Lossy: good for seeing which screen shows, never for reading numbers or thin lines."""
+        stream = getattr(self, "_stream", None)
+        if stream is None:
+            return None
+        t0 = time.monotonic()
+        frame = stream.latest()
+        if frame is None:
+            return None
+        import cv2
+
+        size = (getattr(self, "_width", TARGET_SIZE[0]), TARGET_SIZE[1])
+        if (frame.shape[1], frame.shape[0]) != size:
+            frame = cv2.resize(frame, size, interpolation=cv2.INTER_LINEAR)
+        if self.x0 and frame.shape[1] >= self.x0 + TARGET_SIZE[0]:
+            frame = frame[:, self.x0:self.x0 + TARGET_SIZE[0]].copy()
+        self.io.add("peek", time.monotonic() - t0)
+        return frame
+
+    def start_stream(self) -> bool:
+        """Start the live stream when asked for and possible; False = waits use screenshots."""
+        from cob.device import stream as st
+
+        self.stop_stream()
+        if not getattr(self, "use_stream", False):
+            return False
+        if not st.available():
+            log.warning("screen stream needs the PyAV package; waiting on screenshots instead")
+            return False
+        size = st.encoder_size(self._width, TARGET_SIZE[1])
+        self._stream = st.ScreenStream(st.adb_bytes(self._dev, st.record_command(size))).start()
+        ok = st.wait_first_frame(self._stream)
+        log.info("phone %s: screen stream %dx%d %s", self.serial, size[0], size[1],
+                 "on" if ok else "gave no picture yet")
+        return ok
+
+    def stop_stream(self) -> None:
+        stream = getattr(self, "_stream", None)
+        if stream is not None:
+            stream.stop()
+        self._stream = None
 
     def capture(self, retries: int = 2):
         frame = super().capture(retries)
@@ -270,8 +316,14 @@ class PhoneDevice(AdbDevice):
             self.end()  # the run never starts: give the phone its display back now
             raise DeviceError(f"phone {self.serial} is locked: unlock it, then start again")
         width, self.x0 = self._fit_cutout(physical)
+        self._width = width
         log.info("phone %s (%s): display %dx%d @ %d (game area x %d..%d) while the bot runs", self.serial,
                  self.model(), width, TARGET_SIZE[1], TARGET_DPI, self.x0, self.x0 + TARGET_SIZE[0])
+        try:
+            self.start_stream()
+        except Exception as exc:  # the stream is an extra: never a reason not to run
+            log.warning("screen stream not started (%s); waiting on screenshots", exc)
+            self._stream = None
 
     def _fit_cutout(self, physical: tuple[int, int]) -> tuple[int, int]:
         """Widen the display until the HUD area (width - 2 x pad) is 1600; returns (width, pad).
@@ -298,6 +350,7 @@ class PhoneDevice(AdbDevice):
         end() must not undo a later run's mode (#93: a closing GUI restored a run mid-begin, and the
         run's size came back without its density). force = the manual "Restore phone screen" button.
         False when nothing is saved for this phone or it is unreachable."""
+        self.stop_stream()  # before the size changes back: the recording is for the bot's display
         with _no_interrupt():  # also covers saving the record
             return self._end(force)
 
@@ -379,12 +432,13 @@ def reconnect(device: PhoneDevice, timeout_s: float = 120.0, poll_s: float = 3.0
     return False
 
 
-def open_device(serial: str) -> AdbDevice:
-    """The right device class for a serial: phones get PhoneDevice (display mode started)."""
+def open_device(serial: str, stream: bool = False) -> AdbDevice:
+    """The right device class for a serial: phones get PhoneDevice (display mode started).
+    stream: also start the live screen stream for waits (D-037; phones only, emulators are local)."""
     dev = AdbDevice(serial)
     if is_emulator(dev):
         return dev
-    phone = PhoneDevice(serial)
+    phone = PhoneDevice(serial, stream=stream)
     phone.begin()
     return phone
 

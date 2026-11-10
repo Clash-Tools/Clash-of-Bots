@@ -7,6 +7,7 @@
 | opencv-python-headless | >=4.12,<5 | Template matching, image IO. Headless avoids Qt plugin clash with PySide6 (M2) | OpenCV team |
 | pyside6-essentials | ==6.11.2 | GUI (D-001). Essentials only (QtCore/Gui/Widgets); the full `pyside6` meta-package adds ~400 MB of Addons (WebEngine, 3D) not needed. 6.11.2 over 6.12.0 (10 days old) for Nuitka plugin maturity | Qt Company |
 | pytesseract | >=0.3.13 | Thin wrapper over tesseract.exe for rare text OCR (D-009); imported lazily | madmaze |
+| av (PyAV) | ==19.0.2 | Decodes the phone's `screenrecord` H.264 stream for the opt-in live screen stream (D-037); imported only when it is on. BSD-3-Clause; the wheels bundle FFmpeg libraries under LGPL-2.1+ | PyAV-Org |
 | segno | >=1.6 | Draws the Wi-Fi pairing QR code (D-025); pure Python, no sub-dependencies, BSD | Lars Heuer |
 | pytest (dev) | >=8 | Tests | pytest-dev |
 | ruff (dev) | >=0.6 | Lint/format | Astral |

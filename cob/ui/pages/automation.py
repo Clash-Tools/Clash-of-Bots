@@ -238,6 +238,11 @@ class AutomationPage(ConfigPage):
                                           tr("Which bases are worth attacking, and when to stop searching.")))
         s.body.addLayout(self._grid("min_gold_elixir", "min_dark", "max_nexts", "min_own_gold",
                                     "reduce_every", "reduce_percent", "reduce_floor", "halt_full_percent"))
+        self.stream_row = self._toggle(
+            "live_stream", "speed", tr("Live screen stream (phones, faster)"),
+            tr("The phone streams its screen as video while the bot waits for a screen, instead of a "
+               "screenshot every second or so. Taps and readings still use exact screenshots."))
+        s.body.addWidget(self.stream_row)
 
         s = self._add("battle", _Section("timer", tr("Ending a Battle"),
                                          tr("Damage that stops growing for 15 s always ends a battle. "
@@ -302,6 +307,7 @@ class AutomationPage(ConfigPage):
         self.tabs.set_visible("games", flags.enabled("clan_games"))
         self.tabs.set_visible("builder", flags.enabled("builder_base"))
         self.upgrades_note.setVisible(flags.enabled("building_upgrades"))
+        self.stream_row.setVisible(flags.enabled("live_stream"))
 
 
     # --- behaviour ------------------------------------------------------------------------------

@@ -34,6 +34,7 @@ _LIMITS = {
     "unavailable_wait": (0, 60),
     "two_sides": (0, 1),
     "cast_spells": (0, 1),
+    "live_stream": (0, 1),
     "resume_after_rest": (0, 1),
     "close_game_resting": (0, 1),
     "daily_minutes": (0, 1440),
@@ -76,6 +77,7 @@ class FarmConfig:
     daily_attacks_max: int = 0  # #121: above daily_attacks, each day's limit is drawn from that range
     off_hours: int = 0  # #121: one random off-period of this many hours a day; 0 = none
     cast_spells: int = 1  # 1 = cast spell cards a little inside the attacked edge after the troops
+    live_stream: int = 0  # D-037: 1 = phones stream their screen; waits use it, actions use screenshots
     two_sides: int = 0  # #44: 1 = deploy troops along 2 adjacent edges around a corner; 0 = one edge
     army_recipe: int = 0  # #185: Saved Recipe (1-4) loaded as the army when a run starts; 0 = keep the army
 

@@ -259,8 +259,12 @@ def build_farm(serial: str, templates: Path | None = None, cfg: FarmConfig | Non
     regions = load_regions(store.root)
     digits = DigitReader(store.load_dir("digits/loot"))
     bar = LootReader(digits, regions["bar"])
-    nav = Navigator(open_device(serial), ScreenClassifier(store))  # phones: display mode on
     cfg = cfg or load_farm_config()
+    from cob.core import flags
+
+    stream = bool(cfg.live_stream) and flags.enabled("live_stream")  # D-037, experimental (D-038)
+    nav = Navigator(open_device(serial, stream=stream),  # phones: display mode on
+                    ScreenClassifier(store))
     search = SearchTask(nav, LootReader(digits, regions["loot"]), bar, cfg)
     attack = AttackTask(nav, *load_attack_config(store.root),
                         AttackConfig(loot_stall_s=cfg.loot_stall_s, end_at_damage=cfg.end_at_damage,

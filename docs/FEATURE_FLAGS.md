@@ -27,6 +27,7 @@ the flag's stage.
 | `card_labelling` | beta | Cards page (label and export troop cards) | #19 |
 | `profile_rotation` | experimental | Profiles > "Run in turn" and the per-profile checkbox | #2 |
 | `coc_api_sync` | experimental | Settings API key, Profiles player tag + Sync, own units first on Cards | #45 |
+| `live_stream` | experimental | Automation > Farming Heuristics "Live screen stream" switch | #37 |
 | `clan_games` | incomplete | Automation > Clan Games (placeholder) | #1 |
 | `building_upgrades` | incomplete | Automation > Upgrades note on buildings and lab | #3 |
 
@@ -43,7 +44,7 @@ Unused or incomplete things found in the app, and what happened to each:
 | Clash of Clans API sync | built, not checked with a live key | `coc_api_sync` (off) |
 | Cards page | works; mostly needed for siege machines now | `card_labelling` (beta, on) |
 | `MainWindow._coming_soon` | never called | removed |
-| Live screen stream (PR #44) | built, not measured live | gets a flag when it is merged |
+| Live screen stream (PR #44) | built, not measured live | `live_stream` (off) |
 | Setup wizard handshake stats | left out of the design on purpose | nothing to hide |
 | Google Play Games, BlueStacks / MEmu, Android app | not in the app at all (#7, #35, #9) | nothing to hide |
 | CLI developer commands (`crop`, `match`, `ui-gallery`, ...) | developer tools by design | stay |

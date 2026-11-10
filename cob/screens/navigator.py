@@ -89,7 +89,9 @@ class Navigator:
         self._sleep(seconds)
 
     def classify(self) -> tuple[Classification, Frame]:
-        frame = Frame(self.device.capture())
+        return self._classified(Frame(self.device.capture()))
+
+    def _classified(self, frame: Frame) -> tuple[Classification, Frame]:
         cls = self.classifier.classify(frame)
         if self.on_frame is not None:
             try:
@@ -97,6 +99,19 @@ class Navigator:
             except Exception as exc:  # a preview must never break the bot
                 log.debug("on_frame observer failed: %s", exc)
         return cls, frame
+
+    def glance(self) -> tuple[Classification, Frame] | None:
+        """The screen on the device's live stream (D-037), None when it has none. The picture is lossy:
+        enough to see that a screen is NOT showing yet, never something to act on or read from."""
+        peek = getattr(self.device, "peek", None)
+        if peek is None:
+            return None
+        try:
+            img = peek()
+        except Exception as exc:  # the stream is an extra: a problem with it means "take a screenshot"
+            log.debug("stream frame failed: %s", exc)
+            return None
+        return self._classified(Frame(img)) if img is not None else None
 
     def wait_for(self, screens: set[str] | frozenset[str], timeout_s: float
                  ) -> tuple[Classification, Frame] | None:
@@ -112,8 +127,12 @@ class Navigator:
         # so a confirm always gets its frames even past the deadline (live 2026-11-05: an attack gave up
         # 10 s after the battle screen was already showing).
         while not self.stop.is_set() and (self._clock() - start <= timeout_s or tries <= self.cfg.confirm):
-            cls, frame = self.classify()
-            tries += 1
+            # D-037: while the live stream shows another screen, keep waiting on it (no screenshot);
+            # only a screenshot can confirm a wanted screen, and only that frame is returned.
+            seen_live = self.glance()
+            exact = seen_live is None or seen_live[0].screen in screens
+            cls, frame = self.classify() if exact else seen_live
+            tries += exact
             # Any of the wanted screens counts towards the streak: search turning into the battle when the
             # scout timer runs out is still a screen the caller can work with.
             same = cls.screen == last or (cls.screen in screens and last in screens)
@@ -122,7 +141,7 @@ class Navigator:
             seen.append(cls.screen)
             if cls.screen not in screens:
                 self.last_unwanted = (cls.screen, frame)
-            if cls.screen in screens and streak >= self.cfg.confirm:
+            if exact and cls.screen in screens and streak >= self.cfg.confirm:
                 return cls, frame
             self._sleep(self.cfg.poll_s)
         # #170: what was on screen instead, for the failure report's log
@@ -134,7 +153,8 @@ class Navigator:
         """Wait until `screen` is gone (e.g. the old base after Next); False on timeout/stop."""
         start = self._clock()
         while not self.stop.is_set() and self._clock() - start <= timeout_s:
-            if self.classify()[0].screen != screen:
+            seen_live = self.glance()  # still there on the live stream: no screenshot needed yet
+            if (seen_live is None or seen_live[0].screen != screen) and self.classify()[0].screen != screen:
                 return True
             self._sleep(self.cfg.poll_s)
         return False
