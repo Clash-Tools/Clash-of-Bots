@@ -16,6 +16,8 @@ hand-written highlights go under Unreleased and are moved into the next release.
 - **Attack:** a base is no longer skipped when the red deploy line is not showing in the first frame
   (it fades in and out while scouting): the bot looks again for up to six frames. Failure reports also
   keep the raw base frame next to the annotated one.
+- **Battle:** when the battle screen is gone for 30 s (the army window, another app in front), the bot
+  stops watching it and goes home instead of waiting out the 4-minute limit.
 - **Search:** a base whose outline never shows is skipped with Next and the search goes on with the
   same filter (up to 3 bases per cycle), instead of ending the search and starting over from home.
 

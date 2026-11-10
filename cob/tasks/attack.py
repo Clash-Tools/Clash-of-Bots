@@ -62,6 +62,7 @@ class AttackConfig:
     spell_depth: float = 0.3  # how far towards the base centre spells land (share of the distance)
     max_spell_taps: int = 15  # per spell card (counts are small: x5 is a full spell army)
     spell_pause_s: float = 0.3  # after each cast, before the card check
+    away_s: float = 30.0  # #36: another screen this long during the watch (army window, other app) ends it
     border_looks: int = 6  # frames tried for the red line before the base is skipped
     border_pause_s: float = 0.6  # between those frames
 
@@ -219,6 +220,8 @@ class AttackTask:
             return out
         if not self.nav.go_home().ok:
             out.status, out.reason = FAILED, "could not return home"
+        elif end not in (BATTLE_END, HOME):  # left the battle on another screen: result unknown
+            out.status, out.reason = FAILED, f"battle left on {end}"
         return out
 
     def _watch_battle(self, out: AttackOutcome) -> str | None:
@@ -230,7 +233,7 @@ class AttackTask:
         best, changed_at = -1, start
         loot, loot_at = None, start
         surrendered = stalled = shot = False
-        last = None
+        last, away_since = None, None
         while not self.nav.stop.is_set() and self.nav.now() - start <= self.cfg.battle_timeout_s:
             cls, frame = self.nav.classify()
             if cls.screen != last:
@@ -243,6 +246,16 @@ class AttackTask:
                 out.ended_by = out.ended_by or "home"
                 return cls.screen
             now = self.nav.now()
+            # #36: live, the watch sat 3-4 min on the army window / another app until its timeout.
+            if cls.screen in (BATTLE, SURRENDER_CONFIRM):
+                away_since = None
+            elif away_since is None:
+                away_since = now
+            elif now - away_since >= self.cfg.away_s:
+                log.info("battle watch: %s for %.0f s; the battle is not on screen any more", cls.screen,
+                         now - away_since)
+                out.ended_by = out.ended_by or f"left battle ({cls.screen})"
+                return cls.screen
             if best >= 100 and cls.screen != BATTLE and not shot:
                 save_snapshot(frame.bgr, f"after_100pct_{cls.screen.lower()}", device=self.device)
                 shot = True
