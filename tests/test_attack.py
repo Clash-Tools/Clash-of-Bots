@@ -739,3 +739,24 @@ def test_no_outline_after_every_look_gives_the_base_up(cfg):
 def test_no_outline_skips_while_scouting_and_fails_in_battle(cfg, screen, status):
     task, _ = _attack(cfg, _Frames(screen))
     assert task._no_outline().status == status
+
+
+def test_watch_ends_when_the_battle_is_gone_for_a_while(cfg):
+    # #36 live: the army window (or another app) stayed on screen and the watch waited its full 240 s
+    from cob.tasks.attack import AttackOutcome
+
+    dev = _Frames("battle", "army")
+    task, clock = _attack(cfg, dev)
+    out = AttackOutcome(DONE)
+    start = clock()
+    assert task._watch_battle(out) == "ARMY"
+    assert clock() - start < task.cfg.away_s + 2 * task.cfg.watch_poll_s
+    assert out.ended_by == "left battle (ARMY)"
+
+
+def test_a_short_other_screen_does_not_end_the_watch(cfg):
+    from cob.tasks.attack import AttackOutcome
+
+    dev = _Frames("battle", "army", "battle", "battle_end")
+    task, clock = _attack(cfg, dev)
+    assert task._watch_battle(AttackOutcome(DONE)) == "BATTLE_END"
