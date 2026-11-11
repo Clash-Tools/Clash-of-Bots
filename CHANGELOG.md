@@ -13,6 +13,12 @@ hand-written highlights go under Unreleased and are moved into the next release.
 
 ## [Unreleased]
 
+## [0.6.5] - 2026-11-11
+
+Channel: **Stable**
+
+### Highlights
+
 ### Highlights
 
 - **Settings:** Settings > About has a **Show developer options** switch. Turning it on shows a warning
@@ -20,6 +26,14 @@ hand-written highlights go under Unreleased and are moved into the next release.
   options tab with the feature flags. Clicking the version seven times still works.
 - **Attack:** pressing Stop during an attack no longer shows as a failed attack ("troop bar not
   readable") and no longer saves a failure report: it is logged as "stopped".
+
+### Features
+
+- **settings:** visible switch for Developer options with a warning (#50) ([`abff95d`](https://github.com/Clash-Tools/Clash-of-Bots/commit/abff95d))
+
+### Bug Fixes
+
+- **attack:** a Stop during an attack is not a failed attack (#51) ([`b9e867d`](https://github.com/Clash-Tools/Clash-of-Bots/commit/b9e867d))
 
 ## [0.6.4] - 2026-11-10
 
