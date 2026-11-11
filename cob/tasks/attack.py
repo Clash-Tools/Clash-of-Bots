@@ -109,11 +109,16 @@ class AttackTask:
 
     def run(self) -> AttackOutcome:
         out = self._attack()
+        if out.status in (FAILED, SKIPPED) and self.nav.stop.is_set():
+            # Stop cuts reads short (bar, red line, battle watch): that is not a failure to report
+            # (live 11-10: "troop bar not readable" a second after Stop).
+            out.status, out.reason = FAILED, "stopped"
         log.info("attack %s: edge %s, %d points, %d taps, deployed %s, ended by %s at ~%.0f%%%s",
                  out.status, out.edge, out.points, out.taps, out.deployed, out.ended_by or "-", out.damage,
                  f" ({out.reason})" if out.reason else "")
         if out.status == FAILED:
-            self._report(out)
+            if out.reason != "stopped":
+                self._report(out)
             self.nav.go_home()
         elif out.status == SKIPPED:
             self._report(out)  # the search goes on from this screen: no going home

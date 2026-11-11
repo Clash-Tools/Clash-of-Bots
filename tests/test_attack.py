@@ -432,6 +432,23 @@ def test_stopping_mid_battle_is_not_reported_as_a_stuck_battle(cfg):
     assert out.status == FAILED and out.reason == "stopped"
 
 
+def test_stop_while_reading_the_bar_is_not_a_failure_report(cfg, monkeypatch):
+    # Live 11-10: Stop a second after the zoom-out was saved as "troop bar not readable".
+    import cob.tasks.attack as attack_mod
+
+    shots = []
+    monkeypatch.setattr(attack_mod, "save_snapshot", lambda frame, label, **kw: shots.append(label))
+    task, _ = _attack(cfg, _Frames("search_a"))
+
+    def stopped(_frame):
+        task.nav.stop.set()
+        return None
+
+    task._read_bar = stopped
+    out = task.run()
+    assert out.status == FAILED and out.reason == "stopped" and shots == []
+
+
 DAMAGE_PANEL = (slice(590, 710), slice(1320, 1600))  # crops in fixtures/bar/damage_<pct>.png
 
 
