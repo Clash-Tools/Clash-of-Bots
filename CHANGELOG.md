@@ -13,6 +13,12 @@ hand-written highlights go under Unreleased and are moved into the next release.
 
 ## [Unreleased]
 
+## [0.6.6] - 2026-11-19
+
+Channel: **Stable**
+
+### Highlights
+
 ### Highlights
 
 - **Builder Base:** troops are placed more reliably on the second stage. A spot the game refused is not
@@ -23,6 +29,22 @@ hand-written highlights go under Unreleased and are moved into the next release.
   over darker art) were not recognised, so up to three troops per battle sat unused.
 - **Builder Base:** the Battle Machine / Battle Copter ability is used again each time it recharges
   (the card turns from pale back to colour), not just once per stage.
+
+### Bug Fixes
+
+- **builder:** do not retry refused spots and refit the outline after a refusal (#53) ([`ac36247`](https://github.com/Clash-Tools/Clash-of-Bots/commit/ac36247))
+  - PointMemory(spread=True): a spot the game refused is skipped by the next card; each card still starts at its own spot, a spot that worked is the fallback.
+  - After a card's points are all refused, take a full frame (the game shows the red line after a refused tap), fit the outline again and use its points for the wide retry and the cards that follow.
+- **builder:** deploy stage-1 survivors on stage 2 and try farther spots (#54) ([`4f5414b`](https://github.com/Clash-Tools/Clash-of-Bots/commit/4f5414b))
+  - fix(builder): try a ring nearer the map edge when the wide spots are refused
+  - fix(builder): deploy the troops that survived stage 1 on stage 2
+- **builder:** use the machine's ability again each time it recharges (#55) ([`cc4c952`](https://github.com/Clash-Tools/Clash-of-Bots/commit/cc4c952))
+
+### Chores
+
+- **deps:** bump certifi from 2026.7.22 to 2026.10.18 (#52) ([`a169008`](https://github.com/Clash-Tools/Clash-of-Bots/commit/a169008))
+  - [Commits](https://github.com/certifi/python-certifi/compare/2026.07.22...2026.10.18)
+  - dependency-name: certifi dependency-version: 2026.10.18 dependency-type: indirect
 
 ## [0.6.5] - 2026-11-11
 
