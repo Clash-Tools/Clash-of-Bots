@@ -98,25 +98,36 @@ def signature(cards: list[Card]) -> tuple:
 
 def find_cards(bgr: np.ndarray, rows: tuple[int, int] = (745, 885), min_v: float = 95,
                min_width: int = 55, card_width: int = 110, used_saturation: float = 30,
-               min_std: float = 30) -> list[Card]:
+               min_std: float = 30, close_gap: int = 0, pitch: float = 126.5) -> list[Card]:
     """Ready cards in the troop bar (both villages), kind not decided (SINGLE). Cards are much brighter
     than the dark bar and the dashed empty slots, so the brightness profile finds them whatever the
     badges, counts or upgrade icons look like (live: "x1" counts and green upgrade arrows broke the
     old level-badge reader, so heroes and troops were never deployed). Card art is high contrast;
     a bright but smooth stretch is scenery through the translucent bar (min_std). Greyed-out cards
-    are too dark to be found: read the bar before deploying."""
+    are too dark to be found: read the bar before deploying.
+
+    close_gap (Builder Base stage 2): bridge dark columns this narrow inside a card. Troops that survived
+    stage 1 come back with a health bar over darker art and fell apart into slivers (live 11-19: three
+    survivors never deployed). Bridged runs can then span neighbouring cards: they are split at the
+    slot `pitch`."""
     y0, y1 = rows
     hsv = cv2.cvtColor(bgr[y0:y1], cv2.COLOR_BGR2HSV)
     profile = hsv[:, :, 2].astype(np.float32).mean(axis=0)
+    bright = (profile > min_v).astype(np.uint8)
+    if close_gap:
+        bright = cv2.morphologyEx(bright[None], cv2.MORPH_CLOSE, np.ones((1, close_gap), np.uint8))[0]
     cards: list[Card] = []
-    for start, width in _runs(profile > min_v):
+    for start, width in _runs(bright > 0):
         if width < min_width:
             continue
-        x1 = start + width
-        x0 = max(0, x1 - card_width)
-        if float(cv2.cvtColor(bgr[y0 + 15:y0 + 125, x0 + 8:x1 - 8], cv2.COLOR_BGR2GRAY).std()) < min_std:
-            continue
-        body = hsv[45:115, x0 + 6:x1 - 6, 1]
-        used = float(body.mean()) < used_saturation if body.size else False
-        cards.append(Card(x0, x1, SINGLE, used))
+        n = max(1, round((width + pitch - card_width) / pitch)) if close_gap else 1
+        for k in range(n):  # right-aligned in its slot, like a single run
+            x1 = int(round(start + width - (n - 1 - k) * pitch))
+            x0 = max(0, x1 - card_width)
+            art = bgr[y0 + 15:y0 + 125, x0 + 8:x1 - 8]
+            if float(cv2.cvtColor(art, cv2.COLOR_BGR2GRAY).std()) < min_std:
+                continue
+            body = hsv[45:115, x0 + 6:x1 - 6, 1]
+            used = float(body.mean()) < used_saturation if body.size else False
+            cards.append(Card(x0, x1, SINGLE, used))
     return cards
