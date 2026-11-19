@@ -21,6 +21,8 @@ hand-written highlights go under Unreleased and are moved into the next release.
   placed). When those spots are refused too, a ring further out towards the map edge is tried.
 - **Builder Base:** troops that survive stage 1 are deployed again on stage 2. Their cards (health bar
   over darker art) were not recognised, so up to three troops per battle sat unused.
+- **Builder Base:** the Battle Machine / Battle Copter ability is used again each time it recharges
+  (the card turns from pale back to colour), not just once per stage.
 
 ## [0.6.5] - 2026-11-11
 
