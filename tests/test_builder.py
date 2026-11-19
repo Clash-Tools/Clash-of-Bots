@@ -260,3 +260,32 @@ def test_bb_stage2_survivors_are_found_but_dead_troops_are_not():
     assert len(xs) == 6, xs  # machine, three survivors, two reinforcements; the three dead ones not
     assert [round(x / 126.5) for x in xs] == [1, 2, 3, 4, 8, 9]
     assert len(find_cards(strip)) == 3  # without bridging: what the bot saw live
+
+
+@pytest.mark.parametrize("name, ready", [("bb_machine_ready", True), ("bb_machine_recharging", False),
+                                         ("bb_machine_recharge_sweep", False)])
+def test_machine_ability_ready_again(name, ready):
+    # Live 11-19: the Battle Machine card goes pale with a white sweep after its ability and comes
+    # back in colour when the ability has recharged (every ~40 s).
+    from cob.attack.troops import Card
+    from cob.tasks.builder import ability_ready
+
+    assert ability_ready(_strip(name), Card(110, 220, "single", False)) is ready
+
+
+def test_machine_ability_is_used_again_while_the_battle_lasts(parts):
+    from cob.attack.troops import Card
+
+    dev = BbDevice(two_stages=False)
+    task, _ = _task(parts, dev)
+    machine = Card(110, 220, "single", False)
+    task._machine = machine
+    taps = []
+    task._tap_card = lambda card: taps.append(card.x0)
+    for name in ("bb_machine_recharging", "bb_machine_ready", "bb_machine_ready", "bb_machine_recharge_sweep",
+                 "bb_machine_ready", "bb_machine_recharging", "bb_machine_ready", "bb_machine_ready"):
+        task._reuse_ability(_strip(name))
+    assert taps == [110, 110]  # two ready reads in a row each time, never mid-sweep
+    task._machine = None
+    task._reuse_ability(_strip("bb_machine_ready"))
+    assert taps == [110, 110]  # no machine deployed (or a new stage): nothing to use

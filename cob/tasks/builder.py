@@ -11,6 +11,8 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field, replace
 
+import cv2
+
 from cob.attack.geometry import BorderConfig, DeployConfig, deploy_points, find_base, red_mask
 from cob.attack.troops import Card, find_cards, signature
 from cob.core.snapshots import save_snapshot
@@ -31,6 +33,17 @@ HERO_SLOT_MAX_X = 200  # the Battle Machine / Copter card is always first in the
 BAR_GAP = 15  # px of dark columns bridged inside a card (stage-2 survivors with a health bar)
 
 
+def ability_ready(bgr, card: Card, min_sat: float = 65, max_val: float = 182) -> bool:
+    """The Battle Machine / Copter card in colour again: its ability has recharged. Right after a use
+    the card goes pale (a white sweep that fills back in ~10 s: low saturation, high brightness);
+    a dead machine is grey (low saturation). Live 11-19: the ability came back every ~40 s and was
+    only ever used once per stage."""
+    body = cv2.cvtColor(bgr[770:860, card.x0 + 10:card.x0 + 120], cv2.COLOR_BGR2HSV)
+    if body.size == 0:
+        return False
+    return float(body[:, :, 1].mean()) >= min_sat and float(body[:, :, 2].mean()) <= max_val
+
+
 @dataclass(frozen=True)
 class BbConfig:
     screen_timeout_s: float = 30.0
@@ -40,6 +53,7 @@ class BbConfig:
     ability_delay_s: float = 6.0
     battle_timeout_s: float = 330.0  # two stages of up to 3 min each, minus what is left of stage 1
     tap_pause_s: float = 0.15
+    ability_reads: int = 2  # watch reads in a row that show the ability ready before it is used again
     boat_attempts: int = 4
 
 
@@ -90,6 +104,8 @@ class BbAttackTask:
         self.deploy = deploy
         self.bar = bar
         self.cfg = cfg or BbConfig()
+        self._machine: Card | None = None  # deployed this stage: its ability is used whenever it is back
+        self._ready_reads = 0
 
     def run(self) -> BbOutcome:
         out = self._run()
@@ -111,6 +127,7 @@ class BbAttackTask:
         if not self._tap_find_now():
             return BbOutcome(FAILED, reason="Find Now not available (attack cooldown longer than the wait)")
         out = BbOutcome(DONE)
+        self._machine = None
         start = self.nav.now()
         while not self.nav.stop.is_set() and self.nav.now() - start <= self.cfg.battle_timeout_s:
             got = self.nav.wait_for({BB_STAGE_WAIT, BB_RESULTS, BATTLE} | INTERRUPTS,
@@ -142,7 +159,8 @@ class BbAttackTask:
                     log.info("stage %d: nothing left to deploy; waiting for the timer", out.stages)
                 # wait until the countdown is gone before looking for the next stage
                 self.nav.wait_leave(BB_STAGE_WAIT, self.cfg.search_timeout_s + 10)
-            else:  # BATTLE: troops fighting; just look again soon
+            else:  # BATTLE: troops fighting; use the machine's ability whenever it is back
+                self._reuse_ability(got[1].bgr)
                 self.nav.sleep(3.0)
         out.status, out.reason = FAILED, "battle did not end"
         return out
@@ -184,6 +202,7 @@ class BbAttackTask:
             else:
                 log.warning("stage: card@%d could not be placed", card.x0)
         machine = [c for c in placed if c.x0 < HERO_SLOT_MAX_X]
+        self._machine, self._ready_reads = (machine[0] if machine else None), 0
         if machine:
             # Only the hero / machine (leftmost slot) has an ability. Re-tapping any other card can open
             # the stage-2 "Change Troops" picker over the battle (live: it hid the results screen).
@@ -191,6 +210,19 @@ class BbAttackTask:
             self._tap_card(machine[0])
             self.nav.sleep(self.cfg.tap_pause_s)
         return len(placed)
+
+    def _reuse_ability(self, bgr) -> None:
+        machine = self._machine
+        if machine is None:
+            return
+        if not ability_ready(bgr, machine):
+            self._ready_reads = 0
+            return
+        self._ready_reads += 1
+        if self._ready_reads >= self.cfg.ability_reads:
+            log.info("stage: machine ability ready again; using it")
+            self._tap_card(machine)
+            self._ready_reads = 0
 
     def _refit(self, edge: str, points: list, base, red) -> tuple[list, list, list]:
         """(near, wide, farther) points along `edge` from a frame taken right after a refused tap, when
