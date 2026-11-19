@@ -220,29 +220,43 @@ def test_only_the_machine_gets_a_second_tap(parts):
     assert others and all(n == 1 for n in others.values())  # troop cards: one tap each, never a re-tap
 
 
-def test_refused_points_are_not_tried_again_and_the_outline_is_refitted(parts, caplog):
+@pytest.mark.parametrize("refused", [4, 8])  # 8: near and wide both refused, the farther ring places it
+def test_refused_points_are_not_tried_again_and_the_outline_is_refitted(parts, caplog, refused):
     # Live 11-19 (stage 2): the outline fitted before any tap was too small, the first points sat beside
     # buildings, and every card tried the same refused points again (one card was never placed).
     class Refusing(BbDevice):
-        def __init__(self):
+        def __init__(self, limit):
             super().__init__(two_stages=False)
+            self.limit = limit
             self.refused: set = set()
             self.ground: list = []
 
         def tap(self, x, y):
             if "stage" in self.phase and y < 730 and self.selected is not None:
                 self.ground.append((x, y))
-                if len(self.refused) < 4 and (x, y) not in self.refused:
-                    self.refused.add((x, y))  # the first four spots tried are inside the red line
+                if len(self.refused) < self.limit and (x, y) not in self.refused:
+                    self.refused.add((x, y))  # the first spots tried are inside the red line
                 if (x, y) in self.refused:
                     self.taps.append((x, y, self.phase))
                     return
             super().tap(x, y)
 
-    dev = Refusing()
+    dev = Refusing(refused)
     task, _ = _task(parts, dev)
     with caplog.at_level("INFO", logger="cob.tasks.builder"):
         out = task.run()
     assert out.status == DONE and out.deployed[0] == 5  # every card placed in the end
     assert all(dev.ground.count(p) == 1 for p in dev.refused)  # a refused spot is never tapped twice
     assert "outline fitted again" in caplog.text
+
+
+def test_bb_stage2_survivors_are_found_but_dead_troops_are_not():
+    # Live 11-19: three archers that survived stage 1 (health bar over darker art) were never deployed.
+    from cob.attack.troops import find_cards
+    from cob.tasks.builder import BAR_GAP
+
+    strip = _strip("bb_stage2_survivors")
+    xs = [c.x0 for c in find_cards(strip, close_gap=BAR_GAP)]
+    assert len(xs) == 6, xs  # machine, three survivors, two reinforcements; the three dead ones not
+    assert [round(x / 126.5) for x in xs] == [1, 2, 3, 4, 8, 9]
+    assert len(find_cards(strip)) == 3  # without bridging: what the bot saw live
