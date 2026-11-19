@@ -218,3 +218,31 @@ def test_only_the_machine_gets_a_second_tap(parts):
     others = {x: n for x, n in per_card.items() if x >= 200}
     assert any(x < 200 and n == 2 for x, n in per_card.items())  # the machine: deploy + ability
     assert others and all(n == 1 for n in others.values())  # troop cards: one tap each, never a re-tap
+
+
+def test_refused_points_are_not_tried_again_and_the_outline_is_refitted(parts, caplog):
+    # Live 11-19 (stage 2): the outline fitted before any tap was too small, the first points sat beside
+    # buildings, and every card tried the same refused points again (one card was never placed).
+    class Refusing(BbDevice):
+        def __init__(self):
+            super().__init__(two_stages=False)
+            self.refused: set = set()
+            self.ground: list = []
+
+        def tap(self, x, y):
+            if "stage" in self.phase and y < 730 and self.selected is not None:
+                self.ground.append((x, y))
+                if len(self.refused) < 4 and (x, y) not in self.refused:
+                    self.refused.add((x, y))  # the first four spots tried are inside the red line
+                if (x, y) in self.refused:
+                    self.taps.append((x, y, self.phase))
+                    return
+            super().tap(x, y)
+
+    dev = Refusing()
+    task, _ = _task(parts, dev)
+    with caplog.at_level("INFO", logger="cob.tasks.builder"):
+        out = task.run()
+    assert out.status == DONE and out.deployed[0] == 5  # every card placed in the end
+    assert all(dev.ground.count(p) == 1 for p in dev.refused)  # a refused spot is never tapped twice
+    assert "outline fitted again" in caplog.text

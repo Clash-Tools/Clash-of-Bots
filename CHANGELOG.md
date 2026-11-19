@@ -13,6 +13,13 @@ hand-written highlights go under Unreleased and are moved into the next release.
 
 ## [Unreleased]
 
+### Highlights
+
+- **Builder Base:** troops are placed more reliably on the second stage. A spot the game refused is not
+  tried again by the next card, and after a refused tap the base outline is fitted again on the red
+  line the game then shows, so later cards go to spots outside it (live: a stage-2 card was never
+  placed).
+
 ## [0.6.5] - 2026-11-11
 
 Channel: **Stable**
