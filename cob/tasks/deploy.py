@@ -68,10 +68,11 @@ class PointMemory:
 
     good: list = field(default_factory=list)
     bad: set = field(default_factory=set)
+    spread: bool = False  # Builder Base: keep each unit's own spot, a point that worked is the fallback
 
     def order(self, candidates: list) -> list:
         fresh = [p for p in candidates if p not in self.bad and p not in self.good]
-        return self.good + fresh
+        return fresh + self.good if self.spread else self.good + fresh
 
 
 def place_unit(nav: Navigator, card: Card, points: list, *, start: int | None = None, tries: int = 4,

@@ -15,7 +15,7 @@ from cob.attack.geometry import BorderConfig, DeployConfig, deploy_points, find_
 from cob.attack.troops import Card, find_cards, signature
 from cob.core.snapshots import save_snapshot
 from cob.screens.navigator import HOME, Navigator
-from cob.tasks.deploy import place_unit, tap_card
+from cob.tasks.deploy import PointMemory, place_unit, tap_card
 from cob.vision.agree import read_stable
 from cob.vision.frame import Frame
 from cob.vision.match import match
@@ -162,17 +162,20 @@ class BbAttackTask:
         ready = [c for c in cards.cards if not c.used]  # Builder Base has no spells: deploy every card
         log.info("stage: edge %s, %d points, deploying %d card(s)", edge, len(points), len(ready))
         wide = None  # same edge further out, when the near points are refused
+        memory = PointMemory(spread=True)  # refused points are not tried again by the next card
         placed = []
         for i, card in enumerate(ready):
             # Each card is tapped ONCE (a second tap on a placed card can open "Change Troops");
             # a refused spot only gets more ground taps.
             start = (len(points) // 2 + i) % len(points)
-            ok = place_unit(self.nav, card, points, start=start)
+            ok = place_unit(self.nav, card, points, start=start, memory=memory)
             if not ok:
                 if wide is None:
-                    far = replace(self.deploy, edge=edge, margin=self.deploy.margin * 3)
-                    wide = deploy_points(base, far, self.border.ui, red=red)[1]
-                ok = bool(wide) and place_unit(self.nav, card, wide, select=False)
+                    # A refused tap makes the game show the red line: fit the outline again on it.
+                    # Live 11-19: before any tap the line is hidden, the outline came out too small
+                    # and stage-2 points landed beside buildings (a card never placed).
+                    points, wide = self._refit(edge, points, base, red)
+                ok = bool(wide) and place_unit(self.nav, card, wide, select=False, memory=memory)
             if ok:
                 placed.append(card)
             else:
@@ -185,6 +188,19 @@ class BbAttackTask:
             self._tap_card(machine[0])
             self.nav.sleep(self.cfg.tap_pause_s)
         return len(placed)
+
+    def _refit(self, edge: str, points: list, base, red) -> tuple[list, list]:
+        """(near, wide) points along `edge` from a frame taken right after a refused tap, when the red
+        line is on screen; the first outline's points when no outline is found on it."""
+        frame = Frame(self.device.capture())
+        again = find_base(frame.bgr, self.border)
+        if again is not None:
+            base, red = again, red_mask(frame.bgr, self.border, again)
+            near = deploy_points(base, replace(self.deploy, edge=edge), self.border.ui, red=red)[1]
+            log.info("stage: outline fitted again after a refused tap (%d points)", len(near))
+            points = near or points
+        far = replace(self.deploy, edge=edge, margin=self.deploy.margin * 3)
+        return points, deploy_points(base, far, self.border.ui, red=red)[1]
 
     def _tap_find_now(self) -> bool:
         """Find Now, waiting out the BB attack cooldown (the dialog shows a timer instead of the button)."""
