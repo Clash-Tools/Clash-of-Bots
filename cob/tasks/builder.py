@@ -28,6 +28,7 @@ INTERRUPTS = frozenset({"POPUP_RELOAD", "POPUP_OTHER_DEVICE"})
 
 DONE, FAILED = "done", "failed"
 HERO_SLOT_MAX_X = 200  # the Battle Machine / Copter card is always first in the bar
+BAR_GAP = 15  # px of dark columns bridged inside a card (stage-2 survivors with a health bar)
 
 
 @dataclass(frozen=True)
@@ -161,7 +162,7 @@ class BbAttackTask:
             return 0
         ready = [c for c in cards.cards if not c.used]  # Builder Base has no spells: deploy every card
         log.info("stage: edge %s, %d points, deploying %d card(s)", edge, len(points), len(ready))
-        wide = None  # same edge further out, when the near points are refused
+        wide = farther = None  # same edge further out, when the near points are refused
         memory = PointMemory(spread=True)  # refused points are not tried again by the next card
         placed = []
         for i, card in enumerate(ready):
@@ -174,8 +175,10 @@ class BbAttackTask:
                     # A refused tap makes the game show the red line: fit the outline again on it.
                     # Live 11-19: before any tap the line is hidden, the outline came out too small
                     # and stage-2 points landed beside buildings (a card never placed).
-                    points, wide = self._refit(edge, points, base, red)
+                    points, wide, farther = self._refit(edge, points, base, red)
                 ok = bool(wide) and place_unit(self.nav, card, wide, select=False, memory=memory)
+                if not ok:  # walls far out (live 11-19): the open ground nearer the map edge
+                    ok = bool(farther) and place_unit(self.nav, card, farther, select=False, memory=memory)
             if ok:
                 placed.append(card)
             else:
@@ -189,9 +192,9 @@ class BbAttackTask:
             self.nav.sleep(self.cfg.tap_pause_s)
         return len(placed)
 
-    def _refit(self, edge: str, points: list, base, red) -> tuple[list, list]:
-        """(near, wide) points along `edge` from a frame taken right after a refused tap, when the red
-        line is on screen; the first outline's points when no outline is found on it."""
+    def _refit(self, edge: str, points: list, base, red) -> tuple[list, list, list]:
+        """(near, wide, farther) points along `edge` from a frame taken right after a refused tap, when
+        the red line is on screen; the first outline's points when no outline is found on it."""
         frame = Frame(self.device.capture())
         again = find_base(frame.bgr, self.border)
         if again is not None:
@@ -199,8 +202,12 @@ class BbAttackTask:
             near = deploy_points(base, replace(self.deploy, edge=edge), self.border.ui, red=red)[1]
             log.info("stage: outline fitted again after a refused tap (%d points)", len(near))
             points = near or points
-        far = replace(self.deploy, edge=edge, margin=self.deploy.margin * 3)
-        return points, deploy_points(base, far, self.border.ui, red=red)[1]
+
+        def ring(times: float) -> list:
+            far = replace(self.deploy, edge=edge, margin=self.deploy.margin * times)
+            return deploy_points(base, far, self.border.ui, red=red)[1]
+
+        return points, ring(3), ring(6)
 
     def _tap_find_now(self) -> bool:
         """Find Now, waiting out the BB attack cooldown (the dialog shows a timer instead of the button)."""
@@ -213,7 +220,7 @@ class BbAttackTask:
         return False
 
     def _read_cards(self, frame: Frame):
-        cards = find_cards(frame.bgr)
+        cards = find_cards(frame.bgr, close_gap=BAR_GAP)
         return _Cards(cards) if cards else None
 
     def _tap_card(self, card: Card) -> None:
